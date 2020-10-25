@@ -1,0 +1,2 @@
+CFBundleDisplayName = "연락처⁺";
+NSContactsUsageDescription = "연락처를 가져오기 위해 연락처 권한이 필요합니다.";

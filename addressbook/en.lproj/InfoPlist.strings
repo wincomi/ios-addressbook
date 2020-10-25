@@ -1,0 +1,2 @@
+CFBundleDisplayName = "Contacts⁺";
+NSContactsUsageDescription = "We need contact permission to import contacts.";

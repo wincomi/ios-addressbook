@@ -1,0 +1,132 @@
+// MARK: - General
+Cancel = "Cancel";
+OK = "OK";
+done = "Done";
+add = "Add";
+share = "Share";
+delete = "Delete";
+errorAlertTitle = "An error occurred.";
+
+// MARK: - Contacts
+allContacts = "All Contacts";
+groups = "Groups";
+group = "Group";
+contacts = "Contacts";
+contact = "Contact";
+phoneNumbers = "Phone numbers";
+emailAddresses = "Email addresses";
+newContact = "New Contact";
+createNewContact = "Create New Contact";
+searchContacts = "Search Contacts";
+
+// MARK: - ContactStoreError
+ContactStoreError.requestPermission = "Request permission";
+ContactStoreError.accessNotDeterminedDescription = "We need contact permission to import contacts.";
+ContactStoreError.accessRestrictedDescriptoin = "Access to your contacts has been restricted.";
+ContactStoreError.accessDeniedDescription = "Access to your contacts has been denied.";
+ContactStoreError.unknownErrorDescription = "An unknown error occured.";
+ContactStoreError.cannotFetchErrorDescription = "An error occured while retrieving contacts.";
+
+// MARK: - MainCoordinator
+unknownContact = "Unknown contact";
+unknownContactDescription = "This contact cannot be retrieved.";
+unknownGroup = "Unknown group";
+unknownGroupDescription = "This contact cannot be retrieved.";
+
+// MARK: - GroupList
+GroupList.EmptyDataView.title = "Unable to access your contacts.";
+GroupList.NavigationItems.editButton = "Edit Groups";
+GroupList.CreateGroupAlert.title = "New Group";
+GroupList.CreateGroupAlert.message = "Enter a name for new group.";
+GroupList.CreateGroupAlert.TextField.placeholder = "Name";
+GroupList.CreateGroupAlert.save = "Save";
+GroupList.UpdateGroupAlert.title = "Rename Group";
+GroupList.ConfirmDeleteAlert.title = "Delete '%@'";
+GroupList.ConfirmDeleteAlert.message = "Are you sure you want to delete '%@' group?\nContacts will not be deleted.";
+
+// MARK: - GroupListRow
+GroupListRow.ContextMenuItemType.rename = "Rename";
+
+// MARK: - ContactList
+ContactList.NavigationItems.selectAll = "Select All";
+ContactList.NavigationItems.deselectAll = "Deselect All";
+
+// MARK: - ContactListRow
+ContactListRow.noName = "No name";
+ContactListRow.ContextMenuItemType.call = "Call";
+ContactListRow.ContextMenuItemType.sendMessage = "Message";
+ContactListRow.ContextMenuItemType.sendMail = "Mail";
+ContactListRow.ContextMenuItemType.addToApplicationShortcutItems = "Add to Quick Actions";
+ContactListRow.ContextMenuItemType.removeFromApplicationShortcutItems = "Remove from Quick Actions";
+ContactListRow.ContextMenuItemType.addToGroup = "Add to group";
+ContactListRow.ContextMenuItemType.removeFromGroup = "Remove from group";
+
+// MARK: - SearchList
+SearchList.Section.Name.header = "Name";
+SearchList.Section.PhoneNumbers.header = "Phone Number";
+SearchList.Section.EmailAddresses.header = "Email Address";
+
+// MARK: - EditGroupsForm
+EditGroupsForm.navigationTitle = "Edit Groups";
+EditGroupsForm.ContactSection.footer = "This contact will be displayed in selected groups below.";
+
+// MARK: - SettingsForm
+SettingsForm.navigationTitle = "Settings";
+SettingsForm.onlyForContactsPlusPro = "Only for Contacts⁺ Pro";
+SettingsForm.restorePurchase = "Restore Purchase";
+SettingsForm.successRestorePurchases = "Your purchases have been restored.";
+SettingsForm.nothingToRestore = "Nothing to restore.";
+SettingsForm.thankYou = "Thank you!";
+SettingsForm.thankYouForYourPurchase = "Thank you for your purchase.";
+SettingsForm.thankYouForYourSupport = "Thank you for your support :)";
+SettingsForm.UnlockedProSection.message = "All features have been unlocked.";
+SettingsForm.GeneralSection.header = "General";
+SettingsForm.GeneralSection.showAllContactsOnAppLaunch = "Show contact list on app launch";
+SettingsForm.GeneralSection.displayOrder = "Display Order";
+SettingsForm.GeneralSection.preferNicknames = "Prefer nicknames";
+SettingsForm.DisplaySection.header = "Display";
+SettingsForm.DisplaySection.showContactImage = "Show contact image";
+SettingsForm.ProSection.contactsPlusPro = "Contacts⁺ Pro";
+SettingsForm.ProSection.purchase = "Purchase";
+SettingsForm.themeSection.header = "Theme";
+SettingsForm.themeSection.customColor = "Custom Color";
+SettingsForm.DonationSection.header = "Donation";
+SettingsForm.FeedbackSection.header = "Feedback";
+SettingsForm.FeedbackSection.rateThisApp = "Rate this app";
+SettingsForm.FeedbackSection.sendFeedback = "Send Feedback";
+SettingsForm.UnlockedProSection.message = "Thank you for purchasing Contacts⁺ Pro.";
+
+// MARK: - ApplicationShortcutItemsSettingForm
+ApplicationShortcutItemsSettingForm.navigationTitle = "Home Screen Quick Actions";
+ApplicationShortcutItemsSettingForm.AddingSection.footerText = "You can add contacts and groups from the list of contacts and groups.";
+ApplicationShortcutItemsSettingForm.Section.footerText = "Up to four are displayed from the top.";
+
+// MARK: - ContactMenuSettingForm
+ContactMenuSettingForm.navigationTitle = "Custom Contact Menu";
+ContactMenuSettingForm.Section.footerText = "Touch and hold a contact to show selected contact menus.";
+ContactMenuSettingForm.OptionsSection.footerText = "Always display all phone numbers and email address at first.";
+ContactMenuSettingForm.OptionsSection.isContactContextMenuDisplayInline = "Display all menus at first";
+
+// MARK: - AppSettings
+AppSettings.userInterfaceStyle.title = "Dark Mode";
+AppSettings.userInterfaceStyle.unspecified = "Depends on System";
+AppSettings.userInterfaceStyle.dark = "Always On";
+AppSettings.userInterfaceStyle.light = "Always Off";
+AppSettings.sortOrder.title = "Sort Order";
+AppSettings.sortOrder.default = "According to Display Order";
+AppSettings.sortOrder.givenName = "First Name";
+AppSettings.sortOrder.familyName = "Last name";
+AppSettings.displayOrder.title = "Display Order";
+AppSettings.displayOrder.default = "System Default";
+AppSettings.displayOrder.givenNameFirst = "First, Last";
+AppSettings.displayOrder.familyNameFirst = "Last, First";
+
+// MARK: - EditContactsForm
+EditContactsForm.navigationTitle = "Edit Contacts";
+EditContactsForm.profileImage = "Profile Image";
+EditContactsForm.selectImage = "Select Image";
+EditContactsForm.deleteProfileImage = "Delete Profile Image";
+EditContactsForm.jobTitle = "Job Title";
+EditContactsForm.departmentName = "Department";
+EditContactsForm.organizationName = "Company";
+EditContactsForm.sectionFooter = "Leave blank if you don't want multiple edit.";

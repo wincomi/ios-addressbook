@@ -1,0 +1,132 @@
+// MARK: - General
+Cancel = "취소";
+OK = "확인";
+done = "완료";
+add = "추가";
+delete = "삭제";
+share = "공유";
+errorAlertTitle = "에러가 발생하였습니다.";
+
+// MARK: - Contacts
+allContacts = "모든 연락처";
+groups = "그룹";
+group = "그룹";
+contacts = "연락처";
+contact = "연락처";
+newContact = "새로운 연락처";
+createNewContact = "새로운 연락처 등록";
+searchContacts = "연락처 검색";
+phoneNumbers = "전화번호";
+emailAddresses = "이메일 주소";
+
+// MARK: - ContactStoreError
+ContactStoreError.requestPermission = "권한 요청";
+ContactStoreError.accessNotDeterminedDescription = "연락처를 가져오기 위해 연락처 권한이 필요합니다.";
+ContactStoreError.accessRestrictedDescriptoin = "연락처 접근이 제한되었습니다.";
+ContactStoreError.accessDeniedDescription = "연락처 접근이 거부되었습니다.";
+ContactStoreError.unknownErrorDescription = "알 수 없는 에러가 발생하였습니다.";
+ContactStoreError.cannotFetchErrorDescription = "연락처를 가져오는 중 에러가 발생하였습니다.";
+
+// MARK: - MainCoordinator
+unknownContact = "알 수 없는 연락처";
+unknownContactDescription = "이 연락처를 불러올 수 없습니다.";
+unknownGroup = "알 수 없는 그룹";
+unknownGroupDescription = "이 그룹을 불러올 수 없습니다.";
+
+// MARK: - GroupList
+GroupList.EmptyDataView.title = "연락처에 접근할 수 없습니다.";
+GroupList.NavigationItems.editButton = "그룹 편집";
+GroupList.CreateGroupAlert.title = "새로운 그룹";
+GroupList.CreateGroupAlert.message = "새로운 그룹의 이름을 입력하십시오.";
+GroupList.CreateGroupAlert.TextField.placeholder = "이름";
+GroupList.CreateGroupAlert.save = "저장";
+GroupList.UpdateGroupAlert.title = "그룹 이름 변경";
+GroupList.ConfirmDeleteAlert.title = "'%@' 삭제";
+GroupList.ConfirmDeleteAlert.message = "'%@' 그룹을 삭제하시겠습니까?\n연락처는 삭제되지 않습니다.";
+
+// MARK: - GroupListRow
+GroupListRow.ContextMenuItemType.rename = "이름 변경";
+
+// MARK: - ContactList
+ContactList.NavigationItems.selectAll = "전체 선택";
+ContactList.NavigationItems.deselectAll = "전체 선택 해제";
+
+// MARK: - ContactListRow
+ContactListRow.noName = "이름 없음";
+ContactListRow.ContextMenuItemType.call = "통화";
+ContactListRow.ContextMenuItemType.sendMessage = "메시지";
+ContactListRow.ContextMenuItemType.sendMail = "메일";
+ContactListRow.ContextMenuItemType.addToApplicationShortcutItems = "퀵 액션에 추가";
+ContactListRow.ContextMenuItemType.removeFromApplicationShortcutItems = "퀵 액션에서 제거";
+ContactListRow.ContextMenuItemType.addToGroup = "그룹에 추가";
+ContactListRow.ContextMenuItemType.removeFromGroup = "그룹에서 제거";
+
+// MARK: - SearchList
+SearchList.Section.Name.header = "이름";
+SearchList.Section.PhoneNumbers.header = "휴대폰 번호";
+SearchList.Section.EmailAddresses.header = "이메일 주소";
+
+// MARK: - EditGroupsForm
+EditGroupsForm.navigationTitle = "그룹 편집";
+EditGroupsForm.ContactSection.footer = "이 연락처가 아래의 선택된 그룹에서 표시됩니다.";
+
+// MARK: - SettingsForm
+SettingsForm.navigationTitle = "설정";
+SettingsForm.onlyForContactsPlusPro = "연락처⁺ 프로 전용 기능입니다.";
+SettingsForm.restorePurchase = "구매 목록 복원";
+SettingsForm.successRestorePurchases = "구매 목록이 복원되었습니다.";
+SettingsForm.nothingToRestore = "복원할 구매 목록이 없습니다.";
+SettingsForm.thankYou = "감사합니다.";
+SettingsForm.thankYouForYourPurchase = "구매해주셔서 감사합니다!";
+SettingsForm.thankYouForYourSupport = "후원해주셔서 감사합니다 :)";
+SettingsForm.UnlockedProSection.message = "모든 기능을 사용할 수 있습니다.";
+SettingsForm.GeneralSection.header = "일반";
+SettingsForm.GeneralSection.showAllContactsOnAppLaunch = "앱 실행시 모든 연락처 보기";
+SettingsForm.GeneralSection.preferNicknames = "별명으로 보기";
+SettingsForm.GeneralSection.displayOrder = "표시 순서";
+SettingsForm.DisplaySection.header = "보기";
+SettingsForm.DisplaySection.showContactImage = "연락처 사진 보기";
+SettingsForm.ProSection.contactsPlusPro = "연락처⁺ 프로";
+SettingsForm.ProSection.purchase = "구매";
+SettingsForm.themeSection.header = "테마";
+SettingsForm.themeSection.customColor = "커스텀 색상";
+SettingsForm.DonationSection.header = "후원";
+SettingsForm.FeedbackSection.header = "피드백";
+SettingsForm.FeedbackSection.rateThisApp = "앱 리뷰하기";
+SettingsForm.FeedbackSection.sendFeedback = "피드백 보내기";
+SettingsForm.UnlockedProSection.message = "연락처⁺ 프로를 구매해주셔서 감사합니다.";
+
+// MARK: - ApplicationShortcutItemsSettingForm
+ApplicationShortcutItemsSettingForm.navigationTitle = "홈 화면 퀵 액션";
+ApplicationShortcutItemsSettingForm.AddingSection.footerText = "연락처와 그룹 목록에서 연락처와 그룹을 추가할 수 있습니다.";
+ApplicationShortcutItemsSettingForm.Section.footerText = "위에서부터 4개까지 표시됩니다.";
+
+// MARK: - ContactMenuSettingForm
+ContactMenuSettingForm.navigationTitle = "연락처 메뉴 커스텀";
+ContactMenuSettingForm.Section.footerText = "연락처를 길게 누르면 선택한 연락처 메뉴를 볼 수 있습니다.";
+ContactMenuSettingForm.OptionsSection.footerText = "항상 첫 메뉴에 모든 휴대폰 번호와 이메일 주소를 메뉴를 보여줍니다.";
+ContactMenuSettingForm.OptionsSection.isContactContextMenuDisplayInline = "모든 메뉴 바로 보기";
+
+// MARK: - AppSettings
+AppSettings.userInterfaceStyle.title = "다크 모드";
+AppSettings.userInterfaceStyle.unspecified = "시스템 설정에 따름";
+AppSettings.userInterfaceStyle.dark = "항상 켜기";
+AppSettings.userInterfaceStyle.light = "항상 끄기";
+AppSettings.sortOrder.title = "정렬 기준";
+AppSettings.sortOrder.default = "표시 순서에 따름";
+AppSettings.sortOrder.givenName = "이름";
+AppSettings.sortOrder.familyName = "성";
+AppSettings.displayOrder.title = "표시 순서";
+AppSettings.displayOrder.default = "시스템 기본";
+AppSettings.displayOrder.givenNameFirst = "이름, 성";
+AppSettings.displayOrder.familyNameFirst = "성, 이름";
+
+// MARK: - EditContactsForm
+EditContactsForm.navigationTitle = "연락처 다중 편집";
+EditContactsForm.profileImage = "프로필 사진";
+EditContactsForm.selectImage = "사진 선택";
+EditContactsForm.deleteProfileImage = "프로필 사진 삭제";
+EditContactsForm.jobTitle = "직책";
+EditContactsForm.departmentName = "부서";
+EditContactsForm.organizationName = "직장";
+EditContactsForm.sectionFooter = "일괄 수정을 원하지 않으면 비워두십시오.";
