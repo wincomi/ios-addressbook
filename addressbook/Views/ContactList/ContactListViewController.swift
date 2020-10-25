@@ -232,6 +232,10 @@ final class ContactListViewController: UITableViewController, ListDataSourceRend
 		navigationItem.setHidesBackButton(isEditing, animated: animated)
 		navigationItem.leftBarButtonItem = isEditing ? selectAllButton : nil
 		navigationItem.searchController?.searchBar.isUserInteractionEnabled = !isEditing
+
+		let tableFooterView = ContactListFooterView.uiView(numberOfContacts: dataSource.snapshot().numberOfItems)
+		tableFooterView.sizeToFit()
+		tableView.tableFooterView = tableFooterView
 	}
 
 	private func bindViewModel() {

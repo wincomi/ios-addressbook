@@ -71,6 +71,7 @@
 		F755A8B9248FC23600DB9717 /* GroupListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F755A8B8248FC23600DB9717 /* GroupListRow.swift */; };
 		F755A8BE24913EEF00DB9717 /* GroupListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F755A8BD24913EEF00DB9717 /* GroupListViewModel.swift */; };
 		F755A8C224913F0F00DB9717 /* ContactStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F755A8C024913F0F00DB9717 /* ContactStore.swift */; };
+		F786EF8225450A8800CBEAC4 /* ContactListFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F786EF8125450A8800CBEAC4 /* ContactListFooterView.swift */; };
 		F78F7E7A254423B8008DE2DD /* MailComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78F7E79254423B8008DE2DD /* MailComposeView.swift */; };
 /* End PBXBuildFile section */
 
@@ -144,6 +145,7 @@
 		F755A8B8248FC23600DB9717 /* GroupListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListRow.swift; sourceTree = "<group>"; };
 		F755A8BD24913EEF00DB9717 /* GroupListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListViewModel.swift; sourceTree = "<group>"; };
 		F755A8C024913F0F00DB9717 /* ContactStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactStore.swift; sourceTree = "<group>"; };
+		F786EF8125450A8800CBEAC4 /* ContactListFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListFooterView.swift; sourceTree = "<group>"; };
 		F78F7E79254423B8008DE2DD /* MailComposeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailComposeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -173,13 +175,13 @@
 		91ADA95F252D9C5900F6863A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				916688B225368B5D00EC6A3F /* ImagePicker.swift */,
 				9169AA8F2514C6A9009EB935 /* ValueCellView.swift */,
 				91A6D43B2510DA00003F2764 /* ActivityIndicator.swift */,
 				91BCA7192524B8030094B20A /* CircleColorView.swift */,
+				F78F7E79254423B8008DE2DD /* MailComposeView.swift */,
 				9100A92F252614080013A143 /* CompatibleLabel.swift */,
 				91E17EC0251872BB00D2656F /* CompatibleInsetGroupedListStyle.swift */,
-				916688B225368B5D00EC6A3F /* ImagePicker.swift */,
-				F78F7E79254423B8008DE2DD /* MailComposeView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -204,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				F75093D324A07E0B0044CDE3 /* ContactListViewController.swift */,
+				F786EF8125450A8800CBEAC4 /* ContactListFooterView.swift */,
 				F75093D924A07EA10044CDE3 /* ContactListCell.swift */,
 				91B22E2C252B65F50094A066 /* SelectGroupsForm.swift */,
 				917C15D82529CBD700A5DA80 /* EditGroupsForm.swift */,
@@ -251,10 +254,10 @@
 		91CF2FE8251B68680009686C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				916688B525368BB600EC6A3F /* Binding+Extension.swift */,
 				91B1F355251E384C000D2CF2 /* SKError+Extension.swift */,
 				91FA58BF2514D2D900247E4D /* SKProduct+Extension.swift */,
 				9108D44F2507BE41004CF0C4 /* CNContainer+Extension.swift */,
-				916688B525368BB600EC6A3F /* Binding+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -272,10 +275,10 @@
 			isa = PBXGroup;
 			children = (
 				91961FDA25066BA200463B7A /* SettingsForm.swift */,
+				917AC446252EA9A10031B39A /* EnumPickerForm.swift */,
 				9109DEDE2516F026004E949C /* ContactMenuSettingForm.swift */,
 				91ADA964252DA7ED00F6863A /* ContactMenuSettingFormCell.swift */,
 				915AB39F2514FA26001727A4 /* ApplicationShortcutItemSettingForm.swift */,
-				917AC446252EA9A10031B39A /* EnumPickerForm.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				916688B325368B5D00EC6A3F /* ImagePicker.swift in Sources */,
 				91057E2E252D9A8C0053E101 /* GroupListRow+ContextMenuItemType.swift in Sources */,
 				91A6D43C2510DA00003F2764 /* ActivityIndicator.swift in Sources */,
+				F786EF8225450A8800CBEAC4 /* ContactListFooterView.swift in Sources */,
 				91E17EBF2518699C00D2656F /* AlertItem.swift in Sources */,
 				91B61EA82534703C007935AD /* EditContactsForm.swift in Sources */,
 				919231F125345A680007819F /* SearchListRow.swift in Sources */,
