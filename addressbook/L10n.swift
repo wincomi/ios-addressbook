@@ -87,8 +87,10 @@ internal enum L10n {
   }
 
   internal enum ApplicationShortcutItemsSettingForm {
-    /// Home Screen Quick Actions
+    /// Quick Actions
     internal static let navigationTitle = L10n.tr("Localizable", "ApplicationShortcutItemsSettingForm.navigationTitle")
+    /// Home Screen Quick Actions
+    internal static let title = L10n.tr("Localizable", "ApplicationShortcutItemsSettingForm.title")
     internal enum AddingSection {
       /// You can add contacts and groups from the list of contacts and groups.
       internal static let footerText = L10n.tr("Localizable", "ApplicationShortcutItemsSettingForm.AddingSection.footerText")
@@ -142,7 +144,7 @@ internal enum L10n {
       internal static let title = L10n.tr("Localizable", "CallDirectoryEntryList.EmptyDataView.title")
     }
     internal enum IdentificationType {
-      /// Call Identification
+      /// Caller ID
       internal static let navigationTitle = L10n.tr("Localizable", "CallDirectoryEntryList.IdentificationType.navigationTitle")
     }
   }
@@ -358,7 +360,7 @@ internal enum L10n {
       internal static let header = L10n.tr("Localizable", "SettingsForm.GeneralSection.header")
       /// Prefer nicknames
       internal static let preferNicknames = L10n.tr("Localizable", "SettingsForm.GeneralSection.preferNicknames")
-      /// Show contact list on app launch
+      /// Show contacts on app launch
       internal static let showAllContactsOnAppLaunch = L10n.tr("Localizable", "SettingsForm.GeneralSection.showAllContactsOnAppLaunch")
     }
     internal enum ProSection {

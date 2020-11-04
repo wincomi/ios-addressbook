@@ -97,6 +97,7 @@ SettingsForm.FeedbackSection.sendFeedback = "피드백 보내기";
 SettingsForm.UnlockedProSection.message = "연락처⁺ 프로를 구매해주셔서 감사합니다.";
 
 // MARK: - ApplicationShortcutItemsSettingForm
+ApplicationShortcutItemsSettingForm.title = "홈 화면 퀵 액션";
 ApplicationShortcutItemsSettingForm.navigationTitle = "홈 화면 퀵 액션";
 ApplicationShortcutItemsSettingForm.AddingSection.footerText = "연락처와 그룹 목록에서 연락처와 그룹을 추가할 수 있습니다.";
 ApplicationShortcutItemsSettingForm.Section.footerText = "위에서부터 4개까지 표시됩니다.";

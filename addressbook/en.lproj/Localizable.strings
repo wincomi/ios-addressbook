@@ -81,7 +81,7 @@ SettingsForm.thankYouForYourPurchase = "Thank you for your purchase.";
 SettingsForm.thankYouForYourSupport = "Thank you for your support :)";
 SettingsForm.UnlockedProSection.message = "All features have been unlocked.";
 SettingsForm.GeneralSection.header = "General";
-SettingsForm.GeneralSection.showAllContactsOnAppLaunch = "Show contact list on app launch";
+SettingsForm.GeneralSection.showAllContactsOnAppLaunch = "Show contacts on app launch";
 SettingsForm.GeneralSection.displayOrder = "Display Order";
 SettingsForm.GeneralSection.preferNicknames = "Prefer nicknames";
 SettingsForm.DisplaySection.header = "Display";
@@ -97,7 +97,8 @@ SettingsForm.FeedbackSection.sendFeedback = "Send Feedback";
 SettingsForm.UnlockedProSection.message = "Thank you for purchasing Contacts⁺ Pro.";
 
 // MARK: - ApplicationShortcutItemsSettingForm
-ApplicationShortcutItemsSettingForm.navigationTitle = "Home Screen Quick Actions";
+ApplicationShortcutItemsSettingForm.title = "Home Screen Quick Actions";
+ApplicationShortcutItemsSettingForm.navigationTitle = "Quick Actions";
 ApplicationShortcutItemsSettingForm.AddingSection.footerText = "You can add contacts and groups from the list of contacts and groups.";
 ApplicationShortcutItemsSettingForm.Section.footerText = "Up to four are displayed from the top.";
 
@@ -132,7 +133,7 @@ EditContactsForm.organizationName = "Company";
 EditContactsForm.sectionFooter = "Leave blank if you don't want multiple edit.";
 
 // MARK: - CallDirectoryEntryList
-CallDirectoryEntryList.IdentificationType.navigationTitle = "Call Identification";
+CallDirectoryEntryList.IdentificationType.navigationTitle = "Caller ID";
 CallDirectoryEntryList.BlockingType.navigationTitle = "Call Blocking";
 CallDirectoryEntryList.EmptyDataView.title = "The list is empty.";
 CallDirectoryEntryList.EmptyDataView.description = "Touch Add button at the top to add a phone number.";

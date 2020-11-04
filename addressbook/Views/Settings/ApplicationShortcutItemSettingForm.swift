@@ -57,7 +57,7 @@ struct ApplicationShortcutItemSettingForm: View {
 	}
 
 	private var applicationShortcutItemsSection: some View {
-		Section(header: Text(L10n.ApplicationShortcutItemsSettingForm.navigationTitle), footer: Text(L10n.ApplicationShortcutItemsSettingForm.Section.footerText)) {
+		Section(header: Text(L10n.ApplicationShortcutItemsSettingForm.title), footer: Text(L10n.ApplicationShortcutItemsSettingForm.Section.footerText)) {
 			ForEach(appSettings.applicationShortcutItems) { applcationShortcutItem in
 				ValueCellView(applcationShortcutItem, imageTintColor: AppSettings.shared.globalTintColor)
 			}
