@@ -33,6 +33,8 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>zero</key>
+			<string>연락처 없음</string>
 			<key>one</key>
 			<string>1개의 연락처</string>
 			<key>other</key>
