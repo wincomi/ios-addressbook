@@ -45,7 +45,7 @@ final class RootCoordinator: NSObject, Coordinator {
 	}
 
 	func presentCallDirectoryEntryList(type: CallDirectoryEntry.EntryType) {
-		var view = CallDirectoryEntryList(type: .identification)
+		var view = CallDirectoryEntryList(type: type)
 		view.dismissAction = {
 			self.viewController.dismiss(animated: true)
 		}
