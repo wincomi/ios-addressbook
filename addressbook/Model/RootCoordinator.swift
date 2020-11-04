@@ -44,6 +44,17 @@ final class RootCoordinator: NSObject, Coordinator {
 		viewController.present(vc, animated: true)
 	}
 
+	func presentCallDirectoryEntryList(type: CallDirectoryEntry.EntryType) {
+		var view = CallDirectoryEntryList(type: .identification)
+		view.dismissAction = {
+			self.viewController.dismiss(animated: true)
+		}
+
+		let vc = CallDirectoryEntryListViewController(rootView: view)
+		vc.modalPresentationStyle = .pageSheet
+		viewController.present(vc, animated: true)
+	}
+
 	func createContact() {
 		let vc = CNContactViewController(forNewContact: nil)
 		vc.view.backgroundColor = .systemBackground

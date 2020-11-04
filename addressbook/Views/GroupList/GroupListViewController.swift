@@ -99,6 +99,12 @@ final class GroupListViewController: UITableViewController, ListDataSourceRender
 				ContextMenuItem(title: L10n.GroupList.NavigationItems.editButton, image: UIImage(systemName: "checkmark.circle")) {
 					self.setEditing(true, animated: true)
 				},
+				ContextMenuItem(title: L10n.CallDirectoryEntryList.IdentificationType.navigationTitle, image: UIImage(systemName: "questionmark.circle")) {
+					self.coordinator?.presentCallDirectoryEntryList(type: .identification)
+				},
+				ContextMenuItem(title: L10n.CallDirectoryEntryList.BlockingType .navigationTitle, image: UIImage(systemName: "bell.slash")) {
+					self.coordinator?.presentCallDirectoryEntryList(type: .blocking)
+				},
 				ContextMenuItem(title: L10n.SettingsForm.navigationTitle, image: UIImage(systemName: "gear")) {
 					self.coordinator?.presentSettingsForm()
 				}

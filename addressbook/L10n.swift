@@ -99,6 +99,54 @@ internal enum L10n {
     }
   }
 
+  internal enum CallDirectoryEntryForm {
+    /// Name
+    internal static let name = L10n.tr("Localizable", "CallDirectoryEntryForm.name")
+    /// Phone Number
+    internal static let phoneNumber = L10n.tr("Localizable", "CallDirectoryEntryForm.phoneNumber")
+    internal enum AddType {
+      /// Add Phone Number
+      internal static let navigationBarTitle = L10n.tr("Localizable", "CallDirectoryEntryForm.AddType.navigationBarTitle")
+    }
+    internal enum EditType {
+      /// Edit Phone Number
+      internal static let navigationBarTitle = L10n.tr("Localizable", "CallDirectoryEntryForm.EditType.navigationBarTitle")
+    }
+    internal enum NameSection {
+      /// Enter the name that will be displayed when you receive a call.
+      internal static let footer = L10n.tr("Localizable", "CallDirectoryEntryForm.NameSection.footer")
+    }
+    internal enum PhoneNumberSection {
+      /// Enter only numbers with country code.
+      internal static let footer = L10n.tr("Localizable", "CallDirectoryEntryForm.PhoneNumberSection.footer")
+    }
+  }
+
+  internal enum CallDirectoryEntryList {
+    internal enum BlockingType {
+      /// Call Blocking
+      internal static let navigationTitle = L10n.tr("Localizable", "CallDirectoryEntryList.BlockingType.navigationTitle")
+    }
+    internal enum CallDirectoryDisabledView {
+      /// Enable
+      internal static let buttonTitle = L10n.tr("Localizable", "CallDirectoryEntryList.CallDirectoryDisabledView.buttonTitle")
+      /// Available after enabling in Settings.
+      internal static let description = L10n.tr("Localizable", "CallDirectoryEntryList.CallDirectoryDisabledView.description")
+      /// Call Blocking & Identification
+      internal static let title = L10n.tr("Localizable", "CallDirectoryEntryList.CallDirectoryDisabledView.title")
+    }
+    internal enum EmptyDataView {
+      /// Touch Add button at the top to add a phone number.
+      internal static let description = L10n.tr("Localizable", "CallDirectoryEntryList.EmptyDataView.description")
+      /// The list is empty.
+      internal static let title = L10n.tr("Localizable", "CallDirectoryEntryList.EmptyDataView.title")
+    }
+    internal enum IdentificationType {
+      /// Call Identification
+      internal static let navigationTitle = L10n.tr("Localizable", "CallDirectoryEntryList.IdentificationType.navigationTitle")
+    }
+  }
+
   internal enum ContactList {
     internal enum ConfirmDeleteAlert {
       /// Plural format key: "Are you sure you want to delete %#@contacts@?"
@@ -338,12 +386,6 @@ extension L10n {
 
 // swiftlint:disable convenience_type
 private final class BundleToken {
-  static let bundle: Bundle = {
-    #if SWIFT_PACKAGE
-    return Bundle.module
-    #else
-    return Bundle(for: BundleToken.self)
-    #endif
-  }()
+  static let bundle = Bundle(for: BundleToken.self)
 }
 // swiftlint:enable convenience_type

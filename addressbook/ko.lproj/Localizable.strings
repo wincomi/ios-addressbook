@@ -130,3 +130,20 @@ EditContactsForm.jobTitle = "직책";
 EditContactsForm.departmentName = "부서";
 EditContactsForm.organizationName = "직장";
 EditContactsForm.sectionFooter = "일괄 수정을 원하지 않으면 비워두십시오.";
+
+// MARK: - CallDirectoryEntryList
+CallDirectoryEntryList.IdentificationType.navigationTitle = "전화 발신자 정보";
+CallDirectoryEntryList.BlockingType.navigationTitle = "전화 차단";
+CallDirectoryEntryList.EmptyDataView.title = "전화번호가 없습니다.";
+CallDirectoryEntryList.EmptyDataView.description = "전화번호를 추가하기 위해 상단의 추가 버튼을 터치하세요.";
+CallDirectoryEntryList.CallDirectoryDisabledView.title = "전화 차단 및 발신자 확인";
+CallDirectoryEntryList.CallDirectoryDisabledView.description = "설정에서 활성화 후 사용할 수 있습니다.";
+CallDirectoryEntryList.CallDirectoryDisabledView.buttonTitle = "활성화";
+
+// MARK: - CallDirectoryEntryForm
+CallDirectoryEntryForm.name = "이름";
+CallDirectoryEntryForm.phoneNumber = "전화번호";
+CallDirectoryEntryForm.NameSection.footer = "전화가 오면 표시될 이름을 입력하세요.";
+CallDirectoryEntryForm.PhoneNumberSection.footer = "국가코드를 포함하여 숫자만 입력하세요.";
+CallDirectoryEntryForm.AddType.navigationBarTitle = "전화번호 추가";
+CallDirectoryEntryForm.EditType.navigationBarTitle = "전화번호 수정";

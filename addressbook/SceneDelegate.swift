@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import CallKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 	var coordinator: RootCoordinator?
@@ -29,6 +30,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 		shortcutItemToProcess = connectionOptions.shortcutItem
 		urlContextToPrecess = connectionOptions.urlContexts.first
+
+		reloadCallDirectoryExtension()
 	}
 
 	func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -59,6 +62,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 	}
 
 	// MARK: -
+	func reloadCallDirectoryExtension() {
+		CXCallDirectoryManager.sharedInstance.reloadExtension(withIdentifier: AppSettings.callDirectoryBundleIdentifier) { error in
+			if let error = error {
+				print("reloadCallDirectoryExtension: \(error)")
+			}
+		}
+	}
+
 	private func processApplicationShortcutItem(_ applicationShortcutItem: ApplicationShortcutItem) {
 		switch applicationShortcutItem {
 		case .contact(let identifier):
