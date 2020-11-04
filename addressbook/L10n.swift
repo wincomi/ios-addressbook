@@ -162,6 +162,13 @@ internal enum L10n {
     }
   }
 
+  internal enum ContactListFooterView {
+    /// Plural format key: "%#@contacts@"
+    internal static func text(_ p1: Int) -> String {
+      return L10n.tr("Localizable", "ContactListFooterView.Text", p1)
+    }
+  }
+
   internal enum ContactListRow {
     /// No name
     internal static let noName = L10n.tr("Localizable", "ContactListRow.noName")

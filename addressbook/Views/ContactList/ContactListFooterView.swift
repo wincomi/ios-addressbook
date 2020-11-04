@@ -15,7 +15,7 @@ struct ContactListFooterView: View {
 	var body: some View {
 		VStack(spacing: 0) {
 			Divider()
-			Text(L10n.ContactsItemSource.title(numberOfContacts))
+			Text(L10n.ContactListFooterView.text(numberOfContacts))
 				.foregroundColor(Color(UIColor.secondaryLabel))
 				.padding()
 		}

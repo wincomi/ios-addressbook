@@ -23,5 +23,21 @@
 			<string>%d개의 연락처</string>
 		</dict>
 	</dict>
+	<key>ContactListFooterView.Text</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@contacts@</string>
+		<key>contacts</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>1개의 연락처</string>
+			<key>other</key>
+			<string>%d개의 연락처</string>
+		</dict>
+	</dict>
 </dict>
 </plist>
