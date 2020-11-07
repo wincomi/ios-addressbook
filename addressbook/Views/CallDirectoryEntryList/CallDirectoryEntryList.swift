@@ -62,7 +62,8 @@ struct CallDirectoryEntryList: View {
 			dismissAction()
 		} label: {
 			Image(systemName: "xmark")
-		}
+				.font(.system(size: 20))
+  		}
 	}
 
 	private var addButton: some View {
