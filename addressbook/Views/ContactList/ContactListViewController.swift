@@ -235,6 +235,7 @@ final class ContactListViewController: UITableViewController, ListDataSourceRend
 
 		let tableFooterView = ContactListFooterView.uiView(numberOfContacts: dataSource.snapshot().numberOfItems)
 		tableFooterView.sizeToFit()
+		tableFooterView.clipsToBounds = true
 		tableView.tableFooterView = tableFooterView
 	}
 
