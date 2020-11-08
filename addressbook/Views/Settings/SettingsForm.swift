@@ -188,6 +188,18 @@ struct SettingsForm: View {
 						.font(.system(size: 20))
 				}
 			}
+			Button {
+				let url = URL(string: "https://apps.apple.com/developer/id\(AppSettings.developerId)")!
+				UIApplication.shared.open(url, options: [:])
+			} label: {
+				CompatibleLabel {
+					Text(L10n.SettingsForm.FeedbackSection.allApps)
+						.foregroundColor(Color(UIColor.label))
+				} icon: {
+					Image(systemName: "app.gift")
+						.font(.system(size: 20))
+				}
+			}
 		}
 	}
 

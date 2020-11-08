@@ -33,6 +33,7 @@ final class AppSettings: ObservableObject {
 	}()
 
 	static let feedbackMailAddress = "admin@wincomi.com"
+	static let developerId = "849003301"
 	static let appStoreId = "1412803405"
 
 	static var globalTintColorDefaultCases: [UIColor] = [.systemBlue, .systemGreen, .systemIndigo, .systemOrange, .systemPurple, .systemRed, .systemTeal, .systemYellow]

@@ -94,6 +94,7 @@ SettingsForm.DonationSection.header = "후원";
 SettingsForm.FeedbackSection.header = "피드백";
 SettingsForm.FeedbackSection.rateThisApp = "앱 리뷰하기";
 SettingsForm.FeedbackSection.sendFeedback = "피드백 보내기";
+SettingsForm.FeedbackSection.allApps = "개발자의 모든 앱 보기";
 SettingsForm.UnlockedProSection.message = "연락처⁺ 프로를 구매해주셔서 감사합니다.";
 
 // MARK: - ApplicationShortcutItemsSettingForm

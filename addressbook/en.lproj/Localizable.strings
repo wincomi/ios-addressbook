@@ -94,6 +94,7 @@ SettingsForm.DonationSection.header = "Donation";
 SettingsForm.FeedbackSection.header = "Feedback";
 SettingsForm.FeedbackSection.rateThisApp = "Rate this app";
 SettingsForm.FeedbackSection.sendFeedback = "Send Feedback";
+SettingsForm.FeedbackSection.allApps = "All apps from the developer";
 SettingsForm.UnlockedProSection.message = "Thank you for purchasing Contacts⁺ Pro.";
 
 // MARK: - ApplicationShortcutItemsSettingForm

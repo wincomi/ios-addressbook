@@ -346,6 +346,8 @@ internal enum L10n {
       internal static let header = L10n.tr("Localizable", "SettingsForm.DonationSection.header")
     }
     internal enum FeedbackSection {
+      /// All apps from the developer
+      internal static let allApps = L10n.tr("Localizable", "SettingsForm.FeedbackSection.allApps")
       /// Feedback
       internal static let header = L10n.tr("Localizable", "SettingsForm.FeedbackSection.header")
       /// Rate this app
