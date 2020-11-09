@@ -128,6 +128,8 @@ internal enum L10n {
     internal enum BlockingType {
       /// Call Blocking
       internal static let navigationTitle = L10n.tr("Localizable", "CallDirectoryEntryList.BlockingType.navigationTitle")
+      /// You will not receive phone calls from phone numbers on the block list.
+      internal static let sectionFooter = L10n.tr("Localizable", "CallDirectoryEntryList.BlockingType.sectionFooter")
     }
     internal enum CallDirectoryDisabledView {
       /// Enable
@@ -138,7 +140,7 @@ internal enum L10n {
       internal static let title = L10n.tr("Localizable", "CallDirectoryEntryList.CallDirectoryDisabledView.title")
     }
     internal enum EmptyDataView {
-      /// Touch Add button at the top to add a phone number.
+      /// Touch add button at the top to add a phone number.
       internal static let description = L10n.tr("Localizable", "CallDirectoryEntryList.EmptyDataView.description")
       /// The list is empty.
       internal static let title = L10n.tr("Localizable", "CallDirectoryEntryList.EmptyDataView.title")
@@ -146,6 +148,8 @@ internal enum L10n {
     internal enum IdentificationType {
       /// Caller ID
       internal static let navigationTitle = L10n.tr("Localizable", "CallDirectoryEntryList.IdentificationType.navigationTitle")
+      /// The name on the list will be displayed when you receive phone calls.
+      internal static let sectionFooter = L10n.tr("Localizable", "CallDirectoryEntryList.IdentificationType.sectionFooter")
     }
   }
 

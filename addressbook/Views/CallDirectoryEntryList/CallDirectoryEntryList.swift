@@ -37,23 +37,34 @@ struct CallDirectoryEntryList: View {
 			if viewModel.callDirectoryEntries.isEmpty {
 				EmptyDataView(
 					title: L10n.CallDirectoryEntryList.EmptyDataView.title,
-					description: L10n.CallDirectoryEntryList.EmptyDataView.description
+					description: "\(L10n.CallDirectoryEntryList.EmptyDataView.description) \(descriptionText(for: viewModel.entryType))"
 				)
 			} else {
 				List {
-					ForEach(viewModel.callDirectoryEntries) { callDirectoryEntry in
-						Button {
-							presentedCallDirectoryFormType = .edit(callDirectoryEntry)
-						} label: {
-							CallDirectoryEntryCell(callDirectoryEntry: callDirectoryEntry)
-						}
-					}.onDelete(perform: delete(at:))
+					Section(footer: Text(descriptionText(for: viewModel.entryType))) {
+						ForEach(viewModel.callDirectoryEntries) { callDirectoryEntry in
+							Button {
+								presentedCallDirectoryFormType = .edit(callDirectoryEntry)
+							} label: {
+								CallDirectoryEntryCell(callDirectoryEntry: callDirectoryEntry)
+							}
+						}.onDelete(perform: delete(at:))
+					}
 				}.listStyle(GroupedListStyle())
 			}
 		case nil:
 			EmptyView()
 		default:
 			CallDirectoryManagerDisabledView()
+		}
+	}
+
+	private func descriptionText(for entryType: CallDirectoryEntry.EntryType) -> String {
+		switch entryType {
+		case .blocking:
+			return L10n.CallDirectoryEntryList.BlockingType.sectionFooter
+		case .identification:
+			return L10n.CallDirectoryEntryList.IdentificationType.sectionFooter
 		}
 	}
 

@@ -135,9 +135,11 @@ EditContactsForm.sectionFooter = "Leave blank if you don't want multiple edit.";
 
 // MARK: - CallDirectoryEntryList
 CallDirectoryEntryList.IdentificationType.navigationTitle = "Caller ID";
+CallDirectoryEntryList.IdentificationType.sectionFooter = "The name on the list will be displayed when you receive phone calls.";
 CallDirectoryEntryList.BlockingType.navigationTitle = "Call Blocking";
+CallDirectoryEntryList.BlockingType.sectionFooter = "You will not receive phone calls from phone numbers on the block list.";
 CallDirectoryEntryList.EmptyDataView.title = "The list is empty.";
-CallDirectoryEntryList.EmptyDataView.description = "Touch Add button at the top to add a phone number.";
+CallDirectoryEntryList.EmptyDataView.description = "Touch add button at the top to add a phone number.";
 CallDirectoryEntryList.CallDirectoryDisabledView.title = "Call Blocking & Identification";
 CallDirectoryEntryList.CallDirectoryDisabledView.description = "Available after enabling in Settings.";
 CallDirectoryEntryList.CallDirectoryDisabledView.buttonTitle = "Enable";
