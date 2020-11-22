@@ -26,8 +26,12 @@ struct EditGroupsForm: View {
 				}
 				ForEach(sections) { section in
 					Section(header: section.headerText.map { Text($0) }) {
-						ForEach(section.rows) { row in
-							cell(for: row)
+						ForEach(section.rows) { groupListRow in
+							Button {
+								action(for: groupListRow)
+							} label: {
+								EditGroupsFormRowView(groupListRow: groupListRow, selection: $selection)
+							}
 						}
 					}
 				}
@@ -38,31 +42,6 @@ struct EditGroupsForm: View {
 		}
 		.navigationViewStyle(StackNavigationViewStyle())
 		.onAppear(perform: refresh)
-	}
-
-	private func cell(for groupListRow: GroupListRow) -> some View {
-		Button {
-			guard case .group(let group) = groupListRow.type else { return }
-			do {
-				if selection.contains(groupListRow) {
-					try ContactStore.shared.remove(contactToEditGroups, from: group)
-					selection.remove(groupListRow)
-				} else {
-					try ContactStore.shared.add(contactToEditGroups, to: group)
-					selection.insert(groupListRow)
-				}
-			} catch {
-				print(error.localizedDescription)
-			}
-		} label: {
-			HStack {
-				ValueCellView(groupListRow, imageTintColor: AppSettings.shared.globalTintColor)
-				Spacer()
-				if selection.contains(groupListRow) {
-					Image(systemName: "checkmark")
-				}
-			}
-		}
 	}
 
 	private func refresh() {
@@ -82,6 +61,21 @@ struct EditGroupsForm: View {
 		} catch {
 			self.sections = []
 			self.selection = []
+		}
+	}
+
+	private func action(for groupListRow: GroupListRow) {
+		guard case .group(let group) = groupListRow.type else { return }
+		do {
+			if selection.contains(groupListRow) {
+				try ContactStore.shared.remove(contactToEditGroups, from: group)
+				selection.remove(groupListRow)
+			} else {
+				try ContactStore.shared.add(contactToEditGroups, to: group)
+				selection.insert(groupListRow)
+			}
+		} catch {
+			print(error.localizedDescription)
 		}
 	}
 
