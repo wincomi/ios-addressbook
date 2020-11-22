@@ -64,16 +64,7 @@ struct SettingsForm: View {
 			Toggle(isOn: $appSettings.preferNicknames) {
 				Text(L10n.SettingsForm.GeneralSection.preferNicknames)
 			}
-			NavigationLink(destination: EnumPickerForm(title: L10n.AppSettings.SortOrder.title, items: AppSettings.SortOrder.allCases, selection: $appSettings.sortOrder) { row, isSelected in
-				HStack {
-					Text(row.localizedTitle)
-						.foregroundColor(Color(UIColor.label))
-					if isSelected {
-						Spacer()
-						Image(systemName: "checkmark")
-					}
-				}
-			}) {
+			NavigationLink(destination: sortOrderPickerForm) {
 				HStack {
 					Text(L10n.AppSettings.SortOrder.title)
 						.foregroundColor(Color(UIColor.label))
@@ -84,22 +75,39 @@ struct SettingsForm: View {
 						.foregroundColor(Color(UIColor.secondaryLabel))
 				}
 			}
-			NavigationLink(destination: EnumPickerForm(title: L10n.AppSettings.DisplayOrder.title, items: AppSettings.DisplayOrder.allCases, selection: $appSettings.displayOrder) { row, isSelected in
-				HStack {
-					Text(row.localizedTitle)
-						.foregroundColor(Color(UIColor.label))
-					if isSelected {
-						Spacer()
-						Image(systemName: "checkmark")
-					}
-				}
-			}) {
+			NavigationLink(destination: displayOrderPickerForm) {
 				HStack {
 					Text(L10n.AppSettings.DisplayOrder.title)
 						.foregroundColor(Color(UIColor.label))
 					Spacer()
 					Text(appSettings.displayOrder.localizedTitle)
 						.foregroundColor(Color(UIColor.secondaryLabel))
+				}
+			}
+		}
+	}
+
+	private var sortOrderPickerForm: some View {
+		EnumPickerForm(title: Text(L10n.AppSettings.SortOrder.title), items: AppSettings.SortOrder.allCases, selection: $appSettings.sortOrder) { row, isSelected in
+			HStack {
+				Text(row.localizedTitle)
+					.foregroundColor(Color(UIColor.label))
+				if isSelected {
+					Spacer()
+					Image(systemName: "checkmark")
+				}
+			}
+		}
+	}
+
+	private var displayOrderPickerForm: some View {
+		EnumPickerForm(title: Text(L10n.AppSettings.DisplayOrder.title), items: AppSettings.DisplayOrder.allCases, selection: $appSettings.displayOrder) { row, isSelected in
+			HStack {
+				Text(row.localizedTitle)
+					.foregroundColor(Color(UIColor.label))
+				if isSelected {
+					Spacer()
+					Image(systemName: "checkmark")
 				}
 			}
 		}
@@ -137,22 +145,26 @@ struct SettingsForm: View {
 						.labelsHidden()
 				}
 			}.buttonStyle(PlainButtonStyle())
-			NavigationLink(destination: EnumPickerForm(title: L10n.AppSettings.UserInterfaceStyle.title, items: AppSettings.userInterfaceStyleAllCases, selection: $appSettings.userInterfaceStyle) { userInterfaceStyle, isSelected in
-					HStack {
-						Text(AppSettings.localizedTitle(for: userInterfaceStyle))
-							.foregroundColor(Color(UIColor.label))
-						if isSelected {
-							Spacer()
-							Image(systemName: "checkmark")
-						}
-					}
-				}) {
+			NavigationLink(destination: userInterfaceStylePickerForm) {
 				HStack {
 					Text(L10n.AppSettings.UserInterfaceStyle.title)
 						.foregroundColor(Color(UIColor.label))
 					Spacer()
 					Text(AppSettings.localizedTitle(for: appSettings.userInterfaceStyle))
 						.foregroundColor(Color(UIColor.secondaryLabel))
+				}
+			}
+		}
+	}
+
+	private var userInterfaceStylePickerForm: some View {
+		EnumPickerForm(title: Text(L10n.AppSettings.UserInterfaceStyle.title), items: AppSettings.userInterfaceStyleAllCases, selection: $appSettings.userInterfaceStyle) { userInterfaceStyle, isSelected in
+			HStack {
+				Text(AppSettings.localizedTitle(for: userInterfaceStyle))
+					.foregroundColor(Color(UIColor.label))
+				if isSelected {
+					Spacer()
+					Image(systemName: "checkmark")
 				}
 			}
 		}

@@ -8,7 +8,7 @@ import SwiftUI
 struct EnumPickerForm<T: Hashable, Content: View>: View {
 	@Environment(\.presentationMode) var presentationMode
 
-	let title: String
+	let title: Text
 	let items: [T]
 	@Binding var selection: T
 	let rowContent: ((T, Bool) -> Content)
@@ -24,7 +24,7 @@ struct EnumPickerForm<T: Hashable, Content: View>: View {
 				}
 			}
 		}
-		.navigationBarTitle("\(title)", displayMode: .inline)
+		.navigationBarTitle(title, displayMode: .inline)
 		.modifier(CompatibleInsetGroupedListStyle())
 	}
 }

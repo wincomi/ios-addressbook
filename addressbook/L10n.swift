@@ -197,8 +197,10 @@ internal enum L10n {
   }
 
   internal enum ContactMenuSettingForm {
-    /// Custom Contact Menu
+    /// Contact Menu
     internal static let navigationTitle = L10n.tr("Localizable", "ContactMenuSettingForm.navigationTitle")
+    /// Custom Contact Menu
+    internal static let title = L10n.tr("Localizable", "ContactMenuSettingForm.title")
     internal enum OptionsSection {
       /// Always display all phone numbers and email address at first.
       internal static let footerText = L10n.tr("Localizable", "ContactMenuSettingForm.OptionsSection.footerText")
