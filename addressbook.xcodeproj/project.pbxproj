@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		08A00F5A2500FCC900E54E8F /* ContactStoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A00F592500FCC900E54E8F /* ContactStoreError.swift */; };
 		84F6580C256A6F3B005B3B0A /* EditGroupsFormRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6580B256A6F3B005B3B0A /* EditGroupsFormRowView.swift */; };
+		84F65812256A72DC005B3B0A /* ApplicationShortcutItemSettingFormRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F65811256A72DC005B3B0A /* ApplicationShortcutItemSettingFormRowView.swift */; };
 		9100A930252614080013A143 /* CompatibleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9100A92F252614080013A143 /* CompatibleLabel.swift */; };
 		91046703250614DA00618BFD /* SearchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91046702250614DA00618BFD /* SearchListViewController.swift */; };
 		910467052506252100618BFD /* SearchListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910467042506252100618BFD /* SearchListViewModel.swift */; };
@@ -117,6 +118,7 @@
 /* Begin PBXFileReference section */
 		08A00F592500FCC900E54E8F /* ContactStoreError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactStoreError.swift; sourceTree = "<group>"; };
 		84F6580B256A6F3B005B3B0A /* EditGroupsFormRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupsFormRowView.swift; sourceTree = "<group>"; };
+		84F65811256A72DC005B3B0A /* ApplicationShortcutItemSettingFormRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationShortcutItemSettingFormRowView.swift; sourceTree = "<group>"; };
 		9100A92F252614080013A143 /* CompatibleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibleLabel.swift; sourceTree = "<group>"; };
 		91046702250614DA00618BFD /* SearchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListViewController.swift; sourceTree = "<group>"; };
 		910467042506252100618BFD /* SearchListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListViewModel.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 				9109DEDE2516F026004E949C /* ContactMenuSettingForm.swift */,
 				91ADA964252DA7ED00F6863A /* ContactMenuSettingFormCell.swift */,
 				915AB39F2514FA26001727A4 /* ApplicationShortcutItemSettingForm.swift */,
+				84F65811256A72DC005B3B0A /* ApplicationShortcutItemSettingFormRowView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -683,6 +686,7 @@
 				9109DEDF2516F026004E949C /* ContactMenuSettingForm.swift in Sources */,
 				F755A8BE24913EEF00DB9717 /* GroupListViewModel.swift in Sources */,
 				91961FDD25066C4900463B7A /* UserDefault+propertyWrapper.swift in Sources */,
+				84F65812256A72DC005B3B0A /* ApplicationShortcutItemSettingFormRowView.swift in Sources */,
 				911F577A254BD0CA00C1525E /* CallDirectoryManagerDisabledView.swift in Sources */,
 				916688B02536899700EC6A3F /* SearchListScope.swift in Sources */,
 				911F1E0F2533EBB400A45093 /* SearchListSection.swift in Sources */,
@@ -769,7 +773,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CallDirectory/CallDirectory.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.0.6;
+				CURRENT_PROJECT_VERSION = 1.1.1.0;
 				DEVELOPMENT_TEAM = M4FL5MH4DS;
 				INFOPLIST_FILE = CallDirectory/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -778,7 +782,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wincomi.ios.addressbook.CallDirectory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -792,7 +796,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CallDirectory/CallDirectory.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.0.6;
+				CURRENT_PROJECT_VERSION = 1.1.1.0;
 				DEVELOPMENT_TEAM = M4FL5MH4DS;
 				INFOPLIST_FILE = CallDirectory/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -801,7 +805,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wincomi.ios.addressbook.CallDirectory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

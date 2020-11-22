@@ -8,13 +8,24 @@ import SwiftUI
 struct ApplicationShortcutItemSettingForm: View {
 	@ObservedObject var appSettings = AppSettings.shared
 
+	private var itemsCanBeAdded: [ApplicationShortcutItem] {
+		var items = [ApplicationShortcutItem]()
+		if !appSettings.applicationShortcutItems.contains(.addContact) {
+			items.append(.addContact)
+		}
+		if !appSettings.applicationShortcutItems.contains(.searchContacts) {
+			items.append(.searchContacts)
+		}
+		return items
+	}
+
 	var body: some View {
 		List {
-			if !applicationShortcutItemsCanAdd.isEmpty {
-				addingSection
+			if !itemsCanBeAdded.isEmpty {
+				addItemsSection
 			}
 			if !appSettings.applicationShortcutItems.isEmpty {
-				applicationShortcutItemsSection
+				itemsSection
 			}
 		}
 		.modifier(CompatibleInsetGroupedListStyle())
@@ -22,44 +33,20 @@ struct ApplicationShortcutItemSettingForm: View {
 		.navigationBarItems(trailing: EditButton().disabled(appSettings.applicationShortcutItems.isEmpty))
 	}
 
-	private var applicationShortcutItemsCanAdd: [ApplicationShortcutItem] {
-		var applicationShortcutItems = [ApplicationShortcutItem]()
-		if !appSettings.applicationShortcutItems.contains(.addContact) {
-			applicationShortcutItems.append(.addContact)
-		}
-		if !appSettings.applicationShortcutItems.contains(.searchContacts) {
-			applicationShortcutItems.append(.searchContacts)
-		}
-		return applicationShortcutItems
-	}
-
-	private var addingSection: some View {
+	private var addItemsSection: some View {
 		Section(header: Text(L10n.ContactListRow.ContextMenuItemType.addToApplicationShortcutItems), footer: Text(L10n.ApplicationShortcutItemsSettingForm.AddingSection.footerText)) {
-			ForEach(applicationShortcutItemsCanAdd, id: \.localizedTitle) { applcationShortcutItem in
-				addingSectionCell(for: applcationShortcutItem)
+			ForEach(itemsCanBeAdded, id: \.localizedTitle) { applicationShortcutItem in
+				ApplicationShortcutItemSettingFormRowView(applicationShortcutItem: applicationShortcutItem, type: .add) {
+					appSettings.applicationShortcutItems.append(applicationShortcutItem)
+				}
 			}
 		}
 	}
 
-	private func addingSectionCell(for applcationShortcutItem: ApplicationShortcutItem) -> some View {
-		Button {
-			appSettings.applicationShortcutItems.append(applcationShortcutItem)
-		} label: {
-			HStack(spacing: 12) {
-				Image(systemName: "plus.circle.fill")
-					.font(.system(size: 24))
-					.foregroundColor(.green)
-				Text(applcationShortcutItem.localizedTitle)
-					.foregroundColor(Color(UIColor.label))
-			}
-		}
-		.buttonStyle(BorderlessButtonStyle())
-	}
-
-	private var applicationShortcutItemsSection: some View {
+	private var itemsSection: some View {
 		Section(header: Text(L10n.ApplicationShortcutItemsSettingForm.title), footer: Text(L10n.ApplicationShortcutItemsSettingForm.Section.footerText)) {
-			ForEach(appSettings.applicationShortcutItems) { applcationShortcutItem in
-				ValueCellView(applcationShortcutItem, imageTintColor: AppSettings.shared.globalTintColor)
+			ForEach(appSettings.applicationShortcutItems) { applicationShortcutItem in
+				ApplicationShortcutItemSettingFormRowView(applicationShortcutItem: applicationShortcutItem)
 			}
 			.onMove(perform: move)
 			.onDelete(perform: remove)
