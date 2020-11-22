@@ -10,6 +10,7 @@
 		08A00F5A2500FCC900E54E8F /* ContactStoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A00F592500FCC900E54E8F /* ContactStoreError.swift */; };
 		84F6580C256A6F3B005B3B0A /* EditGroupsFormRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6580B256A6F3B005B3B0A /* EditGroupsFormRowView.swift */; };
 		84F65812256A72DC005B3B0A /* ApplicationShortcutItemSettingFormRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F65811256A72DC005B3B0A /* ApplicationShortcutItemSettingFormRowView.swift */; };
+		84F65818256A76B7005B3B0A /* ContactMenuSettingFormRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F65817256A76B7005B3B0A /* ContactMenuSettingFormRowView.swift */; };
 		9100A930252614080013A143 /* CompatibleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9100A92F252614080013A143 /* CompatibleLabel.swift */; };
 		91046703250614DA00618BFD /* SearchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91046702250614DA00618BFD /* SearchListViewController.swift */; };
 		910467052506252100618BFD /* SearchListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910467042506252100618BFD /* SearchListViewModel.swift */; };
@@ -47,7 +48,6 @@
 		9198AE72250DBCEA00588C9B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9198AE71250DBCEA00588C9B /* Coordinator.swift */; };
 		91A4A414252B3D3A00D5109A /* GroupListRowContextMenuConfigurationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A4A413252B3D3A00D5109A /* GroupListRowContextMenuConfigurationProvider.swift */; };
 		91A6D43C2510DA00003F2764 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A6D43B2510DA00003F2764 /* ActivityIndicator.swift */; };
-		91ADA965252DA7ED00F6863A /* ContactMenuSettingFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91ADA964252DA7ED00F6863A /* ContactMenuSettingFormCell.swift */; };
 		91B1F356251E384C000D2CF2 /* SKError+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B1F355251E384C000D2CF2 /* SKError+Extension.swift */; };
 		91B22E2D252B65F50094A066 /* SelectGroupsForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B22E2C252B65F50094A066 /* SelectGroupsForm.swift */; };
 		91B61EA82534703C007935AD /* EditContactsForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B61EA72534703C007935AD /* EditContactsForm.swift */; };
@@ -119,6 +119,7 @@
 		08A00F592500FCC900E54E8F /* ContactStoreError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactStoreError.swift; sourceTree = "<group>"; };
 		84F6580B256A6F3B005B3B0A /* EditGroupsFormRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupsFormRowView.swift; sourceTree = "<group>"; };
 		84F65811256A72DC005B3B0A /* ApplicationShortcutItemSettingFormRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationShortcutItemSettingFormRowView.swift; sourceTree = "<group>"; };
+		84F65817256A76B7005B3B0A /* ContactMenuSettingFormRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactMenuSettingFormRowView.swift; sourceTree = "<group>"; };
 		9100A92F252614080013A143 /* CompatibleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibleLabel.swift; sourceTree = "<group>"; };
 		91046702250614DA00618BFD /* SearchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListViewController.swift; sourceTree = "<group>"; };
 		910467042506252100618BFD /* SearchListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListViewModel.swift; sourceTree = "<group>"; };
@@ -154,7 +155,6 @@
 		9198AE71250DBCEA00588C9B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		91A4A413252B3D3A00D5109A /* GroupListRowContextMenuConfigurationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListRowContextMenuConfigurationProvider.swift; sourceTree = "<group>"; };
 		91A6D43B2510DA00003F2764 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
-		91ADA964252DA7ED00F6863A /* ContactMenuSettingFormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactMenuSettingFormCell.swift; sourceTree = "<group>"; };
 		91B1F355251E384C000D2CF2 /* SKError+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKError+Extension.swift"; sourceTree = "<group>"; };
 		91B22E2C252B65F50094A066 /* SelectGroupsForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGroupsForm.swift; sourceTree = "<group>"; };
 		91B61EA72534703C007935AD /* EditContactsForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactsForm.swift; sourceTree = "<group>"; };
@@ -351,7 +351,7 @@
 				91961FDA25066BA200463B7A /* SettingsForm.swift */,
 				917AC446252EA9A10031B39A /* EnumPickerForm.swift */,
 				9109DEDE2516F026004E949C /* ContactMenuSettingForm.swift */,
-				91ADA964252DA7ED00F6863A /* ContactMenuSettingFormCell.swift */,
+				84F65817256A76B7005B3B0A /* ContactMenuSettingFormRowView.swift */,
 				915AB39F2514FA26001727A4 /* ApplicationShortcutItemSettingForm.swift */,
 				84F65811256A72DC005B3B0A /* ApplicationShortcutItemSettingFormRowView.swift */,
 			);
@@ -665,7 +665,6 @@
 				9108D4502507BE41004CF0C4 /* CNContainer+Extension.swift in Sources */,
 				91961FDF25066CB400463B7A /* AppSettings.swift in Sources */,
 				91961FDB25066BA200463B7A /* SettingsForm.swift in Sources */,
-				91ADA965252DA7ED00F6863A /* ContactMenuSettingFormCell.swift in Sources */,
 				91CF2FF3251B6C330009686C /* StoreProudct.swift in Sources */,
 				917C15D92529CBD700A5DA80 /* EditGroupsForm.swift in Sources */,
 				F75093DA24A07EA10044CDE3 /* ContactListCell.swift in Sources */,
@@ -677,6 +676,7 @@
 				F75093D424A07E0B0044CDE3 /* ContactListSection.swift in Sources */,
 				F755A865248F3CA600DB9717 /* AppDelegate.swift in Sources */,
 				915761FC254995B100F38931 /* CallDirectoryEntry+CoreDataProperties.swift in Sources */,
+				84F65818256A76B7005B3B0A /* ContactMenuSettingFormRowView.swift in Sources */,
 				F7F17CAF2546A239003C1150 /* CallDirectoryEntryCell.swift in Sources */,
 				91B1F356251E384C000D2CF2 /* SKError+Extension.swift in Sources */,
 				9100A930252614080013A143 /* CompatibleLabel.swift in Sources */,

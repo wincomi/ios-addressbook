@@ -111,7 +111,7 @@ struct SettingsForm: View {
 				Text(L10n.SettingsForm.DisplaySection.showContactImage)
 			}
 			NavigationLink(destination: ContactMenuSettingForm()) {
-				Text(L10n.ContactMenuSettingForm.navigationTitle)
+				Text(L10n.ContactMenuSettingForm.title)
 			}
 			NavigationLink(destination: ApplicationShortcutItemSettingForm()) {
 				Text(L10n.ApplicationShortcutItemsSettingForm.title)

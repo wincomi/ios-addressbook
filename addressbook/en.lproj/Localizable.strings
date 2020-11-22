@@ -104,7 +104,8 @@ ApplicationShortcutItemsSettingForm.AddingSection.footerText = "You can add cont
 ApplicationShortcutItemsSettingForm.Section.footerText = "Up to four are displayed from the top.";
 
 // MARK: - ContactMenuSettingForm
-ContactMenuSettingForm.navigationTitle = "Custom Contact Menu";
+ContactMenuSettingForm.title = "Custom Contact Menu";
+ContactMenuSettingForm.navigationTitle = "Contact Menu";
 ContactMenuSettingForm.Section.footerText = "Touch and hold a contact to show selected contact menus.";
 ContactMenuSettingForm.OptionsSection.footerText = "Always display all phone numbers and email address at first.";
 ContactMenuSettingForm.OptionsSection.isContactContextMenuDisplayInline = "Display all menus at first";

@@ -8,19 +8,17 @@ import MessageUI
 
 struct ContactMenuSettingForm: View {
 	@ObservedObject var appSettings = AppSettings.shared
-	private var rows = ContactListRow.ContextMenuItemType.allCases
-	@State private var selection = Set<ContactListRow.ContextMenuItemType>() {
-		didSet {
-			appSettings.enabledContactContextMenuItemsTypes = rows.filter { selection.contains($0) }
-		}
-	}
+	@State private var selection = Set<ContactListRow.ContextMenuItemType>()
+
+	private let types = ContactListRow.ContextMenuItemType.allCases
 
 	var body: some View {
 		List {
 			Section(footer: Text(appSettings.isUnlockedPro ? L10n.ContactMenuSettingForm.Section.footerText : L10n.SettingsForm.onlyForContactsPlusPro)) {
-				ForEach(rows) { row in
-					cell(for: row)
-						.disabled(!isEnabled(for: row))
+				ForEach(types) { type in
+					ContactMenuSettingFormRowView(type: type, selection: $selection) {
+						appSettings.enabledContactContextMenuItemsTypes = types.filter { selection.contains($0) }
+					}
 				}
 			}
 			Section(footer: Text(L10n.ContactMenuSettingForm.OptionsSection.footerText)) {
@@ -36,31 +34,6 @@ struct ContactMenuSettingForm: View {
 	private func refresh() {
 		selection = Set(appSettings.enabledContactContextMenuItemsTypes)
 	}
-
-	private func cell(for row: ContactListRow.ContextMenuItemType) -> some View {
-		Button {
-			if selection.contains(row) {
-				selection.remove(row)
-			} else {
-				selection.insert(row)
-			}
-		} label: {
-			ContactMenuSettingFormCell(contextMenuItemType: row, checked: selection.contains(row))
-		}
-	}
-
-	private func isEnabled(for row: ContactListRow.ContextMenuItemType) -> Bool {
-		switch row {
-		case .call:
-			return UIApplication.shared.canOpenURL(URL(string: "tel:")!)
-		case .sendMessage:
-			return MFMessageComposeViewController.canSendText()
-		case .sendMail:
-			return MFMailComposeViewController.canSendMail()
-		default:
-			return true
-		}
-	}
 }
 
 #if DEBUG
@@ -68,8 +41,7 @@ struct ContactContextMenuSettingForm_Previews: PreviewProvider {
 	static var previews: some View {
 		NavigationView {
 			ContactMenuSettingForm()
-		}
-		.onAppear {
+		}.onAppear {
 			AppSettings.shared.isUnlockedPro = true
 		}
 	}
