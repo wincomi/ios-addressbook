@@ -149,8 +149,9 @@ CallDirectoryEntryList.CallDirectoryDisabledView.buttonTitle = "Enable...";
 
 // MARK: - CallDirectoryEntryForm
 CallDirectoryEntryForm.name = "Name";
-CallDirectoryEntryForm.phoneNumber = "Phone Number";
+CallDirectoryEntryForm.phoneNumber = "Phone number";
 CallDirectoryEntryForm.NameSection.footer = "Enter the name that will be displayed when you receive a call.";
 CallDirectoryEntryForm.PhoneNumberSection.footer = "Enter only numbers with country code.";
-CallDirectoryEntryForm.AddType.navigationBarTitle = "Add phone number";
-CallDirectoryEntryForm.EditType.navigationBarTitle = "Edit phone number";
+CallDirectoryEntryForm.AddType.navigationTitle = "Add phone number";
+CallDirectoryEntryForm.EditType.navigationTitle = "Edit phone number";
+CallDirectoryEntryForm.deletePhoneNumber = "Delete phone number";

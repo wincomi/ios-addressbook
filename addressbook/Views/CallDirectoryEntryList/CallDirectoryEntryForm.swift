@@ -32,6 +32,19 @@ struct CallDirectoryEntryForm: View {
 				TextField(L10n.CallDirectoryEntryForm.phoneNumber, text: $phoneNumberString)
 					.keyboardType(.numberPad)
 			}
+			if case .edit(let callDirectoryEntry) = formType {
+				Button {
+					StorageController.shared.remove(callDirectoryEntry)
+					presentationMode.wrappedValue.dismiss()
+				} label: {
+					HStack {
+						Spacer()
+						Text(L10n.CallDirectoryEntryForm.deletePhoneNumber)
+							.foregroundColor(Color(UIColor.systemRed))
+						Spacer()
+					}
+				}
+			}
 		}
 		.navigationBarTitle(formType.navigationBarTitle)
 		.navigationBarItems(leading: cancelButton, trailing: doneButton)
@@ -110,9 +123,9 @@ extension CallDirectoryEntryForm {
 		var navigationBarTitle: String {
 			switch self {
 			case .add:
-				return L10n.CallDirectoryEntryForm.AddType.navigationBarTitle
+				return L10n.CallDirectoryEntryForm.AddType.navigationTitle
 			case .edit:
-				return L10n.CallDirectoryEntryForm.EditType.navigationBarTitle
+				return L10n.CallDirectoryEntryForm.EditType.navigationTitle
 			}
 		}
 

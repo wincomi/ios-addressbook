@@ -102,17 +102,19 @@ internal enum L10n {
   }
 
   internal enum CallDirectoryEntryForm {
+    /// Delete phone number
+    internal static let deletePhoneNumber = L10n.tr("Localizable", "CallDirectoryEntryForm.deletePhoneNumber")
     /// Name
     internal static let name = L10n.tr("Localizable", "CallDirectoryEntryForm.name")
-    /// Phone Number
+    /// Phone number
     internal static let phoneNumber = L10n.tr("Localizable", "CallDirectoryEntryForm.phoneNumber")
     internal enum AddType {
       /// Add phone number
-      internal static let navigationBarTitle = L10n.tr("Localizable", "CallDirectoryEntryForm.AddType.navigationBarTitle")
+      internal static let navigationTitle = L10n.tr("Localizable", "CallDirectoryEntryForm.AddType.navigationTitle")
     }
     internal enum EditType {
       /// Edit phone number
-      internal static let navigationBarTitle = L10n.tr("Localizable", "CallDirectoryEntryForm.EditType.navigationBarTitle")
+      internal static let navigationTitle = L10n.tr("Localizable", "CallDirectoryEntryForm.EditType.navigationTitle")
     }
     internal enum NameSection {
       /// Enter the name that will be displayed when you receive a call.
