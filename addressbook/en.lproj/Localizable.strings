@@ -135,20 +135,22 @@ EditContactsForm.organizationName = "Company";
 EditContactsForm.sectionFooter = "Leave blank if you don't want multiple edit.";
 
 // MARK: - CallDirectoryEntryList
+CallDirectoryEntryList.sectionFooter = "You can edit the infomation by touching it.";
 CallDirectoryEntryList.IdentificationType.navigationTitle = "Caller ID";
 CallDirectoryEntryList.IdentificationType.sectionFooter = "The name on the list will be displayed when you receive phone calls.";
 CallDirectoryEntryList.BlockingType.navigationTitle = "Call Blocking";
 CallDirectoryEntryList.BlockingType.sectionFooter = "You will not receive phone calls from phone numbers on the block list.";
 CallDirectoryEntryList.EmptyDataView.title = "The list is empty.";
 CallDirectoryEntryList.EmptyDataView.description = "Touch add button at the top to add a phone number.";
+CallDirectoryEntryList.EmptyDataView.buttonTitle = "Add item...";
 CallDirectoryEntryList.CallDirectoryDisabledView.title = "Call Blocking & Identification";
 CallDirectoryEntryList.CallDirectoryDisabledView.description = "Available after enabling in Settings.";
-CallDirectoryEntryList.CallDirectoryDisabledView.buttonTitle = "Enable";
+CallDirectoryEntryList.CallDirectoryDisabledView.buttonTitle = "Enable...";
 
 // MARK: - CallDirectoryEntryForm
 CallDirectoryEntryForm.name = "Name";
 CallDirectoryEntryForm.phoneNumber = "Phone Number";
 CallDirectoryEntryForm.NameSection.footer = "Enter the name that will be displayed when you receive a call.";
 CallDirectoryEntryForm.PhoneNumberSection.footer = "Enter only numbers with country code.";
-CallDirectoryEntryForm.AddType.navigationBarTitle = "Add Phone Number";
-CallDirectoryEntryForm.EditType.navigationBarTitle = "Edit Phone Number";
+CallDirectoryEntryForm.AddType.navigationBarTitle = "Add phone number";
+CallDirectoryEntryForm.EditType.navigationBarTitle = "Edit phone number";

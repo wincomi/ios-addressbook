@@ -6,6 +6,7 @@
 import UIKit
 import ContactsUI
 import MessageUI
+import SwiftUI
 
 final class RootCoordinator: NSObject, Coordinator {
 	// MARK: - Coordinator
@@ -45,12 +46,13 @@ final class RootCoordinator: NSObject, Coordinator {
 	}
 
 	func presentCallDirectoryEntryList(type: CallDirectoryEntry.EntryType) {
-		var view = CallDirectoryEntryList(type: type)
-		view.dismissAction = {
-			self.viewController.dismiss(animated: true)
-		}
+		let view = NavigationView {
+			CallDirectoryEntryList(type: type) {
+				self.viewController.dismiss(animated: true)
+			}
+		}.navigationViewStyle(StackNavigationViewStyle())
 
-		let vc = CallDirectoryEntryListViewController(rootView: view)
+		let vc = UIHostingController(rootView: view)
 		vc.modalPresentationStyle = .pageSheet
 		viewController.present(vc, animated: true)
 	}

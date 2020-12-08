@@ -107,11 +107,11 @@ internal enum L10n {
     /// Phone Number
     internal static let phoneNumber = L10n.tr("Localizable", "CallDirectoryEntryForm.phoneNumber")
     internal enum AddType {
-      /// Add Phone Number
+      /// Add phone number
       internal static let navigationBarTitle = L10n.tr("Localizable", "CallDirectoryEntryForm.AddType.navigationBarTitle")
     }
     internal enum EditType {
-      /// Edit Phone Number
+      /// Edit phone number
       internal static let navigationBarTitle = L10n.tr("Localizable", "CallDirectoryEntryForm.EditType.navigationBarTitle")
     }
     internal enum NameSection {
@@ -125,6 +125,8 @@ internal enum L10n {
   }
 
   internal enum CallDirectoryEntryList {
+    /// You can edit the infomation by touching it.
+    internal static let sectionFooter = L10n.tr("Localizable", "CallDirectoryEntryList.sectionFooter")
     internal enum BlockingType {
       /// Call Blocking
       internal static let navigationTitle = L10n.tr("Localizable", "CallDirectoryEntryList.BlockingType.navigationTitle")
@@ -132,7 +134,7 @@ internal enum L10n {
       internal static let sectionFooter = L10n.tr("Localizable", "CallDirectoryEntryList.BlockingType.sectionFooter")
     }
     internal enum CallDirectoryDisabledView {
-      /// Enable
+      /// Enable...
       internal static let buttonTitle = L10n.tr("Localizable", "CallDirectoryEntryList.CallDirectoryDisabledView.buttonTitle")
       /// Available after enabling in Settings.
       internal static let description = L10n.tr("Localizable", "CallDirectoryEntryList.CallDirectoryDisabledView.description")
@@ -140,6 +142,8 @@ internal enum L10n {
       internal static let title = L10n.tr("Localizable", "CallDirectoryEntryList.CallDirectoryDisabledView.title")
     }
     internal enum EmptyDataView {
+      /// Add item...
+      internal static let buttonTitle = L10n.tr("Localizable", "CallDirectoryEntryList.EmptyDataView.buttonTitle")
       /// Touch add button at the top to add a phone number.
       internal static let description = L10n.tr("Localizable", "CallDirectoryEntryList.EmptyDataView.description")
       /// The list is empty.

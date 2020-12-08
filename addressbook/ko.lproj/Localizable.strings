@@ -134,15 +134,17 @@ EditContactsForm.organizationName = "직장";
 EditContactsForm.sectionFooter = "일괄 수정을 원하지 않으면 비워두십시오.";
 
 // MARK: - CallDirectoryEntryList
+CallDirectoryEntryList.sectionFooter = "터치하여 정보를 수정할 수 있습니다.";
 CallDirectoryEntryList.IdentificationType.navigationTitle = "전화 발신자 정보";
-CallDirectoryEntryList.IdentificationType.sectionFooter = "전화 발신자 정보 목록에 있는 전화번호로 전화가 오면 등록된 이름이 화면에 표시됩니다.";
+CallDirectoryEntryList.IdentificationType.sectionFooter = "전화 발신자 정보 목록에 있는 전화번호로 전화가 오면 등록한 이름이 화면에 표시됩니다.";
 CallDirectoryEntryList.BlockingType.navigationTitle = "전화 차단";
 CallDirectoryEntryList.BlockingType.sectionFooter = "차단 목록에 있는 전화번호에서 전화를 받을 수 없게 됩니다.";
 CallDirectoryEntryList.EmptyDataView.title = "전화번호가 없습니다.";
 CallDirectoryEntryList.EmptyDataView.description = "전화번호를 추가하기 위해 상단의 추가 버튼을 터치하세요.";
+CallDirectoryEntryList.EmptyDataView.buttonTitle = "전화번호 추가...";
 CallDirectoryEntryList.CallDirectoryDisabledView.title = "전화 차단 및 발신자 확인";
 CallDirectoryEntryList.CallDirectoryDisabledView.description = "설정에서 활성화 후 사용할 수 있습니다.";
-CallDirectoryEntryList.CallDirectoryDisabledView.buttonTitle = "활성화";
+CallDirectoryEntryList.CallDirectoryDisabledView.buttonTitle = "활성화...";
 
 // MARK: - CallDirectoryEntryForm
 CallDirectoryEntryForm.name = "이름";

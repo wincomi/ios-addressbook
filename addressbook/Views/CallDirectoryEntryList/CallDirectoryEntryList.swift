@@ -6,56 +6,58 @@
 import SwiftUI
 import CallKit
 
-typealias CallDirectoryEntryListViewController = UIHostingController<CallDirectoryEntryList>
-
 struct CallDirectoryEntryList: View {
 	@ObservedObject var viewModel: CallDirectoryEntryListViewModel
 	@State private var presentedCallDirectoryFormType: CallDirectoryEntryForm.FormType?
-	var dismissAction: (() -> Void) = { }
+	var dismissAction: (() -> Void)?
 
-	init(type: CallDirectoryEntry.EntryType) {
+	init(type: CallDirectoryEntry.EntryType, dismissAction: (() -> Void)? = nil) {
 		self.viewModel = CallDirectoryEntryListViewModel(type: type)
+		self.dismissAction = dismissAction
 	}
 
 	var body: some View {
-		NavigationView {
-			view(for: viewModel.callDirectoryManagerEnabledStatus)
-			.navigationBarTitle(viewModel.navigationTitle)
-			.navigationBarItems(leading: dismissButton, trailing: addButton)
-			.onAppear(perform: viewModel.refresh)
-			.sheet(item: $presentedCallDirectoryFormType) { callDirectoryFormType in
-				NavigationView {
-					CallDirectoryEntryForm(formType: callDirectoryFormType, entryType: viewModel.entryType)
-				}
-			}
-		}.navigationViewStyle(StackNavigationViewStyle())
-	}
-
-	@ViewBuilder private func view(for callDirectoryManagerEnabledStatus: CXCallDirectoryManager.EnabledStatus?) -> some View {
-		switch callDirectoryManagerEnabledStatus {
-		case .enabled:
-			if viewModel.callDirectoryEntries.isEmpty {
-				EmptyDataView(
-					title: L10n.CallDirectoryEntryList.EmptyDataView.title,
-					description: "\(L10n.CallDirectoryEntryList.EmptyDataView.description) \(descriptionText(for: viewModel.entryType))"
-				)
-			} else {
-				List {
-					Section(footer: Text(descriptionText(for: viewModel.entryType))) {
-						ForEach(viewModel.callDirectoryEntries) { callDirectoryEntry in
-							Button {
-								presentedCallDirectoryFormType = .edit(callDirectoryEntry)
-							} label: {
-								CallDirectoryEntryCell(callDirectoryEntry: callDirectoryEntry)
-							}
-						}.onDelete(perform: delete(at:))
+		Group {
+			switch viewModel.callDirectoryManagerEnabledStatus {
+			case .enabled:
+				if !viewModel.callDirectoryEntries.isEmpty {
+					List {
+						Section(footer: Text("\(descriptionText(for: viewModel.entryType)) \(L10n.CallDirectoryEntryList.sectionFooter)")) {
+							ForEach(viewModel.callDirectoryEntries) { callDirectoryEntry in
+								Button {
+									presentedCallDirectoryFormType = .edit(callDirectoryEntry)
+								} label: {
+									CallDirectoryEntryCell(callDirectoryEntry: callDirectoryEntry)
+								}
+							}.onDelete(perform: delete(at:))
+						}
+					}.modifier(CompatibleInsetGroupedListStyle())
+				} else {
+					ZStack {
+						Color(UIColor.systemGroupedBackground)
+							.edgesIgnoringSafeArea(.all)
+						EmptyDataView(
+							title: L10n.CallDirectoryEntryList.EmptyDataView.title,
+							description: "\(L10n.CallDirectoryEntryList.EmptyDataView.description)\n\(descriptionText(for: viewModel.entryType))",
+							buttonTitle: L10n.CallDirectoryEntryList.EmptyDataView.buttonTitle
+						) {
+							presentedCallDirectoryFormType = .add
+						}
 					}
-				}.listStyle(GroupedListStyle())
+				}
+			case nil:
+				EmptyView()
+			default:
+				CallDirectoryManagerDisabledView()
 			}
-		case nil:
-			EmptyView()
-		default:
-			CallDirectoryManagerDisabledView()
+		}
+		.navigationBarTitle(viewModel.navigationTitle)
+		.navigationBarItems(leading: dismissButton, trailing: addButton)
+		.onAppear(perform: viewModel.refresh)
+		.sheet(item: $presentedCallDirectoryFormType) { callDirectoryFormType in
+			NavigationView {
+				CallDirectoryEntryForm(formType: callDirectoryFormType, entryType: viewModel.entryType)
+			}
 		}
 	}
 
@@ -70,11 +72,11 @@ struct CallDirectoryEntryList: View {
 
 	private var dismissButton: some View {
 		Button {
-			dismissAction()
+			dismissAction?()
 		} label: {
 			Image(systemName: "xmark")
 				.font(.system(size: 20))
-  		}
+		}
 	}
 
 	private var addButton: some View {
@@ -104,4 +106,5 @@ struct CallDirectoryEntryList_Previews: PreviewProvider {
 	}
 }
 #endif
+
 
