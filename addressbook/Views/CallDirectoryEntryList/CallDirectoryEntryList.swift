@@ -20,7 +20,7 @@ struct CallDirectoryEntryList: View {
 	var body: some View {
 		NavigationView {
 			view(for: viewModel.callDirectoryManagerEnabledStatus)
-			.navigationBarTitle(viewModel.navigationBarTitle)
+			.navigationBarTitle(viewModel.navigationTitle)
 			.navigationBarItems(leading: dismissButton, trailing: addButton)
 			.onAppear(perform: viewModel.refresh)
 			.sheet(item: $presentedCallDirectoryFormType) { callDirectoryFormType in

@@ -3,15 +3,19 @@
 //  addressbook
 //
 
-import CoreData
+import Combine
 import SwiftUI
 import CallKit
+import CoreData
 
-final class CallDirectoryEntryListViewModel: NSObject, ObservableObject {
-	private let fetchedResultsController: NSFetchedResultsController<CallDirectoryEntry>
+final class CallDirectoryEntryListViewModel: ObservableObject {
+	@Published var callDirectoryManagerEnabledStatus: CXCallDirectoryManager.EnabledStatus?
+	@Published var callDirectoryEntries: [CallDirectoryEntry] = []
 
+	let storageController = StorageController.shared
 	var entryType: CallDirectoryEntry.EntryType
-	var navigationBarTitle: String {
+	
+	var navigationTitle: String {
 		switch entryType {
 		case .identification:
 			return L10n.CallDirectoryEntryList.IdentificationType.navigationTitle
@@ -19,29 +23,17 @@ final class CallDirectoryEntryListViewModel: NSObject, ObservableObject {
 			return L10n.CallDirectoryEntryList.BlockingType.navigationTitle
 		}
 	}
-
-	@Published var callDirectoryManagerEnabledStatus: CXCallDirectoryManager.EnabledStatus?
-	@Published var callDirectoryEntries: [CallDirectoryEntry] = []
-
+	
+	private var cancellables = Set<AnyCancellable>()
+	
 	init(type: CallDirectoryEntry.EntryType) {
 		self.entryType = type
-		self.fetchedResultsController = NSFetchedResultsController(
-			fetchRequest: CallDirectoryEntry.fetchRequest(isBlocked: type.isBlocked),
-			managedObjectContext: SharedPersistentContainerManager.shared.context,
-			sectionNameKeyPath: nil,
-			cacheName: nil
-		)
-
-		super.init()
-
-		self.fetchedResultsController.delegate = self
-
-		do {
-			try fetchedResultsController.performFetch()
-			self.callDirectoryEntries = fetchedResultsController.fetchedObjects ?? []
-		} catch {
-			print(error.localizedDescription)
-		}
+		
+		NotificationCenter.default
+			.publisher(for: .NSManagedObjectContextDidSave)
+			.sink { notification in
+				self.refresh()
+			}.store(in: &cancellables)
 	}
 
 	func refresh() {
@@ -54,24 +46,18 @@ final class CallDirectoryEntryListViewModel: NSObject, ObservableObject {
 			}
 		}
 		#endif
+		
+		if case .enabled = callDirectoryManagerEnabledStatus {
+			callDirectoryEntries = storageController.fetchCallDirectoryEntries(type: entryType)
+		}
 	}
 
 	func remove(_ callDirectoryEntry: CallDirectoryEntry) {
-		SharedPersistentContainerManager.shared.remove(callDirectoryEntry)
+		StorageController.shared.remove(callDirectoryEntry)
 	}
 
 	private func reloadCallDirectoryExtension() {
 		let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
 		sceneDelegate?.reloadCallDirectoryExtension()
-	}
-}
-
-// MARK: - NSFetchedResultsControllerDelegate
-extension CallDirectoryEntryListViewModel: NSFetchedResultsControllerDelegate {
-	func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-		guard let callDirectoryEntries = controller.fetchedObjects as? [CallDirectoryEntry] else { return }
-		self.callDirectoryEntries = callDirectoryEntries
-
-		reloadCallDirectoryExtension()
 	}
 }

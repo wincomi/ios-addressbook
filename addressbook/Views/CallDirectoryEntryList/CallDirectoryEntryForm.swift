@@ -84,14 +84,14 @@ struct CallDirectoryEntryForm: View {
 
 		switch formType {
 		case .add:
-			SharedPersistentContainerManager.shared
+			StorageController.shared
 				.createCallDirectoryEntry(
 					isBlocked: entryType.isBlocked,
 					name: name,
 					phoneNumber: phoneNumber
 				)
 		case .edit(let callDirectoryEntry):
-			SharedPersistentContainerManager.shared
+			StorageController.shared
 				.edit(callDirectoryEntry) {
 					$0.isBlocked = entryType.isBlocked
 					$0.name = name

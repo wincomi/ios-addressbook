@@ -25,8 +25,7 @@ final class CallDirectoryHandler: CXCallDirectoryProvider {
 	}
 
 	private func addAllBlockingPhoneNumbers(to context: CXCallDirectoryExtensionContext) {
-		let fetchRequest = CallDirectoryEntry.fetchRequest(callDirectoryEntryType: .blocking)
-		let callDirectoryEntries = SharedPersistentContainerManager.shared.fetch(fetchRequest)
+		let callDirectoryEntries = StorageController.shared.fetchCallDirectoryEntries(type: .blocking)
 
 		callDirectoryEntries.forEach { callDirectoryEntry in
 			context.addBlockingEntry(withNextSequentialPhoneNumber: callDirectoryEntry.phoneNumber)
@@ -35,8 +34,7 @@ final class CallDirectoryHandler: CXCallDirectoryProvider {
 	}
 
 	private func addOrRemoveIncrementalBlockingPhoneNumbers(to context: CXCallDirectoryExtensionContext, since date: Date) {
-		let fetchRequest = CallDirectoryEntry.fetchRequest(callDirectoryEntryType: .blocking, isRemoved: true, since: date)
-		let callDirectoryEntries = SharedPersistentContainerManager.shared.fetch(fetchRequest)
+		let callDirectoryEntries = StorageController.shared.fetchCallDirectoryEntries(type: .blocking, isRemoved: true, since: date)
 
 		callDirectoryEntries.forEach { callDirectoryEntry in
 			if callDirectoryEntry.isRemoved {
@@ -48,8 +46,7 @@ final class CallDirectoryHandler: CXCallDirectoryProvider {
 	}
 
 	private func addAllIdentificationPhoneNumbers(to context: CXCallDirectoryExtensionContext) {
-		let fetchRequest = CallDirectoryEntry.fetchRequest(callDirectoryEntryType: .identification)
-		let callDirectoryEntries = SharedPersistentContainerManager.shared.fetch(fetchRequest)
+		let callDirectoryEntries = StorageController.shared.fetchCallDirectoryEntries(type: .identification)
 
 		callDirectoryEntries.forEach { callDirectoryEntry in
 			guard let name = callDirectoryEntry.name else { return }
@@ -58,8 +55,7 @@ final class CallDirectoryHandler: CXCallDirectoryProvider {
 	}
 
 	private func addOrRemoveIncrementalIdentificationPhoneNumbers(to context: CXCallDirectoryExtensionContext, since date: Date) {
-		let fetchRequest = CallDirectoryEntry.fetchRequest(callDirectoryEntryType: .identification, isRemoved: true, since: date)
-		let callDirectoryEntries = SharedPersistentContainerManager.shared.fetch(fetchRequest)
+		let callDirectoryEntries = StorageController.shared.fetchCallDirectoryEntries(type: .identification, isRemoved: true, since: date)
 
 		callDirectoryEntries.forEach { callDirectoryEntry in
 			if callDirectoryEntry.isRemoved {

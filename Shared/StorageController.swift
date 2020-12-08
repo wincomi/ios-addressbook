@@ -1,17 +1,17 @@
 //
-//  SharedPersistentContainerManager.swift
+//  StorageController.swift
 //  addressbook
 //
 
 import CoreData
 
-final class SharedPersistentContainerManager {
-	static let shared = SharedPersistentContainerManager()
+final class StorageController {
+	static let shared = StorageController()
 
 	private init() {}
 
 	// MARK: - Core Data Stack
-	lazy var persistentContainer: NSPersistentContainer = {
+	lazy private var persistentContainer: NSPersistentContainer = {
 		let momdName = "SharedPersistentContainer"
 		let groupName = "group.com.wincomi.addressbook"
 		let fileName = "SharedPersistentContainer.sqlite"
@@ -44,13 +44,11 @@ final class SharedPersistentContainerManager {
 		return container
 	}()
 
-	var context: NSManagedObjectContext {
+	private var context: NSManagedObjectContext {
 		persistentContainer.viewContext
 	}
 
-	func saveContext() {
-		let context = persistentContainer.viewContext
-
+	private func saveContext() {
 		if context.hasChanges {
 			do {
 				try context.save()
@@ -61,7 +59,7 @@ final class SharedPersistentContainerManager {
 		}
 	}
 
-	func fetch<T: NSManagedObject>(_ request: NSFetchRequest<T>) -> [T] {
+	private func fetch<T: NSManagedObject>(_ request: NSFetchRequest<T>) -> [T] {
 		do {
 			let fetchResult = try context.fetch(request)
 			return fetchResult
@@ -71,7 +69,7 @@ final class SharedPersistentContainerManager {
 		}
 	}
 
-	func delete(_ object: NSManagedObject)  {
+	private func delete(_ object: NSManagedObject)  {
 		context.delete(object)
 		do {
 			try context.save()
@@ -82,8 +80,12 @@ final class SharedPersistentContainerManager {
 	}
 
 	// MARK: - Managing CallDirectoryEntry
+	func fetchCallDirectoryEntries(type: CallDirectoryEntry.EntryType, isRemoved: Bool = false, since date: Date? = nil) -> [CallDirectoryEntry] {
+		return fetch(CallDirectoryEntry.fetchRequest(isBlocked: type.isBlocked, isRemoved: isRemoved, since: date))
+	}
+	
 	func createCallDirectoryEntry(isBlocked: Bool, name: String, phoneNumber: Int64) {
-		let callDirectoryEntry = CallDirectoryEntry(context: SharedPersistentContainerManager.shared.context)
+		let callDirectoryEntry = CallDirectoryEntry(context: StorageController.shared.context)
 		callDirectoryEntry.name = name
 		callDirectoryEntry.phoneNumber = phoneNumber
 		callDirectoryEntry.isBlocked = isBlocked
