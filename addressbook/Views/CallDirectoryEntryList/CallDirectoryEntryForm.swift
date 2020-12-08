@@ -46,12 +46,12 @@ struct CallDirectoryEntryForm: View {
 				}
 			}
 		}
-		.navigationBarTitle(formType.navigationBarTitle)
+		.navigationBarTitle(formType.navigationTitle)
 		.navigationBarItems(leading: cancelButton, trailing: doneButton)
 		.onAppear {
 			switch formType {
 			case .add:
-				return
+				break
 			case .edit(let callDirectoryEntry):
 				self.name = callDirectoryEntry.name ?? ""
 				self.phoneNumberString = String(callDirectoryEntry.phoneNumber)
@@ -116,11 +116,11 @@ struct CallDirectoryEntryForm: View {
 
 // MARK: - FormType
 extension CallDirectoryEntryForm {
-	enum FormType: Identifiable {
+	enum FormType: Hashable, Identifiable {
 		case add
 		case edit(CallDirectoryEntry)
 
-		var navigationBarTitle: String {
+		var navigationTitle: String {
 			switch self {
 			case .add:
 				return L10n.CallDirectoryEntryForm.AddType.navigationTitle
@@ -130,13 +130,8 @@ extension CallDirectoryEntryForm {
 		}
 
 		// MARK: - Identifiable
-		var id: CallDirectoryEntry? {
-			switch self {
-			case .add:
-				return nil
-			case .edit(let callDirectoryEntry):
-				return callDirectoryEntry
-			}
+		var id: Int {
+			hashValue
 		}
 	}
 }

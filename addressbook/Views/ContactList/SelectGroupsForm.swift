@@ -8,7 +8,7 @@ import SwiftUI
 typealias SelectGroupsFormViewController = UIHostingController<SelectGroupsForm>
 
 struct SelectGroupsForm: View {
-	var navigationBarTitle = L10n.ContactListRow.ContextMenuItemType.addToGroup
+	var navigationTitle = L10n.ContactListRow.ContextMenuItemType.addToGroup
 	var doneButtonTitle = L10n.add
 	var dismissHandler: ((Set<GroupListRow>?) -> Void)
 
@@ -27,7 +27,7 @@ struct SelectGroupsForm: View {
 				}
 			}
 			.modifier(CompatibleInsetGroupedListStyle())
-			.navigationBarTitle(navigationBarTitle)
+			.navigationBarTitle(navigationTitle)
 			.navigationBarItems(leading: dismissButton, trailing: doneButton)
 		}
 		.navigationViewStyle(StackNavigationViewStyle())

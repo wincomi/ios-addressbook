@@ -125,10 +125,10 @@ AppSettings.displayOrder.givenNameFirst = "First, Last";
 AppSettings.displayOrder.familyNameFirst = "Last, First";
 
 // MARK: - EditContactsForm
-EditContactsForm.navigationTitle = "Edit Contacts";
+EditContactsForm.navigationTitle = "Edit contacts";
 EditContactsForm.profileImage = "Profile Image";
-EditContactsForm.selectImage = "Select Image";
-EditContactsForm.deleteProfileImage = "Delete Profile Image";
+EditContactsForm.selectImage = "Select image";
+EditContactsForm.deleteProfileImage = "Delete profile image";
 EditContactsForm.jobTitle = "Job Title";
 EditContactsForm.departmentName = "Department";
 EditContactsForm.organizationName = "Company";
