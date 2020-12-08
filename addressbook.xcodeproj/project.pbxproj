@@ -224,13 +224,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0BABEA5B257F9BBC007DDE91 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				916688B225368B5D00EC6A3F /* ImagePicker.swift */,
+				9169AA8F2514C6A9009EB935 /* ValueCellView.swift */,
+				91A6D43B2510DA00003F2764 /* ActivityIndicator.swift */,
+				91BCA7192524B8030094B20A /* CircleColorView.swift */,
+				F78F7E79254423B8008DE2DD /* MailComposeView.swift */,
+				9100A92F252614080013A143 /* CompatibleLabel.swift */,
+				91E17EC0251872BB00D2656F /* CompatibleInsetGroupedListStyle.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		91147F5A251B461F0012A592 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				91147F57251B45A70012A592 /* UserDefaults+Extension.swift */,
-				91961FDC25066C4900463B7A /* UserDefault+propertyWrapper.swift */,
 				F74583D82545A86F00AF9483 /* SharedPersistentContainer.xcdatamodeld */,
 				F74583DE2545AB2E00AF9483 /* StorageController.swift */,
+				91147F57251B45A70012A592 /* UserDefaults+Extension.swift */,
 				91915F54254B012100F33DCF /* CallDirectory */,
 			);
 			path = Shared;
@@ -245,26 +258,13 @@
 			path = CallDirectory;
 			sourceTree = "<group>";
 		};
-		91ADA95F252D9C5900F6863A /* View */ = {
+		91ADA960252D9C6B00F6863A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				916688B225368B5D00EC6A3F /* ImagePicker.swift */,
-				9169AA8F2514C6A9009EB935 /* ValueCellView.swift */,
-				91A6D43B2510DA00003F2764 /* ActivityIndicator.swift */,
-				91BCA7192524B8030094B20A /* CircleColorView.swift */,
-				F78F7E79254423B8008DE2DD /* MailComposeView.swift */,
-				9100A92F252614080013A143 /* CompatibleLabel.swift */,
-				91E17EC0251872BB00D2656F /* CompatibleInsetGroupedListStyle.swift */,
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
-		91ADA960252D9C6B00F6863A /* Model */ = {
-			isa = PBXGroup;
-			children = (
+				9198AE71250DBCEA00588C9B /* Coordinator.swift */,
 				91E17EBE2518699C00D2656F /* AlertItem.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		91B1F365251E3C53000D2CF2 /* GroupList */ = {
@@ -317,10 +317,10 @@
 		91CF2FE2251B67E30009686C /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				9198AE71250DBCEA00588C9B /* Coordinator.swift */,
-				91ADA960252D9C6B00F6863A /* Model */,
-				91ADA95F252D9C5900F6863A /* View */,
+				91961FDC25066C4900463B7A /* UserDefault+propertyWrapper.swift */,
 				91CF2FE8251B68680009686C /* Extensions */,
+				91ADA960252D9C6B00F6863A /* Models */,
+				0BABEA5B257F9BBC007DDE91 /* Views */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -336,16 +336,16 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		91CF2FF7251B6F3A0009686C /* Settings */ = {
+		91CF2FF7251B6F3A0009686C /* SettingsForm */ = {
 			isa = PBXGroup;
 			children = (
 				913DC24125160DD800BC1397 /* ApplicationShortcutItem.swift */,
 				91CF2FF2251B6C330009686C /* StoreProudct.swift */,
 			);
-			path = Settings;
+			path = SettingsForm;
 			sourceTree = "<group>";
 		};
-		91E17EC2251876F100D2656F /* Settings */ = {
+		91E17EC2251876F100D2656F /* SettingsForm */ = {
 			isa = PBXGroup;
 			children = (
 				91961FDA25066BA200463B7A /* SettingsForm.swift */,
@@ -355,15 +355,15 @@
 				915AB39F2514FA26001727A4 /* ApplicationShortcutItemSettingForm.swift */,
 				84F65811256A72DC005B3B0A /* ApplicationShortcutItemSettingFormRowView.swift */,
 			);
-			path = Settings;
+			path = SettingsForm;
 			sourceTree = "<group>";
 		};
-		91E17EC32518771000D2656F /* Settings */ = {
+		91E17EC32518771000D2656F /* SettingsForm */ = {
 			isa = PBXGroup;
 			children = (
 				91E44A41250F52A50092540A /* SettingsFormViewModel.swift */,
 			);
-			path = Settings;
+			path = SettingsForm;
 			sourceTree = "<group>";
 		};
 		91E77BAC252F34200096E548 /* SearchList */ = {
@@ -435,7 +435,7 @@
 				F755A864248F3CA600DB9717 /* AppDelegate.swift */,
 				F755A866248F3CA600DB9717 /* SceneDelegate.swift */,
 				91CF2FE2251B67E30009686C /* Library */,
-				F755A8AA248F62C000DB9717 /* Model */,
+				F755A8AA248F62C000DB9717 /* Models */,
 				F7D5026724EE568D00B1D0B1 /* ViewModels */,
 				F755A8A9248F62AF00DB9717 /* Views */,
 				F755A86D248F3CAE00DB9717 /* Assets.xcassets */,
@@ -466,12 +466,12 @@
 				91B1F367251E3C5B000D2CF2 /* ContactList */,
 				91E77BAE252F34290096E548 /* SearchList */,
 				F74583D12545933600AF9483 /* CallDirectoryEntryList */,
-				91E17EC2251876F100D2656F /* Settings */,
+				91E17EC2251876F100D2656F /* SettingsForm */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		F755A8AA248F62C000DB9717 /* Model */ = {
+		F755A8AA248F62C000DB9717 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				F755A8A4248F60D400DB9717 /* RootCoordinator.swift */,
@@ -479,9 +479,9 @@
 				08A00F592500FCC900E54E8F /* ContactStoreError.swift */,
 				91646D9E250368A600E811F4 /* ContactsItemSource.swift */,
 				916688AF2536899700EC6A3F /* SearchListScope.swift */,
-				91CF2FF7251B6F3A0009686C /* Settings */,
+				91CF2FF7251B6F3A0009686C /* SettingsForm */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		F7D5026724EE568D00B1D0B1 /* ViewModels */ = {
@@ -491,7 +491,7 @@
 				91B1F36C251E3C8F000D2CF2 /* ContactList */,
 				91E77BAC252F34200096E548 /* SearchList */,
 				F7F17CA525469119003C1150 /* CallDirectoryEntryList */,
-				91E17EC32518771000D2656F /* Settings */,
+				91E17EC32518771000D2656F /* SettingsForm */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";

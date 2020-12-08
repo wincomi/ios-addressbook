@@ -1,6 +1,6 @@
 //
 //  CallDirectoryEntry+CoreDataClass.swift
-//  addressbook
+//  Shared
 //
 
 import Foundation

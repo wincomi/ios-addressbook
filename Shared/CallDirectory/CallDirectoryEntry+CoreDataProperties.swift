@@ -35,11 +35,6 @@ extension CallDirectoryEntry {
 		return fetchRequest
 	}
 
-	@nonobjc public class func fetchRequest(callDirectoryEntryType: CallDirectoryEntry.EntryType, isRemoved: Bool = false, since date: Date? = nil) -> NSFetchRequest<CallDirectoryEntry> {
-		let fetchRequest = CallDirectoryEntry.fetchRequest(isBlocked: callDirectoryEntryType.isBlocked, isRemoved: isRemoved, since: date)
-		return fetchRequest
-	}
-
 	@NSManaged public var isBlocked: Bool
 	@NSManaged public var isRemoved: Bool
 	@NSManaged public var name: String?

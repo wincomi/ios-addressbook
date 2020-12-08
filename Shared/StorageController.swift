@@ -1,6 +1,6 @@
 //
 //  StorageController.swift
-//  addressbook
+//  Shared
 //
 
 import CoreData
@@ -83,7 +83,7 @@ final class StorageController {
 	func fetchCallDirectoryEntries(type: CallDirectoryEntry.EntryType, isRemoved: Bool = false, since date: Date? = nil) -> [CallDirectoryEntry] {
 		return fetch(CallDirectoryEntry.fetchRequest(isBlocked: type.isBlocked, isRemoved: isRemoved, since: date))
 	}
-	
+
 	func createCallDirectoryEntry(isBlocked: Bool, name: String, phoneNumber: Int64) {
 		let callDirectoryEntry = CallDirectoryEntry(context: StorageController.shared.context)
 		callDirectoryEntry.name = name
@@ -127,3 +127,4 @@ final class StorageController {
 		}
 	}
 }
+

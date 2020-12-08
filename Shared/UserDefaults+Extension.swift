@@ -19,4 +19,3 @@ extension UserDefaults {
 		return UserDefaults(suiteName: appGroupId)!
 	}
 }
-
