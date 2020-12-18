@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		08A00F5A2500FCC900E54E8F /* ContactStoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A00F592500FCC900E54E8F /* ContactStoreError.swift */; };
+		0B3EF671258A113300E23F15 /* ContextMenuButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3EF670258A113300E23F15 /* ContextMenuButtons.swift */; };
+		0B3EF675258A1AF200E23F15 /* UpdateGroupForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3EF674258A1AF200E23F15 /* UpdateGroupForm.swift */; };
+		0B3EF679258A1B5D00E23F15 /* UpdateGroupFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3EF678258A1B5D00E23F15 /* UpdateGroupFormViewModel.swift */; };
+		0B953F1B25807F0B00417250 /* SidebarList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B953F1A25807F0B00417250 /* SidebarList.swift */; };
+		0B953F2025807F8900417250 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 0B953F1F25807F8900417250 /* Introspect */; };
+		0B953F28258088E100417250 /* SidebarListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B953F27258088E100417250 /* SidebarListViewModel.swift */; };
+		0B9E49A2258B2AE1009F5A9D /* NavigationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E49A1258B2AE1009F5A9D /* NavigationButton.swift */; };
+		0BA71E472588F82E0007F9C9 /* CreateGroupForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA71E462588F82E0007F9C9 /* CreateGroupForm.swift */; };
+		0BA71E4B2588FBE60007F9C9 /* CreateGroupFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA71E4A2588FBE60007F9C9 /* CreateGroupFormViewModel.swift */; };
+		0BBCB5952588CCB50031EE49 /* SidebarListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCB5942588CCB50031EE49 /* SidebarListCell.swift */; };
 		84F6580C256A6F3B005B3B0A /* EditGroupsFormRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6580B256A6F3B005B3B0A /* EditGroupsFormRowView.swift */; };
 		84F65812256A72DC005B3B0A /* ApplicationShortcutItemSettingFormRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F65811256A72DC005B3B0A /* ApplicationShortcutItemSettingFormRowView.swift */; };
 		84F65818256A76B7005B3B0A /* ContactMenuSettingFormRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F65817256A76B7005B3B0A /* ContactMenuSettingFormRowView.swift */; };
@@ -117,6 +127,15 @@
 
 /* Begin PBXFileReference section */
 		08A00F592500FCC900E54E8F /* ContactStoreError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactStoreError.swift; sourceTree = "<group>"; };
+		0B3EF670258A113300E23F15 /* ContextMenuButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenuButtons.swift; sourceTree = "<group>"; };
+		0B3EF674258A1AF200E23F15 /* UpdateGroupForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGroupForm.swift; sourceTree = "<group>"; };
+		0B3EF678258A1B5D00E23F15 /* UpdateGroupFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGroupFormViewModel.swift; sourceTree = "<group>"; };
+		0B953F1A25807F0B00417250 /* SidebarList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarList.swift; sourceTree = "<group>"; };
+		0B953F27258088E100417250 /* SidebarListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarListViewModel.swift; sourceTree = "<group>"; };
+		0B9E49A1258B2AE1009F5A9D /* NavigationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButton.swift; sourceTree = "<group>"; };
+		0BA71E462588F82E0007F9C9 /* CreateGroupForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupForm.swift; sourceTree = "<group>"; };
+		0BA71E4A2588FBE60007F9C9 /* CreateGroupFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupFormViewModel.swift; sourceTree = "<group>"; };
+		0BBCB5942588CCB50031EE49 /* SidebarListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarListCell.swift; sourceTree = "<group>"; };
 		84F6580B256A6F3B005B3B0A /* EditGroupsFormRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupsFormRowView.swift; sourceTree = "<group>"; };
 		84F65811256A72DC005B3B0A /* ApplicationShortcutItemSettingFormRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationShortcutItemSettingFormRowView.swift; sourceTree = "<group>"; };
 		84F65817256A76B7005B3B0A /* ContactMenuSettingFormRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactMenuSettingFormRowView.swift; sourceTree = "<group>"; };
@@ -216,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F755A8A8248F618000DB9717 /* Contacts.framework in Frameworks */,
+				0B953F2025807F8900417250 /* Introspect in Frameworks */,
 				917C15DD2529E51F00A5DA80 /* MessageUI.framework in Frameworks */,
 				91788EDB2510BBAF00561D42 /* COMIKit in Frameworks */,
 			);
@@ -224,11 +244,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B953F232580815D00417250 /* SidebarList */ = {
+			isa = PBXGroup;
+			children = (
+				0B953F1A25807F0B00417250 /* SidebarList.swift */,
+				0BBCB5942588CCB50031EE49 /* SidebarListCell.swift */,
+				0BA71E462588F82E0007F9C9 /* CreateGroupForm.swift */,
+				0B3EF674258A1AF200E23F15 /* UpdateGroupForm.swift */,
+			);
+			path = SidebarList;
+			sourceTree = "<group>";
+		};
+		0B953F26258088D400417250 /* SidebarList */ = {
+			isa = PBXGroup;
+			children = (
+				0B953F27258088E100417250 /* SidebarListViewModel.swift */,
+				0BA71E4A2588FBE60007F9C9 /* CreateGroupFormViewModel.swift */,
+				0B3EF678258A1B5D00E23F15 /* UpdateGroupFormViewModel.swift */,
+			);
+			path = SidebarList;
+			sourceTree = "<group>";
+		};
 		0BABEA5B257F9BBC007DDE91 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				916688B225368B5D00EC6A3F /* ImagePicker.swift */,
 				9169AA8F2514C6A9009EB935 /* ValueCellView.swift */,
+				0B9E49A1258B2AE1009F5A9D /* NavigationButton.swift */,
+				0B3EF670258A113300E23F15 /* ContextMenuButtons.swift */,
 				91A6D43B2510DA00003F2764 /* ActivityIndicator.swift */,
 				91BCA7192524B8030094B20A /* CircleColorView.swift */,
 				F78F7E79254423B8008DE2DD /* MailComposeView.swift */,
@@ -462,6 +505,7 @@
 			isa = PBXGroup;
 			children = (
 				F755A878248F3D0200DB9717 /* RootSplitViewController.swift */,
+				0B953F232580815D00417250 /* SidebarList */,
 				91B1F365251E3C53000D2CF2 /* GroupList */,
 				91B1F367251E3C5B000D2CF2 /* ContactList */,
 				91E77BAE252F34290096E548 /* SearchList */,
@@ -487,6 +531,7 @@
 		F7D5026724EE568D00B1D0B1 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				0B953F26258088D400417250 /* SidebarList */,
 				91B1F369251E3C85000D2CF2 /* GroupList */,
 				91B1F36C251E3C8F000D2CF2 /* ContactList */,
 				91E77BAC252F34200096E548 /* SearchList */,
@@ -542,6 +587,7 @@
 			name = addressbook;
 			packageProductDependencies = (
 				91788EDA2510BBAF00561D42 /* COMIKit */,
+				0B953F1F25807F8900417250 /* Introspect */,
 			);
 			productName = addressbook;
 			productReference = F755A861248F3CA600DB9717 /* addressbook.app */;
@@ -577,6 +623,7 @@
 			mainGroup = F755A858248F3CA600DB9717;
 			packageReferences = (
 				91788ED92510BBAF00561D42 /* XCRemoteSwiftPackageReference "ios-COMIKit" */,
+				0B953F1E25807F8900417250 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = F755A862248F3CA600DB9717 /* Products */;
 			projectDirPath = "";
@@ -652,9 +699,11 @@
 				91E7898B252B469400A18CCD /* ContactListToolbarItemsProvider.swift in Sources */,
 				84F6580C256A6F3B005B3B0A /* EditGroupsFormRowView.swift in Sources */,
 				911A21A4252B29E400654E5D /* ContactListRowContextMenuConfigurationProvider.swift in Sources */,
+				0B3EF671258A113300E23F15 /* ContextMenuButtons.swift in Sources */,
 				91A4A414252B3D3A00D5109A /* GroupListRowContextMenuConfigurationProvider.swift in Sources */,
 				916688B325368B5D00EC6A3F /* ImagePicker.swift in Sources */,
 				F7F17CDD2546DB93003C1150 /* CallDirectoryEntryListViewModel.swift in Sources */,
+				0B9E49A2258B2AE1009F5A9D /* NavigationButton.swift in Sources */,
 				91057E2E252D9A8C0053E101 /* GroupListRow+ContextMenuItemType.swift in Sources */,
 				91A6D43C2510DA00003F2764 /* ActivityIndicator.swift in Sources */,
 				F786EF8225450A8800CBEAC4 /* ContactListFooterView.swift in Sources */,
@@ -684,7 +733,10 @@
 				F755A8B7248FC22E00DB9717 /* GroupListSection.swift in Sources */,
 				91BCA71A2524B8030094B20A /* CircleColorView.swift in Sources */,
 				9109DEDF2516F026004E949C /* ContactMenuSettingForm.swift in Sources */,
+				0B3EF679258A1B5D00E23F15 /* UpdateGroupFormViewModel.swift in Sources */,
 				F755A8BE24913EEF00DB9717 /* GroupListViewModel.swift in Sources */,
+				0B3EF675258A1AF200E23F15 /* UpdateGroupForm.swift in Sources */,
+				0B953F28258088E100417250 /* SidebarListViewModel.swift in Sources */,
 				91961FDD25066C4900463B7A /* UserDefault+propertyWrapper.swift in Sources */,
 				84F65812256A72DC005B3B0A /* ApplicationShortcutItemSettingFormRowView.swift in Sources */,
 				911F577A254BD0CA00C1525E /* CallDirectoryManagerDisabledView.swift in Sources */,
@@ -696,6 +748,7 @@
 				9169AA902514C6A9009EB935 /* ValueCellView.swift in Sources */,
 				91E8C3E5252A071A00595969 /* L10n.swift in Sources */,
 				91646D9F250368A600E811F4 /* ContactsItemSource.swift in Sources */,
+				0BBCB5952588CCB50031EE49 /* SidebarListCell.swift in Sources */,
 				916688B625368BB600EC6A3F /* Binding+Extension.swift in Sources */,
 				9198AE72250DBCEA00588C9B /* Coordinator.swift in Sources */,
 				91057E2B252D9A3E0053E101 /* ContactListRow+ContextMenuItemType.swift in Sources */,
@@ -707,13 +760,16 @@
 				F755A8A5248F60D400DB9717 /* RootCoordinator.swift in Sources */,
 				F7F17CD92546C2E5003C1150 /* CallDirectoryEntryList.swift in Sources */,
 				91FA58C02514D2D900247E4D /* SKProduct+Extension.swift in Sources */,
+				0B953F1B25807F0B00417250 /* SidebarList.swift in Sources */,
 				91046703250614DA00618BFD /* SearchListViewController.swift in Sources */,
 				F74583DF2545AB2E00AF9483 /* StorageController.swift in Sources */,
 				919231F425345CD90007819F /* SearchListCell.swift in Sources */,
+				0BA71E4B2588FBE60007F9C9 /* CreateGroupFormViewModel.swift in Sources */,
 				F75093D524A07E0B0044CDE3 /* ContactListRow.swift in Sources */,
 				910467052506252100618BFD /* SearchListViewModel.swift in Sources */,
 				913DC24225160DD800BC1397 /* ApplicationShortcutItem.swift in Sources */,
 				91E17EC1251872BB00D2656F /* CompatibleInsetGroupedListStyle.swift in Sources */,
+				0BA71E472588F82E0007F9C9 /* CreateGroupForm.swift in Sources */,
 				915761FA254995B100F38931 /* CallDirectoryEntry+CoreDataClass.swift in Sources */,
 				917AC447252EA9A10031B39A /* EnumPickerForm.swift in Sources */,
 			);
@@ -773,7 +829,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CallDirectory/CallDirectory.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.2.2;
+				CURRENT_PROJECT_VERSION = 1.2.0.0;
 				DEVELOPMENT_TEAM = M4FL5MH4DS;
 				INFOPLIST_FILE = CallDirectory/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -782,7 +838,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wincomi.ios.addressbook.CallDirectory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -796,7 +852,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CallDirectory/CallDirectory.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.2.2;
+				CURRENT_PROJECT_VERSION = 1.2.0.0;
 				DEVELOPMENT_TEAM = M4FL5MH4DS;
 				INFOPLIST_FILE = CallDirectory/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -805,7 +861,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wincomi.ios.addressbook.CallDirectory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -939,7 +995,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = addressbook/addressbook.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.2.2;
+				CURRENT_PROJECT_VERSION = 1.2.0.1;
 				DEVELOPMENT_TEAM = M4FL5MH4DS;
 				INFOPLIST_FILE = addressbook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -947,7 +1003,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wincomi.ios.addressbook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -962,7 +1018,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = addressbook/addressbook.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.2.2;
+				CURRENT_PROJECT_VERSION = 1.2.0.1;
 				DEVELOPMENT_TEAM = M4FL5MH4DS;
 				INFOPLIST_FILE = addressbook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -970,7 +1026,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wincomi.ios.addressbook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1011,6 +1067,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0B953F1E25807F8900417250 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.2;
+			};
+		};
 		91788ED92510BBAF00561D42 /* XCRemoteSwiftPackageReference "ios-COMIKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:wincomi/ios-COMIKit.git";
@@ -1022,6 +1086,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0B953F1F25807F8900417250 /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0B953F1E25807F8900417250 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
+		};
 		91788EDA2510BBAF00561D42 /* COMIKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 91788ED92510BBAF00561D42 /* XCRemoteSwiftPackageReference "ios-COMIKit" */;

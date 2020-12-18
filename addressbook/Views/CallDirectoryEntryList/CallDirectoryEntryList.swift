@@ -9,11 +9,9 @@ import CallKit
 struct CallDirectoryEntryList: View {
 	@ObservedObject var viewModel: CallDirectoryEntryListViewModel
 	@State private var presentedCallDirectoryFormType: CallDirectoryEntryForm.FormType?
-	var dismissAction: (() -> Void)?
 
-	init(type: CallDirectoryEntry.EntryType, dismissAction: (() -> Void)? = nil) {
+	init(type: CallDirectoryEntry.EntryType) {
 		self.viewModel = CallDirectoryEntryListViewModel(type: type)
-		self.dismissAction = dismissAction
 	}
 
 	var body: some View {
@@ -51,8 +49,13 @@ struct CallDirectoryEntryList: View {
 				CallDirectoryManagerDisabledView()
 			}
 		}
+		.introspectViewController { vc in
+			vc.navigationController?.navigationBar.prefersLargeTitles = true
+			// Fix prefersLargeTitles not updating until scroll
+			vc.navigationController?.navigationBar.sizeToFit()
+		}
 		.navigationBarTitle(viewModel.navigationTitle)
-		.navigationBarItems(leading: dismissButton, trailing: addButton)
+		.navigationBarItems(trailing: addButton)
 		.onAppear(perform: viewModel.refresh)
 		.sheet(item: $presentedCallDirectoryFormType) { callDirectoryFormType in
 			NavigationView {
@@ -67,15 +70,6 @@ struct CallDirectoryEntryList: View {
 			return L10n.CallDirectoryEntryList.BlockingType.sectionFooter
 		case .identification:
 			return L10n.CallDirectoryEntryList.IdentificationType.sectionFooter
-		}
-	}
-
-	private var dismissButton: some View {
-		Button {
-			dismissAction?()
-		} label: {
-			Image(systemName: "xmark")
-				.font(.system(size: 20))
 		}
 	}
 

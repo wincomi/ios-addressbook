@@ -155,3 +155,10 @@ CallDirectoryEntryForm.PhoneNumberSection.footer = "Enter only numbers with coun
 CallDirectoryEntryForm.AddType.navigationTitle = "Add phone number";
 CallDirectoryEntryForm.EditType.navigationTitle = "Edit phone number";
 CallDirectoryEntryForm.deletePhoneNumber = "Delete phone number";
+
+// MARK: - SidebarList
+SidebarList.utilities = "Utilities";
+
+// MARK: - CreateGroupForm
+CreateGroupForm.AccountsSection.header = "Accounts";
+CreateGroupForm.AccountsSection.footer = "Select an account to add new group to.";

@@ -154,3 +154,10 @@ CallDirectoryEntryForm.PhoneNumberSection.footer = "국가코드를 포함하여
 CallDirectoryEntryForm.AddType.navigationTitle = "전화번호 추가";
 CallDirectoryEntryForm.EditType.navigationTitle = "전화번호 수정";
 CallDirectoryEntryForm.deletePhoneNumber = "전화번호 삭제";
+
+// MARK: - SidebarList
+SidebarList.utilities = "유틸리티";
+
+// MARK: - CreateGroupForm
+CreateGroupForm.AccountsSection.header = "계정";
+CreateGroupForm.AccountsSection.footer = "새로운 그룹을 추가할 계정을 선택하세요.";

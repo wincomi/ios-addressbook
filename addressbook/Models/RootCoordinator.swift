@@ -9,7 +9,6 @@ import MessageUI
 import SwiftUI
 
 final class RootCoordinator: NSObject, Coordinator {
-	// MARK: - Coordinator
 	var viewController: RootSplitViewController
 
 	init(viewController: RootSplitViewController) {
@@ -18,11 +17,12 @@ final class RootCoordinator: NSObject, Coordinator {
 
 	func start() {
 		if AppSettings.shared.showAllContactsOnAppLaunch {
-			select(.allContacts())
+			select(GroupListRow.allContacts())
 		}
 	}
+}
 
-	// MARK: - Functions
+extension RootCoordinator {
 	func select(_ groupListRow: GroupListRow) {
 		let vc = ContactListViewController(groupListRow: groupListRow)
 		vc.coordinator = self
@@ -46,15 +46,11 @@ final class RootCoordinator: NSObject, Coordinator {
 	}
 
 	func presentCallDirectoryEntryList(type: CallDirectoryEntry.EntryType) {
-		let view = NavigationView {
-			CallDirectoryEntryList(type: type) {
-				self.viewController.dismiss(animated: true)
-			}
-		}.navigationViewStyle(StackNavigationViewStyle())
+		let vc = UIHostingController(rootView: CallDirectoryEntryList(type: type))
 
-		let vc = UIHostingController(rootView: view)
-		vc.modalPresentationStyle = .pageSheet
-		viewController.present(vc, animated: true)
+		// Fix navigation title not showing while pushing view controller
+		vc.navigationItem.title = vc.rootView.viewModel.navigationTitle
+		viewController.setSecondaryViewController(vc)
 	}
 
 	func createContact() {
@@ -143,5 +139,25 @@ final class RootCoordinator: NSObject, Coordinator {
 		vc.setSubject(subject)
 		vc.setMessageBody(messageBody, isHTML: false)
 		viewController.present(vc, animated: true)
+	}
+
+	func presentActivityViewController(activityItems: [Any], applicationActivities: [UIActivity]? = nil, configurePopoverPresentationController: ((UIPopoverPresentationController) -> Void)? = nil ) {
+		let vc = UIActivityViewController(activityItems: activityItems, applicationActivities: applicationActivities)
+
+		vc.popoverPresentationController?.sourceView = viewController.view
+		vc.popoverPresentationController?.sourceRect = CGRect(x: viewController.view.bounds.midX, y: viewController.view.bounds.midY, width: 0, height: 0)
+		vc.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
+
+		if let popoverPresentationController = vc.popoverPresentationController {
+			configurePopoverPresentationController?(popoverPresentationController)
+		}
+
+		viewController.present(vc, animated: true)
+	}
+
+	func present(_ alertItem: AlertItem) {
+		let alert = UIAlertController(title: alertItem.title, message: alertItem.message, preferredStyle: .alert)
+		alert.addAction(.okAction())
+		viewController.presentedViewController?.present(alert, animated: true)
 	}
 }

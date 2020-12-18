@@ -6,19 +6,22 @@
 import UIKit
 import ContactsUI
 import MessageUI
+import SwiftUI
 
 final class RootSplitViewController: DoubleColumnSplitViewController {
 	weak var coordinator: RootCoordinator?
 
 	// MARK: - Initialization
 	init() {
-		let groupListViewController = GroupListViewController()
+		let sidebarList = UIHostingController(rootView: SidebarList())
+		let emptyViewController: UIViewController = {
+			let vc = UIViewController()
+			vc.view.backgroundColor = .systemGroupedBackground
+			vc.navigationController?.setNavigationBarHidden(true, animated: false)
+			return vc
+		}()
 
-		let emptyViewController = UIViewController()
-		emptyViewController.view.backgroundColor = .systemGroupedBackground
-		emptyViewController.navigationController?.setNavigationBarHidden(true, animated: false)
-
-		super.init(primaryViewController: groupListViewController, emptyViewController: emptyViewController)
+		super.init(primaryViewController: sidebarList, emptyViewController: emptyViewController)
 	}
 
 	required public init?(coder: NSCoder) {
@@ -29,8 +32,8 @@ final class RootSplitViewController: DoubleColumnSplitViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		let groupListViewController = primaryNavigation.topViewController as? GroupListViewController
-		groupListViewController?.coordinator = coordinator
+		let sidebarList = primaryNavigation.topViewController as? UIHostingController<SidebarList>
+		sidebarList?.rootView.coordinator = coordinator
 	}
 
 	// MARK: - UITraitEnvironment

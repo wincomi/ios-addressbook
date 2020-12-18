@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-public struct AlertItem: Identifiable {
+public struct AlertItem: Identifiable, Hashable {
 	public var id = UUID()
 	public var title: String
 	public var message: String?
