@@ -39,7 +39,7 @@ struct CallDirectoryEntryForm: View {
 				} label: {
 					HStack {
 						Spacer()
-						Text(L10n.CallDirectoryEntryForm.deletePhoneNumber)
+						Text(L10n.delete)
 							.foregroundColor(Color(UIColor.systemRed))
 						Spacer()
 					}

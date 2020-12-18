@@ -153,7 +153,6 @@ CallDirectoryEntryForm.NameSection.footer = "전화가 오면 표시될 이름�
 CallDirectoryEntryForm.PhoneNumberSection.footer = "국가코드를 포함하여 숫자만 입력하세요.";
 CallDirectoryEntryForm.AddType.navigationTitle = "전화번호 추가";
 CallDirectoryEntryForm.EditType.navigationTitle = "전화번호 수정";
-CallDirectoryEntryForm.deletePhoneNumber = "전화번호 삭제";
 
 // MARK: - SidebarList
 SidebarList.utilities = "유틸리티";
