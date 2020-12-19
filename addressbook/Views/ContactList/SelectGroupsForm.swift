@@ -5,8 +5,6 @@
 
 import SwiftUI
 
-typealias SelectGroupsFormViewController = UIHostingController<SelectGroupsForm>
-
 struct SelectGroupsForm: View {
 	var navigationTitle = L10n.ContactListRow.ContextMenuItemType.addToGroup
 	var doneButtonTitle = L10n.add

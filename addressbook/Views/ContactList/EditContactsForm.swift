@@ -6,10 +6,8 @@
 import SwiftUI
 import Contacts
 
-typealias EditContactsFormViewController = UIHostingController<EditContactsForm>
-
 struct EditContactsForm: View {
-	let contactListRows: [ContactListRow]
+	let contacts: [CNContact]
 	var dismissHandler: (() -> Void)
 
 	@State private var image: UIImage?
@@ -78,7 +76,7 @@ struct EditContactsForm: View {
 
 	func updateContacts() throws {
 		do {
-			try contactListRows.map(\.contact).forEach { contact in
+			try contacts.forEach { contact in
 				try contact.update { mutableContact in
 					if isDeletingImage {
 						mutableContact.imageData = nil

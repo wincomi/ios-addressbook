@@ -134,12 +134,7 @@ final class ContactListViewController: UITableViewController, ListDataSourceRend
 		}
 
 		provider.editHandler = { _ in
-			let rootView = EditContactsForm(contactListRows: self.selectedRowsInTableView) {
-				self.dismiss(animated: true)
-			}
-			let vc = EditContactsFormViewController(rootView: rootView)
-			vc.modalPresentationStyle = .pageSheet
-			self.present(vc, animated: true)
+			self.coordinator?.presentEditContactsForm(contacts: self.selectedRowsInTableView.map(\.contact))
 		}
 
 		provider.deleteHandler = { deleteButton in

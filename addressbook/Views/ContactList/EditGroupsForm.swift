@@ -6,8 +6,6 @@
 import SwiftUI
 import Contacts
 
-typealias EditGroupsFormViewController = UIHostingController<EditGroupsForm>
-
 struct EditGroupsForm: View {
 	let contactToEditGroups: CNContact
 	var dismissHandler: (() -> Void)

@@ -5,8 +5,6 @@
 
 import SwiftUI
 
-typealias SettingsFormViewController = UIHostingController<SettingsForm>
-
 struct SettingsForm: View {
 	@ObservedObject var appSettings = AppSettings.shared
 	@ObservedObject var viewModel = SettingsFormViewModel()
@@ -143,6 +141,7 @@ struct SettingsForm: View {
 				if #available(iOS 14.0, *) {
 					ColorPicker(L10n.SettingsForm.ThemeSection.customColor, selection: colorPickerSelection, supportsOpacity: false)
 						.labelsHidden()
+						.padding(.leading)
 				}
 			}.buttonStyle(PlainButtonStyle())
 			NavigationLink(destination: userInterfaceStylePickerForm) {

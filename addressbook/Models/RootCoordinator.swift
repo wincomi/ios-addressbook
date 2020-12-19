@@ -40,7 +40,7 @@ extension RootCoordinator {
 	func presentSettingsForm() {
 		let settingsForm = SettingsForm(dismissAction: { self.viewController.dismiss(animated: true) })
 
-		let vc = SettingsFormViewController(rootView: settingsForm)
+		let vc = UIHostingController(rootView: settingsForm)
 		vc.modalPresentationStyle = .pageSheet
 		viewController.present(vc, animated: true)
 	}
@@ -93,17 +93,28 @@ extension RootCoordinator {
 	func addToGroup(dismissAction: @escaping ((Set<GroupListRow>?) -> Void)) {
 		let selectGroupsForm = SelectGroupsForm(dismissHandler: dismissAction)
 
-		let vc = SelectGroupsFormViewController(rootView: selectGroupsForm)
+		let vc = UIHostingController(rootView: selectGroupsForm)
 		vc.modalPresentationStyle = .formSheet
 		viewController.present(vc, animated: true)
 	}
 
 	func editGroups(of contact: CNContact) {
-		let view = EditGroupsForm(contactToEditGroups: contact) {
+		let editGroupsForm = EditGroupsForm(contactToEditGroups: contact) {
 			self.viewController.dismiss(animated: true)
 		}
-		let vc = EditGroupsFormViewController(rootView: view)
+
+		let vc = UIHostingController(rootView: editGroupsForm)
 		vc.modalPresentationStyle = .formSheet
+		viewController.present(vc, animated: true)
+	}
+
+	func presentEditContactsForm(contacts: [CNContact]) {
+		let editContactsForm = EditContactsForm(contacts: contacts) {
+			self.viewController.dismiss(animated: true)
+		}
+
+		let vc = UIHostingController(rootView: editContactsForm)
+		vc.modalPresentationStyle = .pageSheet
 		viewController.present(vc, animated: true)
 	}
 
