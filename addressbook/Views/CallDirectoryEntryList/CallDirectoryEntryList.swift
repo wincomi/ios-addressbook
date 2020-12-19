@@ -36,11 +36,8 @@ struct CallDirectoryEntryList: View {
 							.edgesIgnoringSafeArea(.all)
 						EmptyDataView(
 							title: L10n.CallDirectoryEntryList.EmptyDataView.title,
-							description: descriptionText(for: viewModel.entryType),
-							buttonTitle: L10n.CallDirectoryEntryList.EmptyDataView.buttonTitle
-						) {
-							presentedCallDirectoryFormType = .add
-						}
+							description: descriptionText(for: viewModel.entryType)
+						)
 					}
 				}
 			case nil:
