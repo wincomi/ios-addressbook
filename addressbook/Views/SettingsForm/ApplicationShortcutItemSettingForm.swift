@@ -34,7 +34,10 @@ struct ApplicationShortcutItemSettingForm: View {
 	}
 
 	private var addItemsSection: some View {
-		Section(header: Text(L10n.ContactListRow.ContextMenuItemType.addToApplicationShortcutItems), footer: Text(L10n.ApplicationShortcutItemsSettingForm.AddingSection.footerText)) {
+		Section(
+			header: Text(L10n.ContactListRow.ContextMenuItemType.addToApplicationShortcutItems).padding(.leading),
+			footer: Text(L10n.ApplicationShortcutItemsSettingForm.AddingSection.footerText).padding(.leading)
+		) {
 			ForEach(itemsCanBeAdded, id: \.localizedTitle) { applicationShortcutItem in
 				ApplicationShortcutItemSettingFormRowView(applicationShortcutItem: applicationShortcutItem, type: .add) {
 					appSettings.applicationShortcutItems.append(applicationShortcutItem)
@@ -44,7 +47,10 @@ struct ApplicationShortcutItemSettingForm: View {
 	}
 
 	private var itemsSection: some View {
-		Section(header: Text(L10n.ApplicationShortcutItemsSettingForm.title), footer: Text(L10n.ApplicationShortcutItemsSettingForm.Section.footerText)) {
+		Section(
+			header: Text(L10n.ApplicationShortcutItemsSettingForm.title).padding(.leading),
+			footer: Text(L10n.ApplicationShortcutItemsSettingForm.Section.footerText).padding(.leading)
+		) {
 			ForEach(appSettings.applicationShortcutItems) { applicationShortcutItem in
 				ApplicationShortcutItemSettingFormRowView(applicationShortcutItem: applicationShortcutItem)
 			}

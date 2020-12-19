@@ -57,7 +57,7 @@ struct SettingsForm: View {
 
 	// MARK: - Sections
 	private var generalSection: some View {
-		Section(header: Text(L10n.SettingsForm.GeneralSection.header)) {
+		Section(header: Text(L10n.SettingsForm.GeneralSection.header).padding(.leading)) {
 			Toggle(isOn: $appSettings.showAllContactsOnAppLaunch) {
 				Text(L10n.SettingsForm.GeneralSection.showAllContactsOnAppLaunch)
 			}
@@ -114,7 +114,7 @@ struct SettingsForm: View {
 	}
 
 	private var displaySection: some View {
-		Section(header: Text(L10n.SettingsForm.DisplaySection.header)) {
+		Section(header: Text(L10n.SettingsForm.DisplaySection.header).padding(.leading)) {
 			Toggle(isOn: $appSettings.showContactImageInContactList) {
 				Text(L10n.SettingsForm.DisplaySection.showContactImage)
 			}
@@ -129,8 +129,8 @@ struct SettingsForm: View {
 
 	private var themeSection: some View {
 		Section(
-			header: Text(L10n.SettingsForm.ThemeSection.header),
-			footer: appSettings.isUnlockedPro ? AnyView(EmptyView()) : AnyView(Text(L10n.SettingsForm.onlyForContactsPlusPro))
+			header: Text(L10n.SettingsForm.ThemeSection.header).padding(.leading),
+			footer: appSettings.isUnlockedPro ? AnyView(EmptyView()) : AnyView(Text(L10n.SettingsForm.onlyForContactsPlusPro).padding(.leading))
 		) {
 			HStack(spacing: 4) {
 				ForEach(AppSettings.globalTintColorDefaultCases, id: \.self) { globalTintColor in
