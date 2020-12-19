@@ -11,6 +11,8 @@ final class SidebarListViewModel: ObservableObject {
 	@Published var groupListSections = [GroupListSection]()
 
 	func update() {
+		guard case .authorized = ContactStore.authrozationStatus else { return }
+
 		do {
 			let containers = try ContactStore.shared.fetchContainers()
 			let sections = try GroupListSection.makeSections(from: containers, withAllContactsSection: true, withAllContactsRow: containers.count > 1)
