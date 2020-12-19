@@ -45,6 +45,8 @@ struct SidebarList: View {
 							ContextMenuButtons.DeleteButton(for: groupListRow) { group in
 								activeActionSheet = .confirmDelete(group)
 							}
+						}.onDrag {
+							viewModel.dragItems(for: groupListRow) ?? NSItemProvider()
 						}
 					}.onDelete { offsets in
 						guard let groupListRow = offsets.first.map({ section.rows[$0] }),

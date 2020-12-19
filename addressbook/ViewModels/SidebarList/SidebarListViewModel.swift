@@ -5,6 +5,7 @@
 
 import SwiftUI
 import Contacts
+import CoreServices
 
 final class SidebarListViewModel: ObservableObject {
 	@Published var groupListSections = [GroupListSection]()
@@ -26,6 +27,21 @@ final class SidebarListViewModel: ObservableObject {
 		} catch {
 			completion(error)
 		}
+	}
+
+	func dragItems(for groupListRow: GroupListRow) -> NSItemProvider? {
+		guard let contacts = try? groupListRow.fetchContacts() else { return nil }
+
+		let itemProvider = NSItemProvider()
+
+		if let data = try? CNContactVCardSerialization.data(with: contacts) {
+			itemProvider.registerDataRepresentation(forTypeIdentifier: kUTTypeVCard as String, visibility: .all) { completion in
+				completion(data, nil)
+				return nil
+			}
+		}
+
+		return itemProvider
 	}
 
 	func activityItems(for groupListRow: GroupListRow) -> [Any]? {
