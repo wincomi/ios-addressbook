@@ -17,41 +17,73 @@ struct SidebarList: View {
 
 	var body: some View {
 		List {
-			ForEach(viewModel.groupListSections) { section in
-				Section(header: section.headerText.map { Text($0).padding(.leading) }) {
-					ForEach(section.rows) { groupListRow in
-						SidebarListCell(groupListRow: groupListRow) {
-							coordinator?.select(groupListRow)
-						}.contextMenu {
-							ContextMenuButtons.SendMessageButton(for: groupListRow) { recipients in
-								coordinator?.sendMessage(to: recipients)
-							}
-							ContextMenuButtons.SendMailButton(for: groupListRow) { toRecipients in
-								coordinator?.sendMail(toRecipients: toRecipients)
-							}
-							ContextMenuButtons.ApplicationShortcutItemSettingButton(for: groupListRow) { applicationShortcutItem, isEnabledInAppSettings in
-								if isEnabledInAppSettings {
-									viewModel.removeApplicationShortcutItemFromAppSettings(applicationShortcutItem)
-								} else {
-									viewModel.addApplicationShortcutItemToAppSettings(applicationShortcutItem)
+			switch ContactStore.authrozationStatus {
+			case .authorized:
+				ForEach(viewModel.groupListSections) { section in
+					Section(header: section.headerText.map { Text($0).padding(.leading) }) {
+						ForEach(section.rows) { groupListRow in
+							SidebarListCell(groupListRow: groupListRow) {
+								coordinator?.select(groupListRow)
+							}.contextMenu {
+								ContextMenuButtons.SendMessageButton(for: groupListRow) { recipients in
+									coordinator?.sendMessage(to: recipients)
 								}
+								ContextMenuButtons.SendMailButton(for: groupListRow) { toRecipients in
+									coordinator?.sendMail(toRecipients: toRecipients)
+								}
+								ContextMenuButtons.ApplicationShortcutItemSettingButton(for: groupListRow) { applicationShortcutItem, isEnabledInAppSettings in
+									if isEnabledInAppSettings {
+										viewModel.removeApplicationShortcutItemFromAppSettings(applicationShortcutItem)
+									} else {
+										viewModel.addApplicationShortcutItemToAppSettings(applicationShortcutItem)
+									}
+								}
+								ContextMenuButtons.ShareButton(activityItems: viewModel.activityItems(for: groupListRow) ?? []) { activityItems in
+									coordinator?.presentActivityViewController(activityItems: activityItems)
+								}
+								ContextMenuButtons.RenameButton(for: groupListRow) { group in
+									activeSheet = .updateGroup(group)
+								}
+								ContextMenuButtons.DeleteButton(for: groupListRow) { group in
+									activeActionSheet = .confirmDelete(group)
+								}
+							}.onDrag {
+								viewModel.dragItems(for: groupListRow) ?? NSItemProvider()
 							}
-							ContextMenuButtons.ShareButton(activityItems: viewModel.activityItems(for: groupListRow) ?? []) { activityItems in
-								coordinator?.presentActivityViewController(activityItems: activityItems)
-							}
-							ContextMenuButtons.RenameButton(for: groupListRow) { group in
-								activeSheet = .updateGroup(group)
-							}
-							ContextMenuButtons.DeleteButton(for: groupListRow) { group in
-								activeActionSheet = .confirmDelete(group)
-							}
-						}.onDrag {
-							viewModel.dragItems(for: groupListRow) ?? NSItemProvider()
+						}.onDelete { offsets in
+							guard let groupListRow = offsets.first.map({ section.rows[$0] }),
+								  case .group(let group) = groupListRow.type else { return }
+							activeActionSheet = .confirmDelete(group)
 						}
-					}.onDelete { offsets in
-						guard let groupListRow = offsets.first.map({ section.rows[$0] }),
-							  case .group(let group) = groupListRow.type else { return }
-						activeActionSheet = .confirmDelete(group)
+					}
+				}
+			case .notDetermined:
+				Section(footer: Text(L10n.ContactStoreError.accessNotDeterminedDescription).padding(.leading)) {
+					Button {
+						ContactStore.requestAuthorization { _ in
+							viewModel.update()
+						}
+					} label: {
+						HStack {
+							Spacer()
+							Text(L10n.ContactStoreError.requestPermission)
+							Spacer()
+						}
+					}
+				}
+			default:
+				Section(footer: Text(L10n.ContactStoreError.accessDeniedDescription).padding(.leading)) {
+					Button {
+						guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+						if UIApplication.shared.canOpenURL(url) {
+							UIApplication.shared.open(url, options: [:])
+						}
+					} label: {
+						HStack {
+							Spacer()
+							Text(L10n.ContactStoreError.requestPermission)
+							Spacer()
+						}
 					}
 				}
 			}
