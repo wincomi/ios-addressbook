@@ -19,6 +19,7 @@
 		0BA71E4B2588FBE60007F9C9 /* CreateGroupFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA71E4A2588FBE60007F9C9 /* CreateGroupFormViewModel.swift */; };
 		0BBCB5952588CCB50031EE49 /* SidebarListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCB5942588CCB50031EE49 /* SidebarListCell.swift */; };
 		0BBDE181258F89A1008CA758 /* SiderbarList+RequestPermissionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBDE180258F89A1008CA758 /* SiderbarList+RequestPermissionSection.swift */; };
+		0BBDE18B258F8EA5008CA758 /* View+onDragCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBDE18A258F8EA5008CA758 /* View+onDragCompatible.swift */; };
 		84F6580C256A6F3B005B3B0A /* EditGroupsFormRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6580B256A6F3B005B3B0A /* EditGroupsFormRowView.swift */; };
 		84F65812256A72DC005B3B0A /* ApplicationShortcutItemSettingFormRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F65811256A72DC005B3B0A /* ApplicationShortcutItemSettingFormRowView.swift */; };
 		84F65818256A76B7005B3B0A /* ContactMenuSettingFormRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F65817256A76B7005B3B0A /* ContactMenuSettingFormRowView.swift */; };
@@ -138,6 +139,7 @@
 		0BA71E4A2588FBE60007F9C9 /* CreateGroupFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupFormViewModel.swift; sourceTree = "<group>"; };
 		0BBCB5942588CCB50031EE49 /* SidebarListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarListCell.swift; sourceTree = "<group>"; };
 		0BBDE180258F89A1008CA758 /* SiderbarList+RequestPermissionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SiderbarList+RequestPermissionSection.swift"; sourceTree = "<group>"; };
+		0BBDE18A258F8EA5008CA758 /* View+onDragCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+onDragCompatible.swift"; sourceTree = "<group>"; };
 		84F6580B256A6F3B005B3B0A /* EditGroupsFormRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupsFormRowView.swift; sourceTree = "<group>"; };
 		84F65811256A72DC005B3B0A /* ApplicationShortcutItemSettingFormRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationShortcutItemSettingFormRowView.swift; sourceTree = "<group>"; };
 		84F65817256A76B7005B3B0A /* ContactMenuSettingFormRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactMenuSettingFormRowView.swift; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 		91CF2FE8251B68680009686C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				0BBDE18A258F8EA5008CA758 /* View+onDragCompatible.swift */,
 				916688B525368BB600EC6A3F /* Binding+Extension.swift */,
 				91B1F355251E384C000D2CF2 /* SKError+Extension.swift */,
 				91FA58BF2514D2D900247E4D /* SKProduct+Extension.swift */,
@@ -762,6 +765,7 @@
 				F74583DA2545A86F00AF9483 /* SharedPersistentContainer.xcdatamodeld in Sources */,
 				F755A879248F3D0200DB9717 /* RootSplitViewController.swift in Sources */,
 				F755A8A5248F60D400DB9717 /* RootCoordinator.swift in Sources */,
+				0BBDE18B258F8EA5008CA758 /* View+onDragCompatible.swift in Sources */,
 				F7F17CD92546C2E5003C1150 /* CallDirectoryEntryList.swift in Sources */,
 				91FA58C02514D2D900247E4D /* SKProduct+Extension.swift in Sources */,
 				0B953F1B25807F0B00417250 /* SidebarList.swift in Sources */,
@@ -833,10 +837,10 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CallDirectory/CallDirectory.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.2.0.3;
+				CURRENT_PROJECT_VERSION = 1.2.0.4;
 				DEVELOPMENT_TEAM = M4FL5MH4DS;
 				INFOPLIST_FILE = CallDirectory/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -856,10 +860,10 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CallDirectory/CallDirectory.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.2.0.3;
+				CURRENT_PROJECT_VERSION = 1.2.0.4;
 				DEVELOPMENT_TEAM = M4FL5MH4DS;
 				INFOPLIST_FILE = CallDirectory/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -926,7 +930,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -982,7 +986,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -999,10 +1003,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = addressbook/addressbook.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.2.0.3;
+				CURRENT_PROJECT_VERSION = 1.2.0.4;
 				DEVELOPMENT_TEAM = M4FL5MH4DS;
 				INFOPLIST_FILE = addressbook/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1022,10 +1026,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = addressbook/addressbook.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.2.0.3;
+				CURRENT_PROJECT_VERSION = 1.2.0.4;
 				DEVELOPMENT_TEAM = M4FL5MH4DS;
 				INFOPLIST_FILE = addressbook/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

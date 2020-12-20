@@ -24,29 +24,8 @@ struct SidebarList: View {
 							SidebarListCell(groupListRow: groupListRow) {
 								coordinator?.select(groupListRow)
 							}.contextMenu {
-								ContextMenuButtons.SendMessageButton(for: groupListRow) { recipients in
-									coordinator?.sendMessage(to: recipients)
-								}
-								ContextMenuButtons.SendMailButton(for: groupListRow) { toRecipients in
-									coordinator?.sendMail(toRecipients: toRecipients)
-								}
-								ContextMenuButtons.ApplicationShortcutItemSettingButton(for: groupListRow) { applicationShortcutItem, isEnabledInAppSettings in
-									if isEnabledInAppSettings {
-										viewModel.removeApplicationShortcutItemFromAppSettings(applicationShortcutItem)
-									} else {
-										viewModel.addApplicationShortcutItemToAppSettings(applicationShortcutItem)
-									}
-								}
-								ContextMenuButtons.ShareButton(activityItems: viewModel.activityItems(for: groupListRow) ?? []) { activityItems in
-									coordinator?.presentActivityViewController(activityItems: activityItems)
-								}
-								ContextMenuButtons.RenameButton(for: groupListRow) { group in
-									activeSheet = .updateGroup(group)
-								}
-								ContextMenuButtons.DeleteButton(for: groupListRow) { group in
-									activeActionSheet = .confirmDelete(group)
-								}
-							}.onDrag {
+								contextMenuItems(for: groupListRow)
+							}.onDragCompatible {
 								viewModel.dragItems(for: groupListRow) ?? NSItemProvider()
 							}.deleteDisabled(!isDeletable(groupListRow: groupListRow))
 						}.onDelete { offsets in
@@ -103,43 +82,9 @@ struct SidebarList: View {
 		.modifier(CompatibleInsetGroupedListStyle())
 		.navigationBarTitle(L10n.groups)
 		.navigationBarItems(trailing: createButton)
-		.sheet(item: $activeSheet) { item in
-			switch item {
-			case .newGroup:
-				NavigationView {
-					CreateGroupForm(coordinator: coordinator)
-				}.navigationViewStyle(StackNavigationViewStyle())
-			case .updateGroup(let group):
-				NavigationView {
-					UpdateGroupForm(coordinator: coordinator, viewModel: UpdateGroupFormViewModel(group: group))
-				}.navigationViewStyle(StackNavigationViewStyle())
-			}
-		}
-		.alert(item: $activeAlert) { item in
-			switch item {
-			case .alertItem(let alertItem):
-				return Alert(title: Text(alertItem.title), message: alertItem.message.map { Text($0) }, dismissButton: .cancel())
-			}
-		}
-		.actionSheet(item: $activeActionSheet) { item in
-			switch item {
-			case .confirmDelete(let group):
-				return ActionSheet(
-					title: Text(L10n.GroupList.ConfirmDeleteAlert.title(group.name)),
-					message: Text(L10n.GroupList.ConfirmDeleteAlert.message(group.name)),
-					buttons: [
-						.destructive(Text(L10n.delete), action: {
-							viewModel.delete(group) { error in
-								if let error = error {
-									activeAlert = .alertItem(AlertItem(error: error))
-								}
-							}
-						}),
-						.cancel()
-					]
-				)
-			}
-		}
+		.sheet(item: $activeSheet, content: sheet(item:))
+		.alert(item: $activeAlert, content: alert(item:))
+		.actionSheet(item: $activeActionSheet, content: actionSheet(item:))
 		.introspectViewController { vc in
 			vc.navigationController?.navigationBar.prefersLargeTitles = true
 			// Fix prefersLargeTitles not updating until scroll
@@ -147,7 +92,9 @@ struct SidebarList: View {
 		}
 	}
 
-	func isDeletable(groupListRow: GroupListRow) -> Bool {
+	// MARK: -
+
+	private func isDeletable(groupListRow: GroupListRow) -> Bool {
 		switch groupListRow.type {
 		case .allContacts:
 			return false
@@ -183,6 +130,31 @@ struct SidebarList: View {
 			}
 		}
 	}
+
+	@ViewBuilder func contextMenuItems(for groupListRow: GroupListRow) -> some View {
+		ContextMenuButtons.SendMessageButton(for: groupListRow) { recipients in
+			coordinator?.sendMessage(to: recipients)
+		}
+		ContextMenuButtons.SendMailButton(for: groupListRow) { toRecipients in
+			coordinator?.sendMail(toRecipients: toRecipients)
+		}
+		ContextMenuButtons.ApplicationShortcutItemSettingButton(for: groupListRow) { applicationShortcutItem, isEnabledInAppSettings in
+			if isEnabledInAppSettings {
+				viewModel.removeApplicationShortcutItemFromAppSettings(applicationShortcutItem)
+			} else {
+				viewModel.addApplicationShortcutItemToAppSettings(applicationShortcutItem)
+			}
+		}
+		ContextMenuButtons.ShareButton(activityItems: viewModel.activityItems(for: groupListRow) ?? []) { activityItems in
+			coordinator?.presentActivityViewController(activityItems: activityItems)
+		}
+		ContextMenuButtons.RenameButton(for: groupListRow) { group in
+			activeSheet = .updateGroup(group)
+		}
+		ContextMenuButtons.DeleteButton(for: groupListRow) { group in
+			activeActionSheet = .confirmDelete(group)
+		}
+	}
 }
 
 extension SidebarList {
@@ -196,6 +168,19 @@ extension SidebarList {
 		}
 	}
 
+	@ViewBuilder private func sheet(item: ActiveSheet) -> some View {
+		switch item {
+		case .newGroup:
+			NavigationView {
+				CreateGroupForm(coordinator: coordinator)
+			}.navigationViewStyle(StackNavigationViewStyle())
+		case .updateGroup(let group):
+			NavigationView {
+				UpdateGroupForm(coordinator: coordinator, viewModel: UpdateGroupFormViewModel(group: group))
+			}.navigationViewStyle(StackNavigationViewStyle())
+		}
+	}
+
 	// MARK: - ActiveAlert
 	enum ActiveAlert: Hashable, Identifiable {
 		case alertItem(AlertItem)
@@ -205,12 +190,39 @@ extension SidebarList {
 		}
 	}
 
+	private func alert(item: ActiveAlert) -> Alert {
+		switch item {
+		case .alertItem(let alertItem):
+			return Alert(title: Text(alertItem.title), message: alertItem.message.map { Text($0) }, dismissButton: .cancel())
+		}
+	}
+
 	// MARK: - ActiveActionSheet
 	enum ActiveActionSheet: Hashable, Identifiable {
 		case confirmDelete(CNGroup)
 
 		var id: Int {
 			hashValue
+		}
+	}
+
+	private func actionSheet(item: ActiveActionSheet) -> ActionSheet {
+		switch item {
+		case .confirmDelete(let group):
+			return ActionSheet(
+				title: Text(L10n.GroupList.ConfirmDeleteAlert.title(group.name)),
+				message: Text(L10n.GroupList.ConfirmDeleteAlert.message(group.name)),
+				buttons: [
+					.destructive(Text(L10n.delete), action: {
+						viewModel.delete(group) { error in
+							if let error = error {
+								activeAlert = .alertItem(AlertItem(error: error))
+							}
+						}
+					}),
+					.cancel()
+				]
+			)
 		}
 	}
 }
