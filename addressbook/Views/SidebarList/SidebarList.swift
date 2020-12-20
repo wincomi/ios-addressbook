@@ -49,7 +49,7 @@ struct SidebarList: View {
 								}
 							}.onDrag {
 								viewModel.dragItems(for: groupListRow) ?? NSItemProvider()
-							}
+							}.deleteDisabled(!isDeletable(groupListRow: groupListRow))
 						}.onDelete { offsets in
 							guard let groupListRow = offsets.first.map({ section.rows[$0] }),
 								  case .group(let group) = groupListRow.type else { return }
@@ -174,6 +174,15 @@ struct SidebarList: View {
 			vc.navigationController?.navigationBar.prefersLargeTitles = true
 			// Fix prefersLargeTitles not updating until scroll
 			vc.navigationController?.navigationBar.sizeToFit()
+		}
+	}
+
+	func isDeletable(groupListRow: GroupListRow) -> Bool {
+		switch groupListRow.type {
+		case .allContacts:
+			return false
+		case .group:
+			return true
 		}
 	}
 

@@ -9,15 +9,6 @@ struct SidebarListCell: View {
 	let groupListRow: GroupListRow
 	var action: (() -> Void)
 
-	var isDeletable: Bool {
-		switch groupListRow.type {
-		case .allContacts:
-			return false
-		case .group:
-			return true
-		}
-	}
-
 	var body: some View {
 		NavigationButton(action: action) {
 			CompatibleLabel {
@@ -33,7 +24,7 @@ struct SidebarListCell: View {
 						.font(.system(size: 20))
 				}
 			}
-		}.deleteDisabled(!isDeletable)
+		}
 	}
 }
 
