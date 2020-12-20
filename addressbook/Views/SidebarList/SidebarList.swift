@@ -17,8 +17,7 @@ struct SidebarList: View {
 
 	var body: some View {
 		List {
-			switch ContactStore.authrozationStatus {
-			case .authorized:
+			RequestPermissionSection(notDeterminedAction: viewModel.update) {
 				ForEach(viewModel.groupListSections) { section in
 					Section(header: section.headerText.map { Text($0).padding(.leading) }) {
 						ForEach(section.rows) { groupListRow in
@@ -54,35 +53,6 @@ struct SidebarList: View {
 							guard let groupListRow = offsets.first.map({ section.rows[$0] }),
 								  case .group(let group) = groupListRow.type else { return }
 							activeActionSheet = .confirmDelete(group)
-						}
-					}
-				}
-			case .notDetermined:
-				Section(footer: Text(L10n.ContactStoreError.accessNotDeterminedDescription).padding(.leading)) {
-					Button {
-						ContactStore.requestAuthorization { _ in
-							viewModel.update()
-						}
-					} label: {
-						HStack {
-							Spacer()
-							Text(L10n.ContactStoreError.requestPermission)
-							Spacer()
-						}
-					}
-				}
-			default:
-				Section(footer: Text(L10n.ContactStoreError.accessDeniedDescription).padding(.leading)) {
-					Button {
-						guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
-						if UIApplication.shared.canOpenURL(url) {
-							UIApplication.shared.open(url, options: [:])
-						}
-					} label: {
-						HStack {
-							Spacer()
-							Text(L10n.ContactStoreError.requestPermission)
-							Spacer()
 						}
 					}
 				}
