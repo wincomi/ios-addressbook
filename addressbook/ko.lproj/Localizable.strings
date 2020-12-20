@@ -104,6 +104,7 @@ ApplicationShortcutItemsSettingForm.AddingSection.footerText = "연락처와 그
 ApplicationShortcutItemsSettingForm.Section.footerText = "위에서부터 4개까지 표시됩니다.";
 
 // MARK: - ContactMenuSettingForm
+ContactMenuSettingForm.title = "연락처 메뉴 커스텀";
 ContactMenuSettingForm.navigationTitle = "연락처 메뉴 커스텀";
 ContactMenuSettingForm.Section.footerText = "연락처를 길게 누르면 선택한 연락처 메뉴를 볼 수 있습니다.";
 ContactMenuSettingForm.OptionsSection.footerText = "항상 첫 메뉴에 모든 휴대폰 번호와 이메일 주소를 메뉴를 보여줍니다.";
