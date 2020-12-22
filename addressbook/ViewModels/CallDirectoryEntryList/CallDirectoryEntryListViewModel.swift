@@ -3,18 +3,17 @@
 //  addressbook
 //
 
-import Combine
 import SwiftUI
 import CallKit
-import CoreData
 
 final class CallDirectoryEntryListViewModel: ObservableObject {
 	@Published var callDirectoryManagerEnabledStatus: CXCallDirectoryManager.EnabledStatus?
 	@Published var callDirectoryEntries: [CallDirectoryEntry] = []
 
-	let storageController = StorageController.shared
-	var entryType: CallDirectoryEntry.EntryType
-	
+	private let storageController = StorageController.shared
+	let didChange = StorageController.didChange
+	let entryType: CallDirectoryEntry.EntryType
+
 	var navigationTitle: String {
 		switch entryType {
 		case .identification:
@@ -23,22 +22,14 @@ final class CallDirectoryEntryListViewModel: ObservableObject {
 			return L10n.CallDirectoryEntryList.BlockingType.navigationTitle
 		}
 	}
-	
-	private var cancellables = Set<AnyCancellable>()
-	
+
 	init(type: CallDirectoryEntry.EntryType) {
 		self.entryType = type
-		
-		NotificationCenter.default
-			.publisher(for: .NSManagedObjectContextDidSave)
-			.sink { notification in
-				self.refresh()
-			}.store(in: &cancellables)
 	}
 
-	func refresh() {
+	func update() {
 		#if DEBUG
-		callDirectoryManagerEnabledStatus = .enabled
+		self.callDirectoryManagerEnabledStatus = .enabled
 		#else
 		CXCallDirectoryManager.sharedInstance.getEnabledStatusForExtension(withIdentifier: AppSettings.callDirectoryBundleIdentifier) { (enabledStatus, error) in
 			DispatchQueue.main.async {
@@ -46,9 +37,9 @@ final class CallDirectoryEntryListViewModel: ObservableObject {
 			}
 		}
 		#endif
-		
-		if case .enabled = callDirectoryManagerEnabledStatus {
-			callDirectoryEntries = storageController.fetchCallDirectoryEntries(type: entryType)
+
+		if case .enabled = self.callDirectoryManagerEnabledStatus {
+			self.callDirectoryEntries = storageController.fetchCallDirectoryEntries(type: entryType)
 		}
 	}
 
@@ -56,7 +47,7 @@ final class CallDirectoryEntryListViewModel: ObservableObject {
 		StorageController.shared.remove(callDirectoryEntry)
 	}
 
-	private func reloadCallDirectoryExtension() {
+	func reloadCallDirectoryExtension() {
 		let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
 		sceneDelegate?.reloadCallDirectoryExtension()
 	}

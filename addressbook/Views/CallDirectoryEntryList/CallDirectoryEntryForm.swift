@@ -6,35 +6,58 @@
 import SwiftUI
 
 struct CallDirectoryEntryForm: View {
-	@Environment(\.presentationMode) var presentationMode
-	@State private var name = ""
-	@State private var phoneNumberString = ""
+	let formType: FormType
+	let entryType: CallDirectoryEntry.EntryType
 
-	var formType: FormType
-	var entryType: CallDirectoryEntry.EntryType
+	var navigationTitle: String {
+		switch formType {
+		case .create:
+			return L10n.CallDirectoryEntryForm.AddType.navigationTitle
+		case .update:
+			return L10n.CallDirectoryEntryForm.EditType.navigationTitle
+		}
+	}
 
 	var isFormValid: Bool {
 		!name.isEmpty && phoneNumberString.count >= 4 && (Int64(phoneNumberString) != nil)
 	}
 
+	@Environment(\.presentationMode) var presentationMode
+	@ObservedObject var viewModel = CallDirectoryEntryFormViewModel()
+
+	@State private var name = ""
+	@State private var phoneNumberString = ""
+
 	var body: some View {
 		Form {
 			Section(
-				header: Text(L10n.CallDirectoryEntryForm.name).padding(.leading),
+				header: Text(L10n.CallDirectoryEntryForm.name).padding(.horizontal),
 				footer: nameSectionFooter
 			) {
 				TextField(L10n.CallDirectoryEntryForm.name, text: $name)
+					.introspectTextField { textField in
+						textField.clearButtonMode = .whileEditing
+						textField.becomeFirstResponder()
+					}
 			}
+
 			Section(
-				header: Text(L10n.CallDirectoryEntryForm.phoneNumber).padding(.leading),
-				footer: Text(L10n.CallDirectoryEntryForm.PhoneNumberSection.footer).padding(.leading)
+				header: Text(L10n.CallDirectoryEntryForm.phoneNumber).padding(.horizontal),
+				footer: Text(L10n.CallDirectoryEntryForm.PhoneNumberSection.footer).padding(.horizontal)
 			) {
 				TextField(L10n.CallDirectoryEntryForm.phoneNumber, text: $phoneNumberString)
 					.keyboardType(.numberPad)
+					.introspectTextField { textField in
+						textField.clearButtonMode = .whileEditing
+					}
 			}
-			if case .edit(let callDirectoryEntry) = formType {
+
+			switch formType {
+			case .create:
+				EmptyView()
+			case .update(let callDirectoryEntry):
 				Button {
-					StorageController.shared.remove(callDirectoryEntry)
+					viewModel.remove(callDirectoryEntry)
 					presentationMode.wrappedValue.dismiss()
 				} label: {
 					HStack {
@@ -46,13 +69,13 @@ struct CallDirectoryEntryForm: View {
 				}
 			}
 		}
-		.navigationBarTitle(formType.navigationTitle)
+		.navigationBarTitle(navigationTitle)
 		.navigationBarItems(leading: cancelButton, trailing: doneButton)
 		.onAppear {
 			switch formType {
-			case .add:
+			case .create:
 				break
-			case .edit(let callDirectoryEntry):
+			case .update(let callDirectoryEntry):
 				self.name = callDirectoryEntry.name ?? ""
 				self.phoneNumberString = String(callDirectoryEntry.phoneNumber)
 			}
@@ -78,56 +101,32 @@ struct CallDirectoryEntryForm: View {
 
 	private var doneButton: some View {
 		Button {
-			saveCallDirectoryEntry()
+			guard isFormValid, let phoneNumber = Int64(phoneNumberString) else { return }
+			switch formType {
+			case .create:
+				viewModel.createCallDirectoryEntry(entryType: entryType, name: name, phoneNumber: phoneNumber)
+			case .update(let callDirectoryEntry):
+				viewModel.update(callDirectoryEntry, entryType: entryType, name: name, phoneNumber: phoneNumber)
+			}
 			presentationMode.wrappedValue.dismiss()
 		} label: {
 			switch formType {
-			case .add:
+			case .create:
 				Text(L10n.add)
 					.bold()
-			case .edit:
+			case .update:
 				Text(L10n.done)
 					.bold()
 			}
 		}.disabled(!isFormValid)
-	}
-
-	private func saveCallDirectoryEntry() {
-		guard isFormValid, let phoneNumber = Int64(phoneNumberString) else { return }
-
-		switch formType {
-		case .add:
-			StorageController.shared
-				.createCallDirectoryEntry(
-					isBlocked: entryType.isBlocked,
-					name: name,
-					phoneNumber: phoneNumber
-				)
-		case .edit(let callDirectoryEntry):
-			StorageController.shared
-				.edit(callDirectoryEntry) {
-					$0.isBlocked = entryType.isBlocked
-					$0.name = name
-					$0.phoneNumber = phoneNumber
-				}
-		}
 	}
 }
 
 // MARK: - FormType
 extension CallDirectoryEntryForm {
 	enum FormType: Hashable, Identifiable {
-		case add
-		case edit(CallDirectoryEntry)
-
-		var navigationTitle: String {
-			switch self {
-			case .add:
-				return L10n.CallDirectoryEntryForm.AddType.navigationTitle
-			case .edit:
-				return L10n.CallDirectoryEntryForm.EditType.navigationTitle
-			}
-		}
+		case create
+		case update(CallDirectoryEntry)
 
 		// MARK: - Identifiable
 		var id: Int {

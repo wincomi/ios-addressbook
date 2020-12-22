@@ -7,6 +7,7 @@ import CoreData
 
 final class StorageController {
 	static let shared = StorageController()
+	static let didChange = NotificationCenter.default.publisher(for: .NSManagedObjectContextDidSave).map { _ in }
 
 	private init() {}
 

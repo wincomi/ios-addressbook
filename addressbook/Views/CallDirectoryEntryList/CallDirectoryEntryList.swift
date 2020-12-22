@@ -8,7 +8,7 @@ import CallKit
 
 struct CallDirectoryEntryList: View {
 	@ObservedObject var viewModel: CallDirectoryEntryListViewModel
-	@State private var presentedCallDirectoryFormType: CallDirectoryEntryForm.FormType?
+	@State private var formType: CallDirectoryEntryForm.FormType?
 
 	init(type: CallDirectoryEntry.EntryType) {
 		self.viewModel = CallDirectoryEntryListViewModel(type: type)
@@ -20,44 +20,36 @@ struct CallDirectoryEntryList: View {
 			case .enabled:
 				if !viewModel.callDirectoryEntries.isEmpty {
 					List {
-						Section(footer: Text("\(descriptionText(for: viewModel.entryType)) \(L10n.CallDirectoryEntryList.sectionFooter)")) {
+						Section(footer: Text("\(descriptionText(for: viewModel.entryType)) \(L10n.CallDirectoryEntryList.sectionFooter)").padding(.horizontal)) {
 							ForEach(viewModel.callDirectoryEntries) { callDirectoryEntry in
 								Button {
-									presentedCallDirectoryFormType = .edit(callDirectoryEntry)
+									formType = .update(callDirectoryEntry)
 								} label: {
-									CallDirectoryEntryCell(callDirectoryEntry: callDirectoryEntry)
+									CallDirectoryEntryListCell(callDirectoryEntry: callDirectoryEntry)
 								}
 							}.onDelete(perform: delete(at:))
 						}
 					}.modifier(CompatibleInsetGroupedListStyle())
 				} else {
-					ZStack {
-						Color(UIColor.systemGroupedBackground)
-							.edgesIgnoringSafeArea(.all)
-						EmptyDataView(
-							title: L10n.CallDirectoryEntryList.EmptyDataView.title,
-							description: descriptionText(for: viewModel.entryType)
-						)
-					}
+					emptyDataView
 				}
 			case nil:
 				EmptyView()
 			default:
-				CallDirectoryManagerDisabledView()
+				DisabledStatusView()
+			}
+		}
+		.navigationBarTitle(viewModel.navigationTitle)
+		.navigationBarItems(trailing: addButton)
+		.onAppear(perform: viewModel.update)
+		.onReceive(viewModel.didChange, perform: viewModel.update)
+		.sheet(item: $formType) { formType in
+			NavigationView {
+				CallDirectoryEntryForm(formType: formType, entryType: viewModel.entryType)
 			}
 		}
 		.introspectViewController { vc in
 			vc.navigationController?.navigationBar.prefersLargeTitles = true
-			// Fix prefersLargeTitles not updating until scroll
-			vc.navigationController?.navigationBar.sizeToFit()
-		}
-		.navigationBarTitle(viewModel.navigationTitle)
-		.navigationBarItems(trailing: addButton)
-		.onAppear(perform: viewModel.refresh)
-		.sheet(item: $presentedCallDirectoryFormType) { callDirectoryFormType in
-			NavigationView {
-				CallDirectoryEntryForm(formType: callDirectoryFormType, entryType: viewModel.entryType)
-			}
 		}
 	}
 
@@ -72,7 +64,7 @@ struct CallDirectoryEntryList: View {
 
 	private var addButton: some View {
 		Button {
-			presentedCallDirectoryFormType = .add
+			formType = .create
 		} label: {
 			Image(systemName: "plus")
 				.font(.system(size: 20))
@@ -86,9 +78,19 @@ struct CallDirectoryEntryList: View {
 			viewModel.remove(callDirectoryEntry)
 		}
 	}
+
+	private var emptyDataView: some View {
+		ZStack {
+			Color(UIColor.systemGroupedBackground)
+				.edgesIgnoringSafeArea(.all)
+			EmptyDataView(
+				title: L10n.CallDirectoryEntryList.EmptyDataView.title,
+				description: descriptionText(for: viewModel.entryType)
+			)
+		}
+	}
 }
 
-#if DEBUG
 struct CallDirectoryEntryList_Previews: PreviewProvider {
 	static var previews: some View {
 		NavigationView {
@@ -96,6 +98,3 @@ struct CallDirectoryEntryList_Previews: PreviewProvider {
 		}
 	}
 }
-#endif
-
-
