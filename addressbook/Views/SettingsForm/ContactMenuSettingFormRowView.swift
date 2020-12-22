@@ -56,10 +56,8 @@ struct ContactMenuSettingFormRowView: View {
 	}
 }
 
-#if DEBUG
 struct ContactMenuSettingFormRowView_Previews: PreviewProvider {
 	static var previews: some View {
 		ContactMenuSettingFormRowView(type: .call, selection: .constant(Set<ContactListRow.ContextMenuItemType>())) { }
 	}
 }
-#endif

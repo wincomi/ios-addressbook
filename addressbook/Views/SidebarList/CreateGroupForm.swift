@@ -20,8 +20,8 @@ struct CreateGroupForm: View {
 	var body: some View {
 		Form {
 			Section(
-				header: Text(L10n.GroupList.CreateGroupAlert.TextField.placeholder).padding(.leading),
-				footer: Text(L10n.GroupList.CreateGroupAlert.message).padding(.leading)
+				header: Text(L10n.GroupList.CreateGroupAlert.TextField.placeholder).padding(.horizontal),
+				footer: Text(L10n.GroupList.CreateGroupAlert.message).padding(.horizontal)
 			) {
 				TextField(L10n.GroupList.CreateGroupAlert.TextField.placeholder, text: $groupName)
 					.introspectTextField { textField in
@@ -31,8 +31,8 @@ struct CreateGroupForm: View {
 			}
 			if !viewModel.containers.isEmpty {
 				Section(
-					header: Text(L10n.CreateGroupForm.AccountsSection.header).padding(.leading),
-					footer: Text(L10n.CreateGroupForm.AccountsSection.footer).padding(.leading)
+					header: Text(L10n.CreateGroupForm.AccountsSection.header).padding(.horizontal),
+					footer: Text(L10n.CreateGroupForm.AccountsSection.footer).padding(.horizontal)
 				) {
 					ForEach(viewModel.containers, id: \.identifier) { container in
 						Button {

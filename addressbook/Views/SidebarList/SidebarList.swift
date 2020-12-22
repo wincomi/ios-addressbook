@@ -19,14 +19,14 @@ struct SidebarList: View {
 		List {
 			RequestPermissionSection(notDeterminedAction: viewModel.update) {
 				ForEach(viewModel.groupListSections) { section in
-					Section(header: section.headerText.map { Text($0).padding(.leading) }) {
+					Section(header: section.headerText.map { Text($0).padding(.horizontal) }) {
 						ForEach(section.rows) { groupListRow in
 							SidebarListCell(groupListRow: groupListRow) {
 								coordinator?.select(groupListRow)
 							}.contextMenu {
 								contextMenuItems(for: groupListRow)
 							}.onDragCompatible {
-								viewModel.dragItems(for: groupListRow) ?? NSItemProvider()
+								viewModel.itemProvider(for: groupListRow) ?? NSItemProvider()
 							}.deleteDisabled(!isDeletable(groupListRow: groupListRow))
 						}.onDelete { offsets in
 							guard let groupListRow = offsets.first.map({ section.rows[$0] }),
@@ -38,7 +38,7 @@ struct SidebarList: View {
 			}
 
 			// MARK: - Utilities Section
-			Section(header: Text(L10n.SidebarList.utilities).padding(.leading)) {
+			Section(header: Text(L10n.SidebarList.utilities).padding(.horizontal)) {
 				NavigationButton {
 					coordinator?.presentCallDirectoryEntryList(type: .identification)
 				} label: {
@@ -176,7 +176,7 @@ extension SidebarList {
 			}.navigationViewStyle(StackNavigationViewStyle())
 		case .updateGroup(let group):
 			NavigationView {
-				UpdateGroupForm(coordinator: coordinator, viewModel: UpdateGroupFormViewModel(group: group))
+				UpdateGroupForm(coordinator: coordinator, viewModel: UpdateGroupFormViewModel(currentGroup: group))
 			}.navigationViewStyle(StackNavigationViewStyle())
 		}
 	}

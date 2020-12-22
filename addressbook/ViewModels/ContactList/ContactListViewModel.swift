@@ -89,7 +89,7 @@ final class ContactListViewModel: ObservableObject {
 
 	// MARK: - Fetching List State
 	private func fetchListState() -> ContactListState {
-		switch ContactStore.authrozationStatus {
+		switch ContactStore.authorizationStatus {
 		case .authorized:
 			do {
 				let contacts: [CNContact] = try {

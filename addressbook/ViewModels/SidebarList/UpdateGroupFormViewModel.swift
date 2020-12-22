@@ -9,8 +9,8 @@ import Contacts
 final class UpdateGroupFormViewModel: ObservableObject {
 	let currentGroup: CNGroup
 
-	init(group: CNGroup) {
-		self.currentGroup = group
+	init(currentGroup: CNGroup) {
+		self.currentGroup = currentGroup
 	}
 
 	func updateGroup(withGroupName groupName: String, completion: ((Error?) -> Void)) {

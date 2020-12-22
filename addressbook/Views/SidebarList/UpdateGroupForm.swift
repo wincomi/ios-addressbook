@@ -17,7 +17,7 @@ struct UpdateGroupForm: View {
 
 	var body: some View {
 		Form {
-			Section(header: Text(L10n.GroupList.CreateGroupAlert.TextField.placeholder).padding(.leading)) {
+			Section(header: Text(L10n.GroupList.CreateGroupAlert.TextField.placeholder).padding(.horizontal)) {
 				TextField(viewModel.currentGroup.name, text: $groupName)
 					.introspectTextField { textField in
 						textField.clearButtonMode = .whileEditing

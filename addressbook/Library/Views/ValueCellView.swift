@@ -38,7 +38,6 @@ struct ValueCellView: View {
 	}
 }
 
-#if DEBUG
 struct ValueCellView_Previews: PreviewProvider {
 	struct SampleRow_Preview: RowRepresentable {
 		let text: String = "text"
@@ -52,7 +51,6 @@ struct ValueCellView_Previews: PreviewProvider {
 			.previewLayout(.sizeThatFits)
 	}
 }
-#endif
 
 extension UIImage {
 	func colored(_ color: UIColor) -> UIImage {

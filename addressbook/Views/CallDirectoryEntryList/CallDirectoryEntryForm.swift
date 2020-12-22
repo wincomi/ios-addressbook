@@ -85,7 +85,7 @@ struct CallDirectoryEntryForm: View {
 	@ViewBuilder private var nameSectionFooter: some View {
 		switch entryType {
 		case .identification:
-			Text(L10n.CallDirectoryEntryForm.NameSection.footer).padding(.leading)
+			Text(L10n.CallDirectoryEntryForm.NameSection.footer).padding(.horizontal)
 		case .blocking:
 			EmptyView()
 		}

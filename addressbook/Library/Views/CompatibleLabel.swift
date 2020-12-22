@@ -44,11 +44,9 @@ struct CompatibleLabel<Title: View, Icon: View>: View {
 	}
 }
 
-#if DEBUG
 struct CompatibleLabel_Previews: PreviewProvider {
 	static var previews: some View {
 		CompatibleLabel(L10n.AppSettings.UserInterfaceStyle.title, systemImage: "moon")
 			.previewLayout(.sizeThatFits)
 	}
 }
-#endif

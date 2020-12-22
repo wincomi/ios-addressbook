@@ -11,7 +11,7 @@ final class SidebarListViewModel: ObservableObject {
 	@Published var groupListSections = [GroupListSection]()
 
 	func update() {
-		guard case .authorized = ContactStore.authrozationStatus else { return }
+		guard case .authorized = ContactStore.authorizationStatus else { return }
 
 		do {
 			let containers = try ContactStore.shared.fetchContainers()
@@ -31,16 +31,25 @@ final class SidebarListViewModel: ObservableObject {
 		}
 	}
 
-	func dragItems(for groupListRow: GroupListRow) -> NSItemProvider? {
-		guard let contacts = try? groupListRow.fetchContacts() else { return nil }
+	func add(_ contacts: [CNContact], to group: CNGroup, completion: ((Error?) -> Void)) {
+		do {
+			try contacts.forEach { contact in
+				try ContactStore.shared.add(contact, to: group)
+			}
+			completion(nil)
+		} catch {
+			completion(error)
+		}
+	}
+
+	func itemProvider(for groupListRow: GroupListRow) -> NSItemProvider? {
+		guard let contacts = try? groupListRow.fetchContacts(),
+			  let data = try? CNContactVCardSerialization.data(with: contacts) else { return nil }
 
 		let itemProvider = NSItemProvider()
-
-		if let data = try? CNContactVCardSerialization.data(with: contacts) {
-			itemProvider.registerDataRepresentation(forTypeIdentifier: kUTTypeVCard as String, visibility: .all) { completion in
-				completion(data, nil)
-				return nil
-			}
+		itemProvider.registerDataRepresentation(forTypeIdentifier: kUTTypeVCard as String, visibility: .all) { completion in
+			completion(data, nil)
+			return nil
 		}
 
 		return itemProvider
@@ -58,7 +67,7 @@ final class SidebarListViewModel: ObservableObject {
 
 	func addApplicationShortcutItemToAppSettings(_ applicationShortcutItem: ApplicationShortcutItem) {
 		AppSettings.shared.applicationShortcutItems.append(applicationShortcutItem)
-		update()
+		update() // To update context menu in view
 	}
 
 	func removeApplicationShortcutItemFromAppSettings(_ applicationShortcutItem: ApplicationShortcutItem) {

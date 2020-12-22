@@ -29,7 +29,7 @@ final class ContactStore {
 	}
 
 	/// 현재 접근 권한 상태
-	static var authrozationStatus: CNAuthorizationStatus {
+	static var authorizationStatus: CNAuthorizationStatus {
 		CNContactStore.authorizationStatus(for: .contacts)
 	}
 

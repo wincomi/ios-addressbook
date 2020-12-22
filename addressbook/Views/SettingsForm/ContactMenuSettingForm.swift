@@ -14,14 +14,14 @@ struct ContactMenuSettingForm: View {
 
 	var body: some View {
 		List {
-			Section(footer: Text(appSettings.isUnlockedPro ? L10n.ContactMenuSettingForm.Section.footerText : L10n.SettingsForm.onlyForContactsPlusPro).padding(.leading)) {
+			Section(footer: Text(appSettings.isUnlockedPro ? L10n.ContactMenuSettingForm.Section.footerText : L10n.SettingsForm.onlyForContactsPlusPro).padding(.horizontal)) {
 				ForEach(types) { type in
 					ContactMenuSettingFormRowView(type: type, selection: $selection) {
 						appSettings.enabledContactContextMenuItemsTypes = types.filter { selection.contains($0) }
 					}
 				}
 			}
-			Section(footer: Text(L10n.ContactMenuSettingForm.OptionsSection.footerText).padding(.leading)) {
+			Section(footer: Text(L10n.ContactMenuSettingForm.OptionsSection.footerText).padding(.horizontal)) {
 				Toggle(L10n.ContactMenuSettingForm.OptionsSection.isContactContextMenuDisplayInline, isOn: $appSettings.isContactContextMenuDisplayInline)
 			}
 		}
@@ -36,7 +36,6 @@ struct ContactMenuSettingForm: View {
 	}
 }
 
-#if DEBUG
 struct ContactContextMenuSettingForm_Previews: PreviewProvider {
 	static var previews: some View {
 		NavigationView {
@@ -46,4 +45,3 @@ struct ContactContextMenuSettingForm_Previews: PreviewProvider {
 		}
 	}
 }
-#endif
