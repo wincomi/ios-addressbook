@@ -36,7 +36,11 @@ struct CallDirectoryEntryList: View {
 			case nil:
 				EmptyView()
 			default:
-				DisabledStatusView()
+				ZStack {
+					Color(UIColor.systemGroupedBackground)
+						.edgesIgnoringSafeArea(.all)
+					DisabledStatusView()
+				}
 			}
 		}
 		.navigationBarTitle(viewModel.navigationTitle)
