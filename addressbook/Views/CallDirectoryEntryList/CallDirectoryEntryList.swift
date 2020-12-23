@@ -77,10 +77,9 @@ struct CallDirectoryEntryList: View {
 	}
 
 	private func delete(at offsets: IndexSet) {
-		offsets.forEach { offset in
-			let callDirectoryEntry = viewModel.callDirectoryEntries[offset]
-			viewModel.remove(callDirectoryEntry)
-		}
+		guard let offset = offsets.first else { return }
+		let callDirectoryEntry = viewModel.callDirectoryEntries[offset]
+		viewModel.remove(callDirectoryEntry)
 	}
 
 	private var emptyDataView: some View {

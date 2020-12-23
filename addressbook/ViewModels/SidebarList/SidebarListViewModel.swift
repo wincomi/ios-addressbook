@@ -9,9 +9,15 @@ import CoreServices
 
 final class SidebarListViewModel: ObservableObject {
 	@Published var groupListSections = [GroupListSection]()
+	@Published var isAuthorized = false
 
 	func update() {
-		guard case .authorized = ContactStore.authorizationStatus else { return }
+		guard case .authorized = ContactStore.authorizationStatus else {
+			self.isAuthorized = false
+			return
+		}
+
+		self.isAuthorized = true
 
 		do {
 			let containers = try ContactStore.shared.fetchContainers()

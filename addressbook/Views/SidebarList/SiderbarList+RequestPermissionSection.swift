@@ -16,21 +16,29 @@ extension SidebarList {
 				authorizedView()
 			case .notDetermined:
 				Section(footer: Text(L10n.ContactStoreError.accessNotDeterminedDescription).padding(.horizontal)) {
-					Button {
-						ContactStore.requestAuthorization { _ in
-							notDeterminedAction()
-						}
-					} label: {
-						HStack {
-							Spacer()
-							Text(L10n.ContactStoreError.requestPermission)
-							Spacer()
-						}
-					}
+					requestAuthorizationButton
+				}
+			case .restricted:
+				Section(footer: Text(L10n.ContactStoreError.accessRestrictedDescriptoin).padding(.horizontal)) {
+					openSettingsButton
 				}
 			default:
 				Section(footer: Text(L10n.ContactStoreError.accessDeniedDescription).padding(.horizontal)) {
 					openSettingsButton
+				}
+			}
+		}
+
+		private var requestAuthorizationButton: some View {
+			Button {
+				ContactStore.requestAuthorization { _ in
+					notDeterminedAction()
+				}
+			} label: {
+				HStack {
+					Spacer()
+					Text(L10n.ContactStoreError.requestPermission)
+					Spacer()
 				}
 			}
 		}

@@ -120,14 +120,14 @@ struct SidebarList: View {
 				Label(L10n.add, systemImage: "plus")
 					.labelStyle(IconOnlyLabelStyle())
 					.font(.system(size: 20))
-			}
+			}.disabled(!viewModel.isAuthorized)
 		} else {
 			Button {
-				coordinator?.createContact()
+				activeActionSheet = .createButton
 			} label: {
 				Image(systemName: "plus")
 					.font(.system(size: 20))
-			}
+			}.disabled(!viewModel.isAuthorized)
 		}
 	}
 
@@ -200,6 +200,7 @@ extension SidebarList {
 	// MARK: - ActiveActionSheet
 	enum ActiveActionSheet: Hashable, Identifiable {
 		case confirmDelete(CNGroup)
+		case createButton
 
 		var id: Int {
 			hashValue
@@ -219,6 +220,19 @@ extension SidebarList {
 								activeAlert = .alertItem(AlertItem(error: error))
 							}
 						}
+					}),
+					.cancel()
+				]
+			)
+		case .createButton:
+			return ActionSheet(
+				title: Text(L10n.GroupList.CreateGroupAlert.title),
+				buttons: [
+					.default(Text(L10n.GroupList.CreateGroupAlert.title), action: {
+						activeSheet = .newGroup
+					}),
+					.default(Text(L10n.newContact), action: {
+						coordinator?.createContact()
 					}),
 					.cancel()
 				]
