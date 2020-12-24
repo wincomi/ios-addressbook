@@ -9,6 +9,7 @@ import Contacts
 struct SidebarList: View {
 	weak var coordinator: RootCoordinator?
 	@ObservedObject var viewModel = SidebarListViewModel()
+	@Environment(\.editMode) private var editMode
 	@State private var activeSheet: ActiveSheet?
 	@State private var activeAlert: ActiveAlert?
 	@State private var activeActionSheet: ActiveActionSheet?
@@ -26,6 +27,7 @@ struct SidebarList: View {
 							}.onDragCompatible {
 								viewModel.itemProvider(for: groupListRow) ?? NSItemProvider()
 							}.deleteDisabled(!isDeletable(groupListRow))
+							.disabled(editMode?.wrappedValue == .active && !isDeletable(groupListRow))
 						}.onDelete { offsets in
 							guard let groupListRow = offsets.first.map({ section.rows[$0] }),
 								  case .group(let group) = groupListRow.type else { return }
@@ -58,7 +60,7 @@ struct SidebarList: View {
 						Image(systemName: "bell.slash")
 					}
 				}
-			}
+			}.disabled(editMode?.wrappedValue == .active)
 
 			// MARK: - Settings Section
 			Section {
@@ -73,13 +75,13 @@ struct SidebarList: View {
 							.font(.system(size: 20))
 					}
 				}
-			}
+			}.disabled(editMode?.wrappedValue == .active)
 		}
 		.onAppear(perform: viewModel.update)
 		.onReceive(ContactStore.didChange, perform: viewModel.update)
 		.modifier(CompatibleInsetGroupedListStyle())
 		.navigationBarTitle(L10n.groups)
-		.navigationBarItems(trailing: createButton)
+		.navigationBarItems(leading: EditButton(), trailing: createButton)
 		.sheet(item: $activeSheet, content: sheet(item:))
 		.alert(item: $activeAlert, content: alert(item:))
 		.actionSheet(item: $activeActionSheet, content: actionSheet(item:))
