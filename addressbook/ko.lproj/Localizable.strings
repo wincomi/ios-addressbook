@@ -72,30 +72,19 @@ EditGroupsForm.ContactSection.footer = "이 연락처가 아래의 선택된 그
 
 // MARK: - SettingsForm
 SettingsForm.navigationTitle = "설정";
-SettingsForm.onlyForContactsPlusPro = "연락처⁺ 프로 전용 기능입니다.";
-SettingsForm.restorePurchase = "구매 목록 복원";
-SettingsForm.successRestorePurchases = "구매 목록이 복원되었습니다.";
-SettingsForm.nothingToRestore = "복원할 구매 목록이 없습니다.";
-SettingsForm.thankYou = "감사합니다.";
-SettingsForm.thankYouForYourPurchase = "구매해주셔서 감사합니다!";
-SettingsForm.thankYouForYourSupport = "후원해주셔서 감사합니다 :)";
-SettingsForm.UnlockedProSection.message = "모든 기능을 사용할 수 있습니다.";
 SettingsForm.GeneralSection.header = "일반";
 SettingsForm.GeneralSection.showAllContactsOnAppLaunch = "앱 실행시 모든 연락처 보기";
 SettingsForm.GeneralSection.preferNicknames = "별명으로 보기";
 SettingsForm.GeneralSection.displayOrder = "표시 순서";
 SettingsForm.DisplaySection.header = "보기";
 SettingsForm.DisplaySection.showContactImage = "연락처 사진 보기";
-SettingsForm.ProSection.contactsPlusPro = "연락처⁺ 프로";
-SettingsForm.ProSection.purchase = "구매";
-SettingsForm.themeSection.header = "테마";
-SettingsForm.themeSection.customColor = "커스텀 색상";
+SettingsForm.ThemeSection.header = "테마";
+SettingsForm.ThemeSection.customColor = "커스텀 색상";
 SettingsForm.DonationSection.header = "후원";
 SettingsForm.FeedbackSection.header = "피드백";
 SettingsForm.FeedbackSection.rateThisApp = "앱 리뷰하기";
 SettingsForm.FeedbackSection.sendFeedback = "피드백 보내기";
 SettingsForm.FeedbackSection.allApps = "개발자의 모든 앱 보기";
-SettingsForm.UnlockedProSection.message = "연락처⁺ 프로를 구매해주셔서 감사합니다.";
 
 // MARK: - ApplicationShortcutItemsSettingForm
 ApplicationShortcutItemsSettingForm.title = "홈 화면 퀵 액션";

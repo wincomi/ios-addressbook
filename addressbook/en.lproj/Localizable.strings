@@ -72,30 +72,19 @@ EditGroupsForm.ContactSection.footer = "This contact will be displayed in select
 
 // MARK: - SettingsForm
 SettingsForm.navigationTitle = "Settings";
-SettingsForm.onlyForContactsPlusPro = "Only for Contacts⁺ Pro";
-SettingsForm.restorePurchase = "Restore Purchase";
-SettingsForm.successRestorePurchases = "Your purchases have been restored.";
-SettingsForm.nothingToRestore = "Nothing to restore.";
-SettingsForm.thankYou = "Thank you!";
-SettingsForm.thankYouForYourPurchase = "Thank you for your purchase.";
-SettingsForm.thankYouForYourSupport = "Thank you for your support :)";
-SettingsForm.UnlockedProSection.message = "All features have been unlocked.";
 SettingsForm.GeneralSection.header = "General";
 SettingsForm.GeneralSection.showAllContactsOnAppLaunch = "Show contacts on app launch";
 SettingsForm.GeneralSection.displayOrder = "Display Order";
 SettingsForm.GeneralSection.preferNicknames = "Prefer nicknames";
 SettingsForm.DisplaySection.header = "Display";
 SettingsForm.DisplaySection.showContactImage = "Show contact image";
-SettingsForm.ProSection.contactsPlusPro = "Contacts⁺ Pro";
-SettingsForm.ProSection.purchase = "Purchase";
-SettingsForm.themeSection.header = "Theme";
-SettingsForm.themeSection.customColor = "Custom Color";
+SettingsForm.ThemeSection.header = "Theme";
+SettingsForm.ThemeSection.customColor = "Custom Color";
 SettingsForm.DonationSection.header = "Donation";
 SettingsForm.FeedbackSection.header = "Feedback";
 SettingsForm.FeedbackSection.rateThisApp = "Rate this app";
 SettingsForm.FeedbackSection.sendFeedback = "Send Feedback";
 SettingsForm.FeedbackSection.allApps = "All apps from the developer";
-SettingsForm.UnlockedProSection.message = "Thank you for purchasing Contacts⁺ Pro.";
 
 // MARK: - ApplicationShortcutItemsSettingForm
 ApplicationShortcutItemsSettingForm.title = "Home Screen Quick Actions";

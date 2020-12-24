@@ -38,7 +38,9 @@ extension RootCoordinator {
 	}
 
 	func presentSettingsForm() {
-		let settingsForm = SettingsForm(dismissAction: { self.viewController.dismiss(animated: true) })
+		let settingsForm = SettingsForm {
+			self.viewController.dismiss(animated: true)
+		}.environmentObject(AppSettings.shared)
 
 		let vc = UIHostingController(rootView: settingsForm)
 		vc.modalPresentationStyle = .pageSheet

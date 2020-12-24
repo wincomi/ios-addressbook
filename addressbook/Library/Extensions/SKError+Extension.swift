@@ -1,5 +1,0 @@
-//
-//  SKError+Extension.swift
-//  addressbook
-//
-

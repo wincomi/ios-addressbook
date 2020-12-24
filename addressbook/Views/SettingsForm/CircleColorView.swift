@@ -27,6 +27,15 @@ struct CircleColorView: View {
 	}
 }
 
+extension CircleColorView {
+	init(showBorder: Binding<Bool>, uiColor: UIColor) {
+		self._showBorder = showBorder
+		self.buttonColor = Color(uiColor)
+		self.backgroundColor = Color(UIColor.tertiarySystemBackground)
+		self.borderColor = Color(UIColor.separator)
+	}
+}
+
 struct CircleColorView_Previews: PreviewProvider {
 	static var previews: some View {
 		CircleColorView(showBorder: .constant(true), buttonColor: .blue, backgroundColor: .white, borderColor: .secondary)

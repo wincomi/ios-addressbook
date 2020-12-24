@@ -11,6 +11,9 @@
 		0B3EF671258A113300E23F15 /* ContextMenuButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3EF670258A113300E23F15 /* ContextMenuButtons.swift */; };
 		0B3EF675258A1AF200E23F15 /* UpdateGroupForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3EF674258A1AF200E23F15 /* UpdateGroupForm.swift */; };
 		0B3EF679258A1B5D00E23F15 /* UpdateGroupFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3EF678258A1B5D00E23F15 /* UpdateGroupFormViewModel.swift */; };
+		0B452DEB259498000096A4FF /* SortOrderPickerForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B452DEA259498000096A4FF /* SortOrderPickerForm.swift */; };
+		0B452DEF259499560096A4FF /* UserInterfaceStylePickerForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B452DEE259499560096A4FF /* UserInterfaceStylePickerForm.swift */; };
+		0B452DF3259499800096A4FF /* DisplayOrderPickerForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B452DF2259499800096A4FF /* DisplayOrderPickerForm.swift */; };
 		0B91CF4D259231F20084FB93 /* CallDirectoryEntryFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B91CF4C259231F20084FB93 /* CallDirectoryEntryFormViewModel.swift */; };
 		0B953F1B25807F0B00417250 /* SidebarList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B953F1A25807F0B00417250 /* SidebarList.swift */; };
 		0B953F2025807F8900417250 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 0B953F1F25807F8900417250 /* Introspect */; };
@@ -22,8 +25,8 @@
 		0BBDE181258F89A1008CA758 /* SiderbarList+RequestPermissionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBDE180258F89A1008CA758 /* SiderbarList+RequestPermissionSection.swift */; };
 		0BBDE18B258F8EA5008CA758 /* View+onDragCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBDE18A258F8EA5008CA758 /* View+onDragCompatible.swift */; };
 		84F6580C256A6F3B005B3B0A /* EditGroupsFormRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6580B256A6F3B005B3B0A /* EditGroupsFormRowView.swift */; };
-		84F65812256A72DC005B3B0A /* ApplicationShortcutItemSettingFormRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F65811256A72DC005B3B0A /* ApplicationShortcutItemSettingFormRowView.swift */; };
-		84F65818256A76B7005B3B0A /* ContactMenuSettingFormRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F65817256A76B7005B3B0A /* ContactMenuSettingFormRowView.swift */; };
+		84F65812256A72DC005B3B0A /* ApplicationShortcutItemSettingFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F65811256A72DC005B3B0A /* ApplicationShortcutItemSettingFormCell.swift */; };
+		84F65818256A76B7005B3B0A /* ContactMenuSettingFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F65817256A76B7005B3B0A /* ContactMenuSettingFormCell.swift */; };
 		9100A930252614080013A143 /* CompatibleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9100A92F252614080013A143 /* CompatibleLabel.swift */; };
 		91046703250614DA00618BFD /* SearchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91046702250614DA00618BFD /* SearchListViewController.swift */; };
 		910467052506252100618BFD /* SearchListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910467042506252100618BFD /* SearchListViewModel.swift */; };
@@ -58,18 +61,14 @@
 		91961FDD25066C4900463B7A /* UserDefault+propertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91961FDC25066C4900463B7A /* UserDefault+propertyWrapper.swift */; };
 		91961FDF25066CB400463B7A /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91961FDE25066CB400463B7A /* AppSettings.swift */; };
 		9198AE72250DBCEA00588C9B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9198AE71250DBCEA00588C9B /* Coordinator.swift */; };
-		91A6D43C2510DA00003F2764 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A6D43B2510DA00003F2764 /* ActivityIndicator.swift */; };
-		91B1F356251E384C000D2CF2 /* SKError+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B1F355251E384C000D2CF2 /* SKError+Extension.swift */; };
 		91B22E2D252B65F50094A066 /* SelectGroupsForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B22E2C252B65F50094A066 /* SelectGroupsForm.swift */; };
 		91B61EA82534703C007935AD /* EditContactsForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B61EA72534703C007935AD /* EditContactsForm.swift */; };
 		91BCA71A2524B8030094B20A /* CircleColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BCA7192524B8030094B20A /* CircleColorView.swift */; };
-		91CF2FF3251B6C330009686C /* StoreProudct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CF2FF2251B6C330009686C /* StoreProudct.swift */; };
 		91E17EBF2518699C00D2656F /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E17EBE2518699C00D2656F /* AlertItem.swift */; };
 		91E17EC1251872BB00D2656F /* CompatibleInsetGroupedListStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E17EC0251872BB00D2656F /* CompatibleInsetGroupedListStyle.swift */; };
 		91E44A42250F52A50092540A /* SettingsFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E44A41250F52A50092540A /* SettingsFormViewModel.swift */; };
 		91E7898B252B469400A18CCD /* ContactListToolbarItemsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E7898A252B469400A18CCD /* ContactListToolbarItemsProvider.swift */; };
 		91E8C3E5252A071A00595969 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E8C3E4252A071A00595969 /* L10n.swift */; };
-		91FA58C02514D2D900247E4D /* SKProduct+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FA58BF2514D2D900247E4D /* SKProduct+Extension.swift */; };
 		F72B822A2545C17900737A9A /* CallDirectoryEntryForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B82292545C17900737A9A /* CallDirectoryEntryForm.swift */; };
 		F72C8D4724A9B4ED006D500F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F72C8D4924A9B4ED006D500F /* InfoPlist.strings */; };
 		F74583C425458DBA00AF9483 /* CallDirectoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74583C325458DBA00AF9483 /* CallDirectoryHandler.swift */; };
@@ -129,6 +128,9 @@
 		0B3EF670258A113300E23F15 /* ContextMenuButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenuButtons.swift; sourceTree = "<group>"; };
 		0B3EF674258A1AF200E23F15 /* UpdateGroupForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGroupForm.swift; sourceTree = "<group>"; };
 		0B3EF678258A1B5D00E23F15 /* UpdateGroupFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGroupFormViewModel.swift; sourceTree = "<group>"; };
+		0B452DEA259498000096A4FF /* SortOrderPickerForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOrderPickerForm.swift; sourceTree = "<group>"; };
+		0B452DEE259499560096A4FF /* UserInterfaceStylePickerForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterfaceStylePickerForm.swift; sourceTree = "<group>"; };
+		0B452DF2259499800096A4FF /* DisplayOrderPickerForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayOrderPickerForm.swift; sourceTree = "<group>"; };
 		0B91CF4C259231F20084FB93 /* CallDirectoryEntryFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDirectoryEntryFormViewModel.swift; sourceTree = "<group>"; };
 		0B953F1A25807F0B00417250 /* SidebarList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarList.swift; sourceTree = "<group>"; };
 		0B953F27258088E100417250 /* SidebarListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarListViewModel.swift; sourceTree = "<group>"; };
@@ -139,8 +141,8 @@
 		0BBDE180258F89A1008CA758 /* SiderbarList+RequestPermissionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SiderbarList+RequestPermissionSection.swift"; sourceTree = "<group>"; };
 		0BBDE18A258F8EA5008CA758 /* View+onDragCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+onDragCompatible.swift"; sourceTree = "<group>"; };
 		84F6580B256A6F3B005B3B0A /* EditGroupsFormRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupsFormRowView.swift; sourceTree = "<group>"; };
-		84F65811256A72DC005B3B0A /* ApplicationShortcutItemSettingFormRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationShortcutItemSettingFormRowView.swift; sourceTree = "<group>"; };
-		84F65817256A76B7005B3B0A /* ContactMenuSettingFormRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactMenuSettingFormRowView.swift; sourceTree = "<group>"; };
+		84F65811256A72DC005B3B0A /* ApplicationShortcutItemSettingFormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationShortcutItemSettingFormCell.swift; sourceTree = "<group>"; };
+		84F65817256A76B7005B3B0A /* ContactMenuSettingFormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactMenuSettingFormCell.swift; sourceTree = "<group>"; };
 		9100A92F252614080013A143 /* CompatibleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibleLabel.swift; sourceTree = "<group>"; };
 		91046702250614DA00618BFD /* SearchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListViewController.swift; sourceTree = "<group>"; };
 		910467042506252100618BFD /* SearchListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListViewModel.swift; sourceTree = "<group>"; };
@@ -173,18 +175,14 @@
 		91961FDC25066C4900463B7A /* UserDefault+propertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+propertyWrapper.swift"; sourceTree = "<group>"; };
 		91961FDE25066CB400463B7A /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		9198AE71250DBCEA00588C9B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		91A6D43B2510DA00003F2764 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
-		91B1F355251E384C000D2CF2 /* SKError+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKError+Extension.swift"; sourceTree = "<group>"; };
 		91B22E2C252B65F50094A066 /* SelectGroupsForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGroupsForm.swift; sourceTree = "<group>"; };
 		91B61EA72534703C007935AD /* EditContactsForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactsForm.swift; sourceTree = "<group>"; };
 		91BCA7192524B8030094B20A /* CircleColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleColorView.swift; sourceTree = "<group>"; };
-		91CF2FF2251B6C330009686C /* StoreProudct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreProudct.swift; sourceTree = "<group>"; };
 		91E17EBE2518699C00D2656F /* AlertItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertItem.swift; sourceTree = "<group>"; };
 		91E17EC0251872BB00D2656F /* CompatibleInsetGroupedListStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibleInsetGroupedListStyle.swift; sourceTree = "<group>"; };
 		91E44A41250F52A50092540A /* SettingsFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFormViewModel.swift; sourceTree = "<group>"; };
 		91E7898A252B469400A18CCD /* ContactListToolbarItemsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListToolbarItemsProvider.swift; sourceTree = "<group>"; };
 		91E8C3E4252A071A00595969 /* L10n.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
-		91FA58BF2514D2D900247E4D /* SKProduct+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKProduct+Extension.swift"; sourceTree = "<group>"; };
 		F72B82292545C17900737A9A /* CallDirectoryEntryForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDirectoryEntryForm.swift; sourceTree = "<group>"; };
 		F72C8D4824A9B4ED006D500F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F72C8D4A24A9B4F3006D500F /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -271,10 +269,9 @@
 			children = (
 				916688B225368B5D00EC6A3F /* ImagePicker.swift */,
 				9169AA8F2514C6A9009EB935 /* ValueCellView.swift */,
+				917AC446252EA9A10031B39A /* EnumPickerForm.swift */,
 				0B9E49A1258B2AE1009F5A9D /* NavigationButton.swift */,
 				0B3EF670258A113300E23F15 /* ContextMenuButtons.swift */,
-				91A6D43B2510DA00003F2764 /* ActivityIndicator.swift */,
-				91BCA7192524B8030094B20A /* CircleColorView.swift */,
 				F78F7E79254423B8008DE2DD /* MailComposeView.swift */,
 				9100A92F252614080013A143 /* CompatibleLabel.swift */,
 				91E17EC0251872BB00D2656F /* CompatibleInsetGroupedListStyle.swift */,
@@ -352,33 +349,25 @@
 		91CF2FE8251B68680009686C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				0BBDE18A258F8EA5008CA758 /* View+onDragCompatible.swift */,
 				916688B525368BB600EC6A3F /* Binding+Extension.swift */,
-				91B1F355251E384C000D2CF2 /* SKError+Extension.swift */,
-				91FA58BF2514D2D900247E4D /* SKProduct+Extension.swift */,
+				0BBDE18A258F8EA5008CA758 /* View+onDragCompatible.swift */,
 				9108D44F2507BE41004CF0C4 /* CNContainer+Extension.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		91CF2FF7251B6F3A0009686C /* SettingsForm */ = {
-			isa = PBXGroup;
-			children = (
-				913DC24125160DD800BC1397 /* ApplicationShortcutItem.swift */,
-				91CF2FF2251B6C330009686C /* StoreProudct.swift */,
-			);
-			path = SettingsForm;
 			sourceTree = "<group>";
 		};
 		91E17EC2251876F100D2656F /* SettingsForm */ = {
 			isa = PBXGroup;
 			children = (
 				91961FDA25066BA200463B7A /* SettingsForm.swift */,
-				917AC446252EA9A10031B39A /* EnumPickerForm.swift */,
+				91BCA7192524B8030094B20A /* CircleColorView.swift */,
+				0B452DEA259498000096A4FF /* SortOrderPickerForm.swift */,
+				0B452DF2259499800096A4FF /* DisplayOrderPickerForm.swift */,
+				0B452DEE259499560096A4FF /* UserInterfaceStylePickerForm.swift */,
 				9109DEDE2516F026004E949C /* ContactMenuSettingForm.swift */,
-				84F65817256A76B7005B3B0A /* ContactMenuSettingFormRowView.swift */,
+				84F65817256A76B7005B3B0A /* ContactMenuSettingFormCell.swift */,
 				915AB39F2514FA26001727A4 /* ApplicationShortcutItemSettingForm.swift */,
-				84F65811256A72DC005B3B0A /* ApplicationShortcutItemSettingFormRowView.swift */,
+				84F65811256A72DC005B3B0A /* ApplicationShortcutItemSettingFormCell.swift */,
 			);
 			path = SettingsForm;
 			sourceTree = "<group>";
@@ -504,7 +493,7 @@
 				08A00F592500FCC900E54E8F /* ContactStoreError.swift */,
 				91646D9E250368A600E811F4 /* ContactsItemSource.swift */,
 				916688AF2536899700EC6A3F /* SearchListScope.swift */,
-				91CF2FF7251B6F3A0009686C /* SettingsForm */,
+				913DC24125160DD800BC1397 /* ApplicationShortcutItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -681,10 +670,10 @@
 				84F6580C256A6F3B005B3B0A /* EditGroupsFormRowView.swift in Sources */,
 				911A21A4252B29E400654E5D /* ContactListRowContextMenuConfigurationProvider.swift in Sources */,
 				0B3EF671258A113300E23F15 /* ContextMenuButtons.swift in Sources */,
+				0B452DEF259499560096A4FF /* UserInterfaceStylePickerForm.swift in Sources */,
 				916688B325368B5D00EC6A3F /* ImagePicker.swift in Sources */,
 				F7F17CDD2546DB93003C1150 /* CallDirectoryEntryListViewModel.swift in Sources */,
 				0B9E49A2258B2AE1009F5A9D /* NavigationButton.swift in Sources */,
-				91A6D43C2510DA00003F2764 /* ActivityIndicator.swift in Sources */,
 				F786EF8225450A8800CBEAC4 /* ContactListFooterView.swift in Sources */,
 				91E17EBF2518699C00D2656F /* AlertItem.swift in Sources */,
 				91B61EA82534703C007935AD /* EditContactsForm.swift in Sources */,
@@ -694,7 +683,7 @@
 				9108D4502507BE41004CF0C4 /* CNContainer+Extension.swift in Sources */,
 				91961FDF25066CB400463B7A /* AppSettings.swift in Sources */,
 				91961FDB25066BA200463B7A /* SettingsForm.swift in Sources */,
-				91CF2FF3251B6C330009686C /* StoreProudct.swift in Sources */,
+				0B452DEB259498000096A4FF /* SortOrderPickerForm.swift in Sources */,
 				917C15D92529CBD700A5DA80 /* EditGroupsForm.swift in Sources */,
 				F75093DA24A07EA10044CDE3 /* ContactListCell.swift in Sources */,
 				91E44A42250F52A50092540A /* SettingsFormViewModel.swift in Sources */,
@@ -705,11 +694,11 @@
 				F75093D424A07E0B0044CDE3 /* ContactListSection.swift in Sources */,
 				F755A865248F3CA600DB9717 /* AppDelegate.swift in Sources */,
 				915761FC254995B100F38931 /* CallDirectoryEntry+CoreDataProperties.swift in Sources */,
-				84F65818256A76B7005B3B0A /* ContactMenuSettingFormRowView.swift in Sources */,
+				84F65818256A76B7005B3B0A /* ContactMenuSettingFormCell.swift in Sources */,
 				F7F17CAF2546A239003C1150 /* CallDirectoryEntryListCell.swift in Sources */,
-				91B1F356251E384C000D2CF2 /* SKError+Extension.swift in Sources */,
 				9100A930252614080013A143 /* CompatibleLabel.swift in Sources */,
 				91147F58251B45A70012A592 /* UserDefaults+Extension.swift in Sources */,
+				0B452DF3259499800096A4FF /* DisplayOrderPickerForm.swift in Sources */,
 				F755A8B7248FC22E00DB9717 /* GroupListSection.swift in Sources */,
 				91BCA71A2524B8030094B20A /* CircleColorView.swift in Sources */,
 				9109DEDF2516F026004E949C /* ContactMenuSettingForm.swift in Sources */,
@@ -717,7 +706,7 @@
 				0B3EF675258A1AF200E23F15 /* UpdateGroupForm.swift in Sources */,
 				0B953F28258088E100417250 /* SidebarListViewModel.swift in Sources */,
 				91961FDD25066C4900463B7A /* UserDefault+propertyWrapper.swift in Sources */,
-				84F65812256A72DC005B3B0A /* ApplicationShortcutItemSettingFormRowView.swift in Sources */,
+				84F65812256A72DC005B3B0A /* ApplicationShortcutItemSettingFormCell.swift in Sources */,
 				911F577A254BD0CA00C1525E /* CallDirectoryEntryList+DisabledStatusView.swift in Sources */,
 				916688B02536899700EC6A3F /* SearchListScope.swift in Sources */,
 				911F1E0F2533EBB400A45093 /* SearchListSection.swift in Sources */,
@@ -739,7 +728,6 @@
 				F755A8A5248F60D400DB9717 /* RootCoordinator.swift in Sources */,
 				0BBDE18B258F8EA5008CA758 /* View+onDragCompatible.swift in Sources */,
 				F7F17CD92546C2E5003C1150 /* CallDirectoryEntryList.swift in Sources */,
-				91FA58C02514D2D900247E4D /* SKProduct+Extension.swift in Sources */,
 				0B953F1B25807F0B00417250 /* SidebarList.swift in Sources */,
 				91046703250614DA00618BFD /* SearchListViewController.swift in Sources */,
 				F74583DF2545AB2E00AF9483 /* StorageController.swift in Sources */,

@@ -1,11 +1,11 @@
 //
-//  ApplicationShortcutItemSettingFormRowView.swift
+//  ApplicationShortcutItemSettingFormCell.swift
 //  addressbook
 //
 
 import SwiftUI
 
-struct ApplicationShortcutItemSettingFormRowView: View {
+struct ApplicationShortcutItemSettingFormCell: View {
 	enum RowType {
 		case `default`
 		case add
@@ -21,7 +21,7 @@ struct ApplicationShortcutItemSettingFormRowView: View {
 		self.addAction = addAction
 	}
 
-    var body: some View {
+	var body: some View {
 		switch type {
 		case .default:
 			ValueCellView(applicationShortcutItem, imageTintColor: AppSettings.shared.globalTintColor)
@@ -38,11 +38,11 @@ struct ApplicationShortcutItemSettingFormRowView: View {
 				}
 			}.buttonStyle(BorderlessButtonStyle())
 		}
-    }
+	}
 }
 
 struct ApplicationShortcutItemSettingFormRowView_Previews: PreviewProvider {
-    static var previews: some View {
-		ApplicationShortcutItemSettingFormRowView(applicationShortcutItem: .addContact)
-    }
+	static var previews: some View {
+		ApplicationShortcutItemSettingFormCell(applicationShortcutItem: .addContact)
+	}
 }

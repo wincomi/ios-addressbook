@@ -6,10 +6,11 @@
 import SwiftUI
 import MessageUI
 
-struct ContactMenuSettingFormRowView: View {
+struct ContactMenuSettingFormCell: View {
 	let type: ContactListRow.ContextMenuItemType
 
 	@Binding var selection: Set<ContactListRow.ContextMenuItemType>
+
 	let action: (() -> Void)
 
 	private var isChecked: Bool {
@@ -23,7 +24,7 @@ struct ContactMenuSettingFormRowView: View {
 		case .sendMessage:
 			return MFMessageComposeViewController.canSendText()
 		case .sendMail:
-			return MFMailComposeViewController.canSendMail()
+			return MailComposeView.canSendMail()
 		default:
 			return true
 		}
@@ -58,6 +59,6 @@ struct ContactMenuSettingFormRowView: View {
 
 struct ContactMenuSettingFormRowView_Previews: PreviewProvider {
 	static var previews: some View {
-		ContactMenuSettingFormRowView(type: .call, selection: .constant(Set<ContactListRow.ContextMenuItemType>())) { }
+		ContactMenuSettingFormCell(type: .call, selection: .constant(Set<ContactListRow.ContextMenuItemType>())) { }
 	}
 }

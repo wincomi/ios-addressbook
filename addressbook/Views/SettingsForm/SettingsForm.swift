@@ -6,9 +6,9 @@
 import SwiftUI
 
 struct SettingsForm: View {
-	@ObservedObject var appSettings = AppSettings.shared
+	@EnvironmentObject var appSettings: AppSettings
 	@ObservedObject var viewModel = SettingsFormViewModel()
-	@State private var isPresentedMailComposeView: Bool = false
+	@State private var activeSheet: ActiveSheet?
 	var dismissAction: (() -> Void) = { }
 
 	@available(iOS 14.0, *)
@@ -19,32 +19,19 @@ struct SettingsForm: View {
 		)
 	}
 
-	private var feedbackMailSubject: String {
-		var subject = "\(AppSettings.displayName) v\(AppSettings.shortVersionString)"
-		if AppSettings.isRunningBeta {
-			subject += " (\(AppSettings.buildVersion))"
-		}
-		return subject
-	}
-
 	var body: some View {
 		NavigationView {
 			Form {
 				generalSection
 				displaySection
 				themeSection
-					.disabled(!appSettings.isUnlockedPro)
 				feedbackSection
 			}
 			.modifier(CompatibleInsetGroupedListStyle())
 			.navigationBarTitle(L10n.SettingsForm.navigationTitle)
 			.navigationBarItems(trailing: doneButton)
-			.onAppear(perform: viewModel.onAppear)
-			.sheet(isPresented: $isPresentedMailComposeView) {
-				MailComposeView(subject: feedbackMailSubject, toRecipients: [AppSettings.feedbackMailAddress], result: .constant(nil))
-			}
-		}
-		.navigationViewStyle(StackNavigationViewStyle())
+			.sheet(item: $activeSheet, content: sheet(item:))
+		}.navigationViewStyle(StackNavigationViewStyle())
 	}
 
 	private var doneButton: some View {
@@ -53,7 +40,7 @@ struct SettingsForm: View {
 		}
 	}
 
-	// MARK: - Sections
+	// MARK: - General
 	private var generalSection: some View {
 		Section(header: Text(L10n.SettingsForm.GeneralSection.header).padding(.horizontal)) {
 			Toggle(isOn: $appSettings.showAllContactsOnAppLaunch) {
@@ -62,7 +49,7 @@ struct SettingsForm: View {
 			Toggle(isOn: $appSettings.preferNicknames) {
 				Text(L10n.SettingsForm.GeneralSection.preferNicknames)
 			}
-			NavigationLink(destination: sortOrderPickerForm) {
+			NavigationLink(destination: SortOrderPickerForm(sortOrder: $appSettings.sortOrder)) {
 				HStack {
 					Text(L10n.AppSettings.SortOrder.title)
 						.foregroundColor(Color(UIColor.label))
@@ -73,7 +60,7 @@ struct SettingsForm: View {
 						.foregroundColor(Color(UIColor.secondaryLabel))
 				}
 			}
-			NavigationLink(destination: displayOrderPickerForm) {
+			NavigationLink(destination: DisplayOrderPickerForm(displayOrder: $appSettings.displayOrder)) {
 				HStack {
 					Text(L10n.AppSettings.DisplayOrder.title)
 						.foregroundColor(Color(UIColor.label))
@@ -85,32 +72,7 @@ struct SettingsForm: View {
 		}
 	}
 
-	private var sortOrderPickerForm: some View {
-		EnumPickerForm(title: Text(L10n.AppSettings.SortOrder.title), items: AppSettings.SortOrder.allCases, selection: $appSettings.sortOrder) { row, isSelected in
-			HStack {
-				Text(row.localizedTitle)
-					.foregroundColor(Color(UIColor.label))
-				if isSelected {
-					Spacer()
-					Image(systemName: "checkmark")
-				}
-			}
-		}
-	}
-
-	private var displayOrderPickerForm: some View {
-		EnumPickerForm(title: Text(L10n.AppSettings.DisplayOrder.title), items: AppSettings.DisplayOrder.allCases, selection: $appSettings.displayOrder) { row, isSelected in
-			HStack {
-				Text(row.localizedTitle)
-					.foregroundColor(Color(UIColor.label))
-				if isSelected {
-					Spacer()
-					Image(systemName: "checkmark")
-				}
-			}
-		}
-	}
-
+	// MARK: - Display
 	private var displaySection: some View {
 		Section(header: Text(L10n.SettingsForm.DisplaySection.header).padding(.horizontal)) {
 			Toggle(isOn: $appSettings.showContactImageInContactList) {
@@ -125,17 +87,15 @@ struct SettingsForm: View {
 		}
 	}
 
+	// MARK: - Theme
 	private var themeSection: some View {
-		Section(
-			header: Text(L10n.SettingsForm.ThemeSection.header).padding(.horizontal),
-			footer: appSettings.isUnlockedPro ? AnyView(EmptyView()) : AnyView(Text(L10n.SettingsForm.onlyForContactsPlusPro).padding(.horizontal))
-		) {
+		Section(header: Text(L10n.SettingsForm.ThemeSection.header).padding(.horizontal)) {
 			HStack(spacing: 4) {
 				ForEach(AppSettings.globalTintColorDefaultCases, id: \.self) { globalTintColor in
 					Button {
 						appSettings.globalTintColor = globalTintColor
 					} label: {
-						circleColorView(for: globalTintColor)
+						CircleColorView(showBorder: .constant(globalTintColor == appSettings.globalTintColor), uiColor: globalTintColor)
 					}
 				}
 				if #available(iOS 14.0, *) {
@@ -144,7 +104,7 @@ struct SettingsForm: View {
 						.padding(.horizontal)
 				}
 			}.buttonStyle(PlainButtonStyle())
-			NavigationLink(destination: userInterfaceStylePickerForm) {
+			NavigationLink(destination: UserInterfaceStylePickerForm(userInterfaceStyle: $appSettings.userInterfaceStyle)) {
 				HStack {
 					Text(L10n.AppSettings.UserInterfaceStyle.title)
 						.foregroundColor(Color(UIColor.label))
@@ -156,24 +116,11 @@ struct SettingsForm: View {
 		}
 	}
 
-	private var userInterfaceStylePickerForm: some View {
-		EnumPickerForm(title: Text(L10n.AppSettings.UserInterfaceStyle.title), items: AppSettings.userInterfaceStyleAllCases, selection: $appSettings.userInterfaceStyle) { userInterfaceStyle, isSelected in
-			HStack {
-				Text(AppSettings.localizedTitle(for: userInterfaceStyle))
-					.foregroundColor(Color(UIColor.label))
-				if isSelected {
-					Spacer()
-					Image(systemName: "checkmark")
-				}
-			}
-		}
-	}
-
+	// MARK: - Feedback
 	private var feedbackSection: some View {
 		Section {
 			Button {
-				let url = URL(string: "https://itunes.apple.com/app/id\(AppSettings.appStoreId)?action=write-review")!
-				UIApplication.shared.open(url, options: [:])
+				UIApplication.shared.open(viewModel.writeReviewURL, options: [:])
 			} label: {
 				CompatibleLabel {
 					Text(L10n.SettingsForm.FeedbackSection.rateThisApp)
@@ -185,10 +132,9 @@ struct SettingsForm: View {
 			}
 			Button {
 				if MailComposeView.canSendMail() {
-					isPresentedMailComposeView = true
+					activeSheet = .mailComposeView
 				} else {
-					let url = URL(string: "mailto:\(AppSettings.feedbackMailAddress)?subject=\(feedbackMailSubject.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)")!
-					UIApplication.shared.open(url, options: [:])
+					UIApplication.shared.open(viewModel.feedbackURL, options: [:])
 				}
 			} label: {
 				CompatibleLabel {
@@ -200,8 +146,7 @@ struct SettingsForm: View {
 				}
 			}
 			Button {
-				let url = URL(string: "https://apps.apple.com/developer/id\(AppSettings.developerId)")!
-				UIApplication.shared.open(url, options: [:])
+				UIApplication.shared.open(viewModel.allAppsURL, options: [:])
 			} label: {
 				CompatibleLabel {
 					Text(L10n.SettingsForm.FeedbackSection.allApps)
@@ -213,30 +158,26 @@ struct SettingsForm: View {
 			}
 		}
 	}
+}
 
-	// MARK: - Utilities
-	private func circleColorView(for color: UIColor) -> some View {
-		let showBorder = color == appSettings.globalTintColor
+extension SettingsForm {
+	// MARK: - ActiveSheet
+	enum ActiveSheet: Identifiable {
+		case mailComposeView
 
-		return CircleColorView(
-			showBorder: .constant(showBorder),
-			buttonColor: Color(color),
-			backgroundColor: Color(UIColor.tertiarySystemBackground),
-			borderColor: Color(UIColor.separator)
-		)
-	}
-
-	private func centeredView<Content: View>(content: (() -> Content)) -> some View {
-		HStack(alignment: .center) {
-			Spacer()
-			content()
-			Spacer()
+		var id: Int {
+			hashValue
 		}
 	}
 
-	private var activityIndicatorRow: some View {
-		centeredView {
-			ActivityIndicator(isAnimating: .constant(true), style: .medium)
+	@ViewBuilder private func sheet(item: ActiveSheet) -> some View {
+		switch item {
+		case .mailComposeView:
+			MailComposeView(
+				subject: viewModel.feedbackMailSubject,
+				toRecipients: [AppSettings.feedbackMailAddress],
+				result: .constant(nil)
+			)
 		}
 	}
 }

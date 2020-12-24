@@ -6,6 +6,8 @@ import Combine
 import UIKit
 
 final class AppSettings: ObservableObject {
+	typealias UserInterfaceStyle = UIUserInterfaceStyle
+
 	static let shared = AppSettings()
 
 	static let bundleIdentifier = Bundle.main.bundleIdentifier ?? ""
@@ -37,9 +39,9 @@ final class AppSettings: ObservableObject {
 	static let appStoreId = "1412803405"
 
 	static var globalTintColorDefaultCases: [UIColor] = [.systemBlue, .systemGreen, .systemIndigo, .systemOrange, .systemPurple, .systemRed, .systemTeal, .systemYellow]
-	static let userInterfaceStyleAllCases: [UIUserInterfaceStyle] = [.unspecified, .dark, .light]
+	static let userInterfaceStyleAllCases: [UserInterfaceStyle] = [.unspecified, .dark, .light]
 
-	static func localizedTitle(for userInterfaceStyle: UIUserInterfaceStyle) -> String {
+	static func localizedTitle(for userInterfaceStyle: UserInterfaceStyle) -> String {
 		switch userInterfaceStyle {
 		case .unspecified:
 			return L10n.AppSettings.UserInterfaceStyle.unspecified
@@ -53,11 +55,6 @@ final class AppSettings: ObservableObject {
 	}
 
 	private init() { }
-
-	// MARK: - Pro
-	var isUnlockedPro = true {
-		willSet { objectWillChange.send() }
-	}
 
 	// MARK: - General
 	@UserDefault("showAllContactsOnAppLaunch", store: .appGroup)
@@ -149,7 +146,7 @@ final class AppSettings: ObservableObject {
 	}
 
 	@UserDefault("userInterfaceStyle", store: .appGroup)
-	var userInterfaceStyle = UIUserInterfaceStyle.unspecified {
+	var userInterfaceStyle = UserInterfaceStyle.unspecified {
 		willSet { objectWillChange.send() }
 		didSet {
 			let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
