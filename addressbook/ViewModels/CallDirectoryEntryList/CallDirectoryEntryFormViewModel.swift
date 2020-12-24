@@ -28,4 +28,3 @@ final class CallDirectoryEntryFormViewModel: ObservableObject {
 		StorageController.shared.remove(callDirectoryEntry)
 	}
 }
-

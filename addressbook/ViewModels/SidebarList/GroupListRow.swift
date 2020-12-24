@@ -54,35 +54,13 @@ struct GroupListRow: RowRepresentable, Identifiable, Hashable {
 			self.navigationTitle = container?.displayName ?? L10n.allContacts
 			self.text = L10n.allContacts
 			self.secondaryText = nil
-			self.image = UIImage(systemName: "person.2.square.stack", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
+			self.image = nil
 		case .group(let group):
 			self.navigationTitle = group.name
 			self.text = group.name
 			self.secondaryText = nil
-			self.image = UIImage(systemName: "folder", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
+			self.image = nil
 		}
-	}
-
-	// MARK: - Making UIDragItems
-	func dragItems() -> [UIDragItem]? {
-		guard let contacts = try? fetchContacts() else { return nil }
-
-		let itemProviders = contacts.map { contact -> NSItemProvider in
-			let itemProvider = NSItemProvider(object: contact)
-
-			if let data = try? CNContactVCardSerialization.data(with: [contact]) {
-				itemProvider.registerDataRepresentation(forTypeIdentifier: kUTTypeVCard as String, visibility: .all) { completion in
-					completion(data, nil)
-					return nil
-				}
-			}
-
-			return itemProvider
-		}
-
-		let dragItems = itemProviders.map(UIDragItem.init)
-
-		return dragItems
 	}
 
 	// MARK: - Fetching Contacts

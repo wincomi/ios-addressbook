@@ -4,8 +4,6 @@
 //
 
 import SwiftUI
-import Introspect
-import MessageUI
 import Contacts
 
 struct SidebarList: View {
@@ -27,7 +25,7 @@ struct SidebarList: View {
 								contextMenuItems(for: groupListRow)
 							}.onDragCompatible {
 								viewModel.itemProvider(for: groupListRow) ?? NSItemProvider()
-							}.deleteDisabled(!isDeletable(groupListRow: groupListRow))
+							}.deleteDisabled(!isDeletable(groupListRow))
 						}.onDelete { offsets in
 							guard let groupListRow = offsets.first.map({ section.rows[$0] }),
 								  case .group(let group) = groupListRow.type else { return }
@@ -94,7 +92,7 @@ struct SidebarList: View {
 
 	// MARK: -
 
-	private func isDeletable(groupListRow: GroupListRow) -> Bool {
+	private func isDeletable(_ groupListRow: GroupListRow) -> Bool {
 		switch groupListRow.type {
 		case .allContacts:
 			return false
@@ -120,14 +118,14 @@ struct SidebarList: View {
 				Label(L10n.add, systemImage: "plus")
 					.labelStyle(IconOnlyLabelStyle())
 					.font(.system(size: 20))
-			}.disabled(!viewModel.isAuthorized)
+			}.disabled(!viewModel.isContactStoreAuthorized)
 		} else {
 			Button {
 				activeActionSheet = .createButton
 			} label: {
 				Image(systemName: "plus")
 					.font(.system(size: 20))
-			}.disabled(!viewModel.isAuthorized)
+			}.disabled(!viewModel.isContactStoreAuthorized)
 		}
 	}
 
@@ -193,7 +191,11 @@ extension SidebarList {
 	private func alert(item: ActiveAlert) -> Alert {
 		switch item {
 		case .alertItem(let alertItem):
-			return Alert(title: Text(alertItem.title), message: alertItem.message.map { Text($0) }, dismissButton: .cancel())
+			return Alert(
+				title: Text(alertItem.title),
+				message: alertItem.message.map { Text($0) },
+				dismissButton: .cancel(Text(L10n.ok))
+			)
 		}
 	}
 
@@ -221,7 +223,7 @@ extension SidebarList {
 							}
 						}
 					}),
-					.cancel()
+					.cancel(Text(L10n.ok))
 				]
 			)
 		case .createButton:
