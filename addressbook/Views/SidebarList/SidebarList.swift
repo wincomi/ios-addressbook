@@ -78,7 +78,11 @@ struct SidebarList: View {
 			}.disabled(editMode?.wrappedValue == .active)
 		}
 		.onAppear(perform: viewModel.update)
-		.onReceive(ContactStore.didChange, perform: viewModel.update)
+		.onReceive(ContactStore.didChange) {
+			withAnimation {
+				viewModel.update()
+			}
+		}
 		.modifier(CompatibleInsetGroupedListStyle())
 		.navigationBarTitle(L10n.groups)
 		.navigationBarItems(leading: EditButton(), trailing: createButton)

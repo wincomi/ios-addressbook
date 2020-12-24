@@ -46,7 +46,11 @@ struct CallDirectoryEntryList: View {
 		.navigationBarTitle(viewModel.navigationTitle)
 		.navigationBarItems(trailing: addButton)
 		.onAppear(perform: viewModel.update)
-		.onReceive(viewModel.didChange, perform: viewModel.update)
+		.onReceive(viewModel.didChange) {
+			withAnimation {
+				viewModel.update()
+			}
+		}
 		.sheet(item: $formType) { formType in
 			NavigationView {
 				CallDirectoryEntryForm(formType: formType, entryType: viewModel.entryType)
@@ -72,8 +76,7 @@ struct CallDirectoryEntryList: View {
 		} label: {
 			Image(systemName: "plus")
 				.font(.system(size: 20))
-		}
-		.disabled(viewModel.callDirectoryManagerEnabledStatus != .enabled)
+		}.disabled(viewModel.callDirectoryManagerEnabledStatus != .enabled)
 	}
 
 	private func delete(at offsets: IndexSet) {
