@@ -20,7 +20,7 @@ struct CallDirectoryEntryList: View {
 			case .enabled:
 				if !viewModel.callDirectoryEntries.isEmpty {
 					List {
-						Section(footer: Text("\(descriptionText(for: viewModel.entryType)) \(L10n.CallDirectoryEntryList.sectionFooter)").padding(.horizontal)) {
+						Section(footer: Text("\(descriptionText(for: viewModel.entryType)) \(L10n.CallDirectoryEntryList.Section.footer)").padding(.horizontal)) {
 							ForEach(viewModel.callDirectoryEntries) { callDirectoryEntry in
 								Button {
 									formType = .update(callDirectoryEntry)
@@ -60,9 +60,9 @@ struct CallDirectoryEntryList: View {
 	private func descriptionText(for entryType: CallDirectoryEntry.EntryType) -> String {
 		switch entryType {
 		case .blocking:
-			return L10n.CallDirectoryEntryList.BlockingType.sectionFooter
+			return L10n.CallDirectoryEntryList.BlockingType.Section.footer
 		case .identification:
-			return L10n.CallDirectoryEntryList.IdentificationType.sectionFooter
+			return L10n.CallDirectoryEntryList.IdentificationType.Section.footer
 		}
 	}
 

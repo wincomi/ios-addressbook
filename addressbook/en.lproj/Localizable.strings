@@ -1,8 +1,9 @@
 // MARK: - General
-Cancel = "Cancel";
-OK = "OK";
+cancel = "Cancel";
+ok = "OK";
 done = "Done";
 add = "Add";
+save = "Save";
 share = "Share";
 delete = "Delete";
 errorAlertTitle = "An error occurred.";
@@ -19,6 +20,12 @@ newContact = "New Contact";
 createNewContact = "Create New Contact";
 searchContacts = "Search Contacts";
 
+// MARK: - MainCoordinator
+unknownContact = "Unknown contact";
+unknownContactDescription = "This contact cannot be retrieved.";
+unknownGroup = "Unknown group";
+unknownGroupDescription = "This contact cannot be retrieved.";
+
 // MARK: - ContactStoreError
 ContactStoreError.requestPermission = "Request permission";
 ContactStoreError.accessNotDeterminedDescription = "We need contact permission to import contacts.";
@@ -27,22 +34,20 @@ ContactStoreError.accessDeniedDescription = "Access to your contacts has been de
 ContactStoreError.unknownErrorDescription = "An unknown error occured.";
 ContactStoreError.cannotFetchErrorDescription = "An error occured while retrieving contacts.";
 
-// MARK: - MainCoordinator
-unknownContact = "Unknown contact";
-unknownContactDescription = "This contact cannot be retrieved.";
-unknownGroup = "Unknown group";
-unknownGroupDescription = "This contact cannot be retrieved.";
+// MARK: - SidebarList
+SidebarList.utilities = "Utilities";
+SidebarList.ActiveActionSheet.ConfirmDelete.title = "Delete '%@'";
+SidebarList.ActiveActionSheet.ConfirmDelete.message = "Are you sure you want to delete '%@' group?\nContacts will not be deleted.";
 
-// MARK: - GroupList
-GroupList.EmptyDataView.title = "Unable to access your contacts.";
-GroupList.NavigationItems.editButton = "Edit Groups";
-GroupList.CreateGroupAlert.title = "New Group";
-GroupList.CreateGroupAlert.message = "Enter a name for new group.";
-GroupList.CreateGroupAlert.TextField.placeholder = "Name";
-GroupList.CreateGroupAlert.save = "Save";
-GroupList.UpdateGroupAlert.title = "Rename Group";
-GroupList.ConfirmDeleteAlert.title = "Delete '%@'";
-GroupList.ConfirmDeleteAlert.message = "Are you sure you want to delete '%@' group?\nContacts will not be deleted.";
+// MARK: - CreateGroupForm
+CreateGroupForm.navigationTitle = "New group";
+CreateGroupForm.NameSection.name = "Name";
+CreateGroupForm.NameSection.footer = "Enter a name for new group.";
+CreateGroupForm.AccountsSection.header = "Accounts";
+CreateGroupForm.AccountsSection.footer = "Select an account to add new group to.";
+
+// MARK: - UpdateGroupForm
+UpdateGroupForm.navigationTitle = "Update group";
 
 // MARK: - GroupListRow
 GroupListRow.ContextMenuItemType.rename = "Rename";
@@ -79,24 +84,23 @@ SettingsForm.GeneralSection.preferNicknames = "Prefer nicknames";
 SettingsForm.DisplaySection.header = "Display";
 SettingsForm.DisplaySection.showContactImage = "Show contact image";
 SettingsForm.ThemeSection.header = "Theme";
-SettingsForm.ThemeSection.customColor = "Custom Color";
-SettingsForm.DonationSection.header = "Donation";
+SettingsForm.ThemeSection.customColor = "Custom color";
 SettingsForm.FeedbackSection.header = "Feedback";
 SettingsForm.FeedbackSection.rateThisApp = "Rate this app";
-SettingsForm.FeedbackSection.sendFeedback = "Send Feedback";
-SettingsForm.FeedbackSection.allApps = "All apps from the developer";
+SettingsForm.FeedbackSection.sendFeedback = "Send feedback";
+SettingsForm.FeedbackSection.allApps = "All apps by this developer";
 
 // MARK: - ApplicationShortcutItemsSettingForm
-ApplicationShortcutItemsSettingForm.title = "Home Screen Quick Actions";
-ApplicationShortcutItemsSettingForm.navigationTitle = "Quick Actions";
-ApplicationShortcutItemsSettingForm.AddingSection.footerText = "You can add contacts and groups from the list of contacts and groups.";
-ApplicationShortcutItemsSettingForm.Section.footerText = "Up to four are displayed from the top.";
+ApplicationShortcutItemsSettingForm.title = "Home screen quick actions";
+ApplicationShortcutItemsSettingForm.navigationTitle = "Quick actions";
+ApplicationShortcutItemsSettingForm.AddingSection.footer = "You can add contacts and groups from the list of contacts and groups.";
+ApplicationShortcutItemsSettingForm.ItemsSection.footer = "Up to four are displayed from the top.";
 
 // MARK: - ContactMenuSettingForm
-ContactMenuSettingForm.title = "Custom Contact Menu";
-ContactMenuSettingForm.navigationTitle = "Contact Menu";
-ContactMenuSettingForm.Section.footerText = "Touch and hold a contact to show selected contact menus.";
-ContactMenuSettingForm.OptionsSection.footerText = "Always display all phone numbers and email address at first.";
+ContactMenuSettingForm.title = "Custom contact Menu";
+ContactMenuSettingForm.navigationTitle = "Contact menu";
+ContactMenuSettingForm.Section.footer = "Touch and hold a contact to show selected contact menus.";
+ContactMenuSettingForm.OptionsSection.footer = "Always display all phone numbers and email address at first.";
 ContactMenuSettingForm.OptionsSection.isContactContextMenuDisplayInline = "Display all menus at first";
 
 // MARK: - AppSettings
@@ -121,20 +125,20 @@ EditContactsForm.deleteProfileImage = "Delete profile image";
 EditContactsForm.jobTitle = "Job Title";
 EditContactsForm.departmentName = "Department";
 EditContactsForm.organizationName = "Company";
-EditContactsForm.sectionFooter = "Leave blank if you don't want multiple edit.";
+EditContactsForm.Section.footer = "Leave blank if you don't want multiple edit.";
 
 // MARK: - CallDirectoryEntryList
-CallDirectoryEntryList.sectionFooter = "You can edit the infomation by touching it.";
+CallDirectoryEntryList.Section.Footer = "You can edit the infomation by touching it.";
 CallDirectoryEntryList.IdentificationType.navigationTitle = "Caller ID";
-CallDirectoryEntryList.IdentificationType.sectionFooter = "The name on the list will be displayed when you receive phone calls.";
+CallDirectoryEntryList.IdentificationType.Section.footer = "The name on the list will be displayed when you receive phone calls.";
 CallDirectoryEntryList.BlockingType.navigationTitle = "Call Blocking";
-CallDirectoryEntryList.BlockingType.sectionFooter = "You will not receive phone calls from phone numbers on the block list.";
+CallDirectoryEntryList.BlockingType.Section.footer = "You will not receive phone calls from phone numbers on the block list.";
 CallDirectoryEntryList.EmptyDataView.title = "The list is empty.";
-CallDirectoryEntryList.EmptyDataView.description = "Touch add button at the top to add a phone number.";
+CallDirectoryEntryList.EmptyDataView.description = "Touch '+' button at the top to add a phone number.";
 CallDirectoryEntryList.EmptyDataView.buttonTitle = "Add item...";
-CallDirectoryEntryList.CallDirectoryDisabledView.title = "Call Blocking & Identification";
-CallDirectoryEntryList.CallDirectoryDisabledView.description = "Available after enabling in Settings.";
-CallDirectoryEntryList.CallDirectoryDisabledView.buttonTitle = "Enable...";
+CallDirectoryEntryList.DisabledStatusView.title = "Call Blocking & Identification";
+CallDirectoryEntryList.DisabledStatusView.description = "Available after enabling in Settings.";
+CallDirectoryEntryList.DisabledStatusView.buttonTitle = "Enable...";
 
 // MARK: - CallDirectoryEntryForm
 CallDirectoryEntryForm.name = "Name";
@@ -143,10 +147,3 @@ CallDirectoryEntryForm.NameSection.footer = "Enter the name that will be display
 CallDirectoryEntryForm.PhoneNumberSection.footer = "Enter only numbers with country code.";
 CallDirectoryEntryForm.AddType.navigationTitle = "Add phone number";
 CallDirectoryEntryForm.EditType.navigationTitle = "Edit phone number";
-
-// MARK: - SidebarList
-SidebarList.utilities = "Utilities";
-
-// MARK: - CreateGroupForm
-CreateGroupForm.AccountsSection.header = "Accounts";
-CreateGroupForm.AccountsSection.footer = "Select an account to add new group to.";

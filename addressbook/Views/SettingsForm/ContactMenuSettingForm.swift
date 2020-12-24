@@ -13,14 +13,14 @@ struct ContactMenuSettingForm: View {
 
 	var body: some View {
 		List {
-			Section(footer: Text(L10n.ContactMenuSettingForm.Section.footerText).padding(.horizontal)) {
+			Section(footer: Text(L10n.ContactMenuSettingForm.Section.footer).padding(.horizontal)) {
 				ForEach(types) { type in
 					ContactMenuSettingFormCell(type: type, selection: $selection) {
 						appSettings.enabledContactContextMenuItemsTypes = types.filter { selection.contains($0) }
 					}
 				}
 			}
-			Section(footer: Text(L10n.ContactMenuSettingForm.OptionsSection.footerText).padding(.horizontal)) {
+			Section(footer: Text(L10n.ContactMenuSettingForm.OptionsSection.footer).padding(.horizontal)) {
 				Toggle(L10n.ContactMenuSettingForm.OptionsSection.isContactContextMenuDisplayInline, isOn: $appSettings.isContactContextMenuDisplayInline)
 			}
 		}

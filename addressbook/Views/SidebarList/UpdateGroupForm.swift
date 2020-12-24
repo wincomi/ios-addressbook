@@ -17,7 +17,7 @@ struct UpdateGroupForm: View {
 
 	var body: some View {
 		Form {
-			Section(header: Text(L10n.GroupList.CreateGroupAlert.TextField.placeholder).padding(.horizontal)) {
+			Section(header: Text(L10n.CreateGroupForm.NameSection.name).padding(.horizontal)) {
 				TextField(viewModel.currentGroup.name, text: $groupName)
 					.introspectTextField { textField in
 						textField.clearButtonMode = .whileEditing
@@ -25,7 +25,7 @@ struct UpdateGroupForm: View {
 					}
 			}
 		}
-		.navigationBarTitle(L10n.GroupList.UpdateGroupAlert.title)
+		.navigationBarTitle(L10n.UpdateGroupForm.navigationTitle)
 		.navigationBarItems(leading: cancelButton, trailing: doneButton)
 		.onAppear {
 			groupName = viewModel.currentGroup.name
@@ -50,7 +50,7 @@ struct UpdateGroupForm: View {
 				}
 			}
 		} label: {
-			Text(L10n.GroupList.CreateGroupAlert.save)
+			Text(L10n.save)
 		}.disabled(!isFormValid)
 	}
 }

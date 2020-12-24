@@ -41,7 +41,7 @@ struct EditContactsForm: View {
 				Section(header: Text(L10n.EditContactsForm.departmentName)) {
 					TextField(L10n.EditContactsForm.departmentName, text: $departmentName)
 				}
-				Section(header: Text(L10n.EditContactsForm.organizationName), footer: Text(L10n.EditContactsForm.sectionFooter)) {
+				Section(header: Text(L10n.EditContactsForm.organizationName), footer: Text(L10n.EditContactsForm.Section.footer)) {
 					TextField(L10n.EditContactsForm.organizationName, text: $organizationName)
 				}
 			}.sheet(isPresented: $isPresentedImagePicker) {

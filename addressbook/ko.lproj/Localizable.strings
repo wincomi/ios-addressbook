@@ -1,8 +1,9 @@
 // MARK: - General
-Cancel = "취소";
-OK = "확인";
+cancel = "취소";
+ok = "확인";
 done = "완료";
 add = "추가";
+save = "저장";
 delete = "삭제";
 share = "공유";
 errorAlertTitle = "에러가 발생하였습니다.";
@@ -19,6 +20,12 @@ searchContacts = "연락처 검색";
 phoneNumbers = "전화번호";
 emailAddresses = "이메일 주소";
 
+// MARK: - MainCoordinator
+unknownContact = "알 수 없는 연락처";
+unknownContactDescription = "이 연락처를 불러올 수 없습니다.";
+unknownGroup = "알 수 없는 그룹";
+unknownGroupDescription = "이 그룹을 불러올 수 없습니다.";
+
 // MARK: - ContactStoreError
 ContactStoreError.requestPermission = "권한 요청";
 ContactStoreError.accessNotDeterminedDescription = "연락처를 가져오기 위해 연락처 권한이 필요합니다.";
@@ -27,22 +34,20 @@ ContactStoreError.accessDeniedDescription = "연락처 접근이 거부되었습
 ContactStoreError.unknownErrorDescription = "알 수 없는 에러가 발생하였습니다.";
 ContactStoreError.cannotFetchErrorDescription = "연락처를 가져오는 중 에러가 발생하였습니다.";
 
-// MARK: - MainCoordinator
-unknownContact = "알 수 없는 연락처";
-unknownContactDescription = "이 연락처를 불러올 수 없습니다.";
-unknownGroup = "알 수 없는 그룹";
-unknownGroupDescription = "이 그룹을 불러올 수 없습니다.";
+// MARK: - SidebarList
+SidebarList.utilities = "유틸리티";
+SidebarList.ActiveActionSheet.ConfirmDelete.title = "'%@' 삭제";
+SidebarList.ActiveActionSheet.ConfirmDelete.message = "'%@' 그룹을 삭제하시겠습니까?\n연락처는 삭제되지 않습니다.";
 
-// MARK: - GroupList
-GroupList.EmptyDataView.title = "연락처에 접근할 수 없습니다.";
-GroupList.NavigationItems.editButton = "그룹 편집";
-GroupList.CreateGroupAlert.title = "새로운 그룹";
-GroupList.CreateGroupAlert.message = "새로운 그룹의 이름을 입력하십시오.";
-GroupList.CreateGroupAlert.TextField.placeholder = "이름";
-GroupList.CreateGroupAlert.save = "저장";
-GroupList.UpdateGroupAlert.title = "그룹 이름 변경";
-GroupList.ConfirmDeleteAlert.title = "'%@' 삭제";
-GroupList.ConfirmDeleteAlert.message = "'%@' 그룹을 삭제하시겠습니까?\n연락처는 삭제되지 않습니다.";
+// MARK: - CreateGroupForm
+CreateGroupForm.navigationTitle = "새로운 그룹";
+CreateGroupForm.NameSection.name = "이름";
+CreateGroupForm.NameSection.footer = "새로운 그룹의 이름을 입력하십시오.";
+CreateGroupForm.AccountsSection.header = "계정";
+CreateGroupForm.AccountsSection.footer = "새로운 그룹을 추가할 계정을 선택하세요.";
+
+// MARK: - UpdateGroupForm
+UpdateGroupForm.navigationTitle = "그룹 이름 변경";
 
 // MARK: - GroupListRow
 GroupListRow.ContextMenuItemType.rename = "이름 변경";
@@ -80,7 +85,6 @@ SettingsForm.DisplaySection.header = "보기";
 SettingsForm.DisplaySection.showContactImage = "연락처 사진 보기";
 SettingsForm.ThemeSection.header = "테마";
 SettingsForm.ThemeSection.customColor = "커스텀 색상";
-SettingsForm.DonationSection.header = "후원";
 SettingsForm.FeedbackSection.header = "피드백";
 SettingsForm.FeedbackSection.rateThisApp = "앱 리뷰하기";
 SettingsForm.FeedbackSection.sendFeedback = "피드백 보내기";
@@ -89,14 +93,14 @@ SettingsForm.FeedbackSection.allApps = "개발자의 모든 앱 보기";
 // MARK: - ApplicationShortcutItemsSettingForm
 ApplicationShortcutItemsSettingForm.title = "홈 화면 퀵 액션";
 ApplicationShortcutItemsSettingForm.navigationTitle = "홈 화면 퀵 액션";
-ApplicationShortcutItemsSettingForm.AddingSection.footerText = "연락처와 그룹 목록에서 연락처와 그룹을 추가할 수 있습니다.";
-ApplicationShortcutItemsSettingForm.Section.footerText = "위에서부터 4개까지 표시됩니다.";
+ApplicationShortcutItemsSettingForm.AddingSection.footer = "연락처와 그룹 목록에서 연락처와 그룹을 추가할 수 있습니다.";
+ApplicationShortcutItemsSettingForm.ItemsSection.footer = "위에서부터 4개까지 표시됩니다.";
 
 // MARK: - ContactMenuSettingForm
 ContactMenuSettingForm.title = "연락처 메뉴 커스텀";
 ContactMenuSettingForm.navigationTitle = "연락처 메뉴 커스텀";
-ContactMenuSettingForm.Section.footerText = "연락처를 길게 누르면 선택한 연락처 메뉴를 볼 수 있습니다.";
-ContactMenuSettingForm.OptionsSection.footerText = "항상 첫 메뉴에 모든 휴대폰 번호와 이메일 주소를 메뉴를 보여줍니다.";
+ContactMenuSettingForm.Section.footer = "연락처를 길게 누르면 선택한 연락처 메뉴를 볼 수 있습니다.";
+ContactMenuSettingForm.OptionsSection.footer = "항상 첫 메뉴에 모든 휴대폰 번호와 이메일 주소를 메뉴를 보여줍니다.";
 ContactMenuSettingForm.OptionsSection.isContactContextMenuDisplayInline = "모든 메뉴 바로 보기";
 
 // MARK: - AppSettings
@@ -121,16 +125,16 @@ EditContactsForm.deleteProfileImage = "프로필 사진 삭제";
 EditContactsForm.jobTitle = "직책";
 EditContactsForm.departmentName = "부서";
 EditContactsForm.organizationName = "직장";
-EditContactsForm.sectionFooter = "일괄 수정을 원하지 않으면 비워두십시오.";
+EditContactsForm.Section.footer = "일괄 수정을 원하지 않으면 비워두십시오.";
 
 // MARK: - CallDirectoryEntryList
-CallDirectoryEntryList.sectionFooter = "터치하여 정보를 수정할 수 있습니다.";
+CallDirectoryEntryList.Section.footer = "터치하여 정보를 수정할 수 있습니다.";
 CallDirectoryEntryList.IdentificationType.navigationTitle = "전화 발신자 정보";
-CallDirectoryEntryList.IdentificationType.sectionFooter = "전화 발신자 정보 목록에 있는 전화번호로 전화가 오면 등록한 이름이 화면에 표시됩니다.";
+CallDirectoryEntryList.IdentificationType.Section.footer = "전화 발신자 정보 목록에 있는 전화번호로 전화가 오면 등록한 이름이 화면에 표시됩니다.";
 CallDirectoryEntryList.BlockingType.navigationTitle = "전화 차단";
-CallDirectoryEntryList.BlockingType.sectionFooter = "차단 목록에 있는 전화번호에서 전화를 받을 수 없게 됩니다.";
+CallDirectoryEntryList.BlockingType.Section.footer = "차단 목록에 있는 전화번호에서 전화를 받을 수 없게 됩니다.";
 CallDirectoryEntryList.EmptyDataView.title = "전화번호가 없습니다.";
-CallDirectoryEntryList.EmptyDataView.description = "전화번호를 추가하기 위해 상단의 추가 버튼을 터치하세요.";
+CallDirectoryEntryList.EmptyDataView.description = "전화번호를 추가하기 위해 상단의 '+' 버튼을 터치하세요.";
 CallDirectoryEntryList.EmptyDataView.buttonTitle = "전화번호 추가...";
 CallDirectoryEntryList.CallDirectoryDisabledView.title = "전화 차단 및 발신자 확인";
 CallDirectoryEntryList.CallDirectoryDisabledView.description = "설정에서 활성화 후 사용할 수 있습니다.";
@@ -143,10 +147,3 @@ CallDirectoryEntryForm.NameSection.footer = "전화가 오면 표시될 이름�
 CallDirectoryEntryForm.PhoneNumberSection.footer = "국가코드를 포함하여 숫자만 입력하세요.";
 CallDirectoryEntryForm.AddType.navigationTitle = "전화번호 추가";
 CallDirectoryEntryForm.EditType.navigationTitle = "전화번호 수정";
-
-// MARK: - SidebarList
-SidebarList.utilities = "유틸리티";
-
-// MARK: - CreateGroupForm
-CreateGroupForm.AccountsSection.header = "계정";
-CreateGroupForm.AccountsSection.footer = "새로운 그룹을 추가할 계정을 선택하세요.";

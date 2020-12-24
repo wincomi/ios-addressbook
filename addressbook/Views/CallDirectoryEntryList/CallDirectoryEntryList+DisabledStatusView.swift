@@ -11,9 +11,9 @@ extension CallDirectoryEntryList {
 		var body: some View {
 			if #available(iOS 13.4, *) {
 				return EmptyDataView(
-					title: L10n.CallDirectoryEntryList.CallDirectoryDisabledView.title,
-					description: L10n.CallDirectoryEntryList.CallDirectoryDisabledView.description,
-					buttonTitle: L10n.CallDirectoryEntryList.CallDirectoryDisabledView.buttonTitle
+					title: L10n.CallDirectoryEntryList.DisabledStatusView.title,
+					description: L10n.CallDirectoryEntryList.DisabledStatusView.description,
+					buttonTitle: L10n.CallDirectoryEntryList.DisabledStatusView.buttonTitle
 				) {
 					CXCallDirectoryManager.sharedInstance.openSettings { error in
 						if let error = error {
@@ -23,8 +23,8 @@ extension CallDirectoryEntryList {
 				}
 			} else {
 				return EmptyDataView(
-					title: L10n.CallDirectoryEntryList.CallDirectoryDisabledView.title,
-					description: L10n.CallDirectoryEntryList.CallDirectoryDisabledView.description
+					title: L10n.CallDirectoryEntryList.DisabledStatusView.title,
+					description: L10n.CallDirectoryEntryList.DisabledStatusView.description
 				)
 			}
 		}

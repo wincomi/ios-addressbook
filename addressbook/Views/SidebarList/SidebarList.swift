@@ -107,7 +107,7 @@ struct SidebarList: View {
 				Button {
 					activeSheet = .newGroup
 				} label: {
-					Label(L10n.GroupList.CreateGroupAlert.title, systemImage: "folder.badge.plus")
+					Label(L10n.CreateGroupForm.navigationTitle, systemImage: "folder.badge.plus")
 				}
 				Button {
 					coordinator?.createContact()
@@ -213,8 +213,8 @@ extension SidebarList {
 		switch item {
 		case .confirmDelete(let group):
 			return ActionSheet(
-				title: Text(L10n.GroupList.ConfirmDeleteAlert.title(group.name)),
-				message: Text(L10n.GroupList.ConfirmDeleteAlert.message(group.name)),
+				title: Text(L10n.SidebarList.ActiveActionSheet.ConfirmDelete.title(group.name)),
+				message: Text(L10n.SidebarList.ActiveActionSheet.ConfirmDelete.message(group.name)),
 				buttons: [
 					.destructive(Text(L10n.delete), action: {
 						viewModel.delete(group) { error in
@@ -228,9 +228,9 @@ extension SidebarList {
 			)
 		case .createButton:
 			return ActionSheet(
-				title: Text(L10n.GroupList.CreateGroupAlert.title),
+				title: Text(L10n.CreateGroupForm.navigationTitle),
 				buttons: [
-					.default(Text(L10n.GroupList.CreateGroupAlert.title), action: {
+					.default(Text(L10n.CreateGroupForm.navigationTitle), action: {
 						activeSheet = .newGroup
 					}),
 					.default(Text(L10n.newContact), action: {

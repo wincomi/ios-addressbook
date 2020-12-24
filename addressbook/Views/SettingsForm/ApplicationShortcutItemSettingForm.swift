@@ -28,7 +28,7 @@ struct ApplicationShortcutItemSettingForm: View {
 			if !itemsCanBeAdded.isEmpty {
 				Section(
 					header: Text(L10n.ContactListRow.ContextMenuItemType.addToApplicationShortcutItems).padding(.horizontal),
-					footer: Text(L10n.ApplicationShortcutItemsSettingForm.AddingSection.footerText).padding(.horizontal)
+					footer: Text(L10n.ApplicationShortcutItemsSettingForm.AddingSection.footer).padding(.horizontal)
 				) {
 					ForEach(itemsCanBeAdded, id: \.localizedTitle) { applicationShortcutItem in
 						ApplicationShortcutItemSettingFormCell(applicationShortcutItem: applicationShortcutItem, type: .add) {
@@ -41,7 +41,7 @@ struct ApplicationShortcutItemSettingForm: View {
 			if !appSettings.applicationShortcutItems.isEmpty {
 				Section(
 					header: Text(L10n.ApplicationShortcutItemsSettingForm.title).padding(.horizontal),
-					footer: Text(L10n.ApplicationShortcutItemsSettingForm.Section.footerText).padding(.horizontal)
+					footer: Text(L10n.ApplicationShortcutItemsSettingForm.ItemsSection.footer).padding(.horizontal)
 				) {
 					ForEach(appSettings.applicationShortcutItems) { applicationShortcutItem in
 						ApplicationShortcutItemSettingFormCell(applicationShortcutItem: applicationShortcutItem)

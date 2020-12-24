@@ -20,10 +20,10 @@ struct CreateGroupForm: View {
 	var body: some View {
 		Form {
 			Section(
-				header: Text(L10n.GroupList.CreateGroupAlert.TextField.placeholder).padding(.horizontal),
-				footer: Text(L10n.GroupList.CreateGroupAlert.message).padding(.horizontal)
+				header: Text(L10n.CreateGroupForm.NameSection.name).padding(.horizontal),
+				footer: Text(L10n.CreateGroupForm.NameSection.footer).padding(.horizontal)
 			) {
-				TextField(L10n.GroupList.CreateGroupAlert.TextField.placeholder, text: $groupName)
+				TextField(L10n.CreateGroupForm.NameSection.name, text: $groupName)
 					.introspectTextField { textField in
 						textField.clearButtonMode = .whileEditing
 						textField.becomeFirstResponder()
@@ -56,7 +56,7 @@ struct CreateGroupForm: View {
 				}
 			}
 		}
-		.navigationBarTitle(L10n.GroupList.CreateGroupAlert.title)
+		.navigationBarTitle(L10n.CreateGroupForm.navigationTitle)
 		.navigationBarItems(leading: cancelButton, trailing: doneButton)
 		.onAppear(perform: viewModel.update)
 		.onReceive(ContactStore.didChange, perform: viewModel.update)
@@ -80,7 +80,7 @@ struct CreateGroupForm: View {
 				}
 			}
 		} label: {
-			Text(L10n.GroupList.CreateGroupAlert.save)
+			Text(L10n.save)
 		}.disabled(!isFormValid)
 	}
 }
