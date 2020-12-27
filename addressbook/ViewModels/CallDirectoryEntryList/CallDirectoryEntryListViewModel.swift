@@ -6,13 +6,17 @@
 import SwiftUI
 import CallKit
 
-final class CallDirectoryEntryListViewModel: ObservableObject {
-	@Published var callDirectoryManagerEnabledStatus: CXCallDirectoryManager.EnabledStatus?
-	@Published var callDirectoryEntries: [CallDirectoryEntry] = []
+enum CallDirectoryEntryListError: Error {
+	case callDirectoryManagerEnabledStatusUnknown
+	case callDirectoryManagerEnabledStatusDisabled
+	case error(Error?)
+}
 
+final class CallDirectoryEntryListViewModel: LoadableObject, ObservableObject {
 	private let storageController = StorageController.shared
 	let didChange = StorageController.didChange
 	let entryType: CallDirectoryEntry.EntryType
+	@Published var state: LoadingState<[CallDirectoryEntry], CallDirectoryEntryListError> = .idle
 
 	var navigationTitle: String {
 		switch entryType {
@@ -27,20 +31,30 @@ final class CallDirectoryEntryListViewModel: ObservableObject {
 		self.entryType = type
 	}
 
-	func update() {
+	func load() {
 		#if DEBUG
-		self.callDirectoryManagerEnabledStatus = .enabled
+		let callDirectoryEntries = self.storageController.fetchCallDirectoryEntries(type: self.entryType)
+		self.state = .loaded(callDirectoryEntries)
 		#else
 		CXCallDirectoryManager.sharedInstance.getEnabledStatusForExtension(withIdentifier: AppSettings.callDirectoryBundleIdentifier) { (enabledStatus, error) in
-			DispatchQueue.main.async {
-				self.callDirectoryManagerEnabledStatus = enabledStatus
+			if let error = error {
+				self.state = .failed(.error(error))
+				return
+			}
+
+			switch enabledStatus {
+			case .unknown:
+				self.state = .failed(.callDirectoryManagerEnabledStatusUnknown)
+			case .disabled:
+				self.state = .failed(.callDirectoryManagerEnabledStatusDisabled)
+			case .enabled:
+				let callDirectoryEntries = self.storageController.fetchCallDirectoryEntries(type: self.entryType)
+				self.state = .loaded(callDirectoryEntries)
+			@unknown default:
+				self.state = .failed(.error(nil))
 			}
 		}
 		#endif
-
-		if case .enabled = self.callDirectoryManagerEnabledStatus {
-			self.callDirectoryEntries = storageController.fetchCallDirectoryEntries(type: entryType)
-		}
 	}
 
 	func remove(_ callDirectoryEntry: CallDirectoryEntry) {
