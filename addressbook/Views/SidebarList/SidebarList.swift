@@ -14,10 +14,19 @@ struct SidebarList: View {
 	@State private var activeAlert: ActiveAlert?
 	@State private var activeActionSheet: ActiveActionSheet?
 
+	private var isEditable: Bool {
+		switch viewModel.state {
+		case .loaded:
+			return true
+		default:
+			return false
+		}
+	}
+
 	var body: some View {
 		List {
-			RequestPermissionSection(notDeterminedAction: viewModel.update) {
-				ForEach(viewModel.groupListSections) { section in
+			AsyncContentView(source: viewModel, errorView: errorView) { sections in
+				ForEach(sections) { section in
 					Section(header: section.headerText.map { Text($0).padding(.horizontal) }) {
 						ForEach(section.rows) { groupListRow in
 							SidebarListCell(groupListRow: groupListRow) {
@@ -77,15 +86,18 @@ struct SidebarList: View {
 				}
 			}.disabled(editMode?.wrappedValue == .active)
 		}
-		.onAppear(perform: viewModel.update)
+		.onAppear(perform: viewModel.load)
 		.onReceive(ContactStore.didChange) {
 			withAnimation {
-				viewModel.update()
+				viewModel.load()
 			}
 		}
 		.modifier(CompatibleInsetGroupedListStyle())
 		.navigationBarTitle(L10n.groups)
-		.navigationBarItems(leading: EditButton(), trailing: createButton)
+		.navigationBarItems(
+			leading: EditButton().disabled(!isEditable),
+			trailing: createButton.disabled(!isEditable)
+		)
 		.sheet(item: $activeSheet, content: sheet(item:))
 		.alert(item: $activeAlert, content: alert(item:))
 		.actionSheet(item: $activeActionSheet, content: actionSheet(item:))
@@ -107,6 +119,55 @@ struct SidebarList: View {
 		}
 	}
 
+	@ViewBuilder private func errorView(error: Error) -> some View {
+		switch error as? ContactStoreError {
+		case .accessNotDetermined:
+			Section(footer: Text(L10n.ContactStoreError.accessNotDeterminedDescription).padding(.horizontal)) {
+				Button {
+					ContactStore.requestAuthorization { _ in
+						viewModel.load()
+					}
+				} label: {
+					HStack {
+						Spacer()
+						Text(L10n.ContactStoreError.requestPermission)
+						Spacer()
+					}
+				}
+			}
+		case .accessRestricted:
+			Section(footer: Text(L10n.ContactStoreError.accessRestrictedDescriptoin).padding(.horizontal)) {
+				Button {
+					guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+					if UIApplication.shared.canOpenURL(url) {
+						UIApplication.shared.open(url, options: [:])
+					}
+				} label: {
+					HStack {
+						Spacer()
+						Text(L10n.ContactStoreError.requestPermission)
+						Spacer()
+					}
+				}
+			}
+		default:
+			Section(footer: Text(L10n.ContactStoreError.accessDeniedDescription).padding(.horizontal)) {
+				Button {
+					guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+					if UIApplication.shared.canOpenURL(url) {
+						UIApplication.shared.open(url, options: [:])
+					}
+				} label: {
+					HStack {
+						Spacer()
+						Text(L10n.ContactStoreError.requestPermission)
+						Spacer()
+					}
+				}
+			}
+		}
+	}
+
 	@ViewBuilder private var createButton: some View {
 		if #available(iOS 14.0, *) {
 			Menu {
@@ -124,14 +185,14 @@ struct SidebarList: View {
 				Label(L10n.add, systemImage: "plus")
 					.labelStyle(IconOnlyLabelStyle())
 					.font(.system(size: 20))
-			}.disabled(!viewModel.isContactStoreAuthorized)
+			}
 		} else {
 			Button {
 				activeActionSheet = .createButton
 			} label: {
 				Image(systemName: "plus")
 					.font(.system(size: 20))
-			}.disabled(!viewModel.isContactStoreAuthorized)
+			}
 		}
 	}
 

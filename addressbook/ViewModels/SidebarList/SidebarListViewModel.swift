@@ -6,25 +6,29 @@
 import SwiftUI
 import Contacts
 import CoreServices
+import Combine
 
-final class SidebarListViewModel: ObservableObject {
-	@Published var groupListSections = [GroupListSection]()
-	@Published var isContactStoreAuthorized = false
+final class SidebarListViewModel: LoadableObject, ObservableObject {
+	@Published var state: LoadingState<[GroupListSection], Error> = .idle
 
-	func update() {
-		guard case .authorized = ContactStore.authorizationStatus else {
-			self.isContactStoreAuthorized = false
-			return
-		}
-
-		self.isContactStoreAuthorized = true
-
-		do {
-			let containers = try ContactStore.shared.fetchContainers()
-			let sections = try GroupListSection.makeSections(from: containers, withAllContactsSection: true, withAllContactsRow: containers.count > 1)
-			self.groupListSections = sections
-		} catch {
-			self.groupListSections = []
+	func load() {
+		switch ContactStore.authorizationStatus {
+		case .authorized:
+			do {
+				let containers = try ContactStore.shared.fetchContainers()
+				let sections = try GroupListSection.makeSections(from: containers, withAllContactsSection: true, withAllContactsRow: containers.count > 1)
+				self.state = .loaded(sections)
+			} catch {
+				self.state = .failed(error)
+			}
+		case .notDetermined:
+			self.state = .failed(ContactStoreError.accessNotDetermined)
+		case .denied:
+			self.state = .failed(ContactStoreError.accessDenied)
+		case .restricted:
+			self.state = .failed(ContactStoreError.accessRestricted)
+		default:
+			self.state = .failed(ContactStoreError.unknown)
 		}
 	}
 
@@ -73,11 +77,11 @@ final class SidebarListViewModel: ObservableObject {
 
 	func addApplicationShortcutItemToAppSettings(_ applicationShortcutItem: ApplicationShortcutItem) {
 		AppSettings.shared.applicationShortcutItems.append(applicationShortcutItem)
-		update() // To update context menu in view
+		load() // To update context menu in view
 	}
 
 	func removeApplicationShortcutItemFromAppSettings(_ applicationShortcutItem: ApplicationShortcutItem) {
 		AppSettings.shared.applicationShortcutItems.removeAll { $0 == applicationShortcutItem }
-		update()
+		load()
 	}
 }

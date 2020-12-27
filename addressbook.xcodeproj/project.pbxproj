@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		08A00F5A2500FCC900E54E8F /* ContactStoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A00F592500FCC900E54E8F /* ContactStoreError.swift */; };
+		0B2613852595C58500A8D874 /* LoadableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2613842595C58500A8D874 /* LoadableObject.swift */; };
+		0B2613892595C5C400A8D874 /* AsyncContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2613882595C5C400A8D874 /* AsyncContentView.swift */; };
 		0B3EF671258A113300E23F15 /* ContextMenuButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3EF670258A113300E23F15 /* ContextMenuButtons.swift */; };
 		0B3EF675258A1AF200E23F15 /* UpdateGroupForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3EF674258A1AF200E23F15 /* UpdateGroupForm.swift */; };
 		0B3EF679258A1B5D00E23F15 /* UpdateGroupFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3EF678258A1B5D00E23F15 /* UpdateGroupFormViewModel.swift */; };
@@ -24,6 +26,7 @@
 		0BBCB5952588CCB50031EE49 /* SidebarListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCB5942588CCB50031EE49 /* SidebarListCell.swift */; };
 		0BBDE181258F89A1008CA758 /* SiderbarList+RequestPermissionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBDE180258F89A1008CA758 /* SiderbarList+RequestPermissionSection.swift */; };
 		0BBDE18B258F8EA5008CA758 /* View+onDragCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBDE18A258F8EA5008CA758 /* View+onDragCompatible.swift */; };
+		0BFC52C12598BE7B0062583E /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFC52C02598BE7B0062583E /* LoadingState.swift */; };
 		84F6580C256A6F3B005B3B0A /* EditGroupsFormRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6580B256A6F3B005B3B0A /* EditGroupsFormRowView.swift */; };
 		84F65812256A72DC005B3B0A /* ApplicationShortcutItemSettingFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F65811256A72DC005B3B0A /* ApplicationShortcutItemSettingFormCell.swift */; };
 		84F65818256A76B7005B3B0A /* ContactMenuSettingFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F65817256A76B7005B3B0A /* ContactMenuSettingFormCell.swift */; };
@@ -125,6 +128,8 @@
 
 /* Begin PBXFileReference section */
 		08A00F592500FCC900E54E8F /* ContactStoreError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactStoreError.swift; sourceTree = "<group>"; };
+		0B2613842595C58500A8D874 /* LoadableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableObject.swift; sourceTree = "<group>"; };
+		0B2613882595C5C400A8D874 /* AsyncContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncContentView.swift; sourceTree = "<group>"; };
 		0B3EF670258A113300E23F15 /* ContextMenuButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenuButtons.swift; sourceTree = "<group>"; };
 		0B3EF674258A1AF200E23F15 /* UpdateGroupForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGroupForm.swift; sourceTree = "<group>"; };
 		0B3EF678258A1B5D00E23F15 /* UpdateGroupFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGroupFormViewModel.swift; sourceTree = "<group>"; };
@@ -140,6 +145,7 @@
 		0BBCB5942588CCB50031EE49 /* SidebarListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarListCell.swift; sourceTree = "<group>"; };
 		0BBDE180258F89A1008CA758 /* SiderbarList+RequestPermissionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SiderbarList+RequestPermissionSection.swift"; sourceTree = "<group>"; };
 		0BBDE18A258F8EA5008CA758 /* View+onDragCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+onDragCompatible.swift"; sourceTree = "<group>"; };
+		0BFC52C02598BE7B0062583E /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
 		84F6580B256A6F3B005B3B0A /* EditGroupsFormRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupsFormRowView.swift; sourceTree = "<group>"; };
 		84F65811256A72DC005B3B0A /* ApplicationShortcutItemSettingFormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationShortcutItemSettingFormCell.swift; sourceTree = "<group>"; };
 		84F65817256A76B7005B3B0A /* ContactMenuSettingFormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactMenuSettingFormCell.swift; sourceTree = "<group>"; };
@@ -271,8 +277,9 @@
 				9169AA8F2514C6A9009EB935 /* ValueCellView.swift */,
 				917AC446252EA9A10031B39A /* EnumPickerForm.swift */,
 				0B9E49A1258B2AE1009F5A9D /* NavigationButton.swift */,
-				0B3EF670258A113300E23F15 /* ContextMenuButtons.swift */,
 				F78F7E79254423B8008DE2DD /* MailComposeView.swift */,
+				0B2613882595C5C400A8D874 /* AsyncContentView.swift */,
+				0B3EF670258A113300E23F15 /* ContextMenuButtons.swift */,
 				9100A92F252614080013A143 /* CompatibleLabel.swift */,
 				91E17EC0251872BB00D2656F /* CompatibleInsetGroupedListStyle.swift */,
 			);
@@ -304,6 +311,8 @@
 			children = (
 				9198AE71250DBCEA00588C9B /* Coordinator.swift */,
 				91E17EBE2518699C00D2656F /* AlertItem.swift */,
+				0BFC52C02598BE7B0062583E /* LoadingState.swift */,
+				0B2613842595C58500A8D874 /* LoadableObject.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -695,6 +704,7 @@
 				F755A865248F3CA600DB9717 /* AppDelegate.swift in Sources */,
 				915761FC254995B100F38931 /* CallDirectoryEntry+CoreDataProperties.swift in Sources */,
 				84F65818256A76B7005B3B0A /* ContactMenuSettingFormCell.swift in Sources */,
+				0B2613852595C58500A8D874 /* LoadableObject.swift in Sources */,
 				F7F17CAF2546A239003C1150 /* CallDirectoryEntryListCell.swift in Sources */,
 				9100A930252614080013A143 /* CompatibleLabel.swift in Sources */,
 				91147F58251B45A70012A592 /* UserDefaults+Extension.swift in Sources */,
@@ -708,6 +718,7 @@
 				91961FDD25066C4900463B7A /* UserDefault+propertyWrapper.swift in Sources */,
 				84F65812256A72DC005B3B0A /* ApplicationShortcutItemSettingFormCell.swift in Sources */,
 				911F577A254BD0CA00C1525E /* CallDirectoryEntryList+DisabledStatusView.swift in Sources */,
+				0BFC52C12598BE7B0062583E /* LoadingState.swift in Sources */,
 				916688B02536899700EC6A3F /* SearchListScope.swift in Sources */,
 				911F1E0F2533EBB400A45093 /* SearchListSection.swift in Sources */,
 				F755A867248F3CA600DB9717 /* SceneDelegate.swift in Sources */,
@@ -726,6 +737,7 @@
 				F74583DA2545A86F00AF9483 /* SharedPersistentContainer.xcdatamodeld in Sources */,
 				F755A879248F3D0200DB9717 /* RootSplitViewController.swift in Sources */,
 				F755A8A5248F60D400DB9717 /* RootCoordinator.swift in Sources */,
+				0B2613892595C5C400A8D874 /* AsyncContentView.swift in Sources */,
 				0BBDE18B258F8EA5008CA758 /* View+onDragCompatible.swift in Sources */,
 				F7F17CD92546C2E5003C1150 /* CallDirectoryEntryList.swift in Sources */,
 				0B953F1B25807F0B00417250 /* SidebarList.swift in Sources */,
