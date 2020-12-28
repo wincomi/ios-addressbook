@@ -40,14 +40,14 @@ SidebarList.ActiveActionSheet.ConfirmDelete.title = "Delete '%@'";
 SidebarList.ActiveActionSheet.ConfirmDelete.message = "Are you sure you want to delete '%@' group?\nContacts will not be deleted.";
 
 // MARK: - CreateGroupForm
-CreateGroupForm.navigationTitle = "New group";
+CreateGroupForm.navigationTitle = "New Group";
 CreateGroupForm.NameSection.name = "Name";
 CreateGroupForm.NameSection.footer = "Enter a name for new group.";
 CreateGroupForm.AccountsSection.header = "Accounts";
 CreateGroupForm.AccountsSection.footer = "Select an account to add new group to.";
 
 // MARK: - UpdateGroupForm
-UpdateGroupForm.navigationTitle = "Update group";
+UpdateGroupForm.navigationTitle = "Update Group";
 
 // MARK: - GroupListRow
 GroupListRow.ContextMenuItemType.rename = "Rename";
@@ -128,7 +128,7 @@ EditContactsForm.organizationName = "Company";
 EditContactsForm.Section.footer = "Leave blank if you don't want multiple edit.";
 
 // MARK: - CallDirectoryEntryList
-CallDirectoryEntryList.Section.Footer = "You can edit the infomation by touching it.";
+CallDirectoryEntryList.Section.footer = "You can edit the infomation by touching the list item.";
 CallDirectoryEntryList.IdentificationType.navigationTitle = "Caller ID";
 CallDirectoryEntryList.IdentificationType.Section.footer = "The name on the list will be displayed when you receive phone calls.";
 CallDirectoryEntryList.BlockingType.navigationTitle = "Call Blocking";
