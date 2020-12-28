@@ -64,7 +64,7 @@ struct CreateGroupForm: View {
 
 	private var cancelButton: some View {
 		Button {
-			presentationMode.wrappedValue.dismiss()
+			dismiss()
 		} label: {
 			Text(L10n.cancel)
 		}
@@ -76,12 +76,17 @@ struct CreateGroupForm: View {
 				if let error = error {
 					coordinator?.present(AlertItem(error: error))
 				} else {
-					presentationMode.wrappedValue.dismiss()
+					dismiss()
 				}
 			}
 		} label: {
 			Text(L10n.save)
 		}.disabled(!isFormValid)
+	}
+
+	private func dismiss() {
+		UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+		presentationMode.wrappedValue.dismiss()
 	}
 }
 
