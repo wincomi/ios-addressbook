@@ -96,6 +96,7 @@ struct CallDirectoryEntryForm: View {
 			dismiss()
 		} label: {
 			Text(L10n.cancel)
+				.fontWeight(.regular)
 		}
 	}
 
@@ -113,10 +114,8 @@ struct CallDirectoryEntryForm: View {
 			switch formType {
 			case .create:
 				Text(L10n.add)
-					.bold()
 			case .update:
 				Text(L10n.done)
-					.bold()
 			}
 		}.disabled(!isFormValid)
 	}

@@ -81,7 +81,7 @@ struct EditGroupsForm: View {
 		Button {
 			dismissHandler()
 		} label: {
-			Text(L10n.done).bold()
+			Text(L10n.done)
 		}
 	}
 }

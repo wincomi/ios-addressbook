@@ -47,6 +47,7 @@ struct SelectGroupsForm: View {
 			dismissHandler(nil)
 		} label: {
 			Text(L10n.cancel)
+				.fontWeight(.regular)
 		}
 	}
 
@@ -54,7 +55,7 @@ struct SelectGroupsForm: View {
 		Button {
 			dismissHandler(selection)
 		} label: {
-			Text(doneButtonTitle).bold()
+			Text(doneButtonTitle)
 		}.disabled(selection.isEmpty)
 	}
 

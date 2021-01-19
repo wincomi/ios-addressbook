@@ -36,7 +36,7 @@ struct SettingsForm: View {
 
 	private var doneButton: some View {
 		Button(action: dismissAction) {
-			Text(L10n.done).bold()
+			Text(L10n.done)
 		}
 	}
 

@@ -61,6 +61,7 @@ struct EditContactsForm: View {
 			dismissHandler()
 		} label: {
 			Text(L10n.cancel)
+				.fontWeight(.regular)
 		}
 	}
 
@@ -73,7 +74,7 @@ struct EditContactsForm: View {
 				print(error.localizedDescription)
 			}
 		} label: {
-			Text(L10n.done).bold()
+			Text(L10n.done)
 		}
 	}
 
