@@ -1,6 +1,6 @@
 // MARK: - General
-cancel = "Cancel";
-ok = "OK";
+Cancel = "Cancel";
+OK = "OK";
 done = "Done";
 add = "Add";
 save = "Save";

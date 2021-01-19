@@ -1,6 +1,6 @@
 // MARK: - General
-cancel = "취소";
-ok = "확인";
+Cancel = "취소";
+OK = "확인";
 done = "완료";
 add = "추가";
 save = "저장";
