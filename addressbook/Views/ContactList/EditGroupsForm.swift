@@ -18,12 +18,12 @@ struct EditGroupsForm: View {
 	var body: some View {
 		NavigationView {
 			Form {
-				Section(header: Text(L10n.contact), footer: Text(L10n.EditGroupsForm.ContactSection.footer)) {
+				Section(header: Text(L10n.contact).padding(.horizontal), footer: Text(L10n.EditGroupsForm.ContactSection.footer).padding(.horizontal)) {
 					Text(ContactListRow.title(for: contactToEditGroups))
 						.foregroundColor(Color(UIColor.secondaryLabel))
 				}
 				ForEach(sections) { section in
-					Section(header: section.headerText.map { Text($0) }) {
+					Section(header: section.headerText.map { Text($0).padding(.horizontal) }) {
 						ForEach(section.rows) { groupListRow in
 							Button {
 								action(for: groupListRow)

@@ -11,7 +11,13 @@ struct EditGroupsFormRowView: View {
 	
 	var body: some View {
 		HStack {
-			ValueCellView(groupListRow, imageTintColor: AppSettings.shared.globalTintColor)
+			CompatibleLabel {
+				Text(groupListRow.text)
+					.foregroundColor(Color(UIColor.label))
+			} icon: {
+				Image(systemName: "folder")
+					.font(.system(size: 20))
+			}
 			Spacer()
 			if selection.contains(groupListRow) {
 				Image(systemName: "checkmark")
