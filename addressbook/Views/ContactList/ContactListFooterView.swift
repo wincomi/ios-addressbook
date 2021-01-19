@@ -13,7 +13,7 @@ struct ContactListFooterView: View {
 	let numberOfContacts: Int
 
 	var body: some View {
-		VStack(spacing: 0) {
+		VStack(spacing: 6) {
 			Divider()
 			Text(L10n.ContactListFooterView.text(numberOfContacts))
 				.foregroundColor(Color(UIColor.secondaryLabel))
