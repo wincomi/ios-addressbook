@@ -17,7 +17,7 @@ struct SelectGroupsForm: View {
 		NavigationView {
 			Form {
 				ForEach(sections) { section in
-					Section(header: section.headerText.map { Text($0) }) {
+					Section(header: section.headerText.map { Text($0).padding(.horizontal) }) {
 						ForEach(section.rows) { row in
 							cell(for: row)
 						}
@@ -68,7 +68,14 @@ struct SelectGroupsForm: View {
 			}
 		} label: {
 			HStack {
-				ValueCellView(groupListRow, imageTintColor: AppSettings.shared.globalTintColor)
+				CompatibleLabel {
+					Text(groupListRow.text)
+						.foregroundColor(Color(UIColor.label))
+				} icon: {
+					Image(systemName: "folder")
+						.font(.system(size: 20))
+				}
+				Spacer()
 				if selection.contains(groupListRow) {
 					Image(systemName: "checkmark")
 				}
