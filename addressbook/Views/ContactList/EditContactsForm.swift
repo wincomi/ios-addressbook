@@ -21,7 +21,7 @@ struct EditContactsForm: View {
 	var body: some View {
 		NavigationView {
 			Form {
-				Section(header: Text(L10n.EditContactsForm.profileImage)) {
+				Section(header: Text(L10n.EditContactsForm.profileImage).padding(.horizontal)) {
 					if let image = image {
 						Image(uiImage: image)
 							.resizable()
@@ -35,13 +35,16 @@ struct EditContactsForm: View {
 					}.disabled(isDeletingImage)
 					Toggle(L10n.EditContactsForm.deleteProfileImage, isOn: $isDeletingImage.onUpdate { image = nil })
 				}
-				Section(header: Text(L10n.EditContactsForm.jobTitle)) {
+				Section(header: Text(L10n.EditContactsForm.jobTitle).padding(.horizontal)) {
 					TextField(L10n.EditContactsForm.jobTitle, text: $jobTitle)
 				}
-				Section(header: Text(L10n.EditContactsForm.departmentName)) {
+				Section(header: Text(L10n.EditContactsForm.departmentName).padding(.horizontal)) {
 					TextField(L10n.EditContactsForm.departmentName, text: $departmentName)
 				}
-				Section(header: Text(L10n.EditContactsForm.organizationName), footer: Text(L10n.EditContactsForm.Section.footer)) {
+				Section(
+					header: Text(L10n.EditContactsForm.organizationName).padding(.horizontal),
+					footer: Text(L10n.EditContactsForm.Section.footer).padding(.horizontal)
+				) {
 					TextField(L10n.EditContactsForm.organizationName, text: $organizationName)
 				}
 			}.sheet(isPresented: $isPresentedImagePicker) {
