@@ -54,10 +54,18 @@ final class ContactListToolbarItemsProvider: ToolbarItemsProvider {
 	}()
 
 	lazy var edit: UIBarButtonItem = {
-		UIBarButtonItem(title: L10n.EditContactsForm.navigationTitle, image: UIImage(systemName: "pencil"), handler: {
+		UIBarButtonItem(title: L10n.EditContactsForm.navigationTitle, image: editImage, handler: {
 			self.editHandler?(self.edit)
 		})
 	}()
+
+	private var editImage: UIImage? {
+		if #available(iOS 14.0, *) {
+			return UIImage(systemName: "rectangle.and.pencil.and.ellipsis")
+		} else {
+			return UIImage(systemName: "pencil.circle")
+		}
+	}
 
 	// MARK: - ToolbarItemsProvider
 	func toolbarItem(for type: ToolbarItemType) -> ToolbarItem? {
