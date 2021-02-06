@@ -33,21 +33,18 @@ struct UpdateGroupForm: View {
 	}
 
 	private var cancelButton: some View {
-		Button {
-			dismiss()
-		} label: {
+		Button(action: dismiss){
 			Text(L10n.cancel)
 		}
 	}
 
 	private var doneButton: some View {
 		Button {
-			viewModel.updateGroup(withGroupName: groupName) { error in
-				if let error = error {
-					coordinator?.present(AlertItem(error: error))
-				} else {
-					dismiss()
-				}
+			do {
+				try viewModel.updateGroup(withGroupName: groupName)
+				dismiss()
+			} catch {
+				coordinator?.present(AlertItem(error: error))
 			}
 		} label: {
 			Text(L10n.save)

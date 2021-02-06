@@ -19,47 +19,42 @@ struct EditContactsForm: View {
 	@State private var isPresentedImagePicker = false
 
 	var body: some View {
-		NavigationView {
-			Form {
-				Section(header: Text(L10n.EditContactsForm.profileImage).padding(.horizontal)) {
-					if let image = image {
-						Image(uiImage: image)
-							.resizable()
-							.scaledToFit()
-							.clipShape(Circle())
-					}
-					Button {
-						isPresentedImagePicker.toggle()
-					} label: {
-						Text("\(L10n.EditContactsForm.selectImage)...")
-					}.disabled(isDeletingImage)
-					Toggle(L10n.EditContactsForm.deleteProfileImage, isOn: $isDeletingImage.onUpdate { image = nil })
+		Form {
+			Section(header: Text(L10n.EditContactsForm.profileImage).padding(.horizontal)) {
+				if let image = image {
+					Image(uiImage: image)
+						.resizable()
+						.scaledToFit()
+						.clipShape(Circle())
 				}
-				Section(header: Text(L10n.EditContactsForm.jobTitle).padding(.horizontal)) {
-					TextField(L10n.EditContactsForm.jobTitle, text: $jobTitle)
-				}
-				Section(header: Text(L10n.EditContactsForm.departmentName).padding(.horizontal)) {
-					TextField(L10n.EditContactsForm.departmentName, text: $departmentName)
-				}
-				Section(
-					header: Text(L10n.EditContactsForm.organizationName).padding(.horizontal),
-					footer: Text(L10n.EditContactsForm.Section.footer).padding(.horizontal)
-				) {
-					TextField(L10n.EditContactsForm.organizationName, text: $organizationName)
-				}
-			}.sheet(isPresented: $isPresentedImagePicker) {
-				ImagePicker(image: $image)
+				Button {
+					isPresentedImagePicker.toggle()
+				} label: {
+					Text("\(L10n.EditContactsForm.selectImage)...")
+				}.disabled(isDeletingImage)
+				Toggle(L10n.EditContactsForm.deleteProfileImage, isOn: $isDeletingImage.onUpdate { image = nil })
 			}
-			.navigationBarTitle(L10n.EditContactsForm.navigationTitle)
-			.navigationBarItems(leading: cancelButton, trailing: doneButton)
+			Section(header: Text(L10n.EditContactsForm.jobTitle).padding(.horizontal)) {
+				TextField(L10n.EditContactsForm.jobTitle, text: $jobTitle)
+			}
+			Section(header: Text(L10n.EditContactsForm.departmentName).padding(.horizontal)) {
+				TextField(L10n.EditContactsForm.departmentName, text: $departmentName)
+			}
+			Section(
+				header: Text(L10n.EditContactsForm.organizationName).padding(.horizontal),
+				footer: Text(L10n.EditContactsForm.Section.footer).padding(.horizontal)
+			) {
+				TextField(L10n.EditContactsForm.organizationName, text: $organizationName)
+			}
+		}.sheet(isPresented: $isPresentedImagePicker) {
+			ImagePicker(image: $image)
 		}
-		.navigationViewStyle(StackNavigationViewStyle())
+		.navigationBarTitle(L10n.EditContactsForm.navigationTitle)
+		.navigationBarItems(leading: cancelButton, trailing: doneButton)
 	}
 
 	private var cancelButton: some View {
-		Button {
-			dismissHandler()
-		} label: {
+		Button(action: dismissHandler){
 			Text(L10n.cancel)
 				.fontWeight(.regular)
 		}
@@ -78,7 +73,7 @@ struct EditContactsForm: View {
 		}
 	}
 
-	func updateContacts() throws {
+	private func updateContacts() throws {
 		do {
 			try contacts.forEach { contact in
 				try contact.update { mutableContact in

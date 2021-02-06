@@ -72,9 +72,15 @@ extension RootSplitViewController: CNContactViewControllerDelegate {
 
 		guard let contact = contact else { return }
 
+		// ContactList의 viewModel.groupListRow.type이 group일 경우 그 그룹에 연락처를 추가함
 		if let contactListViewController = coordinator?.contactListViewControllerInNavigationController(),
 		   case .group(let group) = contactListViewController.viewModel.groupListRow.type {
-			contactListViewController.viewModel.add([ContactListRow(contact)], to: group)
+
+			do {
+				try contactListViewController.viewModel.add([ContactListRow(contact)], to: group)
+			} catch {
+				self.coordinator?.presentErrorAlert(message: error.localizedDescription)
+			}
 		}
 
 		coordinator?.select(ContactListRow(contact))

@@ -16,6 +16,11 @@
 		0B452DEB259498000096A4FF /* SortOrderPickerForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B452DEA259498000096A4FF /* SortOrderPickerForm.swift */; };
 		0B452DEF259499560096A4FF /* UserInterfaceStylePickerForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B452DEE259499560096A4FF /* UserInterfaceStylePickerForm.swift */; };
 		0B452DF3259499800096A4FF /* DisplayOrderPickerForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B452DF2259499800096A4FF /* DisplayOrderPickerForm.swift */; };
+		0B4A93AE25BB139B00CEFE3F /* GroupPickerFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4A93AD25BB139B00CEFE3F /* GroupPickerFormViewModel.swift */; };
+		0B4A93B225BB140800CEFE3F /* EditGroupsFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4A93B125BB140800CEFE3F /* EditGroupsFormViewModel.swift */; };
+		0B4A93B925BB17C600CEFE3F /* GroupPickerFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4A93B725BB17C600CEFE3F /* GroupPickerFormCell.swift */; };
+		0B4A93BA25BB17C600CEFE3F /* GroupPickerForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4A93B825BB17C600CEFE3F /* GroupPickerForm.swift */; };
+		0B4A93CA25BB19B000CEFE3F /* AddToGroupForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4A93C925BB19B000CEFE3F /* AddToGroupForm.swift */; };
 		0B91CF4D259231F20084FB93 /* CallDirectoryEntryFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B91CF4C259231F20084FB93 /* CallDirectoryEntryFormViewModel.swift */; };
 		0B953F1B25807F0B00417250 /* SidebarList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B953F1A25807F0B00417250 /* SidebarList.swift */; };
 		0B953F2025807F8900417250 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 0B953F1F25807F8900417250 /* Introspect */; };
@@ -24,22 +29,23 @@
 		0BA71E472588F82E0007F9C9 /* CreateGroupForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA71E462588F82E0007F9C9 /* CreateGroupForm.swift */; };
 		0BA71E4B2588FBE60007F9C9 /* CreateGroupFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA71E4A2588FBE60007F9C9 /* CreateGroupFormViewModel.swift */; };
 		0BBCB5952588CCB50031EE49 /* SidebarListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCB5942588CCB50031EE49 /* SidebarListCell.swift */; };
-		0BBDE181258F89A1008CA758 /* SiderbarList+RequestPermissionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBDE180258F89A1008CA758 /* SiderbarList+RequestPermissionSection.swift */; };
+		0BBDE181258F89A1008CA758 /* SidebarList.RequestPermissionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBDE180258F89A1008CA758 /* SidebarList.RequestPermissionSection.swift */; };
 		0BBDE18B258F8EA5008CA758 /* View+onDragCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBDE18A258F8EA5008CA758 /* View+onDragCompatible.swift */; };
+		0BF9092325CADD8600DF6E85 /* SidebarList.ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF9092225CADD8600DF6E85 /* SidebarList.ErrorView.swift */; };
 		0BFC52C12598BE7B0062583E /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFC52C02598BE7B0062583E /* LoadingState.swift */; };
-		84F6580C256A6F3B005B3B0A /* EditGroupsFormRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6580B256A6F3B005B3B0A /* EditGroupsFormRowView.swift */; };
+		84F6580C256A6F3B005B3B0A /* EditGroupsFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6580B256A6F3B005B3B0A /* EditGroupsFormCell.swift */; };
 		84F65812256A72DC005B3B0A /* ApplicationShortcutItemSettingFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F65811256A72DC005B3B0A /* ApplicationShortcutItemSettingFormCell.swift */; };
 		84F65818256A76B7005B3B0A /* ContactMenuSettingFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F65817256A76B7005B3B0A /* ContactMenuSettingFormCell.swift */; };
 		9100A930252614080013A143 /* CompatibleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9100A92F252614080013A143 /* CompatibleLabel.swift */; };
 		91046703250614DA00618BFD /* SearchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91046702250614DA00618BFD /* SearchListViewController.swift */; };
 		910467052506252100618BFD /* SearchListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910467042506252100618BFD /* SearchListViewModel.swift */; };
-		91057E2B252D9A3E0053E101 /* ContactListRow+ContextMenuItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91057E2A252D9A3E0053E101 /* ContactListRow+ContextMenuItemType.swift */; };
+		91057E2B252D9A3E0053E101 /* ContactListRow.ContextMenuItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91057E2A252D9A3E0053E101 /* ContactListRow.ContextMenuItemType.swift */; };
 		9108D4502507BE41004CF0C4 /* CNContainer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9108D44F2507BE41004CF0C4 /* CNContainer+Extension.swift */; };
 		9109DEDF2516F026004E949C /* ContactMenuSettingForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9109DEDE2516F026004E949C /* ContactMenuSettingForm.swift */; };
 		91147F58251B45A70012A592 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91147F57251B45A70012A592 /* UserDefaults+Extension.swift */; };
 		911A21A4252B29E400654E5D /* ContactListRowContextMenuConfigurationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911A21A3252B29E400654E5D /* ContactListRowContextMenuConfigurationProvider.swift */; };
 		911F1E0F2533EBB400A45093 /* SearchListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911F1E0E2533EBB400A45093 /* SearchListSection.swift */; };
-		911F577A254BD0CA00C1525E /* CallDirectoryEntryList+DisabledStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911F5779254BD0CA00C1525E /* CallDirectoryEntryList+DisabledStatusView.swift */; };
+		911F577A254BD0CA00C1525E /* CallDirectoryEntryList.DisabledStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911F5779254BD0CA00C1525E /* CallDirectoryEntryList.DisabledStatusView.swift */; };
 		91313F122529C75700838A05 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 91313F112529C75700838A05 /* Settings.bundle */; };
 		913DC24225160DD800BC1397 /* ApplicationShortcutItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913DC24125160DD800BC1397 /* ApplicationShortcutItem.swift */; };
 		9150ABB4252C4B3200503220 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 9150ABB6252C4B3200503220 /* Localizable.stringsdict */; };
@@ -64,7 +70,6 @@
 		91961FDD25066C4900463B7A /* UserDefault+propertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91961FDC25066C4900463B7A /* UserDefault+propertyWrapper.swift */; };
 		91961FDF25066CB400463B7A /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91961FDE25066CB400463B7A /* AppSettings.swift */; };
 		9198AE72250DBCEA00588C9B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9198AE71250DBCEA00588C9B /* Coordinator.swift */; };
-		91B22E2D252B65F50094A066 /* SelectGroupsForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B22E2C252B65F50094A066 /* SelectGroupsForm.swift */; };
 		91B61EA82534703C007935AD /* EditContactsForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B61EA72534703C007935AD /* EditContactsForm.swift */; };
 		91BCA71A2524B8030094B20A /* CircleColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BCA7192524B8030094B20A /* CircleColorView.swift */; };
 		91E17EBF2518699C00D2656F /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E17EBE2518699C00D2656F /* AlertItem.swift */; };
@@ -95,7 +100,7 @@
 		F755A8B7248FC22E00DB9717 /* GroupListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F755A8B6248FC22E00DB9717 /* GroupListSection.swift */; };
 		F755A8B9248FC23600DB9717 /* GroupListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F755A8B8248FC23600DB9717 /* GroupListRow.swift */; };
 		F755A8C224913F0F00DB9717 /* ContactStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F755A8C024913F0F00DB9717 /* ContactStore.swift */; };
-		F786EF8225450A8800CBEAC4 /* ContactListFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F786EF8125450A8800CBEAC4 /* ContactListFooterView.swift */; };
+		F786EF8225450A8800CBEAC4 /* ContactList.Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F786EF8125450A8800CBEAC4 /* ContactList.Footer.swift */; };
 		F78F7E7A254423B8008DE2DD /* MailComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78F7E79254423B8008DE2DD /* MailComposeView.swift */; };
 		F7F17CAF2546A239003C1150 /* CallDirectoryEntryListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F17CAE2546A238003C1150 /* CallDirectoryEntryListCell.swift */; };
 		F7F17CD92546C2E5003C1150 /* CallDirectoryEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F17CD82546C2E5003C1150 /* CallDirectoryEntryList.swift */; };
@@ -136,6 +141,11 @@
 		0B452DEA259498000096A4FF /* SortOrderPickerForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOrderPickerForm.swift; sourceTree = "<group>"; };
 		0B452DEE259499560096A4FF /* UserInterfaceStylePickerForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterfaceStylePickerForm.swift; sourceTree = "<group>"; };
 		0B452DF2259499800096A4FF /* DisplayOrderPickerForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayOrderPickerForm.swift; sourceTree = "<group>"; };
+		0B4A93AD25BB139B00CEFE3F /* GroupPickerFormViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupPickerFormViewModel.swift; sourceTree = "<group>"; };
+		0B4A93B125BB140800CEFE3F /* EditGroupsFormViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditGroupsFormViewModel.swift; sourceTree = "<group>"; };
+		0B4A93B725BB17C600CEFE3F /* GroupPickerFormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupPickerFormCell.swift; sourceTree = "<group>"; };
+		0B4A93B825BB17C600CEFE3F /* GroupPickerForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupPickerForm.swift; sourceTree = "<group>"; };
+		0B4A93C925BB19B000CEFE3F /* AddToGroupForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToGroupForm.swift; sourceTree = "<group>"; };
 		0B91CF4C259231F20084FB93 /* CallDirectoryEntryFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDirectoryEntryFormViewModel.swift; sourceTree = "<group>"; };
 		0B953F1A25807F0B00417250 /* SidebarList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarList.swift; sourceTree = "<group>"; };
 		0B953F27258088E100417250 /* SidebarListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarListViewModel.swift; sourceTree = "<group>"; };
@@ -143,23 +153,24 @@
 		0BA71E462588F82E0007F9C9 /* CreateGroupForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupForm.swift; sourceTree = "<group>"; };
 		0BA71E4A2588FBE60007F9C9 /* CreateGroupFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupFormViewModel.swift; sourceTree = "<group>"; };
 		0BBCB5942588CCB50031EE49 /* SidebarListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarListCell.swift; sourceTree = "<group>"; };
-		0BBDE180258F89A1008CA758 /* SiderbarList+RequestPermissionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SiderbarList+RequestPermissionSection.swift"; sourceTree = "<group>"; };
+		0BBDE180258F89A1008CA758 /* SidebarList.RequestPermissionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarList.RequestPermissionSection.swift; sourceTree = "<group>"; };
 		0BBDE18A258F8EA5008CA758 /* View+onDragCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+onDragCompatible.swift"; sourceTree = "<group>"; };
+		0BF9092225CADD8600DF6E85 /* SidebarList.ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarList.ErrorView.swift; sourceTree = "<group>"; };
 		0BFC52C02598BE7B0062583E /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
-		84F6580B256A6F3B005B3B0A /* EditGroupsFormRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupsFormRowView.swift; sourceTree = "<group>"; };
+		84F6580B256A6F3B005B3B0A /* EditGroupsFormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupsFormCell.swift; sourceTree = "<group>"; };
 		84F65811256A72DC005B3B0A /* ApplicationShortcutItemSettingFormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationShortcutItemSettingFormCell.swift; sourceTree = "<group>"; };
 		84F65817256A76B7005B3B0A /* ContactMenuSettingFormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactMenuSettingFormCell.swift; sourceTree = "<group>"; };
 		9100A92F252614080013A143 /* CompatibleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibleLabel.swift; sourceTree = "<group>"; };
 		91046702250614DA00618BFD /* SearchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListViewController.swift; sourceTree = "<group>"; };
 		910467042506252100618BFD /* SearchListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListViewModel.swift; sourceTree = "<group>"; };
-		91057E2A252D9A3E0053E101 /* ContactListRow+ContextMenuItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContactListRow+ContextMenuItemType.swift"; sourceTree = "<group>"; };
+		91057E2A252D9A3E0053E101 /* ContactListRow.ContextMenuItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListRow.ContextMenuItemType.swift; sourceTree = "<group>"; };
 		9108D44F2507BE41004CF0C4 /* CNContainer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CNContainer+Extension.swift"; sourceTree = "<group>"; };
 		9109DEDE2516F026004E949C /* ContactMenuSettingForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactMenuSettingForm.swift; sourceTree = "<group>"; };
 		91147F55251B45650012A592 /* addressbook.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = addressbook.entitlements; sourceTree = "<group>"; };
 		91147F57251B45A70012A592 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		911A21A3252B29E400654E5D /* ContactListRowContextMenuConfigurationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListRowContextMenuConfigurationProvider.swift; sourceTree = "<group>"; };
 		911F1E0E2533EBB400A45093 /* SearchListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListSection.swift; sourceTree = "<group>"; };
-		911F5779254BD0CA00C1525E /* CallDirectoryEntryList+DisabledStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CallDirectoryEntryList+DisabledStatusView.swift"; sourceTree = "<group>"; };
+		911F5779254BD0CA00C1525E /* CallDirectoryEntryList.DisabledStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDirectoryEntryList.DisabledStatusView.swift; sourceTree = "<group>"; };
 		91313F112529C75700838A05 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		913DC24125160DD800BC1397 /* ApplicationShortcutItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationShortcutItem.swift; sourceTree = "<group>"; };
 		9150ABB5252C4B3200503220 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
@@ -181,7 +192,6 @@
 		91961FDC25066C4900463B7A /* UserDefault+propertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+propertyWrapper.swift"; sourceTree = "<group>"; };
 		91961FDE25066CB400463B7A /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		9198AE71250DBCEA00588C9B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		91B22E2C252B65F50094A066 /* SelectGroupsForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGroupsForm.swift; sourceTree = "<group>"; };
 		91B61EA72534703C007935AD /* EditContactsForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactsForm.swift; sourceTree = "<group>"; };
 		91BCA7192524B8030094B20A /* CircleColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleColorView.swift; sourceTree = "<group>"; };
 		91E17EBE2518699C00D2656F /* AlertItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertItem.swift; sourceTree = "<group>"; };
@@ -216,7 +226,7 @@
 		F755A8B6248FC22E00DB9717 /* GroupListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListSection.swift; sourceTree = "<group>"; };
 		F755A8B8248FC23600DB9717 /* GroupListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListRow.swift; sourceTree = "<group>"; };
 		F755A8C024913F0F00DB9717 /* ContactStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactStore.swift; sourceTree = "<group>"; };
-		F786EF8125450A8800CBEAC4 /* ContactListFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListFooterView.swift; sourceTree = "<group>"; };
+		F786EF8125450A8800CBEAC4 /* ContactList.Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactList.Footer.swift; sourceTree = "<group>"; };
 		F78F7E79254423B8008DE2DD /* MailComposeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailComposeView.swift; sourceTree = "<group>"; };
 		F7F17CA22545D831003C1150 /* CallDirectory.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CallDirectory.entitlements; sourceTree = "<group>"; };
 		F7F17CAE2546A238003C1150 /* CallDirectoryEntryListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDirectoryEntryListCell.swift; sourceTree = "<group>"; };
@@ -250,7 +260,8 @@
 			isa = PBXGroup;
 			children = (
 				0B953F1A25807F0B00417250 /* SidebarList.swift */,
-				0BBDE180258F89A1008CA758 /* SiderbarList+RequestPermissionSection.swift */,
+				0BF9092225CADD8600DF6E85 /* SidebarList.ErrorView.swift */,
+				0BBDE180258F89A1008CA758 /* SidebarList.RequestPermissionSection.swift */,
 				0BBCB5942588CCB50031EE49 /* SidebarListCell.swift */,
 				0BA71E462588F82E0007F9C9 /* CreateGroupForm.swift */,
 				0B3EF674258A1AF200E23F15 /* UpdateGroupForm.swift */,
@@ -321,11 +332,13 @@
 			isa = PBXGroup;
 			children = (
 				F75093D324A07E0B0044CDE3 /* ContactListViewController.swift */,
-				F786EF8125450A8800CBEAC4 /* ContactListFooterView.swift */,
 				F75093D924A07EA10044CDE3 /* ContactListCell.swift */,
-				91B22E2C252B65F50094A066 /* SelectGroupsForm.swift */,
+				F786EF8125450A8800CBEAC4 /* ContactList.Footer.swift */,
+				0B4A93B825BB17C600CEFE3F /* GroupPickerForm.swift */,
+				0B4A93B725BB17C600CEFE3F /* GroupPickerFormCell.swift */,
+				0B4A93C925BB19B000CEFE3F /* AddToGroupForm.swift */,
 				917C15D82529CBD700A5DA80 /* EditGroupsForm.swift */,
-				84F6580B256A6F3B005B3B0A /* EditGroupsFormRowView.swift */,
+				84F6580B256A6F3B005B3B0A /* EditGroupsFormCell.swift */,
 				91B61EA72534703C007935AD /* EditContactsForm.swift */,
 			);
 			path = ContactList;
@@ -335,11 +348,13 @@
 			isa = PBXGroup;
 			children = (
 				F75093D024A07E0B0044CDE3 /* ContactListRow.swift */,
-				91057E2A252D9A3E0053E101 /* ContactListRow+ContextMenuItemType.swift */,
-				911A21A3252B29E400654E5D /* ContactListRowContextMenuConfigurationProvider.swift */,
+				91057E2A252D9A3E0053E101 /* ContactListRow.ContextMenuItemType.swift */,
 				F75093CF24A07E0B0044CDE3 /* ContactListSection.swift */,
 				F75093D124A07E0B0044CDE3 /* ContactListViewModel.swift */,
+				911A21A3252B29E400654E5D /* ContactListRowContextMenuConfigurationProvider.swift */,
 				91E7898A252B469400A18CCD /* ContactListToolbarItemsProvider.swift */,
+				0B4A93AD25BB139B00CEFE3F /* GroupPickerFormViewModel.swift */,
+				0B4A93B125BB140800CEFE3F /* EditGroupsFormViewModel.swift */,
 			);
 			path = ContactList;
 			sourceTree = "<group>";
@@ -424,7 +439,7 @@
 				F7F17CD82546C2E5003C1150 /* CallDirectoryEntryList.swift */,
 				F72B82292545C17900737A9A /* CallDirectoryEntryForm.swift */,
 				F7F17CAE2546A238003C1150 /* CallDirectoryEntryListCell.swift */,
-				911F5779254BD0CA00C1525E /* CallDirectoryEntryList+DisabledStatusView.swift */,
+				911F5779254BD0CA00C1525E /* CallDirectoryEntryList.DisabledStatusView.swift */,
 			);
 			path = CallDirectoryEntryList;
 			sourceTree = "<group>";
@@ -675,15 +690,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B4A93CA25BB19B000CEFE3F /* AddToGroupForm.swift in Sources */,
 				91E7898B252B469400A18CCD /* ContactListToolbarItemsProvider.swift in Sources */,
-				84F6580C256A6F3B005B3B0A /* EditGroupsFormRowView.swift in Sources */,
+				84F6580C256A6F3B005B3B0A /* EditGroupsFormCell.swift in Sources */,
 				911A21A4252B29E400654E5D /* ContactListRowContextMenuConfigurationProvider.swift in Sources */,
 				0B3EF671258A113300E23F15 /* ContextMenuButtons.swift in Sources */,
 				0B452DEF259499560096A4FF /* UserInterfaceStylePickerForm.swift in Sources */,
 				916688B325368B5D00EC6A3F /* ImagePicker.swift in Sources */,
 				F7F17CDD2546DB93003C1150 /* CallDirectoryEntryListViewModel.swift in Sources */,
 				0B9E49A2258B2AE1009F5A9D /* NavigationButton.swift in Sources */,
-				F786EF8225450A8800CBEAC4 /* ContactListFooterView.swift in Sources */,
+				F786EF8225450A8800CBEAC4 /* ContactList.Footer.swift in Sources */,
 				91E17EBF2518699C00D2656F /* AlertItem.swift in Sources */,
 				91B61EA82534703C007935AD /* EditContactsForm.swift in Sources */,
 				0B91CF4D259231F20084FB93 /* CallDirectoryEntryFormViewModel.swift in Sources */,
@@ -696,14 +712,15 @@
 				917C15D92529CBD700A5DA80 /* EditGroupsForm.swift in Sources */,
 				F75093DA24A07EA10044CDE3 /* ContactListCell.swift in Sources */,
 				91E44A42250F52A50092540A /* SettingsFormViewModel.swift in Sources */,
-				0BBDE181258F89A1008CA758 /* SiderbarList+RequestPermissionSection.swift in Sources */,
-				91B22E2D252B65F50094A066 /* SelectGroupsForm.swift in Sources */,
+				0BBDE181258F89A1008CA758 /* SidebarList.RequestPermissionSection.swift in Sources */,
+				0B4A93B925BB17C600CEFE3F /* GroupPickerFormCell.swift in Sources */,
 				08A00F5A2500FCC900E54E8F /* ContactStoreError.swift in Sources */,
 				F755A8C224913F0F00DB9717 /* ContactStore.swift in Sources */,
 				F75093D424A07E0B0044CDE3 /* ContactListSection.swift in Sources */,
 				F755A865248F3CA600DB9717 /* AppDelegate.swift in Sources */,
 				915761FC254995B100F38931 /* CallDirectoryEntry+CoreDataProperties.swift in Sources */,
 				84F65818256A76B7005B3B0A /* ContactMenuSettingFormCell.swift in Sources */,
+				0B4A93B225BB140800CEFE3F /* EditGroupsFormViewModel.swift in Sources */,
 				0B2613852595C58500A8D874 /* LoadableObject.swift in Sources */,
 				F7F17CAF2546A239003C1150 /* CallDirectoryEntryListCell.swift in Sources */,
 				9100A930252614080013A143 /* CompatibleLabel.swift in Sources */,
@@ -713,11 +730,12 @@
 				91BCA71A2524B8030094B20A /* CircleColorView.swift in Sources */,
 				9109DEDF2516F026004E949C /* ContactMenuSettingForm.swift in Sources */,
 				0B3EF679258A1B5D00E23F15 /* UpdateGroupFormViewModel.swift in Sources */,
+				0B4A93AE25BB139B00CEFE3F /* GroupPickerFormViewModel.swift in Sources */,
 				0B3EF675258A1AF200E23F15 /* UpdateGroupForm.swift in Sources */,
 				0B953F28258088E100417250 /* SidebarListViewModel.swift in Sources */,
 				91961FDD25066C4900463B7A /* UserDefault+propertyWrapper.swift in Sources */,
 				84F65812256A72DC005B3B0A /* ApplicationShortcutItemSettingFormCell.swift in Sources */,
-				911F577A254BD0CA00C1525E /* CallDirectoryEntryList+DisabledStatusView.swift in Sources */,
+				911F577A254BD0CA00C1525E /* CallDirectoryEntryList.DisabledStatusView.swift in Sources */,
 				0BFC52C12598BE7B0062583E /* LoadingState.swift in Sources */,
 				916688B02536899700EC6A3F /* SearchListScope.swift in Sources */,
 				911F1E0F2533EBB400A45093 /* SearchListSection.swift in Sources */,
@@ -730,7 +748,7 @@
 				0BBCB5952588CCB50031EE49 /* SidebarListCell.swift in Sources */,
 				916688B625368BB600EC6A3F /* Binding+Extension.swift in Sources */,
 				9198AE72250DBCEA00588C9B /* Coordinator.swift in Sources */,
-				91057E2B252D9A3E0053E101 /* ContactListRow+ContextMenuItemType.swift in Sources */,
+				91057E2B252D9A3E0053E101 /* ContactListRow.ContextMenuItemType.swift in Sources */,
 				F75093D824A07E0B0044CDE3 /* ContactListViewController.swift in Sources */,
 				F75093D624A07E0B0044CDE3 /* ContactListViewModel.swift in Sources */,
 				F78F7E7A254423B8008DE2DD /* MailComposeView.swift in Sources */,
@@ -743,9 +761,11 @@
 				0B953F1B25807F0B00417250 /* SidebarList.swift in Sources */,
 				91046703250614DA00618BFD /* SearchListViewController.swift in Sources */,
 				F74583DF2545AB2E00AF9483 /* StorageController.swift in Sources */,
+				0B4A93BA25BB17C600CEFE3F /* GroupPickerForm.swift in Sources */,
 				919231F425345CD90007819F /* SearchListCell.swift in Sources */,
 				0BA71E4B2588FBE60007F9C9 /* CreateGroupFormViewModel.swift in Sources */,
 				F75093D524A07E0B0044CDE3 /* ContactListRow.swift in Sources */,
+				0BF9092325CADD8600DF6E85 /* SidebarList.ErrorView.swift in Sources */,
 				910467052506252100618BFD /* SearchListViewModel.swift in Sources */,
 				913DC24225160DD800BC1397 /* ApplicationShortcutItem.swift in Sources */,
 				91E17EC1251872BB00D2656F /* CompatibleInsetGroupedListStyle.swift in Sources */,
@@ -809,7 +829,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CallDirectory/CallDirectory.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.2.1.3;
+				CURRENT_PROJECT_VERSION = 1.2.1.4;
 				DEVELOPMENT_TEAM = M4FL5MH4DS;
 				INFOPLIST_FILE = CallDirectory/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -818,7 +838,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wincomi.ios.addressbook.CallDirectory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -832,7 +852,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CallDirectory/CallDirectory.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.2.1.3;
+				CURRENT_PROJECT_VERSION = 1.2.1.4;
 				DEVELOPMENT_TEAM = M4FL5MH4DS;
 				INFOPLIST_FILE = CallDirectory/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -841,7 +861,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wincomi.ios.addressbook.CallDirectory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -975,7 +995,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = addressbook/addressbook.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.2.1.3;
+				CURRENT_PROJECT_VERSION = 1.2.1.4;
 				DEVELOPMENT_TEAM = M4FL5MH4DS;
 				INFOPLIST_FILE = addressbook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -983,7 +1003,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wincomi.ios.addressbook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -998,7 +1018,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = addressbook/addressbook.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.2.1.3;
+				CURRENT_PROJECT_VERSION = 1.2.1.4;
 				DEVELOPMENT_TEAM = M4FL5MH4DS;
 				INFOPLIST_FILE = addressbook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1006,7 +1026,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wincomi.ios.addressbook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

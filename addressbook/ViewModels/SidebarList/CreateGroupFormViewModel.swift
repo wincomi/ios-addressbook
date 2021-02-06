@@ -15,13 +15,13 @@ final class CreateGroupFormViewModel: ObservableObject {
 		self.selectedContainer = containers.first
 	}
 
-	func createGroup(groupName: String, completion: ((Error?) -> Void)) {
+	func createGroup(groupName: String) throws {
 		guard let container = selectedContainer else { return }
+
 		do {
 			try ContactStore.shared.create(group: { $0.name = groupName }, to: container)
-			completion(nil)
 		} catch {
-			completion(error)
+			throw error
 		}
 	}
 }

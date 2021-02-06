@@ -13,12 +13,11 @@ final class UpdateGroupFormViewModel: ObservableObject {
 		self.currentGroup = currentGroup
 	}
 
-	func updateGroup(withGroupName groupName: String, completion: ((Error?) -> Void)) {
+	func updateGroup(withGroupName groupName: String) throws {
 		do {
 			try currentGroup.update { $0.name = groupName }
-			completion(nil)
 		} catch {
-			completion(error)
+			throw error
 		}
 	}
 }

@@ -9,6 +9,7 @@ struct SettingsForm: View {
 	@EnvironmentObject var appSettings: AppSettings
 	@ObservedObject var viewModel = SettingsFormViewModel()
 	@State private var activeSheet: ActiveSheet?
+	@Environment(\.presentationMode) private var presentationMode
 	var dismissAction: (() -> Void) = { }
 
 	@available(iOS 14.0, *)
@@ -20,18 +21,16 @@ struct SettingsForm: View {
 	}
 
 	var body: some View {
-		NavigationView {
-			Form {
-				generalSection
-				displaySection
-				themeSection
-				feedbackSection
-			}
-			.modifier(CompatibleInsetGroupedListStyle())
-			.navigationBarTitle(L10n.SettingsForm.navigationTitle)
-			.navigationBarItems(trailing: doneButton)
-			.sheet(item: $activeSheet, content: sheet(item:))
-		}.navigationViewStyle(StackNavigationViewStyle())
+		Form {
+			generalSection
+			displaySection
+			themeSection
+			feedbackSection
+		}
+		.modifier(CompatibleInsetGroupedListStyle())
+		.navigationBarTitle(L10n.SettingsForm.navigationTitle)
+		.navigationBarItems(trailing: doneButton)
+		.sheet(item: $activeSheet, content: sheet(item:))
 	}
 
 	private var doneButton: some View {
@@ -39,9 +38,11 @@ struct SettingsForm: View {
 			Text(L10n.done)
 		}
 	}
+}
 
+private extension SettingsForm {
 	// MARK: - General
-	private var generalSection: some View {
+	var generalSection: some View {
 		Section(header: Text(L10n.SettingsForm.GeneralSection.header).padding(.horizontal)) {
 			Toggle(isOn: $appSettings.showAllContactsOnAppLaunch) {
 				Text(L10n.SettingsForm.GeneralSection.showAllContactsOnAppLaunch)
@@ -73,7 +74,7 @@ struct SettingsForm: View {
 	}
 
 	// MARK: - Display
-	private var displaySection: some View {
+	var displaySection: some View {
 		Section(header: Text(L10n.SettingsForm.DisplaySection.header).padding(.horizontal)) {
 			Toggle(isOn: $appSettings.showContactImageInContactList) {
 				Text(L10n.SettingsForm.DisplaySection.showContactImage)
@@ -88,7 +89,7 @@ struct SettingsForm: View {
 	}
 
 	// MARK: - Theme
-	private var themeSection: some View {
+	var themeSection: some View {
 		Section(header: Text(L10n.SettingsForm.ThemeSection.header).padding(.horizontal)) {
 			HStack(spacing: 4) {
 				ForEach(AppSettings.globalTintColorDefaultCases, id: \.self) { globalTintColor in
@@ -101,7 +102,6 @@ struct SettingsForm: View {
 				if #available(iOS 14.0, *) {
 					ColorPicker(L10n.SettingsForm.ThemeSection.customColor, selection: colorPickerSelection, supportsOpacity: false)
 						.labelsHidden()
-						.padding(.horizontal)
 				}
 			}.buttonStyle(PlainButtonStyle())
 			NavigationLink(destination: UserInterfaceStylePickerForm(userInterfaceStyle: $appSettings.userInterfaceStyle)) {

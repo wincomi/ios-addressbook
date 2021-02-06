@@ -81,8 +81,10 @@ struct CallDirectoryEntryForm: View {
 			}
 		}
 	}
+}
 
-	@ViewBuilder private var nameSectionFooter: some View {
+private extension CallDirectoryEntryForm {
+	@ViewBuilder var nameSectionFooter: some View {
 		switch entryType {
 		case .identification:
 			Text(L10n.CallDirectoryEntryForm.NameSection.footer).padding(.horizontal)
@@ -91,16 +93,14 @@ struct CallDirectoryEntryForm: View {
 		}
 	}
 
-	private var cancelButton: some View {
-		Button {
-			dismiss()
-		} label: {
+	var cancelButton: some View {
+		Button(action: dismiss) {
 			Text(L10n.cancel)
 				.fontWeight(.regular)
 		}
 	}
 
-	private var doneButton: some View {
+	var doneButton: some View {
 		Button {
 			guard isFormValid, let phoneNumber = Int64(phoneNumberString) else { return }
 			switch formType {
@@ -120,7 +120,7 @@ struct CallDirectoryEntryForm: View {
 		}.disabled(!isFormValid)
 	}
 
-	private func dismiss() {
+	func dismiss() {
 		UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
 		presentationMode.wrappedValue.dismiss()
 	}

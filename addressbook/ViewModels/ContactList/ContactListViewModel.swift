@@ -3,8 +3,10 @@
 //  addressbook
 //
 
-import Combine
 import Contacts
+import Combine
+import UIKit
+import MobileCoreServices
 
 final class ContactListViewModel: ObservableObject {
 	typealias ContactListState = ContactListViewController.State
@@ -15,7 +17,6 @@ final class ContactListViewModel: ObservableObject {
 	// MARK: - Outputs
 	@Published private(set) var listState: ContactListState
 	@Published private(set) var navigationTitle: String
-	@Published var alertItem: AlertItem?
 	@Published var activityItems: [Any]?
 
 	// MARK: - Inputs
@@ -29,7 +30,7 @@ final class ContactListViewModel: ObservableObject {
 		refreshProperty.send()
 	}
 
-	func delete(_ contactListRows: [ContactListRow]) {
+	func delete(_ contactListRows: [ContactListRow]) throws {
 		do {
 			let contacts = contactListRows.map(\.contact)
 
@@ -37,11 +38,11 @@ final class ContactListViewModel: ObservableObject {
 				try ContactStore.shared.delete(contact)
 			}
 		} catch {
-			alertItem = AlertItem(error: error)
+			throw error
 		}
 	}
 
-	func remove(_ contactListRows: [ContactListRow], from group: CNGroup) {
+	func remove(_ contactListRows: [ContactListRow], from group: CNGroup) throws {
 		do {
 			let contacts = contactListRows.map(\.contact)
 
@@ -49,22 +50,35 @@ final class ContactListViewModel: ObservableObject {
 				try ContactStore.shared.remove(contact, from: group)
 			}
 		} catch {
-			alertItem = AlertItem(error: error)
+			throw error
 		}
 	}
 
-	func share(_ contactListRows: [ContactListRow]) {
+	func share(_ contactListRows: [ContactListRow]) throws {
 		do {
 			let contacts = contactListRows.map(\.contact)
 
 			let activityItem = try ContactsItemSource(contacts)
 			activityItems = [activityItem]
 		} catch {
-			alertItem = AlertItem(error: error)
+			throw error
 		}
 	}
 
-	func add(_ contactListRows: [ContactListRow], to group: CNGroup) {
+	func dragItems(contact: CNContact) -> [UIDragItem]? {
+		let itemProvider = NSItemProvider(object: contact)
+
+		if let data = try? CNContactVCardSerialization.data(with: [contact]) {
+			itemProvider.registerDataRepresentation(forTypeIdentifier: kUTTypeVCard as String, visibility: .all) { completion in
+				completion(data, nil)
+				return nil
+			}
+		}
+
+		return [UIDragItem(itemProvider: itemProvider)]
+	}
+
+	func add(_ contactListRows: [ContactListRow], to group: CNGroup) throws {
 		do {
 			let contacts = contactListRows.map(\.contact)
 
@@ -72,7 +86,7 @@ final class ContactListViewModel: ObservableObject {
 				try ContactStore.shared.add(contact, to: group)
 			}
 		} catch {
-			alertItem = AlertItem(error: error)
+			throw error
 		}
 	}
 
@@ -92,16 +106,7 @@ final class ContactListViewModel: ObservableObject {
 		switch ContactStore.authorizationStatus {
 		case .authorized:
 			do {
-				let contacts: [CNContact] = try {
-					switch groupListRow.type {
-					case .allContacts(in: let container):
-						let contacts = try ContactStore.shared.fetchContacts(in: container)
-						return contacts
-					case .group(let group):
-						let contacts = try ContactStore.shared.fetchContacts(in: group)
-						return contacts
-					}
-				}()
+				let contacts = try fetchContacts(groupListRow: groupListRow)
 				let sections = ContactListSection.makeSections(from: contacts, sortBy: \.sortingString)
 				return .loaded(sections)
 			} catch {
@@ -115,6 +120,17 @@ final class ContactListViewModel: ObservableObject {
 			return .error(.accessDenied)
 		@unknown default:
 			return .error(.unknown)
+		}
+	}
+
+	private func fetchContacts(groupListRow: GroupListRow) throws -> [CNContact] {
+		switch groupListRow.type {
+		case .allContacts(in: let container):
+			let contacts = try ContactStore.shared.fetchContacts(in: container)
+			return contacts
+		case .group(let group):
+			let contacts = try ContactStore.shared.fetchContacts(in: group)
+			return contacts
 		}
 	}
 }

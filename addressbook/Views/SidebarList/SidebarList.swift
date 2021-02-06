@@ -120,52 +120,7 @@ struct SidebarList: View {
 	}
 
 	@ViewBuilder private func errorView(error: Error) -> some View {
-		switch error as? ContactStoreError {
-		case .accessNotDetermined:
-			Section(footer: Text(L10n.ContactStoreError.accessNotDeterminedDescription).padding(.horizontal)) {
-				Button {
-					ContactStore.requestAuthorization { _ in
-						viewModel.load()
-					}
-				} label: {
-					HStack {
-						Spacer()
-						Text(L10n.ContactStoreError.requestPermission)
-						Spacer()
-					}
-				}
-			}
-		case .accessRestricted:
-			Section(footer: Text(L10n.ContactStoreError.accessRestrictedDescriptoin).padding(.horizontal)) {
-				Button {
-					guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
-					if UIApplication.shared.canOpenURL(url) {
-						UIApplication.shared.open(url, options: [:])
-					}
-				} label: {
-					HStack {
-						Spacer()
-						Text(L10n.ContactStoreError.requestPermission)
-						Spacer()
-					}
-				}
-			}
-		default:
-			Section(footer: Text(L10n.ContactStoreError.accessDeniedDescription).padding(.horizontal)) {
-				Button {
-					guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
-					if UIApplication.shared.canOpenURL(url) {
-						UIApplication.shared.open(url, options: [:])
-					}
-				} label: {
-					HStack {
-						Spacer()
-						Text(L10n.ContactStoreError.requestPermission)
-						Spacer()
-					}
-				}
-			}
-		}
+		ErrorView(error: error, requestPermissionAction: viewModel.load)
 	}
 
 	@ViewBuilder private var createButton: some View {
@@ -284,10 +239,10 @@ extension SidebarList {
 				message: Text(L10n.SidebarList.ActiveActionSheet.ConfirmDelete.message(group.name)),
 				buttons: [
 					.destructive(Text(L10n.delete), action: {
-						viewModel.delete(group) { error in
-							if let error = error {
-								activeAlert = .alertItem(AlertItem(error: error))
-							}
+						do {
+							try viewModel.delete(group)
+						} catch {
+							activeAlert = .alertItem(AlertItem(error: error))
 						}
 					}),
 					.cancel(Text(L10n.ok))

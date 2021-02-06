@@ -38,20 +38,18 @@ extension RootCoordinator {
 	}
 
 	func presentSettingsForm() {
-		let settingsForm = SettingsForm {
-			self.viewController.dismiss(animated: true)
-		}.environmentObject(AppSettings.shared)
-
-		let vc = UIHostingController(rootView: settingsForm)
-		vc.modalPresentationStyle = .pageSheet
-		viewController.present(vc, animated: true)
+		let nc = UIHostingController(rootView: settingsForm)
+		nc.modalPresentationStyle = .pageSheet
+		viewController.present(nc, animated: true)
 	}
 
 	func presentCallDirectoryEntryList(type: CallDirectoryEntry.EntryType) {
-		let vc = UIHostingController(rootView: CallDirectoryEntryList(type: type))
+		let callDirectoryEntryList = CallDirectoryEntryList(type: type)
+		let vc = UIHostingController(rootView: callDirectoryEntryList)
 
-		// Fix navigation title not showing while pushing view controller
+		// To Fix navigation title not showing while pushing view controller
 		vc.navigationItem.title = vc.rootView.viewModel.navigationTitle
+
 		viewController.setSecondaryViewController(vc)
 	}
 
@@ -78,50 +76,27 @@ extension RootCoordinator {
 		contactListViewController?.searchController.searchBar.text = searchText
 	}
 
-	func contactListViewControllerInNavigationController() -> ContactListViewController? {
-		if viewController.isCollapsed {
-			return viewController.primaryNavigation.topViewController as? ContactListViewController
-		} else {
-			return viewController.secondaryNavigation.topViewController as? ContactListViewController
-		}
-	}
-
-	func presentErrorAlert(message: String) {
-		let alert = UIAlertController(title: L10n.errorAlertTitle, message: message, preferredStyle: .alert)
-		alert.addAction(.okAction())
-		viewController.present(alert, animated: true)
-	}
-
-	func addToGroup(dismissAction: @escaping ((Set<GroupListRow>?) -> Void)) {
-		let selectGroupsForm = SelectGroupsForm(dismissHandler: dismissAction)
-
-		let vc = UIHostingController(rootView: selectGroupsForm)
-		vc.modalPresentationStyle = .formSheet
-		viewController.present(vc, animated: true)
+	func addToGroup(contacts: [CNContact]) {
+		let nc = UIHostingController(rootView: addToGroupForm(contacts: contacts))
+		nc.modalPresentationStyle = .formSheet
+		viewController.present(nc, animated: true)
 	}
 
 	func editGroups(of contact: CNContact) {
-		let editGroupsForm = EditGroupsForm(contactToEditGroups: contact) {
-			self.viewController.dismiss(animated: true)
-		}
-
-		let vc = UIHostingController(rootView: editGroupsForm)
-		vc.modalPresentationStyle = .formSheet
-		viewController.present(vc, animated: true)
+		let nc = UIHostingController(rootView: editGroupsForm(contact: contact))
+		nc.modalPresentationStyle = .formSheet
+		viewController.present(nc, animated: true)
 	}
 
-	func presentEditContactsForm(contacts: [CNContact]) {
-		let editContactsForm = EditContactsForm(contacts: contacts) {
-			self.viewController.dismiss(animated: true)
-		}
-
-		let vc = UIHostingController(rootView: editContactsForm)
-		vc.modalPresentationStyle = .pageSheet
-		viewController.present(vc, animated: true)
+	func edit(contacts: [CNContact]) {
+		let nc = UIHostingController(rootView: editContactsForm(contacts: contacts))
+		nc.modalPresentationStyle = .pageSheet
+		viewController.present(nc, animated: true)
 	}
 
-	func call(_ phoneNumberStringValue: String) {
-		guard let url = URL(string: "tel:\(phoneNumberStringValue)") else { return }
+	func call(_ phoneNumber: String) {
+		guard let url = URL(string: "tel:\(phoneNumber)"),
+			  UIApplication.shared.canOpenURL(url) else { return }
 		UIApplication.shared.open(url, options: [:])
 	}
 
@@ -172,5 +147,52 @@ extension RootCoordinator {
 		let alert = UIAlertController(title: alertItem.title, message: alertItem.message, preferredStyle: .alert)
 		alert.addAction(.okAction())
 		viewController.presentedViewController?.present(alert, animated: true)
+	}
+
+	func presentErrorAlert(message: String) {
+		let alertItem = AlertItem(title: L10n.errorAlertTitle, message: message)
+		present(alertItem)
+	}
+
+	func contactListViewControllerInNavigationController() -> ContactListViewController? {
+		if viewController.isCollapsed {
+			return viewController.primaryNavigation.topViewController as? ContactListViewController
+		} else {
+			return viewController.secondaryNavigation.topViewController as? ContactListViewController
+		}
+	}
+}
+
+private extension RootCoordinator {
+	var settingsForm: some View {
+		NavigationView {
+			SettingsForm {
+				self.viewController.dismiss(animated: true)
+			}.environmentObject(AppSettings.shared)
+		}.navigationViewStyle(StackNavigationViewStyle())
+	}
+
+	func editContactsForm(contacts: [CNContact]) -> some View {
+		NavigationView {
+			EditContactsForm(contacts: contacts) {
+				self.viewController.dismiss(animated: true)
+			}
+		}.navigationViewStyle(StackNavigationViewStyle())
+	}
+
+	func addToGroupForm(contacts: [CNContact]) -> some View {
+		NavigationView {
+			AddToGroupForm(contacts: contacts) {
+				self.viewController.dismiss(animated: true)
+			}
+		}.navigationViewStyle(StackNavigationViewStyle())
+	}
+
+	func editGroupsForm(contact: CNContact) -> some View {
+		NavigationView {
+			EditGroupsForm(viewModel: .init(contact: contact)) {
+				self.viewController.dismiss(animated: true)
+			}
+		}.navigationViewStyle(StackNavigationViewStyle())
 	}
 }

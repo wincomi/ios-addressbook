@@ -6,7 +6,7 @@
 import UIKit
 import MessageUI
 
-final class ContactListToolbarItemsProvider: ToolbarItemsProvider {
+final class ContactListToolbarItemsProvider {
 	enum ToolbarItemType: String, CaseIterable {
 		case action
 		case sendMessage
@@ -66,8 +66,10 @@ final class ContactListToolbarItemsProvider: ToolbarItemsProvider {
 			return UIImage(systemName: "pencil.circle")
 		}
 	}
+}
 
-	// MARK: - ToolbarItemsProvider
+// MARK: - ToolbarItemsProvider
+extension ContactListToolbarItemsProvider: ToolbarItemsProvider {
 	func toolbarItem(for type: ToolbarItemType) -> ToolbarItem? {
 		switch type {
 		case .action:

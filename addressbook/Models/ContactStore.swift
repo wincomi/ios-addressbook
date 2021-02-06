@@ -48,9 +48,9 @@ final class ContactStore {
 
 		do {
 			var contacts = [CNContact]()
-			try store.enumerateContacts(with: request, usingBlock: { (contact, _) in
+			try store.enumerateContacts(with: request) { (contact, _) in
 				contacts.append(contact)
-			})
+			}
 			return contacts
 		} catch {
 			throw error
@@ -68,9 +68,9 @@ final class ContactStore {
 		
 		do {
 			var contacts = [CNContact]()
-			try store.enumerateContacts(with: fetchRequest, usingBlock: { (contact, stop) in
+			try store.enumerateContacts(with: fetchRequest) { (contact, stop) in
 				contacts.append(contact)
-			})
+			}
 			return contacts
 		} catch {
 			throw error

@@ -9,6 +9,8 @@ import MessageUI
 
 final class ContactListRowContextMenuConfigurationProvider: ContextMenuConfigurationProvider {
 	let contactListRow: ContactListRow
+
+	/// A group for removeFromGroup
 	let currentGroup: CNGroup?
 
 	/// callHandler
@@ -26,6 +28,8 @@ final class ContactListRowContextMenuConfigurationProvider: ContextMenuConfigura
 	/// - parameter emailAddress
 	var sendMailHandler: ((ContactListRow, String) -> Void)?
 
+	/// shareHandler
+	/// - parameter contactListRow
 	var shareHandler: ((ContactListRow) -> Void)?
 
 	/// applicationShortcutItemSettingHandler
@@ -34,10 +38,16 @@ final class ContactListRowContextMenuConfigurationProvider: ContextMenuConfigura
 	/// - parameter isApplicationShortcutItemEnabled
 	var applicationShortcutItemSettingHandler: ((ContactListRow, ApplicationShortcutItem, Bool) -> Void)?
 
+	/// editGroupsHandler
+	/// - parameter contactListRow
 	var editGroupsHandler: ((ContactListRow) -> Void)?
 
+	/// removeFromGroupHandler
+	/// - parameter contactListRow
 	var removeFromGroupHandler: ((ContactListRow) -> Void)?
 
+	/// deleteHandler
+	/// - parameter contactListRow
 	var deleteHandler: ((ContactListRow) -> Void)?
 
 	// MARK: - Initialization
@@ -74,23 +84,27 @@ final class ContactListRowContextMenuConfigurationProvider: ContextMenuConfigura
 		case .editGroups:
 			return editGroupsMenuElement()
 		case .removeFromGroup:
-			return (currentGroup != nil) ? removeFromGroupMenuElement() : nil
+			return removeFromGroupMenuElement()
 		case .delete:
 			return confirmDeleteMenuElemnt()
 		}
 	}
+}
 
-	let menuOptions: UIMenu.Options = AppSettings.shared.isContactContextMenuDisplayInline ? .displayInline : .init()
+private extension ContactListRowContextMenuConfigurationProvider {
+	var menuOptions: UIMenu.Options {
+		AppSettings.shared.isContactContextMenuDisplayInline ? .displayInline : .init()
+	}
 
-	private func callMenuElement() -> UIMenuElement? {
+	func callMenuElement() -> UIMenuElement? {
 		let type = ContextMenuItemType.call
 
-		let phoneNumberStringValues = contactListRow.contact.phoneNumbers.map(\.value.stringValue)
-		guard !phoneNumberStringValues.isEmpty else { return nil }
+		let phoneNumbers = contactListRow.contact.phoneNumbers.map(\.value.stringValue)
+		guard !phoneNumbers.isEmpty else { return nil }
 
-		let callActions = phoneNumberStringValues.map { phoneNumberStringValue in
-			UIAction(title: phoneNumberStringValue, image: UIImage(systemName: type.imageSystemName)) { _ in
-				self.callHandler?(self.contactListRow, phoneNumberStringValue)
+		let callActions = phoneNumbers.map { phoneNumber in
+			UIAction(title: phoneNumber, image: UIImage(systemName: type.imageSystemName)) { _ in
+				self.callHandler?(self.contactListRow, phoneNumber)
 			}
 		}
 
@@ -102,15 +116,15 @@ final class ContactListRowContextMenuConfigurationProvider: ContextMenuConfigura
 		return UIMenu(title: type.localizedTitle, image: UIImage(systemName: type.imageSystemName), identifier: nil, options: menuOptions, children: callActions)
 	}
 
-	private func sendMessageMenuElement() -> UIMenuElement? {
+	func sendMessageMenuElement() -> UIMenuElement? {
 		let type = ContextMenuItemType.sendMessage
 
-		let phoneNumberStringValues = contactListRow.contact.phoneNumbers.map(\.value.stringValue)
-		guard !phoneNumberStringValues.isEmpty else { return nil }
+		let phoneNumbers = contactListRow.contact.phoneNumbers.map(\.value.stringValue)
+		guard !phoneNumbers.isEmpty else { return nil }
 
-		let sendMessageActions = phoneNumberStringValues.map { phoneNumberStringValue in
-			UIAction(title: phoneNumberStringValue, image: UIImage(systemName: type.imageSystemName)) { _ in
-				self.sendMessageHandler?(self.contactListRow, phoneNumberStringValue)
+		let sendMessageActions = phoneNumbers.map { phoneNumber in
+			UIAction(title: phoneNumber, image: UIImage(systemName: type.imageSystemName)) { _ in
+				self.sendMessageHandler?(self.contactListRow, phoneNumber)
 			}
 		}
 
@@ -122,7 +136,7 @@ final class ContactListRowContextMenuConfigurationProvider: ContextMenuConfigura
 		return UIMenu(title: type.localizedTitle, image: UIImage(systemName: type.imageSystemName), identifier: nil, options: menuOptions, children: sendMessageActions)
 	}
 
-	private func sendMailMenuElement() -> UIMenuElement? {
+	func sendMailMenuElement() -> UIMenuElement? {
 		let type = ContextMenuItemType.sendMail
 
 		let emailAddresses = contactListRow.contact.emailAddresses.map { $0.value as String }
@@ -142,22 +156,25 @@ final class ContactListRowContextMenuConfigurationProvider: ContextMenuConfigura
 		return UIMenu(title: type.localizedTitle, image: UIImage(systemName: type.imageSystemName), identifier: nil, options: menuOptions, children: sendMailActions)
 	}
 
-	private func editGroupsMenuElement() -> UIMenuElement {
+	func editGroupsMenuElement() -> UIMenuElement {
 		let type = ContextMenuItemType.editGroups
+
 		return UIAction(title: "\(type.localizedTitle)...", image: UIImage(systemName: type.imageSystemName)) { _ in
 			self.editGroupsHandler?(self.contactListRow)
 		}
 	}
 
-	private func shareMenuElement() -> UIMenuElement {
+	func shareMenuElement() -> UIMenuElement {
 		let type = ContextMenuItemType.share
+
 		return UIAction(title: type.localizedTitle, image: UIImage(systemName: type.imageSystemName)) { _ in
 			self.shareHandler?(self.contactListRow)
 		}
 	}
 
-	private func applicationShortcutItemSettingMenuElement() -> UIMenuElement {
+	func applicationShortcutItemSettingMenuElement() -> UIMenuElement {
 		let applicationShortcutItem = ApplicationShortcutItem.contact(identifier: contactListRow.contact.identifier)
+
 		if AppSettings.shared.applicationShortcutItems.contains(applicationShortcutItem) {
 			return UIAction(title: L10n.ContactListRow.ContextMenuItemType.removeFromApplicationShortcutItems, image: UIImage(systemName: "minus.circle")) { _ in
 				self.applicationShortcutItemSettingHandler?(self.contactListRow, applicationShortcutItem, true)
@@ -169,8 +186,11 @@ final class ContactListRowContextMenuConfigurationProvider: ContextMenuConfigura
 		}
 	}
 
-	private func removeFromGroupMenuElement() -> UIMenuElement {
+	func removeFromGroupMenuElement() -> UIMenuElement? {
+		if currentGroup == nil { return nil }
+
 		let type = ContextMenuItemType.removeFromGroup
+
 		return UIAction(title: type.localizedTitle, image: UIImage(systemName: type.imageSystemName), attributes: .destructive) { _ in
 			self.removeFromGroupHandler?(self.contactListRow)
 		}

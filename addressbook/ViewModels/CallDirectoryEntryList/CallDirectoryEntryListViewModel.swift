@@ -16,7 +16,7 @@ final class CallDirectoryEntryListViewModel: LoadableObject, ObservableObject {
 	private let storageController = StorageController.shared
 	let didChange = StorageController.didChange
 	let entryType: CallDirectoryEntry.EntryType
-	@Published var state: LoadingState<[CallDirectoryEntry], CallDirectoryEntryListError> = .idle
+	@Published private(set) var state: LoadingState<[CallDirectoryEntry], CallDirectoryEntryListError> = .idle
 
 	var navigationTitle: String {
 		switch entryType {
@@ -33,7 +33,7 @@ final class CallDirectoryEntryListViewModel: LoadableObject, ObservableObject {
 
 	func load() {
 		#if DEBUG
-		let callDirectoryEntries = self.storageController.fetchCallDirectoryEntries(type: self.entryType)
+		let callDirectoryEntries = storageController.fetchCallDirectoryEntries(type: self.entryType)
 		self.state = .loaded(callDirectoryEntries)
 		#else
 		CXCallDirectoryManager.sharedInstance.getEnabledStatusForExtension(withIdentifier: AppSettings.callDirectoryBundleIdentifier) { (enabledStatus, error) in
@@ -58,7 +58,7 @@ final class CallDirectoryEntryListViewModel: LoadableObject, ObservableObject {
 	}
 
 	func remove(_ callDirectoryEntry: CallDirectoryEntry) {
-		StorageController.shared.remove(callDirectoryEntry)
+		storageController.remove(callDirectoryEntry)
 	}
 
 	func reloadCallDirectoryExtension() {

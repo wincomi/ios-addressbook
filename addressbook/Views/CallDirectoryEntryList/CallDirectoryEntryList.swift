@@ -8,16 +8,7 @@ import CallKit
 
 struct CallDirectoryEntryList: View {
 	@ObservedObject var viewModel: CallDirectoryEntryListViewModel
-	@State private var formType: CallDirectoryEntryForm.FormType?
-
-	private var isEditable: Bool {
-		switch viewModel.state {
-		case .loaded:
-			return true
-		default:
-			return false
-		}
-	}
+	@State private var activeSheetFormType: CallDirectoryEntryForm.FormType?
 
 	init(type: CallDirectoryEntry.EntryType) {
 		self.viewModel = CallDirectoryEntryListViewModel(type: type)
@@ -30,7 +21,7 @@ struct CallDirectoryEntryList: View {
 					Section(footer: Text("\(descriptionText(for: viewModel.entryType)) \(L10n.CallDirectoryEntryList.Section.footer)").padding(.horizontal)) {
 						ForEach(callDirectoryEntries) { callDirectoryEntry in
 							Button {
-								formType = .update(callDirectoryEntry)
+								activeSheetFormType = .update(callDirectoryEntry)
 							} label: {
 								CallDirectoryEntryListCell(callDirectoryEntry: callDirectoryEntry)
 							}
@@ -38,21 +29,14 @@ struct CallDirectoryEntryList: View {
 					}
 				}.modifier(CompatibleInsetGroupedListStyle())
 			} else {
-				ZStack {
-					Color(UIColor.systemGroupedBackground)
-						.edgesIgnoringSafeArea(.all)
-					EmptyDataView(
-						title: L10n.CallDirectoryEntryList.EmptyDataView.title,
-						description: descriptionText(for: viewModel.entryType)
-					)
-				}
+				emptyView
 			}
 		}
 		.navigationBarTitle(viewModel.navigationTitle)
-		.navigationBarItems(trailing: addButton.disabled(!isEditable))
+		.navigationBarItems(trailing: createButton.disabled(!isEditable))
 		.onAppear(perform: viewModel.load)
 		.onReceive(viewModel.didChange, perform: viewModel.load)
-		.sheet(item: $formType) { formType in
+		.sheet(item: $activeSheetFormType) { formType in
 			NavigationView {
 				CallDirectoryEntryForm(formType: formType, entryType: viewModel.entryType)
 			}
@@ -63,8 +47,19 @@ struct CallDirectoryEntryList: View {
 			vc.navigationController?.navigationBar.sizeToFit()
 		}
 	}
+}
 
-	@ViewBuilder private func errorView(error: CallDirectoryEntryListError) -> some View {
+private extension CallDirectoryEntryList {
+	var isEditable: Bool {
+		switch viewModel.state {
+		case .loaded:
+			return true
+		default:
+			return false
+		}
+	}
+
+	@ViewBuilder func errorView(error: CallDirectoryEntryListError) -> some View {
 		switch error {
 		case .callDirectoryManagerEnabledStatusDisabled, .callDirectoryManagerEnabledStatusUnknown:
 			DisabledStatusView()
@@ -73,16 +68,27 @@ struct CallDirectoryEntryList: View {
 		}
 	}
 
-	private var addButton: some View {
+	var emptyView: some View {
+		ZStack {
+			Color(UIColor.systemGroupedBackground)
+				.edgesIgnoringSafeArea(.all)
+			EmptyDataView(
+				title: L10n.CallDirectoryEntryList.EmptyDataView.title,
+				description: descriptionText(for: viewModel.entryType)
+			)
+		}
+	}
+
+	var createButton: some View {
 		Button {
-			formType = .create
+			activeSheetFormType = .create
 		} label: {
 			Image(systemName: "plus")
 				.font(.system(size: 20))
 		}
 	}
 
-	private func descriptionText(for entryType: CallDirectoryEntry.EntryType) -> String {
+	func descriptionText(for entryType: CallDirectoryEntry.EntryType) -> String {
 		switch entryType {
 		case .blocking:
 			return L10n.CallDirectoryEntryList.BlockingType.Section.footer
@@ -91,8 +97,9 @@ struct CallDirectoryEntryList: View {
 		}
 	}
 
-	private func delete(at offsets: IndexSet) {
-		guard case .loaded(let callDirectoryEntries) = viewModel.state, let offset = offsets.first else { return }
+	func delete(at offsets: IndexSet) {
+		guard case .loaded(let callDirectoryEntries) = viewModel.state,
+			  let offset = offsets.first else { return }
 		let callDirectoryEntry = callDirectoryEntries[offset]
 		viewModel.remove(callDirectoryEntry)
 	}

@@ -1,5 +1,5 @@
 //
-//  SiderbarList+RequestPermissionSection.swift
+//  SidebarList.RequestPermissionSection.swift
 //  addressbook
 //
 

@@ -5,7 +5,6 @@
 
 import UIKit
 import Contacts
-import MobileCoreServices
 
 struct ContactListRow: RowRepresentable, Identifiable, Hashable {
 	static func title(for contact: CNContact) -> String {
@@ -76,19 +75,5 @@ struct ContactListRow: RowRepresentable, Identifiable, Hashable {
 		guard let contacts = try? ContactStore.shared.fetchContacts(withIdentifier: [contactIdentifier]),
 			  let contact = contacts.first else { return nil }
 		self.init(contact)
-	}
-
-	// MARK: - Making UIDragItems
-	func dragItems() -> [UIDragItem]? {
-		let itemProvider = NSItemProvider(object: contact)
-
-		if let data = try? CNContactVCardSerialization.data(with: [contact]) {
-			itemProvider.registerDataRepresentation(forTypeIdentifier: kUTTypeVCard as String, visibility: .all) { completion in
-				completion(data, nil)
-				return nil
-			}
-		}
-
-		return [UIDragItem(itemProvider: itemProvider)]
 	}
 }

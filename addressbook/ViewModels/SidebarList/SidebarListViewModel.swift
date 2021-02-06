@@ -9,7 +9,7 @@ import CoreServices
 import Combine
 
 final class SidebarListViewModel: LoadableObject, ObservableObject {
-	@Published var state: LoadingState<[GroupListSection], Error> = .idle
+	@Published private(set) var state: LoadingState<[GroupListSection], Error> = .idle
 
 	func load() {
 		switch ContactStore.authorizationStatus {
@@ -32,23 +32,21 @@ final class SidebarListViewModel: LoadableObject, ObservableObject {
 		}
 	}
 
-	func delete(_ group: CNGroup, completion: ((Error?) -> Void)) {
+	func delete(_ group: CNGroup) throws {
 		do {
 			try ContactStore.shared.delete(group)
-			completion(nil)
 		} catch {
-			completion(error)
+			throw error
 		}
 	}
 
-	func add(_ contacts: [CNContact], to group: CNGroup, completion: ((Error?) -> Void)) {
+	func add(_ contacts: [CNContact], to group: CNGroup) throws {
 		do {
 			try contacts.forEach { contact in
 				try ContactStore.shared.add(contact, to: group)
 			}
-			completion(nil)
 		} catch {
-			completion(error)
+			throw error
 		}
 	}
 

@@ -52,15 +52,15 @@ struct GroupListSection: SectionRepresentable, Identifiable, Hashable {
 	public init(from container: CNContainer, withAllContactsRow insertingAllContactsRow: Bool = false) throws {
 		let groups = try ContactStore.shared.fetchGroups(in: container)
 
-		var rows = groups
+		var groupListRows = groups
 			.map(GroupListRow.init)
 			.sorted { $0.text.localizedCompare($1.text) == .orderedAscending }
 
 		if insertingAllContactsRow {
-			rows.insert(.allContacts(in: container), at: 0)
+			groupListRows.insert(.allContacts(in: container), at: 0)
 		}
 
-		self.init(type: .group(in: container), rows: rows)
+		self.init(type: .group(in: container), rows: groupListRows)
 	}
 
 	private init(type: Type, rows: [GroupListRow]) {

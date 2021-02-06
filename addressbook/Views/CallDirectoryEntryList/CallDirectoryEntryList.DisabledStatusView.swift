@@ -1,5 +1,5 @@
 //
-//  CallDirectoryEntryList+DisabledStatusView.swift
+//  CallDirectoryEntryList.DisabledStatusView.swift
 //  addressbook
 //
 

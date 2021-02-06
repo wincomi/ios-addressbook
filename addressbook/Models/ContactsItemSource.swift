@@ -38,18 +38,7 @@ final class ContactsItemSource: NSObject {
 				throw ContactsItemSourceError.noCachesDirectory
 			}
 
-			var fileName = L10n.contacts
-
-			if let contact = contacts.first, contacts.count == 1 {
-				var invalidCharacters = CharacterSet(charactersIn: ":/")
-				invalidCharacters.formUnion(.newlines)
-				invalidCharacters.formUnion(.illegalCharacters)
-				invalidCharacters.formUnion(.controlCharacters)
-
-				fileName = ContactListRow.title(for: contact).components(separatedBy: invalidCharacters).joined(separator: " ")
-			}
-
-			let fileURL = directoryURL.appendingPathComponent(fileName).appendingPathExtension("vcf")
+			let fileURL = directoryURL.appendingPathComponent(fileName(for: contacts)).appendingPathExtension("vcf")
 
 			try data.write(to: fileURL, options: .atomicWrite)
 
@@ -57,6 +46,21 @@ final class ContactsItemSource: NSObject {
 		} catch {
 			throw ContactsItemSourceError.unknown
 		}
+	}
+
+	private static func fileName(for contacts: [CNContact]) -> String {
+		var fileName = L10n.contacts
+
+		if let contact = contacts.first, contacts.count == 1 {
+			var invalidCharacters = CharacterSet(charactersIn: ":/")
+			invalidCharacters.formUnion(.newlines)
+			invalidCharacters.formUnion(.illegalCharacters)
+			invalidCharacters.formUnion(.controlCharacters)
+
+			fileName = ContactListRow.title(for: contact).components(separatedBy: invalidCharacters).joined(separator: " ")
+		}
+
+		return fileName
 	}
 }
 

@@ -25,6 +25,6 @@ final class CallDirectoryEntryFormViewModel: ObservableObject {
 	}
 
 	func remove(_ callDirectoryEntry: CallDirectoryEntry) {
-		StorageController.shared.remove(callDirectoryEntry)
+		storageController.remove(callDirectoryEntry)
 	}
 }

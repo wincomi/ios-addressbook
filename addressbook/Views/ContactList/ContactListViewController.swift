@@ -11,7 +11,7 @@ final class ContactListViewController: UITableViewController, ListDataSourceRend
 	let viewModel: ContactListViewModel
 	weak var coordinator: RootCoordinator?
 
-	var isTableViewEditingRow = false
+	var isEditingTableViewRow = false
 	var configurePopoverPresentationController: ((UIPopoverPresentationController) -> Void)?
 	var becomeFirstResponderSearchBarOnAppear = false {
 		didSet {
@@ -56,8 +56,8 @@ final class ContactListViewController: UITableViewController, ListDataSourceRend
 		}
 
 		dataSource.titleForHeader = { _, section in
-			let showSectionTitle = dataSource.snapshot().sectionIdentifiers.count >= 5
-			return showSectionTitle ? dataSource.snapshot().sectionIdentifiers[section].headerText : nil
+			let showSectionTitles = dataSource.snapshot().sectionIdentifiers.count >= 5
+			return showSectionTitles ? dataSource.snapshot().sectionIdentifiers[section].headerText : nil
 		}
 
 		return dataSource
@@ -94,7 +94,12 @@ final class ContactListViewController: UITableViewController, ListDataSourceRend
 			self.configurePopoverPresentationController = {
 				$0.barButtonItem = actionButton
 			}
-			self.viewModel.share(self.selectedRowsInTableView)
+
+			do {
+				try self.viewModel.share(self.selectedRowsInTableView)
+			} catch {
+				self.coordinator?.presentErrorAlert(message: error.localizedDescription)
+			}
 		}
 
 		provider.sendMessageHandler = { _ in
@@ -116,25 +121,11 @@ final class ContactListViewController: UITableViewController, ListDataSourceRend
 		}
 
 		provider.addToGroupHandler = { _ in
-			self.coordinator?.addToGroup { [weak self] selectedGroupListRows in
-				guard let `self` = self else { return }
-
-				if let selectedGroupListRows = selectedGroupListRows {
-					Array(selectedGroupListRows).forEach { groupListRow in
-						if case .group(let group) = groupListRow.type {
-							self.viewModel.add(self.selectedRowsInTableView, to: group)
-						}
-					}
-					self.dismiss(animated: true)
-					self.setEditing(false, animated: true)
-				} else {
-					self.dismiss(animated: true)
-				}
-			}
+			self.coordinator?.addToGroup(contacts: self.selectedRowsInTableView.map(\.contact))
 		}
 
 		provider.editHandler = { _ in
-			self.coordinator?.presentEditContactsForm(contacts: self.selectedRowsInTableView.map(\.contact))
+			self.coordinator?.edit(contacts: self.selectedRowsInTableView.map(\.contact))
 		}
 
 		provider.deleteHandler = { deleteButton in
@@ -182,7 +173,7 @@ final class ContactListViewController: UITableViewController, ListDataSourceRend
 	override func setEditing(_ editing: Bool, animated: Bool) {
 		super.setEditing(editing, animated: animated)
 
-		if isTableViewEditingRow { return }
+		if isEditingTableViewRow { return }
 
 		updateUI()
 	}
@@ -234,7 +225,7 @@ final class ContactListViewController: UITableViewController, ListDataSourceRend
 			install(emptyDataView: view)
 		} else {
 			removeEmptyDataView()
-			let tableFooterView = ContactListFooterView.uiView(numberOfContacts: dataSource.snapshot().numberOfItems)
+			let tableFooterView = footerView(numberOfContacts: dataSource.snapshot().numberOfItems)
 			tableFooterView.sizeToFit()
 			tableFooterView.clipsToBounds = true
 			tableView.tableFooterView = tableFooterView
@@ -248,14 +239,6 @@ final class ContactListViewController: UITableViewController, ListDataSourceRend
 			.sink { [weak self] state in
 				self?.render(state)
 			}.store(in: &cancellables)
-
-		viewModel.$alertItem
-			.compactMap { $0 }
-			.receive(on: DispatchQueue.main)
-			.sink { alertItem in
-				self.present(alertItem) { self.viewModel.alertItem = nil }
-			}
-			.store(in: &cancellables)
 
 		viewModel.$activityItems
 			.compactMap { $0 }
@@ -289,13 +272,21 @@ final class ContactListViewController: UITableViewController, ListDataSourceRend
 
 		if case .group(let group) = viewModel.groupListRow.type {
 			let removeFromGroup = UIAlertAction(title: L10n.ContactListRow.ContextMenuItemType.removeFromGroup, style: .destructive) { _ in
-				self.viewModel.remove(contactListRows, from: group)
+				do {
+					try self.viewModel.remove(contactListRows, from: group)
+				} catch {
+					self.coordinator?.presentErrorAlert(message: error.localizedDescription)
+				}
 			}
 			alert.addAction(removeFromGroup)
 		}
 
 		let deleteAction = UIAlertAction(title: L10n.delete, style: .destructive) { _ in
-			self.viewModel.delete(contactListRows)
+			do {
+				try self.viewModel.delete(contactListRows)
+			} catch {
+				self.coordinator?.presentErrorAlert(message: error.localizedDescription)
+			}
 		}
 		alert.addAction(deleteAction)
 
@@ -348,11 +339,11 @@ extension ContactListViewController {
 	}
 
 	override func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
-		isTableViewEditingRow = true
+		isEditingTableViewRow = true
 	}
 
 	override func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
-		isTableViewEditingRow = false
+		isEditingTableViewRow = false
 	}
 
 	override func tableView(_ tableView: UITableView, shouldBeginMultipleSelectionInteractionAt indexPath: IndexPath) -> Bool {
@@ -373,7 +364,11 @@ extension ContactListViewController {
 			case .group(let group):
 				let provider = ContactListRowContextMenuConfigurationProvider(contactListRow: contactListRow, currentGroup: group)
 				provider.removeFromGroupHandler = { contactListRow in
-					self.viewModel.remove([contactListRow], from: group)
+					do {
+						try self.viewModel.remove([contactListRow], from: group)
+					} catch {
+						self.coordinator?.presentErrorAlert(message: error.localizedDescription)
+					}
 				}
 				return provider
 			}
@@ -400,7 +395,12 @@ extension ContactListViewController {
 				$0.sourceView = tableView
 				$0.sourceRect = tableView.rectForRow(at: indexPath)
 			}
-			self.viewModel.share([contactListRow])
+
+			do {
+				try self.viewModel.share([contactListRow])
+			} catch {
+				self.coordinator?.presentErrorAlert(message: error.localizedDescription)
+			}
 		}
 
 		provider.applicationShortcutItemSettingHandler = { (contactListRow, applicationShortcutItem, isApplicationShortcutItemEnabled) in
@@ -412,7 +412,11 @@ extension ContactListViewController {
 		}
 
 		provider.deleteHandler = { contactListRow in
-			self.viewModel.delete([contactListRow])
+			do {
+				try self.viewModel.delete([contactListRow])
+			} catch {
+				self.coordinator?.presentErrorAlert(message: error.localizedDescription)
+			}
 		}
 
 		return provider.contextMenuConfiguration(for: AppSettings.shared.enabledContactContextMenuItemsTypes)
@@ -423,7 +427,7 @@ extension ContactListViewController {
 extension ContactListViewController: UITableViewDragDelegate {
 	func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
 		guard let contactListRow = dataSource.itemIdentifier(for: indexPath),
-			  let dragItems = contactListRow.dragItems() else {
+			  let dragItems = viewModel.dragItems(contact: contactListRow.contact) else {
 			return []
 		}
 

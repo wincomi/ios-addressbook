@@ -1,5 +1,5 @@
 //
-//  ContactListRow+ContextMenuItemType.swift
+//  ContactListRow.ContextMenuItemType.swift
 //  addressbook
 //
 
