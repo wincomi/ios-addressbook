@@ -134,7 +134,6 @@ CallDirectoryEntryList.IdentificationType.Section.footer = "The name on the list
 CallDirectoryEntryList.BlockingType.navigationTitle = "Call Blocking";
 CallDirectoryEntryList.BlockingType.Section.footer = "You will not receive phone calls from phone numbers on the block list.";
 CallDirectoryEntryList.EmptyDataView.title = "The list is empty.";
-CallDirectoryEntryList.EmptyDataView.description = "Touch '+' button at the top to add a phone number.";
 CallDirectoryEntryList.EmptyDataView.buttonTitle = "Add item...";
 CallDirectoryEntryList.DisabledStatusView.title = "Call Blocking & Identification";
 CallDirectoryEntryList.DisabledStatusView.description = "Available after enabling in Settings.";
