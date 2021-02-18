@@ -120,7 +120,11 @@ struct SidebarList: View {
 	}
 
 	@ViewBuilder private func errorView(error: Error) -> some View {
-		ErrorView(error: error, requestPermissionAction: viewModel.load)
+		ErrorView(error: error) {
+			DispatchQueue.main.async {
+				viewModel.load()
+			}
+		}
 	}
 
 	@ViewBuilder private var createButton: some View {
