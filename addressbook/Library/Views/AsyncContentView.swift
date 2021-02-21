@@ -33,7 +33,6 @@ struct AsyncContentView<Source: LoadableObject, LoadingView: View, ErrorView: Vi
 				.onAppear(perform: source.load)
 		case .loading:
 			loadingView()
-				.onAppear(perform: source.load)
 		case .failed(let error):
 			errorView(error)
 				.onAppear(perform: source.load)

@@ -14,6 +14,16 @@ struct CallDirectoryEntryList: View {
 		self.viewModel = CallDirectoryEntryListViewModel(type: type)
 	}
 
+	/// Temporarily fix an issue that could not be deleted by swiping to delete
+	private var isDeleteDisabled: Bool {
+		switch viewModel.state {
+		case .loaded(let callDirectoryEntries):
+			return callDirectoryEntries.isEmpty
+		default:
+			return true
+		}
+	}
+
 	var body: some View {
 		AsyncContentView(source: viewModel, errorView: errorView) { callDirectoryEntries in
 			if !callDirectoryEntries.isEmpty {
@@ -26,6 +36,7 @@ struct CallDirectoryEntryList: View {
 								CallDirectoryEntryListCell(callDirectoryEntry: callDirectoryEntry)
 							}
 						}.onDelete(perform: delete(at:))
+						.deleteDisabled(isDeleteDisabled)
 					}
 				}.modifier(CompatibleInsetGroupedListStyle())
 			} else {
@@ -99,7 +110,8 @@ private extension CallDirectoryEntryList {
 
 	func delete(at offsets: IndexSet) {
 		guard case .loaded(let callDirectoryEntries) = viewModel.state,
-			  let offset = offsets.first else { return }
+			  let offset = offsets.first,
+			  !callDirectoryEntries.isEmpty else { return }
 		let callDirectoryEntry = callDirectoryEntries[offset]
 		viewModel.remove(callDirectoryEntry)
 	}
