@@ -79,10 +79,10 @@ private extension SettingsForm {
 			Toggle(isOn: $appSettings.showContactImageInContactList) {
 				Text(L10n.SettingsForm.DisplaySection.showContactImage)
 			}
-			NavigationLink(destination: ContactMenuSettingForm()) {
+			NavigationLink(destination: ContactMenuSettingForm().environmentObject(appSettings)) {
 				Text(L10n.ContactMenuSettingForm.title)
 			}
-			NavigationLink(destination: ApplicationShortcutItemSettingForm()) {
+			NavigationLink(destination: ApplicationShortcutItemSettingForm().environmentObject(appSettings)) {
 				Text(L10n.ApplicationShortcutItemsSettingForm.title)
 			}
 		}
