@@ -219,17 +219,21 @@ final class ContactListViewController: UITableViewController, ListDataSourceRend
 		navigationItem.leftBarButtonItem = isEditing ? selectAllButton : nil
 		navigationItem.searchController?.searchBar.isUserInteractionEnabled = !isEditing
 
-		if isDataSourceEmpty {
-			tableView.tableFooterView = UIView()
-			let view = EmptyDataView(title: L10n.ContactListFooterView.text(0), description: nil)
-			install(emptyDataView: view)
+		if case .loaded(let sections) = viewModel.listState {
+			if sections.isEmpty {
+				tableView.tableFooterView = UIView()
+				let emptyDataView = EmptyDataView(title: L10n.ContactListFooterView.text(0), description: nil)
+				install(emptyDataView: emptyDataView)
+			} else {
+				let tableFooterView = footerView(numberOfContacts: dataSource.snapshot().numberOfItems)
+				tableFooterView.sizeToFit()
+				tableFooterView.clipsToBounds = true
+				tableView.tableFooterView = tableFooterView
+				tableView.separatorStyle = .singleLine
+			}
 		} else {
+			tableView.tableFooterView = UIView()
 			removeEmptyDataView()
-			let tableFooterView = footerView(numberOfContacts: dataSource.snapshot().numberOfItems)
-			tableFooterView.sizeToFit()
-			tableFooterView.clipsToBounds = true
-			tableView.tableFooterView = tableFooterView
-			tableView.separatorStyle = .singleLine
 		}
 	}
 
