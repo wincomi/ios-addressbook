@@ -53,6 +53,16 @@ extension RootCoordinator {
 		viewController.setSecondaryViewController(vc)
 	}
 
+	func presentMessageFilterList() {
+		let viewModel = MessageFilterListViewModel()
+		let messageFilterList = MessageFilterList(viewModel: viewModel)
+		let vc = UIHostingController(rootView: messageFilterList)
+
+		vc.navigationItem.title = "SMS Filter"
+
+		viewController.setSecondaryViewController(vc)
+	}
+
 	func createContact() {
 		let vc = CNContactViewController(forNewContact: nil)
 		vc.view.backgroundColor = .systemBackground

@@ -69,6 +69,16 @@ struct SidebarList: View {
 						Image(systemName: "bell.slash")
 					}
 				}
+				NavigationButton {
+					coordinator?.presentMessageFilterList()
+				} label: {
+					CompatibleLabel {
+						Text("SMS Filter")
+							.foregroundColor(Color(UIColor.label))
+					} icon: {
+						Image(systemName: "xmark.bin")
+					}
+				}
 			}.disabled(editMode?.wrappedValue == .active)
 
 			// MARK: - Settings Section

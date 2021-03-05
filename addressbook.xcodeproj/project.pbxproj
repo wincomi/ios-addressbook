@@ -104,6 +104,9 @@
 		F78F7E7A254423B8008DE2DD /* MailComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78F7E79254423B8008DE2DD /* MailComposeView.swift */; };
 		F798CFB025F1206C005AFB4B /* MessageFilterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F798CFAF25F1206C005AFB4B /* MessageFilterExtension.swift */; };
 		F798CFB425F1206C005AFB4B /* MessageFilter.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F798CFAD25F1206C005AFB4B /* MessageFilter.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F798CFE325F260C7005AFB4B /* MessageFilterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F798CFE225F260C7005AFB4B /* MessageFilterList.swift */; };
+		F798CFE925F2688C005AFB4B /* MessageFilterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F798CFE825F2688C005AFB4B /* MessageFilterListViewModel.swift */; };
+		F798CFEE25F271B6005AFB4B /* MessageFilterForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F798CFED25F271B6005AFB4B /* MessageFilterForm.swift */; };
 		F7F17CAF2546A239003C1150 /* CallDirectoryEntryListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F17CAE2546A238003C1150 /* CallDirectoryEntryListCell.swift */; };
 		F7F17CD92546C2E5003C1150 /* CallDirectoryEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F17CD82546C2E5003C1150 /* CallDirectoryEntryList.swift */; };
 		F7F17CDD2546DB93003C1150 /* CallDirectoryEntryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F17CDC2546DB93003C1150 /* CallDirectoryEntryListViewModel.swift */; };
@@ -242,6 +245,9 @@
 		F798CFAF25F1206C005AFB4B /* MessageFilterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFilterExtension.swift; sourceTree = "<group>"; };
 		F798CFB125F1206C005AFB4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F798CFDA25F25A2B005AFB4B /* MessageFilter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MessageFilter.entitlements; sourceTree = "<group>"; };
+		F798CFE225F260C7005AFB4B /* MessageFilterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFilterList.swift; sourceTree = "<group>"; };
+		F798CFE825F2688C005AFB4B /* MessageFilterListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFilterListViewModel.swift; sourceTree = "<group>"; };
+		F798CFED25F271B6005AFB4B /* MessageFilterForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFilterForm.swift; sourceTree = "<group>"; };
 		F7F17CA22545D831003C1150 /* CallDirectory.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CallDirectory.entitlements; sourceTree = "<group>"; };
 		F7F17CAE2546A238003C1150 /* CallDirectoryEntryListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDirectoryEntryListCell.swift; sourceTree = "<group>"; };
 		F7F17CD82546C2E5003C1150 /* CallDirectoryEntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDirectoryEntryList.swift; sourceTree = "<group>"; };
@@ -527,6 +533,7 @@
 				91B1F367251E3C5B000D2CF2 /* ContactList */,
 				91E77BAE252F34290096E548 /* SearchList */,
 				F74583D12545933600AF9483 /* CallDirectoryEntryList */,
+				F798CFDE25F25BB0005AFB4B /* MessageFilterList */,
 				91E17EC2251876F100D2656F /* SettingsForm */,
 			);
 			path = Views;
@@ -555,6 +562,23 @@
 			path = MessageFilter;
 			sourceTree = "<group>";
 		};
+		F798CFDE25F25BB0005AFB4B /* MessageFilterList */ = {
+			isa = PBXGroup;
+			children = (
+				F798CFE225F260C7005AFB4B /* MessageFilterList.swift */,
+				F798CFED25F271B6005AFB4B /* MessageFilterForm.swift */,
+			);
+			path = MessageFilterList;
+			sourceTree = "<group>";
+		};
+		F798CFE725F26879005AFB4B /* MessageFilterList */ = {
+			isa = PBXGroup;
+			children = (
+				F798CFE825F2688C005AFB4B /* MessageFilterListViewModel.swift */,
+			);
+			path = MessageFilterList;
+			sourceTree = "<group>";
+		};
 		F7D5026724EE568D00B1D0B1 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -562,6 +586,7 @@
 				91B1F36C251E3C8F000D2CF2 /* ContactList */,
 				91E77BAC252F34200096E548 /* SearchList */,
 				F7F17CA525469119003C1150 /* CallDirectoryEntryList */,
+				F798CFE725F26879005AFB4B /* MessageFilterList */,
 				91E17EC32518771000D2656F /* SettingsForm */,
 			);
 			path = ViewModels;
@@ -762,6 +787,7 @@
 				F7F17CDD2546DB93003C1150 /* CallDirectoryEntryListViewModel.swift in Sources */,
 				0B9E49A2258B2AE1009F5A9D /* NavigationButton.swift in Sources */,
 				F786EF8225450A8800CBEAC4 /* ContactList.Footer.swift in Sources */,
+				F798CFE325F260C7005AFB4B /* MessageFilterList.swift in Sources */,
 				91E17EBF2518699C00D2656F /* AlertItem.swift in Sources */,
 				91B61EA82534703C007935AD /* EditContactsForm.swift in Sources */,
 				0B91CF4D259231F20084FB93 /* CallDirectoryEntryFormViewModel.swift in Sources */,
@@ -783,6 +809,7 @@
 				915761FC254995B100F38931 /* CallDirectoryEntry+CoreDataProperties.swift in Sources */,
 				84F65818256A76B7005B3B0A /* ContactMenuSettingFormCell.swift in Sources */,
 				0B4A93B225BB140800CEFE3F /* EditGroupsFormViewModel.swift in Sources */,
+				F798CFE925F2688C005AFB4B /* MessageFilterListViewModel.swift in Sources */,
 				0B2613852595C58500A8D874 /* LoadableObject.swift in Sources */,
 				F7F17CAF2546A239003C1150 /* CallDirectoryEntryListCell.swift in Sources */,
 				9100A930252614080013A143 /* CompatibleLabel.swift in Sources */,
@@ -831,6 +858,7 @@
 				910467052506252100618BFD /* SearchListViewModel.swift in Sources */,
 				913DC24225160DD800BC1397 /* ApplicationShortcutItem.swift in Sources */,
 				91E17EC1251872BB00D2656F /* CompatibleInsetGroupedListStyle.swift in Sources */,
+				F798CFEE25F271B6005AFB4B /* MessageFilterForm.swift in Sources */,
 				0BA71E472588F82E0007F9C9 /* CreateGroupForm.swift in Sources */,
 				915761FA254995B100F38931 /* CallDirectoryEntry+CoreDataClass.swift in Sources */,
 				917AC447252EA9A10031B39A /* EnumPickerForm.swift in Sources */,
