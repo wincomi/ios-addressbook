@@ -9,28 +9,30 @@ import IdentityLookup
 struct MessageFilterForm: View {
 	@Environment(\.presentationMode) var presentationMode
 
-	private var isEnabled: Bool = true
-	@State private var filterType: Int = 0
+	@State private var isEnabled: Bool = true
+	@State private var filterType: MessageFilter.FilterType = .any
 	@State private var filterText: String = ""
 	@State private var isCaseSensitive: Bool = false
-	private var filterCondition: Int = 0
-	@State private var filterAction: ILMessageFilterAction = .junk
-	private var filterActionsAllCases: [ILMessageFilterAction] = [.junk]
+	@State private var filterAction: MessageFilter.FilterAction = .junk
 
 	var body: some View {
 		Form {
-			Section {
+			Section(header: Text("Type")) {
 				Picker("Type", selection: $filterType) {
-
+					ForEach(MessageFilter.FilterType.allCases, id: \.self) { filterType in
+						Text("\(filterType.rawValue)")
+					}
 				}.pickerStyle(DefaultPickerStyle())
 			}
 			Section(header: Text("Text")) {
 				TextField("Text", text: $filterText)
 				Toggle("Case Sensitive", isOn: $isCaseSensitive)
 			}
-			Section {
+			Section(header: Text("Action")) {
 				Picker("Action", selection: $filterAction) {
-
+					ForEach(MessageFilter.FilterAction.allCases, id: \.self) { filterAction in
+						Text("\(filterAction.rawValue)")
+					}
 				}.pickerStyle(DefaultPickerStyle())
 			}
 		}

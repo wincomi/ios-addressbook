@@ -60,7 +60,7 @@ final class StorageController {
 		}
 	}
 
-	private func fetch<T: NSManagedObject>(_ request: NSFetchRequest<T>) -> [T] {
+	func fetch<T: NSManagedObject>(_ request: NSFetchRequest<T>) -> [T] {
 		do {
 			let fetchResult = try context.fetch(request)
 			return fetchResult
@@ -70,7 +70,7 @@ final class StorageController {
 		}
 	}
 
-	private func delete(_ object: NSManagedObject)  {
+	func delete(_ object: NSManagedObject)  {
 		context.delete(object)
 		do {
 			try context.save()
