@@ -11,7 +11,7 @@ struct MessageFilterList: View {
 
 	var body: some View {
 		AsyncContentView(source: viewModel, content: contentView(messageFilters:))
-			.navigationBarTitle("SMS Filter")
+			.navigationBarTitle(L10n.MessageFilterList.navigationTitle)
 			.navigationBarItems(trailing: createButton)
 			.sheet(isPresented: $isFormPresented) {
 				NavigationView {

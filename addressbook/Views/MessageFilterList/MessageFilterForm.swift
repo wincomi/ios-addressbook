@@ -17,26 +17,26 @@ struct MessageFilterForm: View {
 
 	var body: some View {
 		Form {
-			Section(header: Text("Type").padding(.horizontal)) {
-				Picker("Type", selection: $filterType) {
+			Section(header: Text(L10n.MessageFilterForm.type).padding(.horizontal)) {
+				Picker(L10n.MessageFilterForm.type, selection: $filterType) {
 					ForEach(MessageFilter.FilterType.allCases, id: \.self) { filterType in
 						Text("\(filterType.rawValue)")
 					}
 				}.pickerStyle(DefaultPickerStyle())
 			}
-			Section(header: Text("Text").padding(.horizontal)) {
-				TextField("Text", text: $filterText)
-				Toggle("Case Sensitive", isOn: $isCaseSensitive)
+			Section(header: Text(L10n.MessageFilterForm.text).padding(.horizontal)) {
+				TextField(L10n.MessageFilterForm.text, text: $filterText)
+				Toggle(L10n.MessageFilterForm.caseSensitive, isOn: $isCaseSensitive)
 			}
-			Section(header: Text("Action").padding(.horizontal)) {
-				Picker("Action", selection: $filterAction) {
+			Section(header: Text(L10n.MessageFilterForm.action).padding(.horizontal)) {
+				Picker(L10n.MessageFilterForm.action, selection: $filterAction) {
 					ForEach(MessageFilter.FilterAction.allCases, id: \.self) { filterAction in
 						Text("\(filterAction.rawValue)")
 					}
 				}.pickerStyle(DefaultPickerStyle())
 			}
 		}
-		.navigationBarTitle("Add Filter")
+		.navigationBarTitle(L10n.MessageFilterForm.navigationTitle)
 		.navigationBarItems(leading: cancelButton, trailing: doneButton.disabled(!isFormValid))
 	}
 }
@@ -45,7 +45,7 @@ private extension MessageFilterForm {
 	var isFormValid: Bool {
 		!filterText.isEmpty
 	}
-	
+
 	var doneButton: some View {
 		Button {
 			// ...

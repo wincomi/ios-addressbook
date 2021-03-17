@@ -73,7 +73,7 @@ struct SidebarList: View {
 					coordinator?.presentMessageFilterList()
 				} label: {
 					CompatibleLabel {
-						Text("SMS Filter")
+						Text(L10n.MessageFilterList.navigationTitle)
 							.foregroundColor(Color(UIColor.label))
 					} icon: {
 						Image(systemName: "xmark.bin")

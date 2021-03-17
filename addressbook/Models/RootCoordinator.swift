@@ -58,7 +58,7 @@ extension RootCoordinator {
 		let messageFilterList = MessageFilterList(viewModel: viewModel)
 		let vc = UIHostingController(rootView: messageFilterList)
 
-		vc.navigationItem.title = "SMS Filter"
+		vc.navigationItem.title = L10n.MessageFilterList.navigationTitle
 
 		viewController.setSecondaryViewController(vc)
 	}

@@ -146,3 +146,13 @@ CallDirectoryEntryForm.NameSection.footer = "Enter the name that will be display
 CallDirectoryEntryForm.PhoneNumberSection.footer = "Enter only numbers with country code.";
 CallDirectoryEntryForm.AddType.navigationTitle = "Add phone number";
 CallDirectoryEntryForm.EditType.navigationTitle = "Edit phone number";
+
+// MARK: - MessageFilterList
+MessageFilterList.navigationTitle = "SMS Filtering";
+
+// MARK: - MessageFilterForm
+MessageFilterForm.navigationTitle = "New Filter";
+MessageFilterForm.type = "Type";
+MessageFilterForm.text = "Text";
+MessageFilterForm.caseSensitive = "Case Sensitive";
+MessageFilterForm.action = "Action";

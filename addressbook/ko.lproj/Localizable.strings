@@ -146,3 +146,13 @@ CallDirectoryEntryForm.NameSection.footer = "전화가 오면 표시될 이름�
 CallDirectoryEntryForm.PhoneNumberSection.footer = "국가코드를 포함하여 숫자만 입력하세요.";
 CallDirectoryEntryForm.AddType.navigationTitle = "전화번호 추가";
 CallDirectoryEntryForm.EditType.navigationTitle = "전화번호 수정";
+
+// MARK: - MessageFilterList
+MessageFilterList.navigationTitle = "SMS 필터링";
+
+// MARK: - MessageFilterForm
+MessageFilterForm.navigationTitle = "필터 규칙 추가";
+MessageFilterForm.type = "타입";
+MessageFilterForm.text = "텍스트";
+MessageFilterForm.caseSensitive = "대소 문자 구분";
+MessageFilterForm.action = "액션";
