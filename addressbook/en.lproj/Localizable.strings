@@ -149,6 +149,8 @@ CallDirectoryEntryForm.EditType.navigationTitle = "Edit phone number";
 
 // MARK: - MessageFilterList
 MessageFilterList.navigationTitle = "SMS Filtering";
+MessageFilterList.EmptyDataView.title = "The list is empty.";
+MessageFilterList.EmptyDataView.description = "You can add a filter by touching the add button at the top.";
 
 // MARK: - MessageFilterForm
 MessageFilterForm.navigationTitle = "New Filter";

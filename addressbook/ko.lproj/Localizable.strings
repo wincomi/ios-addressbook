@@ -149,6 +149,8 @@ CallDirectoryEntryForm.EditType.navigationTitle = "전화번호 수정";
 
 // MARK: - MessageFilterList
 MessageFilterList.navigationTitle = "SMS 필터링";
+MessageFilterList.EmptyDataView.title = "추가한 필터가 없습니다.";
+MessageFilterList.EmptyDataView.description = "상단의 추가 버튼을 터치하여 필터를 추가할 수 있습니다.";
 
 // MARK: - MessageFilterForm
 MessageFilterForm.navigationTitle = "필터 규칙 추가";

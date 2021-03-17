@@ -6,9 +6,11 @@
 import Combine
 
 final class MessageFilterListViewModel: ObservableObject, LoadableObject {
-	@Published private(set) var state: LoadingState<[String], Error> = .idle
+	private let storageController = StorageController.shared
+	@Published private(set) var state: LoadingState<[MessageFilter], Error> = .idle
 
 	func load() {
-		state = .loaded(["test", "asdf"])
+		let messageFilters = storageController.fetch(MessageFilter.fetchRequest())
+		state = .loaded(messageFilters)
 	}
 }

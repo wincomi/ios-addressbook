@@ -22,14 +22,21 @@ struct MessageFilterList: View {
 }
 
 private extension MessageFilterList {
-	func contentView(messageFilters: [String]) -> some View {
-		List(messageFilters, id: \.self, rowContent: rowContent(messageFilter:))
-			.modifier(CompatibleInsetGroupedListStyle())
+	@ViewBuilder func contentView(messageFilters: [MessageFilter]) -> some View {
+		if messageFilters.isEmpty {
+			EmptyDataView(
+				title: L10n.MessageFilterList.EmptyDataView.title,
+				description: L10n.MessageFilterList.EmptyDataView.description
+			)
+		} else {
+			List(messageFilters, id: \.self, rowContent: rowContent(messageFilter:))
+				.modifier(CompatibleInsetGroupedListStyle())
+		}
 	}
 
-	func rowContent(messageFilter: String) -> some View {
+	func rowContent(messageFilter: MessageFilter) -> some View {
 		CompatibleLabel {
-			Text(messageFilter)
+			Text(messageFilter.filterText)
 		} icon: {
 			Image(systemName: "xmark.bin")
 		}
