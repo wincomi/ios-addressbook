@@ -33,7 +33,6 @@ private extension MessageFilterList {
 		} icon: {
 			Image(systemName: "xmark.bin")
 		}
-
 	}
 
 	var createButton: some View {

@@ -17,18 +17,18 @@ struct MessageFilterForm: View {
 
 	var body: some View {
 		Form {
-			Section(header: Text("Type")) {
+			Section(header: Text("Type").padding(.horizontal)) {
 				Picker("Type", selection: $filterType) {
 					ForEach(MessageFilter.FilterType.allCases, id: \.self) { filterType in
 						Text("\(filterType.rawValue)")
 					}
 				}.pickerStyle(DefaultPickerStyle())
 			}
-			Section(header: Text("Text")) {
+			Section(header: Text("Text").padding(.horizontal)) {
 				TextField("Text", text: $filterText)
 				Toggle("Case Sensitive", isOn: $isCaseSensitive)
 			}
-			Section(header: Text("Action")) {
+			Section(header: Text("Action").padding(.horizontal)) {
 				Picker("Action", selection: $filterAction) {
 					ForEach(MessageFilter.FilterAction.allCases, id: \.self) { filterAction in
 						Text("\(filterAction.rawValue)")
@@ -37,11 +37,15 @@ struct MessageFilterForm: View {
 			}
 		}
 		.navigationBarTitle("Add Filter")
-		.navigationBarItems(leading: cancelButton, trailing: doneButton)
+		.navigationBarItems(leading: cancelButton, trailing: doneButton.disabled(!isFormValid))
 	}
 }
 
 private extension MessageFilterForm {
+	var isFormValid: Bool {
+		!filterText.isEmpty
+	}
+	
 	var doneButton: some View {
 		Button {
 			// ...
