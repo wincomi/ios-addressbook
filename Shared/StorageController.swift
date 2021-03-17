@@ -45,11 +45,11 @@ final class StorageController {
 		return container
 	}()
 
-	private var context: NSManagedObjectContext {
+	var context: NSManagedObjectContext {
 		persistentContainer.viewContext
 	}
 
-	private func saveContext() {
+	func saveContext() {
 		if context.hasChanges {
 			do {
 				try context.save()

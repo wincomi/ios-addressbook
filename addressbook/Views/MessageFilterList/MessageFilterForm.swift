@@ -9,6 +9,8 @@ import IdentityLookup
 struct MessageFilterForm: View {
 	@Environment(\.presentationMode) var presentationMode
 
+	@ObservedObject var viewModel = MessageFilterFormViewModel()
+
 	@State private var isEnabled: Bool = true
 	@State private var filterType: MessageFilter.FilterType = .any
 	@State private var filterText: String = ""
@@ -48,7 +50,7 @@ private extension MessageFilterForm {
 
 	var doneButton: some View {
 		Button {
-			// ...
+			viewModel.createMessageFilter(type: filterType, text: filterText, isCaseSensitive: isCaseSensitive, action: filterAction)
 			dismiss()
 		} label: {
 			Text(L10n.done)

@@ -7,12 +7,14 @@ import SwiftUI
 
 struct MessageFilterList: View {
 	@ObservedObject var viewModel: MessageFilterListViewModel
+	let didChange = StorageController.didChange
 	@State private var isFormPresented = false
 
 	var body: some View {
 		AsyncContentView(source: viewModel, content: contentView(messageFilters:))
 			.navigationBarTitle(L10n.MessageFilterList.navigationTitle)
 			.navigationBarItems(trailing: createButton)
+			.onReceive(didChange, perform: viewModel.load)
 			.sheet(isPresented: $isFormPresented) {
 				NavigationView {
 					MessageFilterForm()
