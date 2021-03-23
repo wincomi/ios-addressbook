@@ -44,7 +44,7 @@ private extension MessageFilterList {
 				Text(messageFilter.filterText)
 					.foregroundColor(Color(.label))
 			} icon: {
-				Image(systemName: "xmark.bin")
+				Image(systemName: messageFilter.action.systemImageName)
 			}
 		}
 	}

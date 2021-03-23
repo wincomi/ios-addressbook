@@ -158,3 +158,10 @@ MessageFilterForm.type = "Type";
 MessageFilterForm.text = "Text";
 MessageFilterForm.caseSensitive = "Case Sensitive";
 MessageFilterForm.action = "Action";
+
+// MARK: - MessageFilter
+FilterAction.none = "Auto";
+FilterAction.allow = "Allow";
+FilterAction.junk = "Junk";
+FilterAction.transaction = "Transaction";
+FilterAction.promotion = "Promotion";

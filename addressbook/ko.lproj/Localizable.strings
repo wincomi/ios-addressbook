@@ -158,3 +158,10 @@ MessageFilterForm.type = "타입";
 MessageFilterForm.text = "텍스트";
 MessageFilterForm.caseSensitive = "대소 문자 구분";
 MessageFilterForm.action = "액션";
+
+// MARK: - MessageFilter
+FilterAction.none = "자동";
+FilterAction.allow = "허용";
+FilterAction.junk = "정크";
+FilterAction.transaction = "거래";
+FilterAction.promotion = "홍보";

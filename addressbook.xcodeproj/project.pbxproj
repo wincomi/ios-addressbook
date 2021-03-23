@@ -116,6 +116,7 @@
 		F798CFE925F2688C005AFB4B /* MessageFilterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F798CFE825F2688C005AFB4B /* MessageFilterListViewModel.swift */; };
 		F798CFEE25F271B6005AFB4B /* MessageFilterForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F798CFED25F271B6005AFB4B /* MessageFilterForm.swift */; };
 		F7C1E1692601C8D000C0BD5F /* MessageFilterFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C1E1682601C8D000C0BD5F /* MessageFilterFormViewModel.swift */; };
+		F7C1E16E2609827A00C0BD5F /* MessageFilterActionPickerForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C1E16D2609827A00C0BD5F /* MessageFilterActionPickerForm.swift */; };
 		F7F17CAF2546A239003C1150 /* CallDirectoryEntryListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F17CAE2546A238003C1150 /* CallDirectoryEntryListCell.swift */; };
 		F7F17CD92546C2E5003C1150 /* CallDirectoryEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F17CD82546C2E5003C1150 /* CallDirectoryEntryList.swift */; };
 		F7F17CDD2546DB93003C1150 /* CallDirectoryEntryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F17CDC2546DB93003C1150 /* CallDirectoryEntryListViewModel.swift */; };
@@ -260,6 +261,7 @@
 		F798CFE825F2688C005AFB4B /* MessageFilterListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFilterListViewModel.swift; sourceTree = "<group>"; };
 		F798CFED25F271B6005AFB4B /* MessageFilterForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFilterForm.swift; sourceTree = "<group>"; };
 		F7C1E1682601C8D000C0BD5F /* MessageFilterFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFilterFormViewModel.swift; sourceTree = "<group>"; };
+		F7C1E16D2609827A00C0BD5F /* MessageFilterActionPickerForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFilterActionPickerForm.swift; sourceTree = "<group>"; };
 		F7F17CA22545D831003C1150 /* CallDirectory.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CallDirectory.entitlements; sourceTree = "<group>"; };
 		F7F17CAE2546A238003C1150 /* CallDirectoryEntryListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDirectoryEntryListCell.swift; sourceTree = "<group>"; };
 		F7F17CD82546C2E5003C1150 /* CallDirectoryEntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDirectoryEntryList.swift; sourceTree = "<group>"; };
@@ -589,6 +591,7 @@
 			children = (
 				F798CFE225F260C7005AFB4B /* MessageFilterList.swift */,
 				F798CFED25F271B6005AFB4B /* MessageFilterForm.swift */,
+				F7C1E16D2609827A00C0BD5F /* MessageFilterActionPickerForm.swift */,
 			);
 			path = MessageFilterList;
 			sourceTree = "<group>";
@@ -836,6 +839,7 @@
 				0B4A93B225BB140800CEFE3F /* EditGroupsFormViewModel.swift in Sources */,
 				F798CFE925F2688C005AFB4B /* MessageFilterListViewModel.swift in Sources */,
 				0B2613852595C58500A8D874 /* LoadableObject.swift in Sources */,
+				F7C1E16E2609827A00C0BD5F /* MessageFilterActionPickerForm.swift in Sources */,
 				F7F17CAF2546A239003C1150 /* CallDirectoryEntryListCell.swift in Sources */,
 				9100A930252614080013A143 /* CompatibleLabel.swift in Sources */,
 				91147F58251B45A70012A592 /* UserDefaults+Extension.swift in Sources */,

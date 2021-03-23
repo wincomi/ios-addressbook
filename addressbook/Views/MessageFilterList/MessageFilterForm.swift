@@ -19,23 +19,24 @@ struct MessageFilterForm: View {
 
 	var body: some View {
 		Form {
-			Section(header: Text(L10n.MessageFilterForm.type).padding(.horizontal)) {
-				Picker(L10n.MessageFilterForm.type, selection: $filterType) {
-					ForEach(MessageFilter.FilterType.allCases, id: \.self) { filterType in
-						Text("\(filterType.rawValue)")
-					}
-				}.pickerStyle(DefaultPickerStyle())
-			}
 			Section(header: Text(L10n.MessageFilterForm.text).padding(.horizontal)) {
 				TextField(L10n.MessageFilterForm.text, text: $filterText)
 				Toggle(L10n.MessageFilterForm.caseSensitive, isOn: $isCaseSensitive)
 			}
 			Section(header: Text(L10n.MessageFilterForm.action).padding(.horizontal)) {
-				Picker(L10n.MessageFilterForm.action, selection: $filterAction) {
-					ForEach(MessageFilter.FilterAction.allCases, id: \.self) { filterAction in
-						Text("\(filterAction.rawValue)")
+				NavigationLink(destination: MessageFilterActionPickerForm(filterAction: $filterAction)) {
+					HStack {
+						CompatibleLabel {
+							Text(L10n.MessageFilterForm.action)
+								.foregroundColor(Color(UIColor.label))
+						} icon: {
+							Image(systemName: filterAction.systemImageName)
+						}
+						Spacer()
+						Text(filterAction.localizedTitle)
+							.foregroundColor(Color(UIColor.secondaryLabel))
 					}
-				}.pickerStyle(DefaultPickerStyle())
+				}
 			}
 		}
 		.navigationBarTitle(L10n.MessageFilterForm.navigationTitle)

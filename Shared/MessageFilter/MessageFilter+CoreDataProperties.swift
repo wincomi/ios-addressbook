@@ -28,6 +28,36 @@ extension MessageFilter {
 		var id: Int32 {
 			rawValue
 		}
+
+		var localizedTitle: String {
+			switch self {
+			case .none:
+				return NSLocalizedString("FilterAction.none", comment: "")
+			case .allow:
+				return NSLocalizedString("FilterAction.allow", comment: "")
+			case .junk:
+				return NSLocalizedString("FilterAction.junk", comment: "")
+			case .transaction:
+				return NSLocalizedString("FilterAction.transaction", comment: "")
+			case .promotion:
+				return NSLocalizedString("FilterAction.promotion", comment: "")
+			}
+		}
+
+		var systemImageName: String {
+			switch self {
+			case .none:
+				return "questionmark.circle"
+			case .allow:
+				return "checkmark.seal"
+			case .junk:
+				return "xmark.bin"
+			case .transaction:
+				return "arrow.left.arrow.right"
+			case .promotion:
+				return "megaphone"
+			}
+		}
 	}
 
 	@nonobjc public class func fetchRequest() -> NSFetchRequest<MessageFilter> {
