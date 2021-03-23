@@ -60,5 +60,7 @@ extension MessageFilter {
 }
 
 extension MessageFilter: Identifiable {
-
+	public var id: String {
+		filterText
+	}
 }

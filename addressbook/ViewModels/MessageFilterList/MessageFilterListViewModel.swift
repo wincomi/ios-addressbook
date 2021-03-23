@@ -13,4 +13,8 @@ final class MessageFilterListViewModel: ObservableObject, LoadableObject {
 		let messageFilters = storageController.fetch(MessageFilter.fetchRequest())
 		state = .loaded(messageFilters)
 	}
+
+	func delete(_ messageFilter: MessageFilter) {
+		storageController.delete(messageFilter)
+	}
 }

@@ -26,21 +26,26 @@ struct MessageFilterList: View {
 private extension MessageFilterList {
 	@ViewBuilder func contentView(messageFilters: [MessageFilter]) -> some View {
 		if messageFilters.isEmpty {
-			EmptyDataView(
-				title: L10n.MessageFilterList.EmptyDataView.title,
-				description: L10n.MessageFilterList.EmptyDataView.description
-			)
+			emptyView
 		} else {
-			List(messageFilters, id: \.self, rowContent: rowContent(messageFilter:))
-				.modifier(CompatibleInsetGroupedListStyle())
+			List {
+				ForEach(messageFilters) { messageFilter in
+					rowContent(messageFilter: messageFilter)
+				}.onDelete(perform: delete(at:))
+			}.modifier(CompatibleInsetGroupedListStyle())
 		}
 	}
 
 	func rowContent(messageFilter: MessageFilter) -> some View {
-		CompatibleLabel {
-			Text(messageFilter.filterText)
-		} icon: {
-			Image(systemName: "xmark.bin")
+		Button {
+			
+		} label: {
+			CompatibleLabel {
+				Text(messageFilter.filterText)
+					.foregroundColor(Color(.label))
+			} icon: {
+				Image(systemName: "xmark.bin")
+			}
 		}
 	}
 
@@ -51,6 +56,25 @@ private extension MessageFilterList {
 			Image(systemName: "plus")
 				.font(.system(size: 20))
 		}
+	}
+
+	var emptyView: some View {
+		ZStack {
+			Color(UIColor.systemGroupedBackground)
+				.edgesIgnoringSafeArea(.all)
+			EmptyDataView(
+				title: L10n.MessageFilterList.EmptyDataView.title,
+				description: L10n.MessageFilterList.EmptyDataView.description
+			)
+		}
+	}
+
+	func delete(at offsets: IndexSet) {
+		guard case .loaded(let messageFilters) = viewModel.state,
+			  let offset = offsets.first,
+			  !messageFilters.isEmpty else { return }
+		let messageFilter = messageFilters[offset]
+		viewModel.delete(messageFilter)
 	}
 }
 
