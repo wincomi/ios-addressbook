@@ -23,18 +23,20 @@ struct MessageFilterForm: View {
 				TextField(L10n.MessageFilterForm.text, text: $filterText)
 				Toggle(L10n.MessageFilterForm.caseSensitive, isOn: $isCaseSensitive)
 			}
-			Section(header: Text(L10n.MessageFilterForm.action).padding(.horizontal)) {
-				NavigationLink(destination: MessageFilterActionPickerForm(filterAction: $filterAction)) {
-					HStack {
-						CompatibleLabel {
-							Text(L10n.MessageFilterForm.action)
-								.foregroundColor(Color(UIColor.label))
-						} icon: {
-							Image(systemName: filterAction.systemImageName)
+			if #available(iOS 14.0, *) {
+				Section(header: Text(L10n.MessageFilterForm.action).padding(.horizontal)) {
+					NavigationLink(destination: MessageFilterActionPickerForm(filterAction: $filterAction)) {
+						HStack {
+							CompatibleLabel {
+								Text(L10n.MessageFilterForm.action)
+									.foregroundColor(Color(UIColor.label))
+							} icon: {
+								Image(systemName: filterAction.systemImageName)
+							}
+							Spacer()
+							Text(filterAction.localizedTitle)
+								.foregroundColor(Color(UIColor.secondaryLabel))
 						}
-						Spacer()
-						Text(filterAction.localizedTitle)
-							.foregroundColor(Color(UIColor.secondaryLabel))
 					}
 				}
 			}
