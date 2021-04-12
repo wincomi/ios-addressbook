@@ -7,7 +7,7 @@ import SwiftUI
 
 struct MessageFilterActionPickerForm: View {
 	@Binding var filterAction: MessageFilter.FilterAction
-	var filterActions: [MessageFilter.FilterAction] = [.junk, .promotion, .transaction]
+	var filterActions: [MessageFilter.FilterAction] = [.promotion, .transaction, .junk]
 
 	var body: some View {
 		EnumPickerForm(

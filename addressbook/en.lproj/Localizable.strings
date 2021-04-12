@@ -151,7 +151,7 @@ CallDirectoryEntryForm.EditType.navigationTitle = "Edit phone number";
 MessageFilterList.navigationTitle = "SMS Filtering";
 MessageFilterList.EmptyDataView.title = "The list is empty.";
 MessageFilterList.EmptyDataView.description = "You can add a filter by touching the add button at the top.";
-MessageFilterList.footer = "To enable SMS filtering feature, go Settings App → Messages → Unknown & Spam and select 'Contacts⁺'.\nThis feature works only on devices with this app installed; it does not work on devices that are not installed, such as macOS and watchOS.";
+MessageFilterList.footer = "To enable SMS filtering feature, go Settings App → Messages → Unknown & Spam and select 'Contacts⁺'.\nYou can edit the filter by touching the list item.";
 
 // MARK: - MessageFilterForm
 MessageFilterForm.CreateType.navigationTitle = "New Filter";
