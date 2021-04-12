@@ -7,17 +7,17 @@ import SwiftUI
 
 struct MessageFilterList: View {
 	@ObservedObject var viewModel: MessageFilterListViewModel
+	@State private var activeSheetFormType: MessageFilterForm.FormType?
 	let didChange = StorageController.didChange
-	@State private var isFormPresented = false
 
 	var body: some View {
 		AsyncContentView(source: viewModel, content: contentView(messageFilters:))
 			.navigationBarTitle(L10n.MessageFilterList.navigationTitle)
 			.navigationBarItems(trailing: createButton)
 			.onReceive(didChange, perform: viewModel.load)
-			.sheet(isPresented: $isFormPresented) {
+			.sheet(item: $activeSheetFormType) { formType in
 				NavigationView {
-					MessageFilterForm()
+					MessageFilterForm(formType: formType)
 				}.navigationViewStyle(StackNavigationViewStyle())
 			}
 	}
@@ -29,16 +29,18 @@ private extension MessageFilterList {
 			emptyView
 		} else {
 			List {
-				ForEach(messageFilters) { messageFilter in
-					rowContent(messageFilter: messageFilter)
-				}.onDelete(perform: delete(at:))
+				Section(footer: Text(L10n.MessageFilterList.footer).padding(.horizontal)) {
+					ForEach(messageFilters) { messageFilter in
+						rowContent(messageFilter: messageFilter)
+					}.onDelete(perform: delete(at:))
+				}
 			}.modifier(CompatibleInsetGroupedListStyle())
 		}
 	}
 
 	func rowContent(messageFilter: MessageFilter) -> some View {
 		Button {
-			
+			activeSheetFormType = .update(messageFilter)
 		} label: {
 			CompatibleLabel {
 				Text(messageFilter.filterText)
@@ -51,7 +53,7 @@ private extension MessageFilterList {
 
 	var createButton: some View {
 		Button {
-			isFormPresented = true
+			activeSheetFormType = .create
 		} label: {
 			Image(systemName: "plus")
 				.font(.system(size: 20))

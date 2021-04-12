@@ -151,13 +151,16 @@ CallDirectoryEntryForm.EditType.navigationTitle = "Edit phone number";
 MessageFilterList.navigationTitle = "SMS Filtering";
 MessageFilterList.EmptyDataView.title = "The list is empty.";
 MessageFilterList.EmptyDataView.description = "You can add a filter by touching the add button at the top.";
+MessageFilterList.footer = "To enable SMS filtering feature, go Settings App → Messages → Unknown & Spam and select 'Contacts⁺'.\nThis feature works only on devices with this app installed; it does not work on devices that are not installed, such as macOS and watchOS.";
 
 // MARK: - MessageFilterForm
-MessageFilterForm.navigationTitle = "New Filter";
+MessageFilterForm.CreateType.navigationTitle = "New Filter";
+MessageFilterForm.UpdateType.navigationTitle = "Edit Filter";
 MessageFilterForm.type = "Type";
 MessageFilterForm.text = "Text";
+MessageFilterForm.TextSection.footer = "If text is included in SMS messages from senders who are not in your contacts, they will be filtered by the category you choose.";
 MessageFilterForm.caseSensitive = "Case Sensitive";
-MessageFilterForm.action = "Action";
+MessageFilterForm.action = "Category";
 
 // MARK: - MessageFilter
 FilterAction.none = "Auto";
