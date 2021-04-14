@@ -28,13 +28,9 @@ struct CallDirectoryEntryList: View {
 		AsyncContentView(source: viewModel, errorView: errorView) { callDirectoryEntries in
 			if !callDirectoryEntries.isEmpty {
 				List {
-					Section(footer: Text("\(descriptionText(for: viewModel.entryType)) \(L10n.CallDirectoryEntryList.Section.footer)").padding(.horizontal)) {
+					Section(footer: Text(descriptionText(for: viewModel.entryType)).padding(.horizontal)) {
 						ForEach(callDirectoryEntries) { callDirectoryEntry in
-							Button {
-								activeSheetFormType = .update(callDirectoryEntry)
-							} label: {
-								CallDirectoryEntryListCell(callDirectoryEntry: callDirectoryEntry)
-							}
+							CallDirectoryEntryListCell(callDirectoryEntry: callDirectoryEntry)
 						}.onDelete(perform: delete(at:))
 						.deleteDisabled(isDeleteDisabled)
 					}

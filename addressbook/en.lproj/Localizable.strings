@@ -128,7 +128,6 @@ EditContactsForm.organizationName = "Company";
 EditContactsForm.Section.footer = "Leave blank if you don't want multiple edit.";
 
 // MARK: - CallDirectoryEntryList
-CallDirectoryEntryList.Section.footer = "You can edit the infomation by touching the list item.";
 CallDirectoryEntryList.IdentificationType.navigationTitle = "Caller ID";
 CallDirectoryEntryList.IdentificationType.Section.footer = "The name on the list will be displayed when you receive phone calls.";
 CallDirectoryEntryList.BlockingType.navigationTitle = "Call Blocking";

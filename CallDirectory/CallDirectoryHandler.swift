@@ -29,7 +29,6 @@ final class CallDirectoryHandler: CXCallDirectoryProvider {
 
 		callDirectoryEntries.forEach { callDirectoryEntry in
 			context.addBlockingEntry(withNextSequentialPhoneNumber: callDirectoryEntry.phoneNumber)
-			print(callDirectoryEntry.phoneNumber)
 		}
 	}
 
