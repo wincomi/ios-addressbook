@@ -142,7 +142,7 @@ CallDirectoryEntryList.DisabledStatusView.buttonTitle = "Enable...";
 CallDirectoryEntryForm.name = "Name";
 CallDirectoryEntryForm.phoneNumber = "Phone number";
 CallDirectoryEntryForm.NameSection.footer = "Enter the name that will be displayed when you receive a call.";
-CallDirectoryEntryForm.PhoneNumberSection.footer = "Enter only numbers with country code.";
+CallDirectoryEntryForm.PhoneNumberSection.footer = "Enter only numbers with country code.\n\nex) +1 (201) 123-4567 → 12011234567";
 CallDirectoryEntryForm.AddType.navigationTitle = "Add phone number";
 CallDirectoryEntryForm.EditType.navigationTitle = "Edit phone number";
 

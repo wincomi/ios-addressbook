@@ -142,7 +142,7 @@ CallDirectoryEntryList.DisabledStatusView.buttonTitle = "활성화...";
 CallDirectoryEntryForm.name = "이름";
 CallDirectoryEntryForm.phoneNumber = "전화번호";
 CallDirectoryEntryForm.NameSection.footer = "전화가 오면 표시될 이름을 입력하세요.";
-CallDirectoryEntryForm.PhoneNumberSection.footer = "국가코드를 포함하여 숫자만 입력하세요.";
+CallDirectoryEntryForm.PhoneNumberSection.footer = "국가코드를 포함하여 숫자만 입력하세요. 한국의 국가코드는 82입니다.\n\n예)\n010-1234-5678 → 821012345678 (010의 첫 0 제외)\n02-1234-5678 → 82212345678\n1588-1234 → 8215881234";
 CallDirectoryEntryForm.AddType.navigationTitle = "전화번호 추가";
 CallDirectoryEntryForm.EditType.navigationTitle = "전화번호 수정";
 
