@@ -968,7 +968,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CallDirectory/CallDirectory.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.3.0.2;
+				CURRENT_PROJECT_VERSION = 1.3.1.0;
 				DEVELOPMENT_TEAM = M4FL5MH4DS;
 				INFOPLIST_FILE = CallDirectory/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -977,7 +977,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wincomi.ios.addressbook.CallDirectory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -991,7 +991,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CallDirectory/CallDirectory.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.3.0.2;
+				CURRENT_PROJECT_VERSION = 1.3.1.0;
 				DEVELOPMENT_TEAM = M4FL5MH4DS;
 				INFOPLIST_FILE = CallDirectory/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1000,7 +1000,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wincomi.ios.addressbook.CallDirectory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1134,7 +1134,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = addressbook/addressbook.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.3.0.2;
+				CURRENT_PROJECT_VERSION = 1.3.1.0;
 				DEVELOPMENT_TEAM = M4FL5MH4DS;
 				INFOPLIST_FILE = addressbook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1142,7 +1142,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wincomi.ios.addressbook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1157,7 +1157,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = addressbook/addressbook.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.3.0.2;
+				CURRENT_PROJECT_VERSION = 1.3.1.0;
 				DEVELOPMENT_TEAM = M4FL5MH4DS;
 				INFOPLIST_FILE = addressbook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1165,7 +1165,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wincomi.ios.addressbook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1178,7 +1178,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MessageFilter/MessageFilter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.3.0.2;
+				CURRENT_PROJECT_VERSION = 1.3.1.0;
 				DEVELOPMENT_TEAM = M4FL5MH4DS;
 				INFOPLIST_FILE = MessageFilter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1187,7 +1187,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wincomi.ios.addressbook.MessageFilter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1201,7 +1201,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MessageFilter/MessageFilter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.3.0.2;
+				CURRENT_PROJECT_VERSION = 1.3.1.0;
 				DEVELOPMENT_TEAM = M4FL5MH4DS;
 				INFOPLIST_FILE = MessageFilter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1210,7 +1210,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wincomi.ios.addressbook.MessageFilter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

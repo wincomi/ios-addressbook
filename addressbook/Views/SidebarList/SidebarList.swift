@@ -55,8 +55,13 @@ struct SidebarList: View {
 						Text(L10n.CallDirectoryEntryList.IdentificationType.navigationTitle)
 							.foregroundColor(Color(UIColor.label))
 					} icon: {
-						Image(systemName: "questionmark.circle")
-							.font(.system(size: 20))
+						if #available(iOS 14.0, *) {
+							Image(systemName: "person.crop.circle.badge.questionmark")
+								.font(.system(size: 20))
+						} else {
+							Image(systemName: "questionmark.circle")
+								.font(.system(size: 20))
+						}
 					}
 				}
 				NavigationButton {
