@@ -160,6 +160,7 @@ MessageFilterForm.text = "텍스트";
 MessageFilterForm.TextSection.footer = "연락처에 없는 발신자의 SMS 메시지에 텍스트가 포함되면 선택한 분류로 필터링됩니다. 예) [Web발신], (광고)";
 MessageFilterForm.caseSensitive = "대소 문자 구분";
 MessageFilterForm.action = "분류";
+MessageFilterForm.ActionSection.footer = "'정크'를 선택할 경우, SMS 메시지 수신 알림이 나타나지 않습니다.";
 
 // MARK: - MessageFilter
 FilterAction.none = "자동";

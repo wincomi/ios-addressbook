@@ -160,6 +160,7 @@ MessageFilterForm.text = "Text";
 MessageFilterForm.TextSection.footer = "If text is included in SMS messages from senders who are not in your contacts, they will be filtered by the category you choose.";
 MessageFilterForm.caseSensitive = "Case Sensitive";
 MessageFilterForm.action = "Category";
+MessageFilterForm.ActionSection.footer = "If you select 'Junk', SMS message notification does not appear.";
 
 // MARK: - MessageFilter
 FilterAction.none = "Auto";

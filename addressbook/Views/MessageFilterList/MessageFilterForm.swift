@@ -26,10 +26,17 @@ struct MessageFilterForm: View {
 				footer: Text(L10n.MessageFilterForm.TextSection.footer).padding(.horizontal)
 			) {
 				TextField(L10n.MessageFilterForm.text, text: $filterText)
-				Toggle(L10n.MessageFilterForm.caseSensitive, isOn: $isCaseSensitive)
+				CompatibleLabel {
+					Toggle(L10n.MessageFilterForm.caseSensitive, isOn: $isCaseSensitive)
+				} icon: {
+					Image(systemName: "textformat")
+				}
 			}
 			if #available(iOS 14.0, *) {
-				Section {
+				Section(
+					header: Text(L10n.MessageFilterForm.action).padding(.horizontal),
+					footer: Text(L10n.MessageFilterForm.ActionSection.footer).padding(.horizontal)
+				) {
 					NavigationLink(destination: MessageFilterActionPickerForm(filterAction: $filterAction)) {
 						HStack {
 							CompatibleLabel {
