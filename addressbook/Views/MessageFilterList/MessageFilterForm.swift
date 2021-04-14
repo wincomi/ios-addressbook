@@ -19,6 +19,8 @@ struct MessageFilterForm: View {
 	@State private var isCaseSensitive: Bool = false
 	@State private var filterAction: MessageFilter.FilterAction = .junk
 
+	@State private var isAppeared: Bool = false
+
 	var body: some View {
 		Form {
 			Section(
@@ -56,6 +58,8 @@ struct MessageFilterForm: View {
 		.navigationBarTitle(navigationTitle)
 		.navigationBarItems(leading: cancelButton, trailing: doneButton.disabled(!isFormValid))
 		.onAppear {
+			guard !isAppeared else { return }
+
 			switch formType {
 			case .create:
 				break
@@ -65,6 +69,8 @@ struct MessageFilterForm: View {
 				isCaseSensitive = messageFilter.isCaseSensitive
 				filterAction = messageFilter.action
 			}
+
+			isAppeared = true
 		}
 	}
 }
