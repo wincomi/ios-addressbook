@@ -42,11 +42,19 @@ private extension MessageFilterList {
 		Button {
 			activeSheetFormType = .update(messageFilter)
 		} label: {
-			CompatibleLabel {
-				Text(messageFilter.filterText)
-					.foregroundColor(Color(.label))
-			} icon: {
-				Image(systemName: messageFilter.action.systemImageName)
+			HStack {
+				CompatibleLabel {
+					Text(messageFilter.filterText)
+						.foregroundColor(Color(.label))
+				} icon: {
+					Image(systemName: messageFilter.action.systemImageName)
+				}
+				if case .junk = messageFilter.action {
+					Spacer()
+					Image(systemName: "bell.slash.fill")
+						.foregroundColor(Color(.systemRed))
+						.font(.caption)
+				}
 			}
 		}
 	}

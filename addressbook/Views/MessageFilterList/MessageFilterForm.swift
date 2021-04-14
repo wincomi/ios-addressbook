@@ -47,6 +47,12 @@ struct MessageFilterForm: View {
 							} icon: {
 								Image(systemName: filterAction.systemImageName)
 							}
+							if case .junk = filterAction {
+								Spacer()
+								Image(systemName: "bell.slash.fill")
+									.foregroundColor(Color(.systemRed))
+									.font(.caption)
+							}
 						}
 					}
 				}
