@@ -66,6 +66,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		CXCallDirectoryManager.sharedInstance.reloadExtension(withIdentifier: AppSettings.callDirectoryBundleIdentifier) { error in
 			if let error = error {
 				print("reloadCallDirectoryExtension: \(error)")
+			} else {
+				print("reloadCallDirectoryExtension: success")
 			}
 		}
 	}

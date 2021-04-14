@@ -14,6 +14,7 @@ final class CallDirectoryEntryFormViewModel: ObservableObject {
 			name: name,
 			phoneNumber: phoneNumber
 		)
+		reloadCallDirectoryExtension()
 	}
 
 	func update(_ callDirectoryEntry: CallDirectoryEntry, entryType: CallDirectoryEntry.EntryType, name: String, phoneNumber: Int64) {
@@ -22,9 +23,16 @@ final class CallDirectoryEntryFormViewModel: ObservableObject {
 			$0.name = name
 			$0.phoneNumber = phoneNumber
 		}
+		reloadCallDirectoryExtension()
 	}
 
 	func remove(_ callDirectoryEntry: CallDirectoryEntry) {
 		storageController.remove(callDirectoryEntry)
+		reloadCallDirectoryExtension()
+	}
+
+	func reloadCallDirectoryExtension() {
+		let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+		sceneDelegate?.reloadCallDirectoryExtension()
 	}
 }

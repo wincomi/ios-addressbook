@@ -56,6 +56,7 @@ final class CallDirectoryEntryListViewModel: LoadableObject, ObservableObject {
 
 	func remove(_ callDirectoryEntry: CallDirectoryEntry) {
 		storageController.remove(callDirectoryEntry)
+		reloadCallDirectoryExtension()
 	}
 
 	func reloadCallDirectoryExtension() {
