@@ -42,14 +42,11 @@ struct MessageFilterForm: View {
 					NavigationLink(destination: MessageFilterActionPickerForm(filterAction: $filterAction)) {
 						HStack {
 							CompatibleLabel {
-								Text(L10n.MessageFilterForm.action)
+								Text(filterAction.localizedTitle)
 									.foregroundColor(Color(UIColor.label))
 							} icon: {
 								Image(systemName: filterAction.systemImageName)
 							}
-							Spacer()
-							Text(filterAction.localizedTitle)
-								.foregroundColor(Color(UIColor.secondaryLabel))
 						}
 					}
 				}
