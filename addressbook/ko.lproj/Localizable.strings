@@ -135,9 +135,9 @@ CallDirectoryEntryList.BlockingType.navigationTitle = "전화 차단";
 CallDirectoryEntryList.BlockingType.Section.footer = "차단 목록에 있는 전화번호에서 전화를 받을 수 없게 됩니다.";
 CallDirectoryEntryList.EmptyDataView.title = "전화번호가 없습니다.";
 CallDirectoryEntryList.EmptyDataView.buttonTitle = "전화번호 추가...";
-CallDirectoryEntryList.CallDirectoryDisabledView.title = "전화 차단 및 발신자 확인";
-CallDirectoryEntryList.CallDirectoryDisabledView.description = "설정에서 활성화 후 사용할 수 있습니다.";
-CallDirectoryEntryList.CallDirectoryDisabledView.buttonTitle = "활성화...";
+CallDirectoryEntryList.DisabledStatusView.title = "전화 차단 및 발신자 확인";
+CallDirectoryEntryList.DisabledStatusView.description = "설정에서 활성화 후 사용할 수 있습니다.";
+CallDirectoryEntryList.DisabledStatusView.buttonTitle = "활성화...";
 
 // MARK: - CallDirectoryEntryForm
 CallDirectoryEntryForm.name = "이름";

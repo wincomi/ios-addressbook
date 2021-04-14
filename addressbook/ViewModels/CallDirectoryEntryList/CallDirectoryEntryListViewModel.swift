@@ -32,29 +32,26 @@ final class CallDirectoryEntryListViewModel: LoadableObject, ObservableObject {
 	}
 
 	func load() {
-		#if DEBUG
-		let callDirectoryEntries = storageController.fetchCallDirectoryEntries(type: self.entryType)
-		self.state = .loaded(callDirectoryEntries)
-		#else
 		CXCallDirectoryManager.sharedInstance.getEnabledStatusForExtension(withIdentifier: AppSettings.callDirectoryBundleIdentifier) { (enabledStatus, error) in
 			if let error = error {
 				self.state = .failed(.error(error))
 				return
 			}
 
-			switch enabledStatus {
-			case .unknown:
-				self.state = .failed(.callDirectoryManagerEnabledStatusUnknown)
-			case .disabled:
-				self.state = .failed(.callDirectoryManagerEnabledStatusDisabled)
-			case .enabled:
-				let callDirectoryEntries = self.storageController.fetchCallDirectoryEntries(type: self.entryType)
-				self.state = .loaded(callDirectoryEntries)
-			@unknown default:
-				self.state = .failed(.error(nil))
+			DispatchQueue.main.async {
+				switch enabledStatus {
+				case .unknown:
+					self.state = .failed(.callDirectoryManagerEnabledStatusUnknown)
+				case .disabled:
+					self.state = .failed(.callDirectoryManagerEnabledStatusDisabled)
+				case .enabled:
+					let callDirectoryEntries = self.storageController.fetchCallDirectoryEntries(type: self.entryType)
+					self.state = .loaded(callDirectoryEntries)
+				@unknown default:
+					self.state = .failed(.error(nil))
+				}
 			}
 		}
-		#endif
 	}
 
 	func remove(_ callDirectoryEntry: CallDirectoryEntry) {
