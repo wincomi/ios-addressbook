@@ -5,6 +5,7 @@
 
 import SwiftUI
 import CallKit
+import MobileCoreServices
 
 struct CallDirectoryEntryList: View {
 	@ObservedObject var viewModel: CallDirectoryEntryListViewModel
@@ -19,15 +20,14 @@ struct CallDirectoryEntryList: View {
 			if !callDirectoryEntries.isEmpty {
 				List {
 					Section(footer: Text(descriptionText(for: viewModel.entryType)).padding(.horizontal)) {
-						ForEach(callDirectoryEntries) { callDirectoryEntry in
-							CallDirectoryEntryListCell(callDirectoryEntry: callDirectoryEntry)
-						}.onDelete { offsets in
-							/// Temporarily fix an issue that callDirectoryEntry could not be deleted by swiping to delete
-							offsets.forEach { offset in
-								let callDirectoryEntry = callDirectoryEntries[offset]
-								viewModel.remove(callDirectoryEntry)
+						ForEach(callDirectoryEntries, content: rowContent(callDirectoryEntry:))
+							.onDelete { offsets in
+								/// Temporarily fix an issue that callDirectoryEntry could not be deleted by swiping to delete
+								offsets.forEach { offset in
+									let callDirectoryEntry = callDirectoryEntries[offset]
+									viewModel.remove(callDirectoryEntry)
+								}
 							}
-						}
 					}
 				}.modifier(CompatibleInsetGroupedListStyle())
 			} else {
@@ -77,6 +77,41 @@ private extension CallDirectoryEntryList {
 				title: L10n.CallDirectoryEntryList.EmptyDataView.title,
 				description: descriptionText(for: viewModel.entryType)
 			)
+		}
+	}
+
+	func rowContent(callDirectoryEntry: CallDirectoryEntry) -> some View {
+		CallDirectoryEntryListCell(callDirectoryEntry: callDirectoryEntry)
+			.contextMenu {
+				if let url = callURL(callDirectoryEntry) {
+					Button {
+						UIApplication.shared.open(url, options: [:])
+					} label: {
+						Image(systemName: "phone")
+						Text(L10n.ContactListRow.ContextMenuItemType.call)
+					}
+				}
+				Button {
+					UIPasteboard.general.setValue("\(callDirectoryEntry.phoneNumber)", forPasteboardType: kUTTypePlainText as String)
+				} label: {
+					Image(systemName: "doc.on.doc")
+					Text(L10n.CallDirectoryEntryList.copyPhoneNumber)
+				}
+				Button {
+					viewModel.remove(callDirectoryEntry)
+				} label: {
+					Image(systemName: "trash")
+					Text(L10n.delete)
+				}
+			}
+	}
+
+	func callURL(_ callDirectoryEntry: CallDirectoryEntry) -> URL? {
+		if let url = URL(string: "tel:\(callDirectoryEntry.phoneNumber)"),
+		   UIApplication.shared.canOpenURL(url) {
+			return url
+		} else {
+			return nil
 		}
 	}
 

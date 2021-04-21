@@ -137,6 +137,7 @@ CallDirectoryEntryList.EmptyDataView.buttonTitle = "Add item...";
 CallDirectoryEntryList.DisabledStatusView.title = "Call Blocking & Identification";
 CallDirectoryEntryList.DisabledStatusView.description = "Available after enabling in Settings.";
 CallDirectoryEntryList.DisabledStatusView.buttonTitle = "Enable...";
+CallDirectoryEntryList.copyPhoneNumber = "Copy phone number";
 
 // MARK: - CallDirectoryEntryForm
 CallDirectoryEntryForm.name = "Name";

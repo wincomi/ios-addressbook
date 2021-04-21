@@ -137,6 +137,7 @@ CallDirectoryEntryList.EmptyDataView.buttonTitle = "전화번호 추가...";
 CallDirectoryEntryList.DisabledStatusView.title = "전화 차단 및 발신자 확인";
 CallDirectoryEntryList.DisabledStatusView.description = "설정에서 활성화 후 사용할 수 있습니다.";
 CallDirectoryEntryList.DisabledStatusView.buttonTitle = "활성화...";
+CallDirectoryEntryList.copyPhoneNumber = "전화번호 복사";
 
 // MARK: - CallDirectoryEntryForm
 CallDirectoryEntryForm.name = "이름";
