@@ -16,7 +16,7 @@ struct CallDirectoryEntryList: View {
 	}
 
 	var body: some View {
-		AsyncContentView(source: viewModel, errorView: errorView) { callDirectoryEntries in
+		AsyncContentView(source: viewModel, loadingView: loadingView, errorView: errorView) { callDirectoryEntries in
 			if !callDirectoryEntries.isEmpty {
 				List {
 					Section(footer: Text(descriptionText(for: viewModel.entryType)).padding(.horizontal)) {
@@ -66,6 +66,15 @@ private extension CallDirectoryEntryList {
 			DisabledStatusView()
 		case .error(let error):
 			Text(error?.localizedDescription ?? "")
+		}
+	}
+
+
+	@ViewBuilder func loadingView() -> some View {
+		if #available(iOS 14.0, *) {
+			ProgressView()
+		} else {
+			Text("Loading...")
 		}
 	}
 
