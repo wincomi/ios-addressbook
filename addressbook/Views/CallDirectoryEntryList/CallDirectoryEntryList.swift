@@ -9,7 +9,7 @@ import MobileCoreServices
 
 struct CallDirectoryEntryList: View {
 	@ObservedObject var viewModel: CallDirectoryEntryListViewModel
-	@State private var activeSheetFormType: CallDirectoryEntryForm.FormType?
+	@State private var activeSheet: ActiveSheet?
 
 	init(type: CallDirectoryEntry.EntryType) {
 		self.viewModel = CallDirectoryEntryListViewModel(type: type)
@@ -37,11 +37,7 @@ struct CallDirectoryEntryList: View {
 		.navigationBarTitle(viewModel.navigationTitle)
 		.navigationBarItems(trailing: createButton.disabled(!isEditable))
 		.onReceive(viewModel.didChange, perform: viewModel.load)
-		.sheet(item: $activeSheetFormType) { formType in
-			NavigationView {
-				CallDirectoryEntryForm(formType: formType, entryType: viewModel.entryType)
-			}
-		}
+		.sheet(item: $activeSheet, content: sheet(item:))
 		.introspectViewController { vc in
 			vc.navigationController?.navigationBar.prefersLargeTitles = true
 			// Fix prefersLargeTitles not updating until scroll
@@ -51,6 +47,28 @@ struct CallDirectoryEntryList: View {
 }
 
 private extension CallDirectoryEntryList {
+	// MARK: - ActiveSheet
+	enum ActiveSheet: Hashable, Identifiable {
+		case callDirectoryEntryForm(formType: CallDirectoryEntryForm.FormType)
+		case messageComposeView(recipients: [String]? = nil, subject: String = "")
+
+		var id: Int {
+			hashValue
+		}
+	}
+
+	@ViewBuilder private func sheet(item: ActiveSheet) -> some View {
+		switch item {
+		case .callDirectoryEntryForm(let formType):
+			NavigationView {
+				CallDirectoryEntryForm(formType: formType, entryType: viewModel.entryType)
+			}.navigationViewStyle(StackNavigationViewStyle())
+		case .messageComposeView(let recipients, let subject):
+			MessageComposeView(recipients: recipients, subject: subject, result: .constant(nil))
+		}
+	}
+
+	// MARK: -
 	var isEditable: Bool {
 		switch viewModel.state {
 		case .loaded:
@@ -100,6 +118,15 @@ private extension CallDirectoryEntryList {
 						Text(L10n.ContactListRow.ContextMenuItemType.call)
 					}
 				}
+				if MessageComposeView.canSendText() {
+					Button {
+						activeSheet = .messageComposeView(recipients: ["\(callDirectoryEntry.phoneNumber)"])
+					} label: {
+						Image(systemName: "message")
+						Text(L10n.ContactListRow.ContextMenuItemType.sendMessage)
+					}
+				}
+
 				Button {
 					UIPasteboard.general.setValue("\(callDirectoryEntry.phoneNumber)", forPasteboardType: kUTTypePlainText as String)
 				} label: {
@@ -126,7 +153,7 @@ private extension CallDirectoryEntryList {
 
 	var createButton: some View {
 		Button {
-			activeSheetFormType = .create
+			activeSheet = .callDirectoryEntryForm(formType: .create)
 		} label: {
 			Image(systemName: "plus")
 				.font(.system(size: 20))
