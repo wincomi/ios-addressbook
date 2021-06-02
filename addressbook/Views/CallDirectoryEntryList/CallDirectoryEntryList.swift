@@ -8,7 +8,7 @@ import CallKit
 import MobileCoreServices
 
 struct CallDirectoryEntryList: View {
-	@ObservedObject var viewModel: CallDirectoryEntryListViewModel
+	@ObservedObject private(set) var viewModel: CallDirectoryEntryListViewModel
 	@State private var activeSheet: ActiveSheet?
 
 	init(type: CallDirectoryEntry.EntryType) {

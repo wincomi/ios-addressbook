@@ -108,6 +108,7 @@
 		F755A8B7248FC22E00DB9717 /* GroupListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F755A8B6248FC22E00DB9717 /* GroupListSection.swift */; };
 		F755A8B9248FC23600DB9717 /* GroupListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F755A8B8248FC23600DB9717 /* GroupListRow.swift */; };
 		F755A8C224913F0F00DB9717 /* ContactStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F755A8C024913F0F00DB9717 /* ContactStore.swift */; };
+		F75D1A732660B89F0095B127 /* PublishedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75D1A722660B89F0095B127 /* PublishedObject.swift */; };
 		F786EF8225450A8800CBEAC4 /* ContactList.Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F786EF8125450A8800CBEAC4 /* ContactList.Footer.swift */; };
 		F78F7E7A254423B8008DE2DD /* MailComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78F7E79254423B8008DE2DD /* MailComposeView.swift */; };
 		F798CFB025F1206C005AFB4B /* MessageFilterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F798CFAF25F1206C005AFB4B /* MessageFilterExtension.swift */; };
@@ -252,6 +253,7 @@
 		F755A8B6248FC22E00DB9717 /* GroupListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListSection.swift; sourceTree = "<group>"; };
 		F755A8B8248FC23600DB9717 /* GroupListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListRow.swift; sourceTree = "<group>"; };
 		F755A8C024913F0F00DB9717 /* ContactStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactStore.swift; sourceTree = "<group>"; };
+		F75D1A722660B89F0095B127 /* PublishedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishedObject.swift; sourceTree = "<group>"; };
 		F786EF8125450A8800CBEAC4 /* ContactList.Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactList.Footer.swift; sourceTree = "<group>"; };
 		F78F7E79254423B8008DE2DD /* MailComposeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailComposeView.swift; sourceTree = "<group>"; };
 		F798CFAD25F1206C005AFB4B /* MessageFilter.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MessageFilter.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -575,6 +577,7 @@
 				91646D9E250368A600E811F4 /* ContactsItemSource.swift */,
 				916688AF2536899700EC6A3F /* SearchListScope.swift */,
 				913DC24125160DD800BC1397 /* ApplicationShortcutItem.swift */,
+				F75D1A722660B89F0095B127 /* PublishedObject.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -852,6 +855,7 @@
 				F72EE8F725F28DBA009E9485 /* MessageFilter+CoreDataClass.swift in Sources */,
 				91BCA71A2524B8030094B20A /* CircleColorView.swift in Sources */,
 				9109DEDF2516F026004E949C /* ContactMenuSettingForm.swift in Sources */,
+				F75D1A732660B89F0095B127 /* PublishedObject.swift in Sources */,
 				0B3EF679258A1B5D00E23F15 /* UpdateGroupFormViewModel.swift in Sources */,
 				0B4A93AE25BB139B00CEFE3F /* GroupPickerFormViewModel.swift in Sources */,
 				0B3EF675258A1AF200E23F15 /* UpdateGroupForm.swift in Sources */,
@@ -1191,7 +1195,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.3.2;
+				MARKETING_VERSION = 1.3.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wincomi.ios.addressbook.MessageFilter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1214,7 +1218,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.3.2;
+				MARKETING_VERSION = 1.3.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wincomi.ios.addressbook.MessageFilter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
