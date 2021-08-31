@@ -15,15 +15,15 @@ extension SidebarList {
 			case .authorized:
 				authorizedView()
 			case .notDetermined:
-				Section(footer: Text(L10n.ContactStoreError.accessNotDeterminedDescription).padding(.horizontal)) {
+				Section(footer: Text(L10n.ContactStoreError.accessNotDeterminedDescription)) {
 					requestAuthorizationButton
 				}
 			case .restricted:
-				Section(footer: Text(L10n.ContactStoreError.accessRestrictedDescriptoin).padding(.horizontal)) {
+				Section(footer: Text(L10n.ContactStoreError.accessRestrictedDescriptoin)) {
 					openSettingsButton
 				}
 			default:
-				Section(footer: Text(L10n.ContactStoreError.accessDeniedDescription).padding(.horizontal)) {
+				Section(footer: Text(L10n.ContactStoreError.accessDeniedDescription)) {
 					openSettingsButton
 				}
 			}

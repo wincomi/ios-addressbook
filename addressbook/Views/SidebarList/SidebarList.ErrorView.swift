@@ -13,7 +13,7 @@ extension SidebarList {
 		var body: some View {
 			switch error as? ContactStoreError {
 			case .accessNotDetermined:
-				Section(footer: Text(L10n.ContactStoreError.accessNotDeterminedDescription).padding(.horizontal)) {
+				Section(footer: Text(L10n.ContactStoreError.accessNotDeterminedDescription)) {
 					Button {
 						ContactStore.requestAuthorization { _ in
 							requestPermissionAction()
@@ -27,7 +27,7 @@ extension SidebarList {
 					}
 				}
 			case .accessRestricted:
-				Section(footer: Text(L10n.ContactStoreError.accessRestrictedDescriptoin).padding(.horizontal)) {
+				Section(footer: Text(L10n.ContactStoreError.accessRestrictedDescriptoin)) {
 					Button {
 						guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
 						if UIApplication.shared.canOpenURL(url) {
@@ -42,7 +42,7 @@ extension SidebarList {
 					}
 				}
 			default:
-				Section(footer: Text(L10n.ContactStoreError.accessDeniedDescription).padding(.horizontal)) {
+				Section(footer: Text(L10n.ContactStoreError.accessDeniedDescription)) {
 					Button {
 						guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
 						if UIApplication.shared.canOpenURL(url) {

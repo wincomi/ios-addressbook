@@ -31,7 +31,7 @@ struct CallDirectoryEntryForm: View {
 	var body: some View {
 		Form {
 			Section(
-				header: Text(L10n.CallDirectoryEntryForm.name).padding(.horizontal),
+				header: Text(L10n.CallDirectoryEntryForm.name),
 				footer: nameSectionFooter
 			) {
 				TextField(L10n.CallDirectoryEntryForm.name, text: $name)
@@ -42,8 +42,8 @@ struct CallDirectoryEntryForm: View {
 			}
 
 			Section(
-				header: Text(L10n.CallDirectoryEntryForm.phoneNumber).padding(.horizontal),
-				footer: Text(L10n.CallDirectoryEntryForm.PhoneNumberSection.footer).padding(.horizontal)
+				header: Text(L10n.CallDirectoryEntryForm.phoneNumber),
+				footer: Text(L10n.CallDirectoryEntryForm.PhoneNumberSection.footer)
 			) {
 				TextField(L10n.CallDirectoryEntryForm.phoneNumber, text: $phoneNumberString)
 					.keyboardType(.numberPad)
@@ -87,7 +87,7 @@ private extension CallDirectoryEntryForm {
 	@ViewBuilder var nameSectionFooter: some View {
 		switch entryType {
 		case .identification:
-			Text(L10n.CallDirectoryEntryForm.NameSection.footer).padding(.horizontal)
+			Text(L10n.CallDirectoryEntryForm.NameSection.footer)
 		case .blocking:
 			EmptyView()
 		}

@@ -29,7 +29,7 @@ private extension MessageFilterList {
 			emptyView
 		} else {
 			List {
-				Section(footer: Text(L10n.MessageFilterList.footer).padding(.horizontal)) {
+				Section(footer: Text(L10n.MessageFilterList.footer)) {
 					ForEach(messageFilters) { messageFilter in
 						rowContent(messageFilter: messageFilter)
 					}.onDelete(perform: delete(at:))

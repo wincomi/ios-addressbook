@@ -15,8 +15,8 @@ struct EditGroupsForm: View {
 	var body: some View {
 		Form {
 			Section(
-				header: Text(L10n.contact).padding(.horizontal),
-				footer: Text(L10n.EditGroupsForm.ContactSection.footer).padding(.horizontal)
+				header: Text(L10n.contact),
+				footer: Text(L10n.EditGroupsForm.ContactSection.footer)
 			) {
 				Text(ContactListRow.title(for: viewModel.contact))
 					.foregroundColor(Color(UIColor.secondaryLabel))
@@ -34,7 +34,7 @@ struct EditGroupsForm: View {
 
 private extension EditGroupsForm {
 	func sectionContent(groupListSection: GroupListSection) -> some View {
-		Section(header: groupListSection.headerText.map { Text($0).padding(.horizontal) }) {
+		Section(header: groupListSection.headerText.map { Text($0) }) {
 			ForEach(groupListSection.rows, content: rowContent(groupListRow:))
 		}
 	}

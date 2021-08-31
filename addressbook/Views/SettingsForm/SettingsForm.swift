@@ -43,7 +43,7 @@ struct SettingsForm: View {
 private extension SettingsForm {
 	// MARK: - General
 	var generalSection: some View {
-		Section(header: Text(L10n.SettingsForm.GeneralSection.header).padding(.horizontal)) {
+		Section(header: Text(L10n.SettingsForm.GeneralSection.header)) {
 			Toggle(isOn: $appSettings.showAllContactsOnAppLaunch) {
 				Text(L10n.SettingsForm.GeneralSection.showAllContactsOnAppLaunch)
 			}
@@ -75,7 +75,7 @@ private extension SettingsForm {
 
 	// MARK: - Display
 	var displaySection: some View {
-		Section(header: Text(L10n.SettingsForm.DisplaySection.header).padding(.horizontal)) {
+		Section(header: Text(L10n.SettingsForm.DisplaySection.header)) {
 			Toggle(isOn: $appSettings.showContactImageInContactList) {
 				Text(L10n.SettingsForm.DisplaySection.showContactImage)
 			}
@@ -90,7 +90,7 @@ private extension SettingsForm {
 
 	// MARK: - Theme
 	var themeSection: some View {
-		Section(header: Text(L10n.SettingsForm.ThemeSection.header).padding(.horizontal)) {
+		Section(header: Text(L10n.SettingsForm.ThemeSection.header)) {
 			HStack(spacing: 4) {
 				ForEach(AppSettings.globalTintColorDefaultCases, id: \.self) { globalTintColor in
 					Button {

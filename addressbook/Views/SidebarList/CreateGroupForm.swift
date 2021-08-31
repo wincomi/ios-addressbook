@@ -20,8 +20,8 @@ struct CreateGroupForm: View {
 	var body: some View {
 		Form {
 			Section(
-				header: Text(L10n.CreateGroupForm.NameSection.name).padding(.horizontal),
-				footer: Text(L10n.CreateGroupForm.NameSection.footer).padding(.horizontal)
+				header: Text(L10n.CreateGroupForm.NameSection.name),
+				footer: Text(L10n.CreateGroupForm.NameSection.footer)
 			) {
 				TextField(L10n.CreateGroupForm.NameSection.name, text: $groupName)
 					.introspectTextField { textField in
@@ -31,8 +31,8 @@ struct CreateGroupForm: View {
 			}
 			if !viewModel.containers.isEmpty {
 				Section(
-					header: Text(L10n.CreateGroupForm.AccountsSection.header).padding(.horizontal),
-					footer: Text(L10n.CreateGroupForm.AccountsSection.footer).padding(.horizontal)
+					header: Text(L10n.CreateGroupForm.AccountsSection.header),
+					footer: Text(L10n.CreateGroupForm.AccountsSection.footer)
 				) {
 					ForEach(viewModel.containers, id: \.identifier) { container in
 						Button {

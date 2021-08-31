@@ -20,7 +20,7 @@ struct GroupPickerForm: View {
 
 private extension GroupPickerForm {
 	func sectionContent(groupListSection: GroupListSection) -> some View {
-		Section(header: groupListSection.headerText.map { Text($0).padding(.horizontal) }) {
+		Section(header: groupListSection.headerText.map(Text.init)) {
 			ForEach(groupListSection.rows, id: \.self, content: rowContent(groupListRow:))
 		}
 	}

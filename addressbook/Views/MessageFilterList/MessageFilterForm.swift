@@ -24,8 +24,8 @@ struct MessageFilterForm: View {
 	var body: some View {
 		Form {
 			Section(
-				header: Text(L10n.MessageFilterForm.text).padding(.horizontal),
-				footer: Text(L10n.MessageFilterForm.TextSection.footer).padding(.horizontal)
+				header: Text(L10n.MessageFilterForm.text),
+				footer: Text(L10n.MessageFilterForm.TextSection.footer)
 			) {
 				TextField(L10n.MessageFilterForm.text, text: $filterText)
 				CompatibleLabel {
@@ -36,8 +36,8 @@ struct MessageFilterForm: View {
 			}
 			if #available(iOS 14.0, *) {
 				Section(
-					header: Text(L10n.MessageFilterForm.action).padding(.horizontal),
-					footer: Text(L10n.MessageFilterForm.ActionSection.footer).padding(.horizontal)
+					header: Text(L10n.MessageFilterForm.action),
+					footer: Text(L10n.MessageFilterForm.ActionSection.footer)
 				) {
 					NavigationLink(destination: MessageFilterActionPickerForm(filterAction: $filterAction)) {
 						HStack {

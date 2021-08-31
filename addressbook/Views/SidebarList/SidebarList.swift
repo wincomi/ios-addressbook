@@ -27,7 +27,7 @@ struct SidebarList: View {
 		List {
 			AsyncContentView(source: viewModel, errorView: errorView) { sections in
 				ForEach(sections) { section in
-					Section(header: section.headerText.map { Text($0).padding(.horizontal) }) {
+					Section(header: section.headerText.map(Text.init)) {
 						ForEach(section.rows) { groupListRow in
 							SidebarListCell(groupListRow: groupListRow) {
 								coordinator?.select(groupListRow)
@@ -47,7 +47,7 @@ struct SidebarList: View {
 			}
 
 			// MARK: - Utilities Section
-			Section(header: Text(L10n.SidebarList.utilities).padding(.horizontal)) {
+			Section(header: Text(L10n.SidebarList.utilities)) {
 				NavigationButton {
 					coordinator?.presentCallDirectoryEntryList(type: .identification)
 				} label: {

@@ -19,7 +19,7 @@ struct CallDirectoryEntryList: View {
 		AsyncContentView(source: viewModel, loadingView: loadingView, errorView: errorView) { callDirectoryEntries in
 			if !callDirectoryEntries.isEmpty {
 				List {
-					Section(footer: Text(descriptionText(for: viewModel.entryType)).padding(.horizontal)) {
+					Section(footer: Text(descriptionText(for: viewModel.entryType))) {
 						ForEach(callDirectoryEntries, content: rowContent(callDirectoryEntry:))
 							.onDelete { offsets in
 								/// Temporarily fix an issue that callDirectoryEntry could not be deleted by swiping to delete

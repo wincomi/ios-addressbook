@@ -27,8 +27,8 @@ struct ApplicationShortcutItemSettingForm: View {
 			// MARK: - AddingSection
 			if !itemsCanBeAdded.isEmpty {
 				Section(
-					header: Text(L10n.ContactListRow.ContextMenuItemType.addToApplicationShortcutItems).padding(.horizontal),
-					footer: Text(L10n.ApplicationShortcutItemsSettingForm.AddingSection.footer).padding(.horizontal)
+					header: Text(L10n.ContactListRow.ContextMenuItemType.addToApplicationShortcutItems),
+					footer: Text(L10n.ApplicationShortcutItemsSettingForm.AddingSection.footer)
 				) {
 					ForEach(itemsCanBeAdded, id: \.localizedTitle) { applicationShortcutItem in
 						ApplicationShortcutItemSettingFormCell(applicationShortcutItem: applicationShortcutItem, type: .add) {
@@ -40,8 +40,8 @@ struct ApplicationShortcutItemSettingForm: View {
 			// MARK: - ItemsSection
 			if !appSettings.applicationShortcutItems.isEmpty {
 				Section(
-					header: Text(L10n.ApplicationShortcutItemsSettingForm.title).padding(.horizontal),
-					footer: Text(L10n.ApplicationShortcutItemsSettingForm.ItemsSection.footer).padding(.horizontal)
+					header: Text(L10n.ApplicationShortcutItemsSettingForm.title),
+					footer: Text(L10n.ApplicationShortcutItemsSettingForm.ItemsSection.footer)
 				) {
 					ForEach(appSettings.applicationShortcutItems) { applicationShortcutItem in
 						ApplicationShortcutItemSettingFormCell(applicationShortcutItem: applicationShortcutItem)
