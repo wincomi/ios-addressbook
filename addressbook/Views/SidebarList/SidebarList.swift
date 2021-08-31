@@ -81,7 +81,7 @@ struct SidebarList: View {
 						Text(L10n.MessageFilterList.navigationTitle)
 							.foregroundColor(Color(UIColor.label))
 					} icon: {
-						Image(systemName: "xmark.bin")
+						Image(systemName: "bin.xmark")
 					}
 				}
 			}.disabled(editMode?.wrappedValue == .active)
