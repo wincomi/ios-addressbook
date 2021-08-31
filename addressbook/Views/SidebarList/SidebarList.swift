@@ -158,14 +158,12 @@ struct SidebarList: View {
 			} label: {
 				Label(L10n.add, systemImage: "plus")
 					.labelStyle(IconOnlyLabelStyle())
-					.font(.system(size: 21))
 			}
 		} else {
 			Button {
 				activeActionSheet = .createButton
 			} label: {
 				Image(systemName: "plus")
-					.font(.system(size: 21))
 			}
 		}
 	}
