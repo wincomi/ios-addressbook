@@ -32,15 +32,13 @@ final class CallDirectoryEntryListViewModel: LoadableObject, ObservableObject {
 	}
 
 	func load() {
-		self.state = .loading
-		
 		CXCallDirectoryManager.sharedInstance.getEnabledStatusForExtension(withIdentifier: AppSettings.callDirectoryBundleIdentifier) { (enabledStatus, error) in
-			if let error = error {
-				self.state = .failed(.error(error))
-				return
-			}
-
 			DispatchQueue.main.async {
+				if let error = error {
+					self.state = .failed(.error(error))
+					return
+				}
+
 				switch enabledStatus {
 				case .unknown:
 					self.state = .failed(.callDirectoryManagerEnabledStatusUnknown)
