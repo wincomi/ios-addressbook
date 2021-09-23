@@ -28,12 +28,28 @@ struct MessageFilterForm: View {
 				footer: Text(L10n.MessageFilterForm.TextSection.footer)
 			) {
 				TextField(L10n.MessageFilterForm.text, text: $filterText)
+
+				NavigationLink(destination: MessageFilterTypePickerForm(filterType: $filterType)) {
+					CompatibleLabel {
+						HStack {
+							Text(L10n.MessageFilterForm.type)
+								.foregroundColor(Color(UIColor.label))
+							Spacer()
+							Text(filterType.localizedTitle)
+								.foregroundColor(Color(UIColor.secondaryLabel))
+						}
+					} icon: {
+						Image(systemName: filterType.systemImageName)
+					}
+				}
+
 				CompatibleLabel {
 					Toggle(L10n.MessageFilterForm.caseSensitive, isOn: $isCaseSensitive)
 				} icon: {
 					Image(systemName: "textformat")
 				}
 			}
+
 			if #available(iOS 14.0, *) {
 				Section(
 					header: Text(L10n.MessageFilterForm.action),
@@ -95,6 +111,7 @@ private extension MessageFilterForm {
 			dismiss()
 		} label: {
 			Text(L10n.done)
+				.fontWeight(.bold)
 		}
 	}
 

@@ -156,10 +156,10 @@ MessageFilterList.footer = "SMS 필터링 기능을 사용하려면 '설정' 앱
 // MARK: - MessageFilterForm
 MessageFilterForm.CreateType.navigationTitle = "필터 규칙 추가";
 MessageFilterForm.UpdateType.navigationTitle = "필터 규칙 변경";
-MessageFilterForm.type = "타입";
+MessageFilterForm.type = "종류";
 MessageFilterForm.text = "텍스트";
 MessageFilterForm.TextSection.footer = "연락처에 없는 발신자의 SMS 메시지에 텍스트가 포함되면 선택한 분류로 필터링됩니다. 예) [Web발신], (광고), 인증번호";
-MessageFilterForm.caseSensitive = "대소 문자 구분";
+MessageFilterForm.caseSensitive = "대소문자 구분";
 MessageFilterForm.action = "분류";
 MessageFilterForm.ActionSection.footer = "'정크'를 선택할 경우, SMS 메시지 수신 알림이 나타나지 않습니다.";
 
@@ -169,3 +169,8 @@ FilterAction.allow = "허용";
 FilterAction.junk = "정크";
 FilterAction.transaction = "거래";
 FilterAction.promotion = "홍보";
+
+// MARK: - FilterType
+FilterType.any = "발신자 혹은 메시지 내용";
+FilterType.sender = "발신자";
+FilterType.messageBody = "메시지 내용";

@@ -169,3 +169,8 @@ FilterAction.allow = "Allow";
 FilterAction.junk = "Junk";
 FilterAction.transaction = "Transaction";
 FilterAction.promotion = "Promotion";
+
+// MARK: - FilterType
+FilterType.any = "Sender or Message Body";
+FilterType.sender = "Sender";
+FilterType.messageBody = "Message Body";

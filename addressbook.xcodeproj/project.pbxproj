@@ -92,6 +92,7 @@
 		F74583DA2545A86F00AF9483 /* SharedPersistentContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F74583D82545A86F00AF9483 /* SharedPersistentContainer.xcdatamodeld */; };
 		F74583DB2545A86F00AF9483 /* SharedPersistentContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F74583D82545A86F00AF9483 /* SharedPersistentContainer.xcdatamodeld */; };
 		F74583DF2545AB2E00AF9483 /* StorageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74583DE2545AB2E00AF9483 /* StorageController.swift */; };
+		F74D3B6926FCC417001E8839 /* MessageFilterTypePickerForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74D3B6826FCC417001E8839 /* MessageFilterTypePickerForm.swift */; };
 		F75093D424A07E0B0044CDE3 /* ContactListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75093CF24A07E0B0044CDE3 /* ContactListSection.swift */; };
 		F75093D524A07E0B0044CDE3 /* ContactListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75093D024A07E0B0044CDE3 /* ContactListRow.swift */; };
 		F75093D624A07E0B0044CDE3 /* ContactListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75093D124A07E0B0044CDE3 /* ContactListViewModel.swift */; };
@@ -234,6 +235,7 @@
 		F74583C525458DBA00AF9483 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F74583D92545A86F00AF9483 /* SharedContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SharedContainer.xcdatamodel; sourceTree = "<group>"; };
 		F74583DE2545AB2E00AF9483 /* StorageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageController.swift; sourceTree = "<group>"; };
+		F74D3B6826FCC417001E8839 /* MessageFilterTypePickerForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFilterTypePickerForm.swift; sourceTree = "<group>"; };
 		F75093CF24A07E0B0044CDE3 /* ContactListSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactListSection.swift; sourceTree = "<group>"; };
 		F75093D024A07E0B0044CDE3 /* ContactListRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactListRow.swift; sourceTree = "<group>"; };
 		F75093D124A07E0B0044CDE3 /* ContactListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactListViewModel.swift; sourceTree = "<group>"; };
@@ -597,6 +599,7 @@
 			children = (
 				F798CFE225F260C7005AFB4B /* MessageFilterList.swift */,
 				F798CFED25F271B6005AFB4B /* MessageFilterForm.swift */,
+				F74D3B6826FCC417001E8839 /* MessageFilterTypePickerForm.swift */,
 				F7C1E16D2609827A00C0BD5F /* MessageFilterActionPickerForm.swift */,
 			);
 			path = MessageFilterList;
@@ -886,6 +889,7 @@
 				0BBDE18B258F8EA5008CA758 /* View+onDragCompatible.swift in Sources */,
 				F7F17CD92546C2E5003C1150 /* CallDirectoryEntryList.swift in Sources */,
 				0B953F1B25807F0B00417250 /* SidebarList.swift in Sources */,
+				F74D3B6926FCC417001E8839 /* MessageFilterTypePickerForm.swift in Sources */,
 				91046703250614DA00618BFD /* SearchListViewController.swift in Sources */,
 				F74583DF2545AB2E00AF9483 /* StorageController.swift in Sources */,
 				0B4A93BA25BB17C600CEFE3F /* GroupPickerForm.swift in Sources */,

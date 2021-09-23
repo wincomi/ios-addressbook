@@ -15,6 +15,28 @@ extension MessageFilter {
 		var id: Int32 {
 			rawValue
 		}
+
+		var localizedTitle: String {
+			switch self {
+			case .any:
+				return NSLocalizedString("FilterType.any", comment: "")
+			case .sender:
+				return NSLocalizedString("FilterType.sender", comment: "")
+			case .messageBody:
+				return NSLocalizedString("FilterType.messageBody", comment: "")
+			}
+		}
+
+		var systemImageName: String {
+			switch self {
+			case .any:
+				return "message"
+			case .sender:
+				return "person.fill.questionmark"
+			case .messageBody:
+				return "text.bubble"
+			}
+		}
 	}
 
 	// ILMessageFilterAction

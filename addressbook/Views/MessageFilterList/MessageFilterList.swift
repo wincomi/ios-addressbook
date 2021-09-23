@@ -49,11 +49,19 @@ private extension MessageFilterList {
 				} icon: {
 					Image(systemName: messageFilter.action.systemImageName)
 				}
+
+				Spacer()
+
+				switch messageFilter.type {
+				case .any:
+					EmptyView()
+				default:
+					Image(systemName: messageFilter.type.systemImageName)
+				}
+
 				if case .junk = messageFilter.action {
-					Spacer()
 					Image(systemName: "bell.slash.fill")
 						.foregroundColor(Color(.systemRed))
-						.font(.caption)
 				}
 			}
 		}
