@@ -33,7 +33,7 @@ final class MessageFilterExtension: ILMessageFilterExtension {
 
 	func messageFilterAction(messageFilters: [MessageFilter], sender: String, messageBody: String) -> ILMessageFilterAction {
 		for messageFilter in messageFilters {
-			guard needToFilter(messageFilter: messageFilter, sender: sender, messageBody: messageBody) else { return .none }
+			guard needToFilter(messageFilter: messageFilter, sender: sender, messageBody: messageBody) else { continue }
 
 			switch messageFilter.action {
 			case .junk:
