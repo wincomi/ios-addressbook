@@ -29,25 +29,24 @@ struct MessageFilterForm: View {
 				footer: Text(L10n.MessageFilterForm.TextSection.footer)
 			) {
 				TextField(L10n.MessageFilterForm.TextSection.TextField.prompt, text: $filterText)
-
-				NavigationLink(destination: MessageFilterTypePickerForm(filterType: $filterType)) {
-					CompatibleLabel {
-						HStack {
-							Text(L10n.MessageFilterForm.type)
-								.foregroundColor(Color(UIColor.label))
-							Spacer()
-							Text(filterType.localizedTitle)
-								.foregroundColor(Color(UIColor.secondaryLabel))
-						}
-					} icon: {
-						Image(systemName: filterType.systemImageName)
-					}
-				}
-
 				CompatibleLabel {
 					Toggle(L10n.MessageFilterForm.caseSensitive, isOn: $isCaseSensitive)
 				} icon: {
 					Image(systemName: "textformat")
+				}
+			}
+
+			Section(
+				header: Text(L10n.MessageFilterForm.type),
+				footer: Text(L10n.MessageFilterForm.TypeSection.footer)
+			) {
+				NavigationLink(destination: MessageFilterTypePickerForm(filterType: $filterType)) {
+					HStack {
+						Image(systemName: filterType.systemImageName)
+							.padding(.horizontal, 4)
+							.foregroundColor(.accentColor)
+						Text(filterType.localizedTitle)
+					}.padding(.vertical, 4)
 				}
 			}
 

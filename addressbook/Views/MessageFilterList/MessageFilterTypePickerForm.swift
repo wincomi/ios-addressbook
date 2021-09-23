@@ -14,19 +14,18 @@ struct MessageFilterTypePickerForm: View {
 			title: Text(L10n.MessageFilterForm.type),
 			items: filterTypes,
 			selection: $filterType
-		) { fitlerType, isSelected in
+		) { filterType, isSelected in
 			HStack {
-				CompatibleLabel {
-					Text(fitlerType.localizedTitle)
-						.foregroundColor(Color(UIColor.label))
-				} icon: {
-					Image(systemName: fitlerType.systemImageName)
-				}
+				Image(systemName: filterType.systemImageName)
+					.padding(.horizontal, 4)
+					.foregroundColor(.accentColor)
+				Text(filterType.localizedTitle)
+					.foregroundColor(Color(UIColor.label))
 				if isSelected {
 					Spacer()
 					Image(systemName: "checkmark")
 				}
-			}
+			}.padding(.vertical, 4)
 		}
 	}
 }

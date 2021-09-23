@@ -151,18 +151,19 @@ CallDirectoryEntryForm.EditType.navigationTitle = "Edit phone number";
 MessageFilterList.navigationTitle = "SMS Filtering";
 MessageFilterList.EmptyDataView.title = "The list is empty.";
 MessageFilterList.EmptyDataView.description = "You can add a filter by touching the add button at the top.";
-MessageFilterList.footer = "To enable SMS filtering feature, go Settings App → Messages → Unknown & Spam and select 'Contacts⁺'.\nYou can edit the filter by touching the list item.";
+MessageFilterList.footer = "To enable SMS filtering feature, go Settings App → Messages → 'Unknown & Spam' and select 'Contacts⁺'.\n\nIt doesn't work with messages from senders in your contacts list or with iMessage messages.\n\nYou can edit the filter by touching the list.";
 
 // MARK: - MessageFilterForm
 MessageFilterForm.CreateType.navigationTitle = "New Filter";
 MessageFilterForm.UpdateType.navigationTitle = "Edit Filter";
-MessageFilterForm.type = "Type";
+MessageFilterForm.type = "Filter condition";
 MessageFilterForm.text = "Text";
 MessageFilterForm.TextSection.TextField.prompt = "Enter a text";
-MessageFilterForm.TextSection.footer = "If text is included in SMS messages from senders who are not in your contacts, they will be filtered by the category you choose.";
+MessageFilterForm.TextSection.footer = "ex) free, verification code";
 MessageFilterForm.caseSensitive = "Case Sensitive";
-MessageFilterForm.action = "Category";
-MessageFilterForm.ActionSection.footer = "If you select 'Junk', SMS message notification does not appear.";
+MessageFilterForm.action = "Mark as";
+MessageFilterForm.TypeSection.footer = "If the filter condition is set to caller (phone number), enter numbers in the text.";
+MessageFilterForm.ActionSection.footer = "SMS message notifications do not appear if you select 'Junk'.";
 
 // MARK: - MessageFilter
 FilterAction.none = "Auto";
@@ -172,6 +173,6 @@ FilterAction.transaction = "Transaction";
 FilterAction.promotion = "Promotion";
 
 // MARK: - FilterType
-FilterType.any = "Sender or Message Body";
-FilterType.sender = "Sender";
-FilterType.messageBody = "Message Body";
+FilterType.any = "If the the message body or sender (phone number) contains the text";
+FilterType.sender = "If the the sender (phone number) contains the text";
+FilterType.messageBody = "If the message body contains the text";
