@@ -158,6 +158,7 @@ MessageFilterForm.CreateType.navigationTitle = "필터 규칙 추가";
 MessageFilterForm.UpdateType.navigationTitle = "필터 규칙 변경";
 MessageFilterForm.type = "종류";
 MessageFilterForm.text = "텍스트";
+MessageFilterForm.TextSection.TextField.prompt = "여기에 필터할 내용을 입력하세요.";
 MessageFilterForm.TextSection.footer = "연락처에 없는 발신자의 SMS 메시지에 텍스트가 포함되면 선택한 분류로 필터링됩니다. 예) [Web발신], (광고), 인증번호";
 MessageFilterForm.caseSensitive = "대소문자 구분";
 MessageFilterForm.action = "분류";

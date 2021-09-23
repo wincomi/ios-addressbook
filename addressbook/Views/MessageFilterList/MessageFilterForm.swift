@@ -27,7 +27,7 @@ struct MessageFilterForm: View {
 				header: Text(L10n.MessageFilterForm.text),
 				footer: Text(L10n.MessageFilterForm.TextSection.footer)
 			) {
-				TextField(L10n.MessageFilterForm.text, text: $filterText)
+				TextField(L10n.MessageFilterForm.TextSection.TextField.prompt, text: $filterText)
 
 				NavigationLink(destination: MessageFilterTypePickerForm(filterType: $filterType)) {
 					CompatibleLabel {

@@ -158,6 +158,7 @@ MessageFilterForm.CreateType.navigationTitle = "New Filter";
 MessageFilterForm.UpdateType.navigationTitle = "Edit Filter";
 MessageFilterForm.type = "Type";
 MessageFilterForm.text = "Text";
+MessageFilterForm.TextSection.TextField.prompt = "Enter a text";
 MessageFilterForm.TextSection.footer = "If text is included in SMS messages from senders who are not in your contacts, they will be filtered by the category you choose.";
 MessageFilterForm.caseSensitive = "Case Sensitive";
 MessageFilterForm.action = "Category";
