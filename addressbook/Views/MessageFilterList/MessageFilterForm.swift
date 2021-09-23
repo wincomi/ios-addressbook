@@ -7,18 +7,19 @@ import SwiftUI
 import IdentityLookup
 
 struct MessageFilterForm: View {
-	var formType: FormType
+	let formType: FormType
 
 	@Environment(\.presentationMode) var presentationMode
 
 	@ObservedObject var viewModel = MessageFilterFormViewModel()
 
-	@State private var isEnabled: Bool = true
+	// @State private var isFilterEnabled: Bool = true
 	@State private var filterType: MessageFilter.FilterType = .any
 	@State private var filterText: String = ""
 	@State private var isCaseSensitive: Bool = false
 	@State private var filterAction: MessageFilter.FilterAction = .junk
 
+	/// View를 새로 불러올 때 formType이 .update일 경우 정보를 덮어씌우는 문제를 해결하기 위한 변수
 	@State private var isAppeared: Bool = false
 
 	var body: some View {
@@ -67,7 +68,6 @@ struct MessageFilterForm: View {
 								Spacer()
 								Image(systemName: "bell.slash.fill")
 									.foregroundColor(Color(.systemRed))
-									.font(.caption)
 							}
 						}
 					}
@@ -79,14 +79,13 @@ struct MessageFilterForm: View {
 		.onAppear {
 			guard !isAppeared else { return }
 
-			switch formType {
-			case .create:
-				break
-			case .update(let messageFilter):
-				filterType = messageFilter.type
-				filterText = messageFilter.filterText
-				isCaseSensitive = messageFilter.isCaseSensitive
-				filterAction = messageFilter.action
+			if case .update(let messageFilter) = formType {
+				DispatchQueue.main.async {
+					filterType = messageFilter.type
+					filterText = messageFilter.filterText
+					isCaseSensitive = messageFilter.isCaseSensitive
+					filterAction = messageFilter.action
+				}
 			}
 
 			isAppeared = true
