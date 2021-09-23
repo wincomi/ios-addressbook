@@ -13,47 +13,47 @@ final class MessageFilterExtension: ILMessageFilterExtension {
 	}
 
 	func needToFilter(messageFilter: MessageFilter, sender: String, messageBody: String) -> Bool {
-		var textToFilter = ""
+		var messageToFilter = ""
 
 		switch messageFilter.type {
 		case .any:
-			textToFilter = "\(sender) \(messageBody)"
+			messageToFilter = "\(sender) \(messageBody)"
 		case .sender:
-			textToFilter = sender
+			messageToFilter = sender
 		case .messageBody:
-			textToFilter = messageBody
+			messageToFilter = messageBody
 		}
 
-		if !messageFilter.isCaseSensitive {
-			textToFilter = textToFilter.lowercased()
+		if messageFilter.isCaseSensitive {
+			return messageToFilter.contains(messageFilter.filterText)
+		} else {
+			return messageToFilter.lowercased().contains(messageFilter.filterText.lowercased())
 		}
-
-		return textToFilter.contains(messageFilter.filterText)
 	}
 
 	func messageFilterAction(messageFilters: [MessageFilter], sender: String, messageBody: String) -> ILMessageFilterAction {
 		for messageFilter in messageFilters {
-			if needToFilter(messageFilter: messageFilter, sender: sender, messageBody: messageBody) {
-				switch messageFilter.action {
-				case .junk:
+			guard needToFilter(messageFilter: messageFilter, sender: sender, messageBody: messageBody) else { return .none }
+
+			switch messageFilter.action {
+			case .junk:
+				return .junk
+			case .promotion:
+				if #available(iOSApplicationExtension 14.0, *) {
+					return .promotion
+				} else {
 					return .junk
-				case .promotion:
-					if #available(iOSApplicationExtension 14.0, *) {
-						return .promotion
-					} else {
-						return .junk
-					}
-				case .transaction:
-					if #available(iOSApplicationExtension 14.0, *) {
-						return .transaction
-					} else {
-						return .junk
-					}
-				case .none:
-					return .none
-				case .allow:
-					return .allow
 				}
+			case .transaction:
+				if #available(iOSApplicationExtension 14.0, *) {
+					return .transaction
+				} else {
+					return .junk
+				}
+			case .none:
+				return .none
+			case .allow:
+				return .allow
 			}
 		}
 
