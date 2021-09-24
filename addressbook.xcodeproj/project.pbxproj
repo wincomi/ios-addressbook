@@ -78,16 +78,16 @@
 		91E7898B252B469400A18CCD /* ContactListToolbarItemsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E7898A252B469400A18CCD /* ContactListToolbarItemsProvider.swift */; };
 		91E8C3E5252A071A00595969 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E8C3E4252A071A00595969 /* L10n.swift */; };
 		F729568E26FE079C0070CCEE /* PhoneNumberKit in Frameworks */ = {isa = PBXBuildFile; productRef = F729568D26FE079C0070CCEE /* PhoneNumberKit */; };
+		F729569126FE16990070CCEE /* MessageFilter+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F729568F26FE16990070CCEE /* MessageFilter+CoreDataClass.swift */; };
+		F729569226FE16990070CCEE /* MessageFilter+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F729568F26FE16990070CCEE /* MessageFilter+CoreDataClass.swift */; };
+		F729569326FE16990070CCEE /* MessageFilter+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F729569026FE16990070CCEE /* MessageFilter+CoreDataProperties.swift */; };
+		F729569426FE16990070CCEE /* MessageFilter+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F729569026FE16990070CCEE /* MessageFilter+CoreDataProperties.swift */; };
 		F72B822A2545C17900737A9A /* CallDirectoryEntryForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B82292545C17900737A9A /* CallDirectoryEntryForm.swift */; };
 		F72C8D4724A9B4ED006D500F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F72C8D4924A9B4ED006D500F /* InfoPlist.strings */; };
 		F72EE8DA25F288FF009E9485 /* SharedPersistentContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F74583D82545A86F00AF9483 /* SharedPersistentContainer.xcdatamodeld */; };
 		F72EE8EC25F28939009E9485 /* StorageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74583DE2545AB2E00AF9483 /* StorageController.swift */; };
 		F72EE8F025F2893D009E9485 /* CallDirectoryEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915761F9254995B100F38931 /* CallDirectoryEntry+CoreDataProperties.swift */; };
 		F72EE8F125F2893D009E9485 /* CallDirectoryEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915761F8254995B100F38931 /* CallDirectoryEntry+CoreDataClass.swift */; };
-		F72EE8F725F28DBA009E9485 /* MessageFilter+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72EE8F525F28DBA009E9485 /* MessageFilter+CoreDataClass.swift */; };
-		F72EE8F825F28DBA009E9485 /* MessageFilter+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72EE8F625F28DBA009E9485 /* MessageFilter+CoreDataProperties.swift */; };
-		F72EE8FC25F28DC7009E9485 /* MessageFilter+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72EE8F625F28DBA009E9485 /* MessageFilter+CoreDataProperties.swift */; };
-		F72EE8FD25F28DC7009E9485 /* MessageFilter+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72EE8F525F28DBA009E9485 /* MessageFilter+CoreDataClass.swift */; };
 		F74583C425458DBA00AF9483 /* CallDirectoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74583C325458DBA00AF9483 /* CallDirectoryHandler.swift */; };
 		F74583C825458DBA00AF9483 /* CallDirectory.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F74583C125458DBA00AF9483 /* CallDirectory.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F74583DA2545A86F00AF9483 /* SharedPersistentContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F74583D82545A86F00AF9483 /* SharedPersistentContainer.xcdatamodeld */; };
@@ -226,11 +226,11 @@
 		91E44A41250F52A50092540A /* SettingsFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFormViewModel.swift; sourceTree = "<group>"; };
 		91E7898A252B469400A18CCD /* ContactListToolbarItemsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListToolbarItemsProvider.swift; sourceTree = "<group>"; };
 		91E8C3E4252A071A00595969 /* L10n.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
+		F729568F26FE16990070CCEE /* MessageFilter+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MessageFilter+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F729569026FE16990070CCEE /* MessageFilter+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MessageFilter+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F72B82292545C17900737A9A /* CallDirectoryEntryForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDirectoryEntryForm.swift; sourceTree = "<group>"; };
 		F72C8D4824A9B4ED006D500F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F72C8D4A24A9B4F3006D500F /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F72EE8F525F28DBA009E9485 /* MessageFilter+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessageFilter+CoreDataClass.swift"; sourceTree = "<group>"; };
-		F72EE8F625F28DBA009E9485 /* MessageFilter+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessageFilter+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F74583C125458DBA00AF9483 /* CallDirectory.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CallDirectory.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F74583C325458DBA00AF9483 /* CallDirectoryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDirectoryHandler.swift; sourceTree = "<group>"; };
 		F74583C525458DBA00AF9483 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -477,8 +477,8 @@
 		F72EE90125F28DD5009E9485 /* MessageFilter */ = {
 			isa = PBXGroup;
 			children = (
-				F72EE8F525F28DBA009E9485 /* MessageFilter+CoreDataClass.swift */,
-				F72EE8F625F28DBA009E9485 /* MessageFilter+CoreDataProperties.swift */,
+				F729568F26FE16990070CCEE /* MessageFilter+CoreDataClass.swift */,
+				F729569026FE16990070CCEE /* MessageFilter+CoreDataProperties.swift */,
 			);
 			path = MessageFilter;
 			sourceTree = "<group>";
@@ -847,7 +847,6 @@
 				F7C1E1692601C8D000C0BD5F /* MessageFilterFormViewModel.swift in Sources */,
 				F755A865248F3CA600DB9717 /* AppDelegate.swift in Sources */,
 				915761FC254995B100F38931 /* CallDirectoryEntry+CoreDataProperties.swift in Sources */,
-				F72EE8F825F28DBA009E9485 /* MessageFilter+CoreDataProperties.swift in Sources */,
 				84F65818256A76B7005B3B0A /* ContactMenuSettingFormCell.swift in Sources */,
 				0B4A93B225BB140800CEFE3F /* EditGroupsFormViewModel.swift in Sources */,
 				F7EFED6F264AB83C00618159 /* MessageComposeView.swift in Sources */,
@@ -859,7 +858,6 @@
 				91147F58251B45A70012A592 /* UserDefaults+Extension.swift in Sources */,
 				0B452DF3259499800096A4FF /* DisplayOrderPickerForm.swift in Sources */,
 				F755A8B7248FC22E00DB9717 /* GroupListSection.swift in Sources */,
-				F72EE8F725F28DBA009E9485 /* MessageFilter+CoreDataClass.swift in Sources */,
 				91BCA71A2524B8030094B20A /* CircleColorView.swift in Sources */,
 				9109DEDF2516F026004E949C /* ContactMenuSettingForm.swift in Sources */,
 				F75D1A732660B89F0095B127 /* PublishedObject.swift in Sources */,
@@ -896,10 +894,12 @@
 				F74D3B6926FCC417001E8839 /* MessageFilterTypePickerForm.swift in Sources */,
 				91046703250614DA00618BFD /* SearchListViewController.swift in Sources */,
 				F74583DF2545AB2E00AF9483 /* StorageController.swift in Sources */,
+				F729569126FE16990070CCEE /* MessageFilter+CoreDataClass.swift in Sources */,
 				0B4A93BA25BB17C600CEFE3F /* GroupPickerForm.swift in Sources */,
 				919231F425345CD90007819F /* SearchListCell.swift in Sources */,
 				0BA71E4B2588FBE60007F9C9 /* CreateGroupFormViewModel.swift in Sources */,
 				F75093D524A07E0B0044CDE3 /* ContactListRow.swift in Sources */,
+				F729569326FE16990070CCEE /* MessageFilter+CoreDataProperties.swift in Sources */,
 				0BF9092325CADD8600DF6E85 /* SidebarList.ErrorView.swift in Sources */,
 				910467052506252100618BFD /* SearchListViewModel.swift in Sources */,
 				913DC24225160DD800BC1397 /* ApplicationShortcutItem.swift in Sources */,
@@ -916,12 +916,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F72EE8F025F2893D009E9485 /* CallDirectoryEntry+CoreDataProperties.swift in Sources */,
-				F72EE8FD25F28DC7009E9485 /* MessageFilter+CoreDataClass.swift in Sources */,
+				F729569426FE16990070CCEE /* MessageFilter+CoreDataProperties.swift in Sources */,
 				F798CFB025F1206C005AFB4B /* MessageFilterExtension.swift in Sources */,
 				F72EE8DA25F288FF009E9485 /* SharedPersistentContainer.xcdatamodeld in Sources */,
-				F72EE8FC25F28DC7009E9485 /* MessageFilter+CoreDataProperties.swift in Sources */,
 				F72EE8F125F2893D009E9485 /* CallDirectoryEntry+CoreDataClass.swift in Sources */,
 				F72EE8EC25F28939009E9485 /* StorageController.swift in Sources */,
+				F729569226FE16990070CCEE /* MessageFilter+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
