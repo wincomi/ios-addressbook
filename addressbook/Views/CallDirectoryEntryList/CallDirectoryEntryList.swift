@@ -108,38 +108,42 @@ private extension CallDirectoryEntryList {
 	}
 
 	func rowContent(callDirectoryEntry: CallDirectoryEntry) -> some View {
-		CallDirectoryEntryListCell(callDirectoryEntry: callDirectoryEntry)
-			.contextMenu {
-				if let url = callURL(callDirectoryEntry) {
-					Button {
-						UIApplication.shared.open(url, options: [:])
-					} label: {
-						Image(systemName: "phone")
-						Text(L10n.ContactListRow.ContextMenuItemType.call)
+		Button {
+			activeSheet = .callDirectoryEntryForm(formType: .update(callDirectoryEntry))
+		} label: {
+			CallDirectoryEntryListCell(callDirectoryEntry: callDirectoryEntry)
+				.contextMenu {
+					if let url = callURL(callDirectoryEntry) {
+						Button {
+							UIApplication.shared.open(url, options: [:])
+						} label: {
+							Image(systemName: "phone")
+							Text(L10n.ContactListRow.ContextMenuItemType.call)
+						}
 					}
-				}
-				if MessageComposeView.canSendText() {
-					Button {
-						activeSheet = .messageComposeView(recipients: ["\(callDirectoryEntry.phoneNumber)"])
-					} label: {
-						Image(systemName: "message")
-						Text(L10n.ContactListRow.ContextMenuItemType.sendMessage)
+					if MessageComposeView.canSendText() {
+						Button {
+							activeSheet = .messageComposeView(recipients: ["\(callDirectoryEntry.phoneNumber)"])
+						} label: {
+							Image(systemName: "message")
+							Text(L10n.ContactListRow.ContextMenuItemType.sendMessage)
+						}
 					}
-				}
 
-				Button {
-					UIPasteboard.general.setValue("\(callDirectoryEntry.phoneNumber)", forPasteboardType: kUTTypePlainText as String)
-				} label: {
-					Image(systemName: "doc.on.doc")
-					Text(L10n.CallDirectoryEntryList.copyPhoneNumber)
+					Button {
+						UIPasteboard.general.setValue("\(callDirectoryEntry.phoneNumber)", forPasteboardType: kUTTypePlainText as String)
+					} label: {
+						Image(systemName: "doc.on.doc")
+						Text(L10n.CallDirectoryEntryList.copyPhoneNumber)
+					}
+					Button {
+						viewModel.remove(callDirectoryEntry)
+					} label: {
+						Image(systemName: "trash")
+						Text(L10n.delete)
+					}
 				}
-				Button {
-					viewModel.remove(callDirectoryEntry)
-				} label: {
-					Image(systemName: "trash")
-					Text(L10n.delete)
-				}
-			}
+		}
 	}
 
 	func callURL(_ callDirectoryEntry: CallDirectoryEntry) -> URL? {

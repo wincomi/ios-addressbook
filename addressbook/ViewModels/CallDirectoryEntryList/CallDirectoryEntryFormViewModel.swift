@@ -17,7 +17,6 @@ final class CallDirectoryEntryFormViewModel: ObservableObject {
 		reloadCallDirectoryExtension()
 	}
 
-	// MARK: - Fix me
 	func update(_ callDirectoryEntry: CallDirectoryEntry, entryType: CallDirectoryEntry.EntryType, name: String, phoneNumber: Int64) {
 		storageController.edit(callDirectoryEntry) {
 			$0.isBlocked = entryType.isBlocked

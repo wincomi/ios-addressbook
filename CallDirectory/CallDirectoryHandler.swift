@@ -11,13 +11,11 @@ final class CallDirectoryHandler: CXCallDirectoryProvider {
 	override func beginRequest(with context: CXCallDirectoryExtensionContext) {
 		context.delegate = self
 
-		if let lastUpdate = UserDefaults.standard.object(forKey: "lastUpdate") as? Date, context.isIncremental {
-			addOrRemoveIncrementalBlockingPhoneNumbers(to: context, since: lastUpdate)
-			addOrRemoveIncrementalIdentificationPhoneNumbers(to: context, since: lastUpdate)
-		} else {
-			addAllBlockingPhoneNumbers(to: context)
-			addAllIdentificationPhoneNumbers(to: context)
-		}
+		context.removeAllBlockingEntries()
+		context.removeAllIdentificationEntries()
+
+		addAllBlockingPhoneNumbers(to: context)
+		addAllIdentificationPhoneNumbers(to: context)
 
 		UserDefaults.standard.set(Date(), forKey: "lastUpdate")
 
@@ -32,37 +30,12 @@ final class CallDirectoryHandler: CXCallDirectoryProvider {
 		}
 	}
 
-	private func addOrRemoveIncrementalBlockingPhoneNumbers(to context: CXCallDirectoryExtensionContext, since date: Date) {
-		let callDirectoryEntries = StorageController.shared.fetchCallDirectoryEntries(type: .blocking, isRemoved: true, since: date)
-
-		callDirectoryEntries.forEach { callDirectoryEntry in
-			if callDirectoryEntry.isRemoved {
-				context.removeBlockingEntry(withPhoneNumber: callDirectoryEntry.phoneNumber)
-			} else {
-				context.addBlockingEntry(withNextSequentialPhoneNumber: callDirectoryEntry.phoneNumber)
-			}
-		}
-	}
-
 	private func addAllIdentificationPhoneNumbers(to context: CXCallDirectoryExtensionContext) {
 		let callDirectoryEntries = StorageController.shared.fetchCallDirectoryEntries(type: .identification)
 
 		callDirectoryEntries.forEach { callDirectoryEntry in
 			guard let name = callDirectoryEntry.name else { return }
 			context.addIdentificationEntry(withNextSequentialPhoneNumber: callDirectoryEntry.phoneNumber, label: name)
-		}
-	}
-
-	private func addOrRemoveIncrementalIdentificationPhoneNumbers(to context: CXCallDirectoryExtensionContext, since date: Date) {
-		let callDirectoryEntries = StorageController.shared.fetchCallDirectoryEntries(type: .identification, isRemoved: true, since: date)
-
-		callDirectoryEntries.forEach { callDirectoryEntry in
-			if callDirectoryEntry.isRemoved {
-				context.removeIdentificationEntry(withPhoneNumber: callDirectoryEntry.phoneNumber)
-			} else {
-				guard let name = callDirectoryEntry.name else { return }
-				context.addIdentificationEntry(withNextSequentialPhoneNumber: callDirectoryEntry.phoneNumber, label: name)
-			}
 		}
 	}
 }

@@ -76,8 +76,10 @@ struct CallDirectoryEntryForm: View {
 			case .create:
 				break
 			case .update(let callDirectoryEntry):
-				self.name = callDirectoryEntry.name ?? ""
-				self.phoneNumberString = String(callDirectoryEntry.phoneNumber)
+				DispatchQueue.main.async {
+					self.name = callDirectoryEntry.name ?? ""
+					self.phoneNumberString = String(callDirectoryEntry.phoneNumber)
+				}
 			}
 		}
 	}
