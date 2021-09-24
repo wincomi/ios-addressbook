@@ -83,6 +83,7 @@ SettingsForm.GeneralSection.preferNicknames = "별명으로 보기";
 SettingsForm.GeneralSection.displayOrder = "표시 순서";
 SettingsForm.DisplaySection.header = "보기";
 SettingsForm.DisplaySection.showContactImage = "연락처 사진 보기";
+SettingsForm.DisplaySection.hideLocalContainer = "로컬 계정 숨기기";
 SettingsForm.ThemeSection.header = "테마";
 SettingsForm.ThemeSection.customColor = "커스텀 색상";
 SettingsForm.FeedbackSection.header = "피드백";

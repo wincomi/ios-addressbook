@@ -83,6 +83,7 @@ SettingsForm.GeneralSection.displayOrder = "Display Order";
 SettingsForm.GeneralSection.preferNicknames = "Prefer nicknames";
 SettingsForm.DisplaySection.header = "Display";
 SettingsForm.DisplaySection.showContactImage = "Show contact image";
+SettingsForm.DisplaySection.hideLocalContainer = "Hide Local Account";
 SettingsForm.ThemeSection.header = "Theme";
 SettingsForm.ThemeSection.customColor = "Custom color";
 SettingsForm.FeedbackSection.header = "Feedback";

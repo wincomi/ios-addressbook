@@ -117,6 +117,11 @@ final class AppSettings: ObservableObject {
 		willSet { objectWillChange.send() }
 	}
 
+	@UserDefault("hideLocalContainer", store: .appGroup)
+	var hideLocalContainer = false {
+		willSet { objectWillChange.send() }
+	}
+
 	@UserDefault("applicationShortcutItems", store: .appGroup)
 	var applicationShortcutItems = [ApplicationShortcutItem]() {
 		willSet { objectWillChange.send() }

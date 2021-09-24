@@ -4,6 +4,7 @@
 //
 
 import SwiftUI
+import Combine
 import Contacts
 
 struct SidebarList: View {
@@ -102,7 +103,7 @@ struct SidebarList: View {
 			}.disabled(editMode?.wrappedValue == .active)
 		}
 		.onAppear(perform: viewModel.load)
-		.onReceive(ContactStore.didChange) {
+		.onReceive(Publishers.Merge(ContactStore.didChange, AppSettings.shared.objectWillChange)) {
 			withAnimation {
 				viewModel.load()
 			}

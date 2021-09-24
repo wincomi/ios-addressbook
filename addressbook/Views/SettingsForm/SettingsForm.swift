@@ -79,6 +79,9 @@ private extension SettingsForm {
 			Toggle(isOn: $appSettings.showContactImageInContactList) {
 				Text(L10n.SettingsForm.DisplaySection.showContactImage)
 			}
+			Toggle(isOn: $appSettings.hideLocalContainer) {
+				Text(L10n.SettingsForm.DisplaySection.hideLocalContainer)
+			}
 			NavigationLink(destination: ContactMenuSettingForm().environmentObject(appSettings)) {
 				Text(L10n.ContactMenuSettingForm.title)
 			}
