@@ -133,7 +133,11 @@ final class ContactStore {
 	// 모든 컨테이너 가져오기
 	public func fetchContainers(matching: NSPredicate? = nil) throws -> [CNContainer] {
 		do {
-			return try store.containers(matching: matching)
+			var containers = try store.containers(matching: matching)
+			if AppSettings.shared.hideLocalContainer {
+				containers = containers.filter { $0.type != .local }
+			}
+			return containers
 		} catch {
 			throw error
 		}

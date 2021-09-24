@@ -15,10 +15,7 @@ final class SidebarListViewModel: LoadableObject, ObservableObject {
 		switch ContactStore.authorizationStatus {
 		case .authorized:
 			do {
-				var containers = try ContactStore.shared.fetchContainers()
-				if AppSettings.shared.hideLocalContainer {
-					containers = containers.filter { $0.type != .local }
-				}
+				let containers = try ContactStore.shared.fetchContainers()
 				let sections = try GroupListSection.makeSections(from: containers, withAllContactsSection: true, withAllContactsRow: containers.count > 1)
 				self.state = .loaded(sections)
 			} catch {
