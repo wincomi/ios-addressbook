@@ -49,30 +49,32 @@ struct SidebarList: View {
 
 			// MARK: - Utilities Section
 			Section(header: Text(L10n.SidebarList.utilities)) {
-				NavigationButton {
-					coordinator?.presentCallDirectoryEntryList(type: .identification)
-				} label: {
-					CompatibleLabel {
-						Text(L10n.CallDirectoryEntryList.IdentificationType.navigationTitle)
-							.foregroundColor(Color(UIColor.label))
-					} icon: {
-						if #available(iOS 14.0, *) {
-							Image(systemName: "person.crop.circle.badge.questionmark")
-								.font(.system(size: 20))
-						} else {
-							Image(systemName: "questionmark.circle")
-								.font(.system(size: 20))
+				if AppSettings.isCallKitSupported {
+					NavigationButton {
+						coordinator?.presentCallDirectoryEntryList(type: .identification)
+					} label: {
+						CompatibleLabel {
+							Text(L10n.CallDirectoryEntryList.IdentificationType.navigationTitle)
+								.foregroundColor(Color(UIColor.label))
+						} icon: {
+							if #available(iOS 14.0, *) {
+								Image(systemName: "person.crop.circle.badge.questionmark")
+									.font(.system(size: 20))
+							} else {
+								Image(systemName: "questionmark.circle")
+									.font(.system(size: 20))
+							}
 						}
 					}
-				}
-				NavigationButton {
-					coordinator?.presentCallDirectoryEntryList(type: .blocking)
-				} label: {
-					CompatibleLabel {
-						Text(L10n.CallDirectoryEntryList.BlockingType.navigationTitle)
-							.foregroundColor(Color(UIColor.label))
-					} icon: {
-						Image(systemName: "bell.slash")
+					NavigationButton {
+						coordinator?.presentCallDirectoryEntryList(type: .blocking)
+					} label: {
+						CompatibleLabel {
+							Text(L10n.CallDirectoryEntryList.BlockingType.navigationTitle)
+								.foregroundColor(Color(UIColor.label))
+						} icon: {
+							Image(systemName: "bell.slash")
+						}
 					}
 				}
 				NavigationButton {

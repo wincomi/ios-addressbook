@@ -63,11 +63,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 	// MARK: -
 	func reloadCallDirectoryExtension() {
-		CXCallDirectoryManager.sharedInstance.reloadExtension(withIdentifier: AppSettings.callDirectoryBundleIdentifier) { error in
-			if let error = error {
-				print("reloadCallDirectoryExtension: \(error)")
-			} else {
-				print("reloadCallDirectoryExtension: success")
+		if AppSettings.isCallKitSupported {
+			CXCallDirectoryManager.sharedInstance.reloadExtension(withIdentifier: AppSettings.callDirectoryBundleIdentifier) { error in
+				if let error = error {
+					print("reloadCallDirectoryExtension: \(error)")
+				} else {
+					print("reloadCallDirectoryExtension: success")
+				}
 			}
 		}
 	}

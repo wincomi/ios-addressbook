@@ -14,6 +14,16 @@ final class AppSettings: ObservableObject {
 	static let callDirectoryBundleIdentifier = "com.wincomi.ios.addressbook.CallDirectory"
 	static let supportedLocalizations = Bundle.main.localizations.map(Locale.init).filter { $0.identifier != "base" }
 
+	static var isCallKitSupported: Bool {
+		guard let regionCode = NSLocale.current.regionCode else { return false }
+
+		if regionCode.contains("CN") || regionCode.contains("CHN") {
+			return false
+		} else {
+			return true
+		}
+	}
+
 	static var displayName: String {
 		Bundle.main.localizedInfoDictionary!["CFBundleDisplayName"] as! String
 	}
