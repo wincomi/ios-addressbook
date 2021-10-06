@@ -11,8 +11,11 @@ final class CallDirectoryHandler: CXCallDirectoryProvider {
 	override func beginRequest(with context: CXCallDirectoryExtensionContext) {
 		context.delegate = self
 
-		context.removeAllBlockingEntries()
-		context.removeAllIdentificationEntries()
+		// Calling removeAllBlockingEntries when isIncremental is false is unsupported
+		if context.isIncremental {
+			context.removeAllBlockingEntries()
+			context.removeAllIdentificationEntries()
+		}
 
 		addAllBlockingPhoneNumbers(to: context)
 		addAllIdentificationPhoneNumbers(to: context)
